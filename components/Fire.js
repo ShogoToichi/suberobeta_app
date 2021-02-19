@@ -1,4 +1,4 @@
-import React , {Component} from "react";
+import React , {useState} from "react";
 import firebase from "firebase";
 import Lesson from "./Lesson";
 //export default function Fire(){
@@ -16,10 +16,10 @@ import Lesson from "./Lesson";
 
 
 export default function Fire(){
-  let data = [<Lesson lessonid="8" name="beginner lesson" place="saitama uni" time="one hour" text="let's enjoy snowboard with me!" price="2000yen"/>
-]
-
-    
+  let data = [<Lesson lessonid="8"/>]
+  const [items,setItems] = useState(0);  
+  const lessonids = [1,2,3,4];
+  
   const firetest =async()=>{
     const db=firebase.firestore();
     const lessondata = [];
@@ -29,15 +29,21 @@ export default function Fire(){
       });
       console.log(lessondata[0].lessonname);
     });
-    data.push(<Lesson lessonid="9" name="beginner lesson" place="saitama uni" time="one hour" text="let's enjoy snowboard with me!" price="2000yen"/>
-    );
-    console.log(data);
-  }
+    const id = lessonids;
+    id.push(5);
+    setItems([1,2,3,4,5]);
+    console.log(items);
+  // const new_data = <Lesson lessonid="9" name="beginner lesson" place="saitama uni" time="one hour" text="let's enjoy snowboard with me!" price="2000yen"/>
+}
+// data.push(new_data);
+
   return(
     <div>
       <button onClick={firetest}>fire</button>
       <div><p>hello</p></div>
-      {data}
+      {items.map((lessonid)=>{
+        return <Lesson name={lessonid}/>;
+      })}
     </div>
   );
 }

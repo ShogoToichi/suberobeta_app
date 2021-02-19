@@ -4,6 +4,8 @@ import Link from "next/link";
 
 export default function Lesson (props){
 
+
+
     return(
       <div>
         <Link as={`/lesson_info/ + ${props.lessonid}`}

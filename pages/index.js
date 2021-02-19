@@ -7,10 +7,6 @@ import Redux from "../components/Redux";
 export default () =>(
   <Layout header="トップページ" title="Top page.">
     <TopContents/>
-    <Link href="./other"><button>
-      go to other
-      </button></Link>
-      <Fire/>
-      <Redux/>
+    <Redux/>
   </Layout>
 );

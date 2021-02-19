@@ -1,18 +1,17 @@
-import React,{Component} from "react";
+import React,{useState} from "react";
 import firebase from "firebase";
 // import "firebase/storage";
 import Lesson from "./Lesson";
-import { connect } from "react-redux";
-import Router from "next/router";
 
 
 function LessonList (){
-    const lessonitems = [];
+  const [items,setItems] = useState("no item");
 
-    const getFireData= async()=>{
+  const getFireData= async()=>{
     const db = firebase.firestore ();
     const lessondata = [];
     const lessonid = [];
+    const lessonitems = [];
     await db.collection("lessons").get().then(function(querySnapshot){
       querySnapshot.forEach(function(doc){
         lessondata.unshift(doc.data());
@@ -25,7 +24,6 @@ function LessonList (){
         let time = lessondata[i].lessontime;
         let text = lessondata[i].lessontext;
         let price = lessondata[i].lessonprice;
-  
         lessonitems.push(
           <Lesson lessonid={id}
                   name={name}
@@ -37,23 +35,20 @@ function LessonList (){
         );
         break;
       }
-      console.log(lessonitems);
-    }
+      setItems(lessonitems);
+    });
+  }
+
+  if(items =="no item"){
+    getFireData();
+  }
+
+  return(
+    <div>
+      <h2>レッスン一覧</h2>
+      {items}
+    </div>
   );
-      }
-
-
-
-        return(
-        <div>
-          <h2>レッスン一覧</h2>
-          <button onClick={getFireData}>読み込み</button>
-          <div>
-          {()=>lessonitems}
-          </div>
-        </div>
-    );
-  
 }
 
 export default LessonList;
