@@ -2,7 +2,7 @@ import React , {Component} from "react";
 import {connect} from "react-redux";
 
 
-class Redux extends Component(props){
+class Redux extends Component{
   constructor(props){
     super(props);
   }

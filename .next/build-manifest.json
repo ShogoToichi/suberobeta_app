@@ -28,6 +28,11 @@
       "static/chunks/main.js",
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
+    ],
+    "/lesson_list": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/lesson_list.js"
     ]
   },
   "ampFirstPages": []

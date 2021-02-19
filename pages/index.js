@@ -2,7 +2,7 @@ import Link from "next/link";
 import Layout from "../components/Layout";
 import TopContents from "../components/TopContents";
 import Fire from "../components/Fire";
-// import Redux from "../components/Redux";
+import Redux from "../components/Redux";
 
 export default () =>(
   <Layout header="トップページ" title="Top page.">
@@ -11,6 +11,6 @@ export default () =>(
       go to other
       </button></Link>
       <Fire/>
-      {/* <Redux/> */}
+      <Redux/>
   </Layout>
 );
