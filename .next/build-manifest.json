@@ -24,10 +24,20 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
+    "/lesson_add": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/lesson_add.js"
+    ],
     "/mypage": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
       "static/chunks/pages/mypage.js"
+    ],
+    "/toppage": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/toppage.js"
     ]
   },
   "ampFirstPages": []

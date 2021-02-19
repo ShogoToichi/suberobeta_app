@@ -1,8 +1,12 @@
-import MyLessonList from "MyLessonList";
+import MyLessonList from "./MyLessonList";
 import React from "react";
+import MyBuyLessonList from "./MyBuyLessonList"
 
 export default function Mypage (){
   return(
-    <MyLessonList/>
+    <div>
+      <MyLessonList/>
+      <MyBuyLessonList/>
+    </div>
   );
 }

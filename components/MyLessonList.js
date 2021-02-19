@@ -4,6 +4,7 @@ import "firebase/storage";
 import Lesson from "./Lesson";
 import { connect } from "react-redux";
 import Lib from "../static/address_lib";
+import Link from "next/link";
 
 
 function MyLessonList (props){
@@ -49,8 +50,11 @@ function MyLessonList (props){
 
   return(
     <div>
-      <h2>レッスン一覧</h2>
+      <h2>投稿したレッスン</h2>
       {items}
+      <Link href="/lesson_add">
+        <button>レッスン追加</button>
+      </Link>
     </div>
   );
 }
