@@ -8,7 +8,7 @@ export default function Lesson (props){
 
     return(
       <div>
-        <Link as={`/lesson_info/ + ${props.lessonid}`}
+        <Link as={`/lesson_info/${props.lessonid}`}
           href="/lesson_info/[lessonid]">
             <a>{props.name}</a>
           </Link>

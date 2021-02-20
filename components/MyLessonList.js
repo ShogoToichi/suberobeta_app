@@ -19,10 +19,11 @@ function MyLessonList (props){
     await db.collection("lessons").where("createrid","==",email).get()
     .then(function(querySnapshot){
       querySnapshot.forEach(function(doc){
-        lessondata.unshift(doc.data());
-        lessonid.unshift(doc.id);
+          lessondata.unshift(doc.data());
+          lessonid.unshift(doc.id);
+        console.log(lessonid);
       });
-      for (let i in lessondata){
+      for (let i in lessonid){
         let id = lessonid[i];
         let name =lessondata[i].lessonname;
         let place = lessondata[i].lessonplace;
@@ -38,9 +39,10 @@ function MyLessonList (props){
                   price={price}
           />
         );
-        break;
       }
+      console.log(lessonitems)
       setItems(lessonitems);
+      console.log(items);
     });
   }
 
@@ -55,6 +57,7 @@ function MyLessonList (props){
       <Link href="/lesson_add">
         <button>レッスン追加</button>
       </Link>
+        <button onClick={getFireData}>検証</button>
     </div>
   );
 }

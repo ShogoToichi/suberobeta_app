@@ -84,4 +84,7 @@ export default <style>{`
     font-size:14pt;
     cursor:pointer;
   }
+  .lessonprofile{
+    margin-top:200px;
+  }
 `}</style>;

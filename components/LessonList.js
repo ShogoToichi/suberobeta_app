@@ -33,7 +33,6 @@ function LessonList (){
                   price={price}
           />
         );
-        break;
       }
       setItems(lessonitems);
     });

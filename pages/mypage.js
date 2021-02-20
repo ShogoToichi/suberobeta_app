@@ -6,7 +6,6 @@ import Account from "../components/Account";
 
 export default () =>(
   <Layout>
-    <Account/>
     <Mypage/>
   </Layout>
 );

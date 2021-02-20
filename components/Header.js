@@ -7,7 +7,7 @@ class Header extends Component {
     return(<header>
       <div>{this.props.header}</div>
       <h1>{this.props.header}</h1>
-      <Link href="./toppage">
+      <Link href="/">
         <button style={this.btnstyle}>トップページ</button>
       </Link>
       <Link href="./mypage">

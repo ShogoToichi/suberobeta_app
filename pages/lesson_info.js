@@ -7,6 +7,8 @@ import Profile from "../components/Profile";
 export default () =>(
   <Layout>
     <LessonList/>
+    <div className="lessonprofile">
     <Profile/>
+    </div>
   </Layout>
 );
