@@ -4,9 +4,17 @@ import "firebase/storage";
 import { connect } from "react-redux";
 import Lib from "../static/address_lib";
 import Link from "next/link";
+import Sample from './sample';
+
 
 
 function ProfileEdit (props){
+
+  const style = {
+    width: "50%",
+    margin: "0 auto",
+    marginTop: 150,
+  };
 
   const [name,setName] = useState("");
   const[introduction,setIntroduction] = useState("");
@@ -19,18 +27,20 @@ function ProfileEdit (props){
     setIntroduction(e.target.value);
   }
 
-  function processImage(event){
-    const imageFile = event.target.files[0];
-    const imageUrl = URL.createObjectURL(imageFile);
-    setFileUrl(imageUrl)
-  }
+  // function processImage(event){
+  //   const imageFile = event.target.files[0];
+  //   const imageUrl = URL.createObjectURL(imageFile);
+  //   setFileUrl(imageUrl)
+  // }
 
 
   const doSubmit = async()=>{
     const db = firebase.firestore ();
     const email = Lib.encodeEmail(props.email)
     await db.collection("users").doc(email).set({
-      profile:{ name:name , introduction:introduction , imageurl:fileUrl}
+      profile:{ name:name , introduction:introduction
+        //  , imageurl:fileUrl
+        }
     }).then(function(){
         console.log(name,introduction);
       });
@@ -43,7 +53,12 @@ return(
     <p>名前</p>
     <input type="text" onChange={doChangeName}></input>
     <p>プロフィール画像</p>
-    <input type="file" accept="image/*" onChange={processImage}></input>
+    <div className="App">
+      <div style={style}>
+        <Sample />
+      </div>
+    </div>
+    {/* <input type="file" accept="image/*" onChange={processImage}></input> */}
     <p>紹介文</p>
     <input type="text" onChange={doChangeIntroduction}></input>
     <Link href="/mypage">

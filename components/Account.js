@@ -10,7 +10,7 @@ class Account extends Component {
 
   constructor(props){
     super(props);
-    // this.login_check();
+    // 属性値として使うためにバインド
     this.login_check = this.login_check.bind(this);
   }
 
@@ -19,6 +19,7 @@ class Account extends Component {
     let provider = new firebase.auth.GoogleAuthProvider();
     var self = this;
     firebase.auth().signInWithPopup(provider)
+    //ログイン処理完了後resultで値を受け取りReduxへ
       .then((result)=>{
         this.props.dispatch({
           type:"UPDATE_USER",
@@ -26,11 +27,11 @@ class Account extends Component {
             login:true,
             username: result.user.displayName,
             email: result.user.email,
-            // data:this.props.data,
             item:this.props.items
           }
         });
-        // this.props.onLogined();
+        //ログイン時の処理をpropsで受け取れるようにする
+        this.props.onLogined();
       });
   }
 
@@ -44,14 +45,14 @@ class Account extends Component {
         login:false,
         username:"(click here!)",
         email:"",
-        // data:[],
+        data:[],
         items:[]
       }
     });
-    // this.props.onLogouted();
+    this.props.onLogouted();
   }
 
-  //ログイン、ログアウトのチェックマーク
+  //ログイン、ログアウト処理をクリック時に分岐する関数
   login_check(){
     if (this.props.login ===false){
       this.login();
@@ -60,7 +61,6 @@ class Account extends Component {
     }
   }
 
-  //レンダリング
   render(){
     return (
       <p className="login">

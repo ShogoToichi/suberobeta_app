@@ -30,7 +30,7 @@ import Link from "next/link";
   return(
     <div>
       <h1>プロフィール</h1>
-      <image src={"blob:http://localhost:3000/bf4c11bb-691a-4d64-94f0-bd13ecd37752"}/>
+      <image src={imageurl}/>
       <h2>{name}</h2>
       <p>{introduction}</p>
       <button onClick={conso}>conso</button>

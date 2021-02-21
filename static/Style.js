@@ -87,4 +87,8 @@ export default <style>{`
   .lessonprofile{
     margin-top:150px;
   }
+  img {
+  width: 100px;
+  padding: 1em;
+}
 `}</style>;
