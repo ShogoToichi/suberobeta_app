@@ -1,3 +1,5 @@
+//next.jsのRedux利用に必要なファイル？
+
 import App, {Container} from "next/app";
 import React from "react";
 import withReduxStore from "../lib/redux-store";

@@ -1,3 +1,6 @@
+//プロフィール表示の箱
+//レッスン情報などで使用
+
 import React from "react";
 import Link from "next/link";
 

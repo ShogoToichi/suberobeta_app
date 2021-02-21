@@ -1,3 +1,5 @@
+//要検討画像アップロード処理
+
 import React,{useState} from "react";
 import firebase from "firebase";
 import "firebase/storage";
@@ -15,11 +17,12 @@ function ProfileEdit (props){
     margin: "0 auto",
     marginTop: 150,
   };
-
+//使用するステートの設定(Hook)
   const [name,setName] = useState("");
   const[introduction,setIntroduction] = useState("");
   const [fileUrl,setFileUrl] = useState(null);
 
+  //inputに入力された処理をeで受け取ってステートに入れる関数
   const doChangeName =(e)=>{
     setName(e.target.value);
   }
@@ -27,6 +30,7 @@ function ProfileEdit (props){
     setIntroduction(e.target.value);
   }
 
+  //画像処理試行錯誤中
   // function processImage(event){
   //   const imageFile = event.target.files[0];
   //   const imageUrl = URL.createObjectURL(imageFile);
@@ -34,6 +38,8 @@ function ProfileEdit (props){
   // }
 
 
+  //追加ボタンを押したらfirebaseにステートの情報を書き込む処理
+  //Reduxからユーザーのemail(id)をencode( .→* )にして定数に代入
   const doSubmit = async()=>{
     const db = firebase.firestore ();
     const email = Lib.encodeEmail(props.email)
@@ -42,6 +48,7 @@ function ProfileEdit (props){
         //  , imageurl:fileUrl
         }
     }).then(function(){
+      //いろいろ確認に利用、いらない処理
         console.log(name,introduction);
       });
   }

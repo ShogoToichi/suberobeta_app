@@ -1,3 +1,6 @@
+// next.jsのReduxの設定ファイル?
+
+import next from "next";
 import { Component } from "react";
 import { initStore } from "../store";
 

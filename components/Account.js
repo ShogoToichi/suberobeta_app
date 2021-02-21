@@ -31,7 +31,8 @@ class Account extends Component {
           }
         });
         //ログイン時の処理をpropsで受け取れるようにする
-        this.props.onLogined();
+        //とりま使ってない
+        // this.props.onLogined();
       });
   }
 
@@ -49,7 +50,7 @@ class Account extends Component {
         items:[]
       }
     });
-    this.props.onLogouted();
+    // this.props.onLogouted();
   }
 
   //ログイン、ログアウト処理をクリック時に分岐する関数

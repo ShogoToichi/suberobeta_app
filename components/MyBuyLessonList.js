@@ -1,3 +1,6 @@
+//基本的には<LessonList/>と同じなのでそちらを参照
+//.whereでレッスン購入者とReduxのemailが一致するデータを参照
+
 import React,{useState} from "react";
 import firebase from "firebase";
 import "firebase/storage";

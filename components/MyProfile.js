@@ -1,3 +1,5 @@
+//要追加 : 画像アップロード
+
 import React,{useState} from "react";
 import firebase from "firebase";
 import "firebase/storage";
@@ -6,15 +8,19 @@ import Lib from "../static/address_lib";
 import Link from "next/link";
 
   function MyProfile (props){
+    //ステートの設定
   const [name,setName] = useState("no data");
   const [introduction,setIntroduction] = useState("no data");
   const [imageurl,setImageurl] = useState(null);
 
   const getFireData= async()=>{
     const db = firebase.firestore ();
+    //emailにReduxからユーザーのemailを取得
     const email = Lib.encodeEmail(props.email);
+    //emailでfirebaseを参照
     await db.collection("users").doc(email).get()
     .then(function(doc){
+      //取得したデータを定数に入れてから、ステートに入れる
       const profiledata = doc.data();
       setName(profiledata.profile.name);
       setIntroduction(profiledata.profile.introduction);
@@ -22,8 +28,7 @@ import Link from "next/link";
     });
   }
   
-  const conso =()=>{
-    console.log(imageurl);
+  if(name == "no data"){
     getFireData();
   }
   
@@ -33,7 +38,6 @@ import Link from "next/link";
       <image src={imageurl}/>
       <h2>{name}</h2>
       <p>{introduction}</p>
-      <button onClick={conso}>conso</button>
       <Link href="/profile_edit">
         <button>プロフィール編集</button>
       </Link>

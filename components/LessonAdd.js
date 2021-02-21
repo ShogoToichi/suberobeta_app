@@ -34,6 +34,7 @@ function LessonAdd (props){
 
   //追加ボタンを押したらfirebaseにステートの情報を書き込む処理
   //addで追加しているから、ドキュメントidはユニークなidが自動で当てられる
+  //Reduxからユーザーのemail(id)をencode( .→* )にして定数に代入
   const doSubmit = async()=>{
     const db = firebase.firestore ();
     const email = Lib.encodeEmail(props.email)
@@ -47,8 +48,6 @@ function LessonAdd (props){
       }).then(function(doc){
         console.log("LessonID:",doc.id);
       });
-      // const movemypage=()=>{Router.push("/mypage");}
-      // movemypage();
   }
 
 
@@ -65,6 +64,8 @@ return(
     <input type="text" onChange={doChangePrice}></input>
     <p>レッスン詳細</p>
     <input type="text" onChange={doChangeComment}></input>
+    {/* 要確認 : ページ移動処理がfirebase書き込む処理より先に実行されるのが大丈夫なのか */}
+    {/* next.jsのRouterメソッドを使って、dosubmit内でページ移動したかったがエラーが出たのでとりあえずLinkを使ってある */}
     <Link href="/mypage">
     <button onClick={doSubmit}>追加</button>
     </Link>

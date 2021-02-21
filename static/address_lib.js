@@ -1,3 +1,7 @@
+//encode,decode処理
+//deepcopyはたぶん使わないやつ
+
+
 class Lib{
   static deepcopy(val){
     return JSON.parse(JSON.stringify(val));
