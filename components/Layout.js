@@ -1,3 +1,7 @@
+//HeaderとFooterをまとめたファイル
+//props.childrenはLayoutタグで挟まれた要素
+//このファイルにHTMLの<Head>を書く
+
 import React, { Component } from "react";
 import Head from "next/head";
 import Header from "../components/Header";

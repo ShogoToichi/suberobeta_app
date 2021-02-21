@@ -4,17 +4,18 @@ import "firebase/storage";
 import { connect } from "react-redux";
 import Lib from "../static/address_lib";
 import Link from "next/link";
-import { Router } from "next/router";
 
 
 function LessonAdd (props){
 
+  //使用するステートの設定(Hook)
   const [lessonname,setLessonname] = useState("");
   const [place,setPlace] = useState("");
   const [time,setTime] = useState("");
   const [price,setPrice] = useState("");
   const [lessoncomment,setLessoncomment] = useState("");
 
+  //inputに入力された処理をeで受け取ってステートに入れる関数
   const doChangeName =(e)=>{
     setLessonname(e.target.value);
   }
@@ -31,6 +32,8 @@ function LessonAdd (props){
     setLessoncomment(e.target.value);
   }
 
+  //追加ボタンを押したらfirebaseにステートの情報を書き込む処理
+  //addで追加しているから、ドキュメントidはユニークなidが自動で当てられる
   const doSubmit = async()=>{
     const db = firebase.firestore ();
     const email = Lib.encodeEmail(props.email)

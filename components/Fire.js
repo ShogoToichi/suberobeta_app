@@ -1,3 +1,10 @@
+//Firebase関連をいろいろ試すために使ってたファイル
+//なんか試す時だけ使う
+
+
+
+
+
 import React , {useState} from "react";
 import firebase from "firebase";
 import Lesson from "./Lesson";

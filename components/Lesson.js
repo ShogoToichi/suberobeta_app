@@ -1,5 +1,7 @@
+//値を渡してレッスンを表示する箱
+//Linkタグのところはlessoninfo/[lessonid]にページ移動する処理
+
 import React, {Component} from "react";
-import Router from "next/router";
 import Link from "next/link";
 
 export default function Lesson (props){
@@ -16,9 +18,6 @@ export default function Lesson (props){
         <p>price: {props.price}</p>
         <p>time: {props.time}</p>
         <p>comment: {props.text}</p>
-        {/* <button 
-        // onClick={this.goInfo(this.props.lessonid)}
-        >詳細へ</button> */}
       </div>
       );
     } 
