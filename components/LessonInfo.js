@@ -33,23 +33,24 @@ function LessonInfo (props){
         setPrice(lessondata.lessonprice);
         setLessoncomment(lessondata.lessontext);
         console.log(createrid);
+        db.collection("users").doc(createrid).get()
+        .then(function(doc){
+          if (doc.exists){
+            const userdata = doc.data();
+            console.log(createrid,userdata);
+            setProfileusername(userdata.profile.name);
+            setProfileintroduction(userdata.profile.introduction)
+          }else{
+            console.log("no data");
+          }
+        }).catch(function(error){
+          console.log("Error getting document:",error);
+        });
     });
   }
   
-  const getProfileData=async()=>{
-    await db.collection("users").doc(createrid).get()
-    .then(function(doc){
-      if (doc.exists){
-        const userdata = doc.data();
-        console.log(createrid,userdata);
-        setProfileusername(userdata.profile.name);
-        setProfileintroduction(userdata.profile.introduction)
-      }else{
-        console.log("no data");
-      }
-    }).catch(function(error){
-      console.log("Error getting document:",error);
-    });
+  // const getProfileData=async()=>{
+  
 
     if(lessonid ==""){
       getLessonData();
@@ -63,11 +64,14 @@ function LessonInfo (props){
         <p>場所 : {place}</p>
         <p>時間 : {time}</p>
         <p>詳細 : {lessoncomment}</p>
-        <Profile title="ユーザー情報" username={profileusername} introduction={profileintroduction}/>
+        {/* <button onClick={getProfileData}>検証</button> */}
+        <div className="lessonprofile">
+        <Profile  username={profileusername} introduction={profileintroduction}/>
+        </div>
       </div>
     );
     
-}
+    }
 
 export default LessonInfo;
 

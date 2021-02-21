@@ -21,7 +21,6 @@ function MyLessonList (props){
       querySnapshot.forEach(function(doc){
           lessondata.unshift(doc.data());
           lessonid.unshift(doc.id);
-        console.log(lessonid);
       });
       for (let i in lessonid){
         let id = lessonid[i];
@@ -40,9 +39,7 @@ function MyLessonList (props){
           />
         );
       }
-      console.log(lessonitems)
       setItems(lessonitems);
-      console.log(items);
     });
   }
 

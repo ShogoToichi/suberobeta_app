@@ -85,6 +85,6 @@ export default <style>{`
     cursor:pointer;
   }
   .lessonprofile{
-    margin-top:200px;
+    margin-top:150px;
   }
 `}</style>;
