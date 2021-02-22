@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware } from "redux";
 import thunkMiddleware from "redux-thunk";
 import firebase from "firebase";
+import "firebase/storage";
 
 //Firebaseの初期化
 var firebaseConfig = {
@@ -19,7 +20,7 @@ try {
 } catch (error) {
   console.log(error.message);
 }
-export default fireapp;
+export const fireappp = fireapp;
 
 
 // ステートの初期値
@@ -27,8 +28,7 @@ const initial = {
   login:false,
   username:"(click here!)",
   email:"",
-  // data:[],
-  items:[]
+  imageurl:"",
 }
 
 // // レデューサー
@@ -76,3 +76,7 @@ function fireReducer (state = initial, action) {
     return createStore(fireReducer, state,
        applyMiddleware(thunkMiddleware))
   }
+  
+
+  export const storage = firebase.storage();
+  export default firebase;

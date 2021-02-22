@@ -16,6 +16,7 @@ class Account extends Component {
 
   //ログイン処理
   login(){
+    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
     let provider = new firebase.auth.GoogleAuthProvider();
     var self = this;
     firebase.auth().signInWithPopup(provider)
@@ -27,7 +28,7 @@ class Account extends Component {
             login:true,
             username: result.user.displayName,
             email: result.user.email,
-            item:this.props.items
+            imageurl : "",
           }
         });
         //ログイン時の処理をpropsで受け取れるようにする
@@ -47,7 +48,7 @@ class Account extends Component {
         username:"(click here!)",
         email:"",
         data:[],
-        items:[]
+        imageurl:""
       }
     });
     // this.props.onLogouted();

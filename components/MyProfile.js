@@ -24,7 +24,6 @@ import Link from "next/link";
       const profiledata = doc.data();
       setName(profiledata.profile.name);
       setIntroduction(profiledata.profile.introduction);
-      setImageurl(profiledata.profile.imageurl);
     });
   }
   
@@ -35,8 +34,8 @@ import Link from "next/link";
   return(
     <div>
       <h1>プロフィール</h1>
-      <image src={imageurl}/>
       <h2>{name}</h2>
+      <image src={props.imageurl} alt="upload"/>
       <p>{introduction}</p>
       <Link href="/profile_edit">
         <button>プロフィール編集</button>

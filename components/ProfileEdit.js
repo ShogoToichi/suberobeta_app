@@ -6,7 +6,7 @@ import "firebase/storage";
 import { connect } from "react-redux";
 import Lib from "../static/address_lib";
 import Link from "next/link";
-import Sample from './sample';
+import GetImage from "./GetImage";
 
 
 
@@ -20,7 +20,6 @@ function ProfileEdit (props){
 //使用するステートの設定(Hook)
   const [name,setName] = useState("");
   const[introduction,setIntroduction] = useState("");
-  const [fileUrl,setFileUrl] = useState(null);
 
   //inputに入力された処理をeで受け取ってステートに入れる関数
   const doChangeName =(e)=>{
@@ -30,14 +29,6 @@ function ProfileEdit (props){
     setIntroduction(e.target.value);
   }
 
-  //画像処理試行錯誤中
-  // function processImage(event){
-  //   const imageFile = event.target.files[0];
-  //   const imageUrl = URL.createObjectURL(imageFile);
-  //   setFileUrl(imageUrl)
-  // }
-
-
   //追加ボタンを押したらfirebaseにステートの情報を書き込む処理
   //Reduxからユーザーのemail(id)をencode( .→* )にして定数に代入
   const doSubmit = async()=>{
@@ -45,9 +36,8 @@ function ProfileEdit (props){
     const email = Lib.encodeEmail(props.email)
     await db.collection("users").doc(email).set({
       profile:{ name:name , introduction:introduction
-        //  , imageurl:fileUrl
         }
-    }).then(function(){
+    },{merge: true}).then(function(){
       //いろいろ確認に利用、いらない処理
         console.log(name,introduction);
       });
@@ -62,10 +52,9 @@ return(
     <p>プロフィール画像</p>
     <div className="App">
       <div style={style}>
-        <Sample />
+        <GetImage/>
       </div>
     </div>
-    {/* <input type="file" accept="image/*" onChange={processImage}></input> */}
     <p>紹介文</p>
     <input type="text" onChange={doChangeIntroduction}></input>
     <Link href="/mypage">
