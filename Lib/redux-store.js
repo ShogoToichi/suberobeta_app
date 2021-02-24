@@ -2,17 +2,17 @@
 
 import next from "next";
 import { Component } from "react";
-import { initStore } from "../store";
+import configureStore from "./configureStore";
 
 const isServer = typeof window ==="undefined"
 const _NRS_ = "__NEXT_REDUX_STORE__"
 
 function getOrCreateStore (initialState) {
   if(isServer) {
-    return initStore(initialState)
+    return configureStore(initialState)
   }
   if (!window[_NRS_]) {
-    window[_NRS_] = initStore(initialState)
+    window[_NRS_] = configureStore(initialState)
   }
   return window[_NRS_]
 }
@@ -39,7 +39,7 @@ export default (App) => {
 
     render (){
       return <App {...this.props}
-      reduxStore={this.reduxStore} />
+      store={this.reduxStore} />
     }
   }
 }

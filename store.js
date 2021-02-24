@@ -62,7 +62,7 @@ const initial = {
 //       return state;
 //   }
 // }
-function fireReducer (state = initial, action) {
+export function fireReducer (state = initial, action) {
    switch (action.type) {
      case "UPDATE_USER":
        return action.value;

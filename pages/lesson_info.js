@@ -6,6 +6,10 @@ import LessonInfo from "../components/LessonInfo";
 
 export default () =>(
   <Layout>
-    <LessonList/>
+    <LessonInfo/>
   </Layout>
 );
+
+
+
+

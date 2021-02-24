@@ -4,15 +4,19 @@ import App, {Container} from "next/app";
 import React from "react";
 import withReduxStore from "../lib/redux-store";
 import { Provider } from "react-redux";
+import { PersistGate } from 'redux-persist/integration/react';
+
 
 
 class _App extends App {
   render(){
-    const {Component, pageProps, reduxStore} = this.props
+    const {Component, pageProps, store , persistor} = this.props
     return (
       <Container>
-        <Provider store={reduxStore}>
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
           <Component {...pageProps}/>
+          </PersistGate>
         </Provider>
       </Container>
     )
