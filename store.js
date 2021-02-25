@@ -31,37 +31,6 @@ const initial = {
   imageurl:"",
 }
 
-// // レデューサー
-// function calcReducer (state = initial, action) {
-//   switch (action.type) {
-//     //計算実行
-//     case "ENTER":
-//       let data2 = state.data.slice();
-//       let s = action.value;
-//       data2.unshift(s);
-//       let num = s.replace(/[^0-9]/g,"");
-//       let number2 = state.number.slice();
-//       number2.unshift(num);
-//       let result = (state.result * 1) + (num * 1);
-//       return {
-//         message:"ENTER",
-//         data:data2,
-//         number:number2,
-//         result:result
-//       };
-//       //リセット
-//     case "RESET":
-//       return {
-//         message:"RESET",
-//         data:[],
-//         number:[],
-//         result:[]
-//       };
-//    //デフォルト
-//     default:
-//       return state;
-//   }
-// }
 export function fireReducer (state = initial, action) {
    switch (action.type) {
      case "UPDATE_USER":

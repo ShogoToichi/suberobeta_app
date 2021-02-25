@@ -1,22 +1,17 @@
-//next.jsのRedux利用に必要なファイル？
+//page共通する設定をするファイル
 
 import App, {Container} from "next/app";
 import React from "react";
 import withReduxStore from "../lib/redux-store";
 import { Provider } from "react-redux";
-import { PersistGate } from 'redux-persist/integration/react';
-
-
 
 class _App extends App {
   render(){
-    const {Component, pageProps, store , persistor} = this.props
+    const {Component, pageProps, reduxStore} = this.props
     return (
       <Container>
-        <Provider store={store}>
-          <PersistGate loading={null} persistor={persistor}>
+        <Provider store={reduxStore}>
           <Component {...pageProps}/>
-          </PersistGate>
         </Provider>
       </Container>
     )

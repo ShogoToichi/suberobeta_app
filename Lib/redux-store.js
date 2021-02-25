@@ -1,18 +1,17 @@
 // next.jsのReduxの設定ファイル?
 
-import next from "next";
 import { Component } from "react";
-import configureStore from "./configureStore";
+import { initStore } from "../store";
 
 const isServer = typeof window ==="undefined"
 const _NRS_ = "__NEXT_REDUX_STORE__"
 
 function getOrCreateStore (initialState) {
   if(isServer) {
-    return configureStore(initialState)
+    return initStore(initialState)
   }
   if (!window[_NRS_]) {
-    window[_NRS_] = configureStore(initialState)
+    window[_NRS_] = initStore(initialState)
   }
   return window[_NRS_]
 }
@@ -39,7 +38,7 @@ export default (App) => {
 
     render (){
       return <App {...this.props}
-      store={this.reduxStore} />
+      reduxStore={this.reduxStore} />
     }
   }
 }
