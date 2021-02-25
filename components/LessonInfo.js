@@ -5,6 +5,8 @@ import React,{useState} from "react";
 import firebase from "firebase";
 import {useRouter}from "next/router";
 import Profile from "./Profile";
+import {connect}from "react-redux";
+import Lib from "../static/address_lib";
 
 function LessonInfo (props){
   
@@ -20,11 +22,12 @@ function LessonInfo (props){
   const [profileusername,setProfileusername] = useState("");
   const [profileintroduction,setProfileintroduction]=useState("");
 
+  const db = firebase.firestore ();
+  const router = useRouter();
+
   //lessondata及びlessoncreaterのprofileを取得
   const getLessonData= async()=>{
-    const db = firebase.firestore ();
     //router.query.lessonidでページのurlの末尾を取得
-    const router = useRouter();
     await db.collection("lessons").doc(router.query.lessonid).get()
     //データ取得後の処理
     //取得したデータをlessondataにしまってから、それをステートに突っ込む
@@ -61,13 +64,25 @@ function LessonInfo (props){
     });
   }
 
+    const dobuy = async()=>{
+      const email = Lib.encodeEmail(props.email);
+      await db.collection("lessons").doc(router.query.lessonid).set({
+      buyerid:email
+    },{merge: true})
+    }
+
     if(lessonname ==""){
       getLessonData();
     }
 
+
     return(
       <div>
         <h1>レッスン情報</h1>
+        <Link as={`/message/${router.query.lessonid}`}
+              href="/messge/[lessonid]">
+          <button onClick={dobuy}>購入</button>
+        </Link>
         <h2>{lessonname}</h2>
         <p>料金 : {price}</p>
         <p>場所 : {place}</p>
@@ -81,5 +96,7 @@ function LessonInfo (props){
     
     }
 
+
+LessonInfo= connect((state)=>state)(LessonInfo);
 export default LessonInfo;
 

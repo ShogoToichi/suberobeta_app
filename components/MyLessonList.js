@@ -4,7 +4,7 @@
 import React,{useState} from "react";
 import firebase from "firebase";
 import "firebase/storage";
-import Lesson from "./Lesson";
+import MyLesson from "./MyLesson";
 import { connect } from "react-redux";
 import Lib from "../static/address_lib";
 import Link from "next/link";
@@ -33,7 +33,7 @@ function MyLessonList (props){
         let text = lessondata[i].lessontext;
         let price = lessondata[i].lessonprice;
         lessonitems.push(
-          <Lesson lessonid={id}
+          <MyLesson lessonid={id}
                   name={name}
                   place={place}
                   time={time}

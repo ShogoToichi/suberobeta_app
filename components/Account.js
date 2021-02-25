@@ -65,12 +65,11 @@ class Account extends Component {
 
   render(){
     return (
-      <p className="login">
-      <span className="account"
-        onClick={this.login_check}>
-        LOGINED: {this.props.username}
-      </span>
-      </p>
+      
+      <button
+      onClick={this.login_check}>
+      LOGINED: {this.props.username}
+      </button>
     );
   }
 }
