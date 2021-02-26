@@ -3,7 +3,14 @@ import { connect } from "react-redux";
 import firebase from "firebase";
 import Button from '@material-ui/core/Button';
 
+
+
+
+
 class Account extends Component {
+
+
+
   style = {
     fontSize:"12pt",
     padding:"5px 10px"

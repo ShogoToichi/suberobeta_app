@@ -4,6 +4,7 @@ import firebase from "firebase";
 import Lesson from "./Lesson";
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import {Link} from "next/link";
 
 
 const lessonlist = makeStyles({
@@ -29,7 +30,15 @@ const lessonlist = makeStyles({
   },
   cardheader:{
     cursor : "pointer",
-  }
+  },
+  subtitle:{
+    margin:"10px 0px 20px 40px", 
+    paddingBottom: "8px",
+    borderBottom:"solid 3px #CCC",
+  },
+  title:{
+    margin:" 30px 0px 20px 40px",
+  },
 });
 
 
@@ -89,8 +98,8 @@ function LessonList (){
   return (
     <div className={classes.rayout}>
         <div className={classes.top}>
-            <Typography variant="h5" style={{ marginTop: 10, marginBottom: 20}}>レッスン一覧</Typography>
-            <Typography style={{ marginTop: 10, marginBottom: 20}} variant="h8">時間や場所、レベルなど自分に合ったレッスンを見つけよう</Typography>
+            <Typography variant="h3" style={{ margin:" 30px 0px 20px 40px"}}>レッスン一覧</Typography>
+            <Typography className={classes.subtitle} variant="h6">時間や場所、レベルなど自分に合ったレッスンを見つけよう</Typography>
             </div>
         {items}
     </div>

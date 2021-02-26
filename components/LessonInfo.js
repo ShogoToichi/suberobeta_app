@@ -7,6 +7,32 @@ import {useRouter}from "next/router";
 import Profile from "./Profile";
 import {connect}from "react-redux";
 import Lib from "../static/address_lib";
+import Link from "next/link";
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Avatar from '@material-ui/core/Avatar';
+import Paper from '@material-ui/core/Paper'
+import Button from '@material-ui/core/Button';
+
+const plofile = makeStyles({
+    title: {
+        padding:"2px",
+        margin: '15px',
+        fontWeight: 'bold',
+        display:"inline",
+        marginTop:"30px",
+        fontSize:"30px",
+    },
+    info: {
+        margin: '10px',
+    },
+    buybtn: {
+        display:"inlineBlock",
+        marginLeft:"30px",
+        fontSize:"23px",
+        marginBottom:"15px",
+    },
+});
 
 function LessonInfo (props){
   
@@ -75,25 +101,32 @@ function LessonInfo (props){
       getLessonData();
     }
 
+    const classes = plofile();
 
-    return(
-      <div>
-        <h1>レッスン情報</h1>
-        <Link as={`/message/${router.query.lessonid}`}
-              href="/messge/[lessonid]">
-          <button onClick={dobuy}>購入</button>
-        </Link>
-        <h2>{lessonname}</h2>
-        <p>料金 : {price}</p>
-        <p>場所 : {place}</p>
-        <p>時間 : {time}</p>
-        <p>詳細 : {lessoncomment}</p>
-        <div className="lessonprofile">
-        <Profile  username={profileusername} introduction={profileintroduction}/>
+      return(
+        <div style={{marginTop:"30px"}}>
+                
+                <Typography variant="h6" className={classes.title}>{lessonname}</Typography>
+
+                <Link as={`/message/${router.query.lessonid}`}
+                  href="/messge/[lessonid]">
+                    <Button className = {classes.buybtn} size="large" variant="outlined" onClick={dobuy}>購入</Button>
+                </Link>
+                <Paper elevation={24} rounded>
+                <Avatar aria-label="recipe" className={classes.avatar}>
+                </Avatar>
+                
+                    <div className={classes.infolist}>
+                        <Typography variant="h6" className={classes.info}>講師名： {profileusername}</Typography><br></br><br></br>
+                        <Typography variant="h7" display="block" className={classes.info}>料金：{price}</Typography><br></br>
+                        <Typography variant="h7" display="block" className={classes.info}>場所：{price}</Typography><br></br>
+                        <Typography variant="h7" display="block" className={classes.info}>日時：{time}</Typography><br></br>
+                        <Typography variant="h7" display="block" className={classes.info}>レッスン内容：{lessoncomment}</Typography><br></br>
+                        <Typography variant="h7" display="block" className={classes.info}></Typography>
+                    </div>
+                </Paper>
         </div>
-      </div>
     );
-    
     }
 
 

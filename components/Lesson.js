@@ -25,6 +25,7 @@ const lessonlist = makeStyles({
   lessonlist: {
     width: '600px',
     margin: '5px',
+    marginLeft:"70px",
   },
 
   btn:{
@@ -52,12 +53,12 @@ export default function Lesson (props){
                           className={classes.cardheader}
                           title={props.name}
                     />
-                  </Link>
+                    </Link>
                   <CardContent>
-                    <Typography variant="body2">日時:{props.time}</Typography>
-                    <Typography variant="body2">場所：{props.place}</Typography>
-                    <Typography variant="body2">料金：{props.price}</Typography>
-                    <Typography variant="body2">レッスン内容：{props.text}</Typography>
+                    <Typography style={{marginBottom:"5px"}} variant="body2">日時:{props.time}</Typography>
+                    <Typography style={{marginBottom:"5px"}} variant="body2">場所：{props.place}</Typography>
+                    <Typography style={{marginBottom:"5px"}} variant="body2">料金：{props.price}</Typography>
+                    <Typography style={{marginBottom:"5px"}} variant="body2">レッスン内容：{props.text}</Typography>
                   </CardContent>
               </Card>
             </div>

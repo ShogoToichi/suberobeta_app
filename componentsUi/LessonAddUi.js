@@ -2,28 +2,34 @@ import { makeStyles } from '@material-ui/styles';
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import Link from "next/link";
 
 
 const lessonadd = makeStyles({
 top :{
-
+    textAlign:"center",
 },
 title:{
-    margin: '10px',
     fontWeight: 'bold',
+    margin:"0 auto",
+    marginTop:"20px",
 },
 inputform: {
     marginTop: '50px',
-    width: '500px'
+    width: '500px',
+    margin:"0 auto",
 },
 inputtitle: {
-
+    margin:"0 auto",
 },
 textarea: {
-    marginTop: '20px'
+    marginTop: '20px',
+    margin:"0 auto",
 },
 detailinfo: {
     marginTop: '20px',
+    margin:"0 auto",
 }
 });
 
@@ -88,6 +94,9 @@ export default function lessonAdd() {
                     />
                 </div>
             </div>
+            <Link href="/mypage">
+            <Button style={{marginTop:"10px"}} variant="outlined" size="large"color="ingerit" >追 加</Button>
+            </Link>
         </div>
     )
     }
