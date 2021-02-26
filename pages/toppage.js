@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Layout from "../components/Layout";
-import TopContents from "../components/TopContents";
+import TopContents from "../componentsUi/ToppageUi";
 import Lesson from "../components/Lesson";
 
 

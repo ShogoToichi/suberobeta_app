@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import { connect } from "react-redux";
 import firebase from "firebase";
+import Button from '@material-ui/core/Button';
 
 class Account extends Component {
   style = {
@@ -66,10 +67,8 @@ class Account extends Component {
   render(){
     return (
       
-      <button
-      onClick={this.login_check}>
-      LOGINED: {this.props.username}
-      </button>
+      <Button variant="outlined" size="large" color="inherit" 
+      onClick={this.login_check}>ログイン</Button>
     );
   }
 }

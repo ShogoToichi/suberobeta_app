@@ -3,22 +3,65 @@
 
 import React, {Component} from "react";
 import Link from "next/link";
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import { CardHeader } from '@material-ui/core';
+import Avatar from '@material-ui/core/Avatar';
+
+const lessonlist = makeStyles({
+  rayout: {
+    float: 'center',
+  },
+
+  top: {
+    width: '100%',
+    margin: '8px',
+    
+  },
+
+  lessonlist: {
+    width: '600px',
+    margin: '5px',
+  },
+
+  btn:{
+    float: 'right',
+    color: 'black',
+    backgroundColor: '#90EE90' 
+  },
+  cardheader:{
+  cursor : "pointer",
+  }
+});
 
 export default function Lesson (props){
-
-
-
+    const classes = lessonlist();
     return(
-      <div>
-        <Link as={`/lesson_info/${props.lessonid}`}
-          href="/lesson_info/[lessonid]">
-            <a>{props.name}</a>
-          </Link>
-        <p>place: {props.place}</p>
-        <p>price: {props.price}</p>
-        <p>time: {props.time}</p>
-        <p>comment: {props.text}</p>
-      </div>
+  <div className={classes.lessonlist}>
+              <Card>
+                  <Link as={`/lesson_info/${props.lessonid}`}
+                    href="/lesson_info/[lessonid]">
+                      <CardHeader
+                          avatar={
+                          <Avatar aria-label="recipe" className={classes.avatar}>
+                          </Avatar>
+                          }
+                          className={classes.cardheader}
+                          title={props.name}
+                    />
+                  </Link>
+                  <CardContent>
+                    <Typography variant="body2">日時:{props.time}</Typography>
+                    <Typography variant="body2">場所：{props.place}</Typography>
+                    <Typography variant="body2">料金：{props.price}</Typography>
+                    <Typography variant="body2">レッスン内容：{props.text}</Typography>
+                  </CardContent>
+              </Card>
+            </div>
       );
     } 
+
 

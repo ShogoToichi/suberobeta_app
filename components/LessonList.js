@@ -2,6 +2,38 @@ import React,{useState} from "react";
 import firebase from "firebase";
 // import "firebase/storage";
 import Lesson from "./Lesson";
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+
+
+const lessonlist = makeStyles({
+  rayout: {
+    float: 'center',
+  },
+
+  top: {
+    width: '100%',
+    margin: '8px',
+    
+  },
+
+  lessonlist: {
+    width: '600px',
+    margin: '5px',
+  },
+
+  btn:{
+    float: 'right',
+    color: 'black',
+    backgroundColor: '#90EE90' 
+  },
+  cardheader:{
+    cursor : "pointer",
+  }
+});
+
+
+
 
 
 function LessonList (){
@@ -43,7 +75,7 @@ function LessonList (){
           />
         );
       }
-      //最後にlessonitemsをステートに入れる
+      //最後にlessonitemsをステートにいれる
       setItems(lessonitems);
     });
   }
@@ -51,11 +83,16 @@ function LessonList (){
   if(items =="no item"){
     getFireData();
   }
+  
+  const classes = lessonlist();
 
-  return(
-    <div>
-      <h2>レッスン一覧</h2>
-      {items}
+  return (
+    <div className={classes.rayout}>
+        <div className={classes.top}>
+            <Typography variant="h5" style={{ marginTop: 10, marginBottom: 20}}>レッスン一覧</Typography>
+            <Typography style={{ marginTop: 10, marginBottom: 20}} variant="h8">時間や場所、レベルなど自分に合ったレッスンを見つけよう</Typography>
+            </div>
+        {items}
     </div>
   );
 }

@@ -25,14 +25,14 @@ export default <style>{`
     right: 10px;
     left: 10px;
   }
-  h1 {
-    font-size:22pt;
-    font-weight:bold;
-    text-align:left;
-    letter-spacing:0px;
-    color:#77a;
-    margin:-50px 0px 50px 0px;
-  }
+  // h1 {
+  //   font-size:22pt;
+  //   font-weight:bold;
+  //   text-align:left;
+  //   letter-spacing:0px;
+  //   color:#77a;
+  //   margin:-50px 0px 50px 0px;
+  // }
   p {
     margin:0px;
     color:black;

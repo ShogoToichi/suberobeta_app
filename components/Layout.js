@@ -4,26 +4,27 @@
 
 import React, { Component } from "react";
 import Head from "next/head";
-import Header from "../components/Header";
+import HeaderUi from "../componentsUi/HeaderUi";
 import Footer from "../components/Footer";
-import style from "../static/Style";
+// import style from "../static/Style";
 
 class Layout extends Component {
-
   render(){
-    return (<div>
-      <Head>
-        <title>{this.props.title}</title>
-        <meta charSet="utf-8" />
-        <meta name="viewPort"
-          content="initial-scale=1.0, width=device-width" />
-      </Head>
-      {style}
-      <Header header={this.props.header}
-        title={this.props.title} />
+    return (
+    <div>
+      <head>
+      <meta charSet="utf-8"/>
+      <meta name="viewPort" content="width=device-width, initial-scale=1.0"/>
+      <title>Subero</title>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+      </head>
+
+      <body>
+      <HeaderUi />
       {this.props.children}
-      <Footer Footer="copyright subero.corp"/>
+      </body>
+      
     </div>);
   }
 }
-export default Layout;
+export default Layout; 
