@@ -14,11 +14,6 @@
     "static/development/_ssgManifest.js"
   ],
   "pages": {
-    "/": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/index.js"
-    ],
     "/_app": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
@@ -29,15 +24,15 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
-    "/lesson_info/[lessonid]": [
+    "/message/[lessonid]": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/lesson_info/[lessonid].js"
+      "static/chunks/pages/message/[lessonid].js"
     ],
-    "/lesson_list": [
+    "/mypage": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/lesson_list.js"
+      "static/chunks/pages/mypage.js"
     ]
   },
   "ampFirstPages": []

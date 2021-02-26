@@ -6,6 +6,21 @@ import { connect } from "react-redux";
 import firebase from "firebase";
 import {useRouter}from "next/router";
 import Lib from "../static/address_lib";
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+      margin: theme.spacing(1),
+      width: '500px',
+  },
+  btn:{
+    width:"80px",
+    marginLeft:"210px",
+  }
+}));
 
 function MessageAdd(props){
 
@@ -38,17 +53,21 @@ function MessageAdd(props){
       //userfilterのTorFを、マテリアルUIの表示に関する属性に用いて、
       //作成者、購入者以外にフォームを表示しなくする予定
       if (email==createrid || email==buyerid){
-        setUserfilter(true);
+        setUserfilter(false);
     }
     else{
-       setUserfilter(false);   
+       setUserfilter(true);   
     }
   }
 
+const classes = useStyles();
+
 return(
   <div>
-    <input type="text" onChange={doChangeMessage} value={message}></input>
-    <button onClick={doSubmit}>送信</button>
+<form className={classes.root} noValidate autoComplete="off">
+  <TextField id="outlined-basic"  variant="outlined" onChange={doChangeMessage} value={message} multiline={true} rows={3} fullWidth={true} disabled={userfilter}/>
+</form>
+<Button variant="outlined" className={classes.btn} onClick={doSubmit} disabled={userfilter}>送信</Button>
   </div>
 );}
 

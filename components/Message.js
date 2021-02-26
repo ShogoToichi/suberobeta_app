@@ -11,22 +11,31 @@ function Message (props){
   const [messages,setMessages] = useState("");
   const [buyerid,setBuyerid]= useState("");
   const [lessonname,setLessonname] = useState("");
+  const [creatername,setCreaterName] = useState("");
+  const [buyername, setBuyerName] = useState("");
   
   //送信者によってスタイルを変更するテスト用のスタイル
-  const style2 = {
-    backgroundColor :"blue",
-  }
-  const style1 = {
-    backgroundColor :"red",
+  const style = {
+    // border:"solid 1px #DDD", 
+    backgroundColor :"#E0E0E0",
+    borderRadius: "7px",
+    height:"40px",
+    verticalAlign:"middle",
+    padding:"10px 20px 0px 20px",
+    fontSize:"20px",
+    display:"inline-block",
+    marginBottom:"10px",
+    marginLeft:"50px",
   }
   const messagedata=[];
   const messageitems=[];
-
+  
   const router = useRouter();
+  const email = Lib.encodeEmail(props.email);
+  const db = firebase.firestore ();
+
   //lessondata及びmessageを取得
   const getMessageData= async()=>{
-    const email = Lib.encodeEmail(props.email);
-    const db = firebase.firestore ();
     //router.query.lessonidでページのurlの末尾を取得
     //先にレッスン名と作成者、購入者のidを取得
     await db.collection("lessons").doc(router.query.lessonid).get()
@@ -36,10 +45,15 @@ function Message (props){
         setCreaterid(lessondata.createrid);
         setLessonname(lessondata.lessonname);
         setBuyerid(lessondata.buyerid);
-
+      })
+    await db.collection("users").doc(createrid).get()
+      .then(function(doc){
+        const createrdata = doc.data();
+        setCreaterName(createrdata.profile.name);
+      })
         //メッセージ情報取得処理
         //orderBy(time)で時間の古い順に並べる
-        db.collection("lessons").doc(router.query.lessonid).collection("message").orderBy("time")
+    await db.collection("lessons").doc(router.query.lessonid).collection("message").orderBy("time")
         .get()
         //取得したデータをmessagedata配列に入れる。
         //配列の繰り返し処理でメッセージのjsxを作り、
@@ -54,11 +68,19 @@ function Message (props){
               //送信者とReduxメアドの比較でスタイル分岐
               if(userid == email){
                 messageitems.push(
-                    <p style={style1}>{text}</p>
+                  <div>
+                    <p style={{marginBottom:"3px"}}>{creatername}</p>
+                    <div style={style}>{text}</div>
+                    <br/>
+                  </div>
                 );}
               else {
                 messageitems.push(
-                    <p style={style2}>{text}</p>
+                  <div>
+
+                    <div style={style}>{text}</div>
+                    <br/>
+                  </div>
                 );
               }
             }
@@ -71,7 +93,7 @@ function Message (props){
                 setMessages(errorMessage);
               }
           })
-  })}
+  }
   
 return(
   <div>
