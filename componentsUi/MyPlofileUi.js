@@ -8,23 +8,28 @@ import CardContent from '@material-ui/core/CardContent';
 import { CardHeader } from '@material-ui/core';
 import Avatar from '@material-ui/core/Avatar';
 import Link from "next/link";
+import { PinDropSharp } from '@material-ui/icons';
 
 const myprofile = makeStyles({
     card: {
         marginTop: '20px',
     },
     button: {
-        backgroundColor: '#90EE90',
+        backgroundColor: '#E7E7E7',
         color: 'balck',
     },
+    title:{
+        paddingBottom:"16px",
+        borderBottom:"solid 4px #DDD",
+    }
 });
 
-export default function myProfile() {
+export default function myProfile(props) {
     const classes = myprofile();
     return(
         <div>
 
-            <Typography style={{fontWeight: 'bold', margin: '15px'}} variant="h5">My page</Typography>
+            <Typography style={{fontWeight: 'bold',margin: '15px'}} variant="h3" className={classes.title}>My page</Typography>
             <div className={classes.card}>
                 <Card>
                     <CardHeader
@@ -34,17 +39,16 @@ export default function myProfile() {
                             }
                     action={
                         <Link href="/profile_edit">
-                            <Button variant="outlined" className={classes.button}>プロフィール変更</Button>
+                            <Button variant="outlined" size="large" className={classes.button}>プロフィール変更</Button>
                         </Link>
                     }
                     title="ユーザ名"
                     />
 
                     <CardContent>
-                        <Typography style={{fontWeight: 'bold', margin: '5px'}} variant="body1">自己紹介</Typography>
-                        <Typography style={{marginTop: '10px'}} variant="body2">
-                            内容
-                            <br></br>・<br></br>・<br></br>・<br></br>・<br></br>・<br></br>・<br></br>
+                        <Typography style={{fontWeight: 'bold', margin: '5px',  borderBottom: "solid 1px #BBB" ,paddingBottom: "7px"}} variant="h5">自己紹介</Typography>
+                        <Typography style={{marginTop: '10px' }} variant="h5">
+                            {props.text}
                         </Typography>
                     </CardContent>
                 </Card>

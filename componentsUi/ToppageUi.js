@@ -23,6 +23,8 @@ const toptitle = makeStyles({
     color: '#3CB371',
     fontWeight: 'bold',
     padding:'4px',
+    fontSize:"160px",
+    marginLeft:"20px",
   },
   img: {
     position: 'absolute',
@@ -52,11 +54,11 @@ export default function Toppage() {
     <div>
     
         <div className={classes.title}>
-          <Typography variant="h6">
+          <Typography variant="h5" style={{marginLeft:"20px"}}>
             好きな時間に好きな場所で
           </Typography>
 
-          <Typography variant="h6" >
+          <Typography variant="h5" style={{marginLeft:"20px"}}>
             スキー・スノーボードレッスンは
           </Typography>
 

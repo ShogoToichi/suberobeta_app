@@ -29,10 +29,20 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
-    "/lesson_list": [
+    "/lesson_add": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/lesson_list.js"
+      "static/chunks/pages/lesson_add.js"
+    ],
+    "/mypage": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/mypage.js"
+    ],
+    "/profile_edit": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/profile_edit.js"
     ]
   },
   "ampFirstPages": []

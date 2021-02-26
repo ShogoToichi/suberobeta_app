@@ -6,6 +6,7 @@ import firebase,{storage} from "../store";
 import "firebase/storage";
 import React,{useState} from "react";
 import {connect} from "react-redux";
+import Lib from "../static/address_lib";
 
 function GetImage(props) {
   const [image, setImage] = useState("");
@@ -52,16 +53,22 @@ function GetImage(props) {
         const db = firebase.firestore ();
         const email = Lib.encodeEmail(props.email)
         db.collection("users").doc(email).set({
-          profile:{imageurl:imageUrl
-          }
-        },{merge : true}).then(function(){
+          "profile.imageurl":imageUrl,
+        }
+        ,{merge : true}).then(function(){
           console.log(email);
           console.log(imageUrl);
       });
       });
   };
+
+function conso(){
+  console.log(imageUrl);
+}
+
   return (
     <div className="App">
+      <button onClick={conso}>conso</button>
       <form onSubmit={onSubmit}>
         <input type="file" onChange={handleImage} />
         <button>Upload</button>

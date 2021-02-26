@@ -1,18 +1,22 @@
 import React from "react";
 import Link from "next/link";
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/styles';
 
 export default function Lesson (props){
 
   const mylessonlist = makeStyles({
-    list:{
-        margin: '20px',
+    lessonitem:{
+        margin: '30px 30px 30px 30px',
     },
     addbtn: {
         textAlign: 'center',
     },
     messagebtn: {
-        backgroundColor: "#5FA",
-        color:"white",
+        backgroundColor: "#DDD",
+        color:"black",
     },
 });
 
@@ -20,28 +24,13 @@ export default function Lesson (props){
 
     return(
       <div>
-        <Link as={`/lesson_info/${props.lessonid}`}
-          href="/lesson_info/[lessonid]">
-            <a>{props.name}</a>
-          </Link>
-        <p>place: {props.place}</p>
-        <p>price: {props.price}</p>
-        <p>time: {props.time}</p>
-        <p>comment: {props.text}</p>
-
-        <Link as={`/message/${props.lessonid}`}
-          href="/message/[lessonid]">
-            <button>取引メッセージ</button>
-        </Link>
+        <ListItem divider={true} className={classes.lessonitem}>
+                    <ListItemText  style={{fontSize:"30px"}} primary={`${props.name}　in ${props.place}`}/>
+            <Link as={`/message/${props.lessonid}`}
+              href="/message/[lessonid]">
+                <Button size="large" className={classes.messagebtn} onClick={props.onClick}>取引メッセージ</Button>
+            </Link>
+        </ListItem>
       </div>
       );
     } 
-
-
-            <ListItem divider={true} className={classes.lessonitem}>
-                <ListItemText  primary="「レッスン名」　「生徒名」　「日時」　" />
-        <Link as={`/message/${props.lessonid}`}
-          href="/message/[lessonid]">
-                <Button size="large" className={classes.messagebtn} onClick={props.onClick}>取引メッセージ</Button>
-            </ListItem>
-          

@@ -15,7 +15,7 @@ function ProfileEdit (props){
   const style = {
     width: "50%",
     margin: "0 auto",
-    marginTop: 150,
+    marginTop: "150px",
   };
 //使用するステートの設定(Hook)
   const [name,setName] = useState("");

@@ -27,7 +27,7 @@ const mylessonlist = makeStyles({
         color:"black",
     },
     lessonitem:{
-        margin:"20px 0px",
+        margin:"30px 0px",
 
     }
 });
@@ -42,6 +42,24 @@ export default function myLessonList(props) {
             <Typography variant="h8">Myレッスン履歴</Typography>
             </Box>
 
+
+            <ListItem divider={true} className={classes.lessonitem}>
+                        <ListItemText   primary={`${props.name} in ${props.place}`}/>
+                <Link as={`/message/${props.lessonid}`}
+                  href="/message/[lessonid]">
+                    <Button size="large" className={classes.messagebtn} onClick={props.onClick}>取引メッセージ</Button>
+                </Link>
+            </ListItem>
+          
+
+            <ListItem divider={true} className={classes.lessonitem}>
+                <ListItemText  primary={`${props.name} in ${props.place}`}/>
+                <Link as={`/message/${props.lessonid}`}
+                  href="/message/[lessonid]">
+                    <Button size="large" className={classes.messagebtn} onClick={props.onClick}>取引メッセージ</Button>
+                </Link>
+            </ListItem>
+ 
             <List>
             <ListItem divider={true} className={classes.lessonitem}>
                 <ListItemText  primary="「レッスン名」　「生徒名」　「日時」　" />

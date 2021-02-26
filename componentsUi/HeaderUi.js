@@ -9,7 +9,7 @@ import {connect} from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   bar: {
-    backgroundColor: '#3CB371	'
+    backgroundColor: '#285'
   },
   blank: {
     flexGrow: 1,

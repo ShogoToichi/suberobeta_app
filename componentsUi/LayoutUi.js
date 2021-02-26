@@ -9,6 +9,7 @@ class Layout extends Component {
     <div>
       <head>
       <meta charSet="utf-8"/>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
       <meta name="viewPort" content="width=device-width, initial-scale=1.0"/>
       <title>Subero</title>
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />

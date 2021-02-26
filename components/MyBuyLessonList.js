@@ -7,9 +7,31 @@ import "firebase/storage";
 import MyLesson from "./MyLesson";
 import { connect } from "react-redux";
 import Lib from "../static/address_lib";
+import Link from "next/link";
+import { makeStyles } from '@material-ui/styles';
+import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
+import List from '@material-ui/core/List';
+import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
 
 
-function MyLessonList (props){
+const mylessonlist = makeStyles({
+    list:{
+        margin: '20px',
+    },
+    addbtn: {
+        textAlign: 'center',
+    },
+    btn: {
+        backgroundColor: "#4A8",
+        color:"white",
+    },
+    }
+);
+
+
+function MyBuyLessonList (props){
   const [items,setItems] = useState("no item");
 
   const getFireData= async()=>{
@@ -21,10 +43,10 @@ function MyLessonList (props){
     await db.collection("lessons").where("buyerid","==",email).get()
     .then(function(querySnapshot){
       querySnapshot.forEach(function(doc){
-        lessondata.unshift(doc.data());
-        lessonid.unshift(doc.id);
+          lessondata.unshift(doc.data());
+          lessonid.unshift(doc.id);
       });
-      for (let i in lessondata){
+      for (let i in lessonid){
         let id = lessonid[i];
         let name =lessondata[i].lessonname;
         let place = lessondata[i].lessonplace;
@@ -40,7 +62,6 @@ function MyLessonList (props){
                   price={price}
           />
         );
-        break;
       }
       setItems(lessonitems);
     });
@@ -50,18 +71,22 @@ function MyLessonList (props){
     getFireData();
   }
 
+const classes  = mylessonlist();
+
   return(
-    <div>
-      <h2>購入したレッスン</h2>
-      {items}
-    </div>
+        <div className={classes.list}>
+            <div className={classes.list}>
+            <Box color="white" bgcolor="#4A8" fontWeight="bold" p={1}>
+            <Typography variant="h8">購入したレッスン</Typography>
+            </Box>
+            </div>
+              {items}
+        </div>
   );
 }
 
-MyLessonList = connect((state)=>state)(MyLessonList);
-export default MyLessonList;
-
-
+MyBuyLessonList = connect((state)=>state)(MyBuyLessonList);
+export default MyBuyLessonList
 
 
 
