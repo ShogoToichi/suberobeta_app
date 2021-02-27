@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Layout from "../components/Layout";
-import ProfileEdit from "../components/ProfileEdit";
+import Layout from "../components/normal/Layout";
+import ProfileEdit from "../components/profileedit/ProfileEdit";
 import React from "react";
 
 

@@ -4,7 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import Link from "next/link";
-import Account from "../components/Account";
+import Account from "../components/normal/Account";
 import {connect} from "react-redux";
 
 const useStyles = makeStyles((theme) => ({

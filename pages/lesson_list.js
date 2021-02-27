@@ -1,7 +1,5 @@
-import Link from "next/link";
-import Layout from "../components/Layout";
-import LessonList from "../components/LessonList";
-import Lesson from "../components/Lesson";
+import Layout from "../components/normal/Layout";
+import LessonList from "../components/lessonlist/LessonList";
 
 export default () =>(
   <Layout>

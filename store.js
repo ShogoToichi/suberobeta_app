@@ -32,18 +32,18 @@ const initial = {
 }
 
 export function fireReducer (state = initial, action) {
-   switch (action.type) {
-     case "UPDATE_USER":
-       return action.value;
-     default:
-       return state;
-   }
+    switch (action.type) {
+      case "UPDATE_USER":
+        return action.value;
+      default:
+        return state;
+    }
   }
 
 //   //initStore関数
   export function initStore(state = initial) {
     return createStore(fireReducer, state,
-       applyMiddleware(thunkMiddleware))
+        applyMiddleware(thunkMiddleware))
   }
   
 

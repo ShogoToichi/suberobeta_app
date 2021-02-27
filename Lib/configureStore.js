@@ -1,4 +1,9 @@
+//persist試行錯誤のファイル
+
+
+
 import { createStore, applyMiddleware } from 'redux';
+
  
 import createSagaMiddleware from 'redux-saga';
 import { persistStore } from 'redux-persist';

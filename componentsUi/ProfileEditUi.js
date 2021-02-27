@@ -28,8 +28,9 @@ const plofiledit = makeStyles({
     },
     button:{
         width: '200px',
-        backgroundColor: '#90ee90',
+        backgroundColor: '#DDD',
         color: 'black',
+        margin:"0px 20px",
     },
 
 });
@@ -84,7 +85,7 @@ export default function plofileEdit() {
             <div className={classes.buttongroup}>
                     <ButtonGroup disableElevation variant="outlined">
                         <Link href="/mypage">
-                    <Button className={classes.button}>　 変更 　</Button>
+                    <Button className={classes.button}>変更</Button>
                         </Link>
                         <Link href="/mypage">
                     <Button className={classes.button}>キャンセル</Button>

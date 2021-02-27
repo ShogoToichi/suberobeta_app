@@ -1,3 +1,5 @@
+// persist試行錯誤のファイル
+
 import createWebStorage from "redux-persist/lib/storage/createWebStorage";
 
 const createNoopStorage = () => {

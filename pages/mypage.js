@@ -1,7 +1,6 @@
 import Link from "next/link";
-import Layout from "../components/Layout";
-import Mypage from "../components/Mypage";
-import Account from "../components/Account";
+import Layout from "../components/normal/Layout";
+import Mypage from "../components/mypage/Mypage";
 
 
 export default () =>(

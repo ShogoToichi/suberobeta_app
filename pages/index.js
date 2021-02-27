@@ -1,6 +1,5 @@
-import Layout from "../components/Layout";
-import LessonListUi from "../componentsUi/MessageUi";
-import Account from "../components/Account";
+import Layout from "../components/normal/Layout";
+import LessonListUi from "../componentsUi/ProfileEditUi";
 
 export default () =>(
   <Layout header="トップページ" title="Top page.">
