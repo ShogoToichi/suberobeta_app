@@ -2,11 +2,11 @@
 //inputに入れられたファイルをfirebase storageに突っ込む
 //取得した画像のurlを取得してcloudfirestoreに入れて引っぱり出せるようにする
 
-import firebase,{storage} from "../../store";
+import firebase,{storage} from "../../redux/store";
 import "firebase/storage";
 import React,{useState} from "react";
 import {connect} from "react-redux";
-import Lib from "../../static/address_lib";
+import Lib from "../../Lib/address_lib";
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';

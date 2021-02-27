@@ -5,7 +5,7 @@ import React , {useState} from "react";
 import { connect } from "react-redux";
 import firebase from "firebase";
 import {useRouter}from "next/router";
-import Lib from "../../static/address_lib";
+import Lib from "../../Lib/address_lib";
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';

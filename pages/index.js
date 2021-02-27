@@ -1,8 +1,9 @@
 import Layout from "../components/normal/Layout";
-// import LessonListUi from "../componentsUi/ProfileEditUi";
+import Test from "../components/context_test";
+
 
 export default () =>(
   <Layout header="トップページ" title="Top page.">
-    {/* <LessonListUi name="よろしくお願いします！"/> */}
+      <Test/>
   </Layout>
 );

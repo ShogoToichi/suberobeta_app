@@ -5,7 +5,7 @@ import React,{useState} from "react";
 import firebase from "firebase";
 import {useRouter}from "next/router";
 import {connect}from "react-redux";
-import Lib from "../../static/address_lib";
+import Lib from "../../Lib/address_lib";
 import Link from "next/link";
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';

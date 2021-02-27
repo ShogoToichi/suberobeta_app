@@ -1,7 +1,7 @@
 //ヘッダー設定用ファイル
 //Layoutで読み込む
 
-import React from 'react';
+import React, {useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -9,10 +9,12 @@ import Button from '@material-ui/core/Button';
 import Link from "next/link";
 import Account from "./Account";
 import {connect} from "react-redux";
+import {Color} from "../../static/colors";
+
 
 const useStyles = makeStyles((theme) => ({
   bar: {
-    backgroundColor: '#285'
+    backgroundColor: useContext(Color).colors.header
   },
   blank: {
     flexGrow: 1,
