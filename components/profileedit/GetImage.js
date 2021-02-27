@@ -88,48 +88,27 @@ function GetImage(props) {
         const db = firebase.firestore ();
         const email = Lib.encodeEmail(props.email)
         db.collection("users").doc(email).set({
-          "profile.imageurl":imageUrl,
+          "imageurl":fireBaseUrl,
         }
         ,{merge : true}).then(function(){
-          console.log(email);
+          console.log(fireBaseUrl);
           console.log(imageUrl);
       });
       });
   };
 
-function conso(){
-  console.log(imageUrl);
-}
-
-
     const classes = plofiledit();
 
   return (
     <div className="App">
-      <button onClick={conso}>conso</button>
       <form onSubmit={onSubmit}>
         <input type="file" onChange={handleImage} />
         <button>Upload</button>
       </form>
-      <img src={imageUrl} alt="uploaded" />
+      <img src={imageUrl} alt="uploaded" style={{height:"70px",width:"70px",borderRadius:"35px",margin:"20px 0px 0px 20px"}} />
     </div>
   );
 }
 
 GetImage = connect((state)=>state)(GetImage);
 export default GetImage;
-
-
-            // <div className={classes.upload}>
-            //         <Typography variant="h8">プロフィール画像のアップロード</Typography>
-
-            //         <br></br>
-                    
-                    
-            //         <input accept="image/*" className={classes.input} id="icon-button-file" type="file" />
-            //         <label htmlFor="icon-button">
-            //             <IconButton color="primary" aria-label="upload picture" component="span">
-            //             <PhotoCamera />
-            //             </IconButton>
-            //         </label>
-            // </div>

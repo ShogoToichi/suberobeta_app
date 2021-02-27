@@ -51,7 +51,7 @@ const myprofile = makeStyles({
       const profiledata = doc.data();
       setName(profiledata.profile.name);
       setIntroduction(profiledata.profile.introduction);
-      setImageurl(profiledata.profile.imageurl)
+      setImageurl(profiledata.imageurl)
     });
   }
   
@@ -59,21 +59,17 @@ const myprofile = makeStyles({
     getFireData();
   }
   
-function conso(){
-  console.log(imageurl);
-}
+
 
   const classes = myprofile();
   return(
         <div>
-    <button onClick={conso}>検証</button>
-                  <image src={imageurl} alt="uploaded"/>
             <Typography style={{fontWeight: 'bold',margin: '15px'}} variant="h3" className={classes.title}>My page</Typography>
             <div className={classes.card}>
                 <Card>
                     <CardHeader
                             avatar={
-                            <Avatar aria-label="recipe" src={props.imageurl} className={classes.avatar}>
+                            <Avatar aria-label="recipe" src={imageurl} className={classes.avatar}>
                             </Avatar>
                             }
                     action={

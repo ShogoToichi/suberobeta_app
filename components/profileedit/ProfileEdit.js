@@ -13,7 +13,8 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
-import ButtonGroup from '@material-ui/core/ButtonGroup'
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+import Avatar from '@material-ui/core/Avatar';
 
 
 
@@ -81,10 +82,14 @@ function ProfileEdit (props){
       });
   }
 
-          const classes = plofiledit();
 
-return(
-        <div>
+  const classes = plofiledit();
+  
+
+
+
+  return(
+    <div>
             <div className={classes.title}>
                 <Typography variant="h5">マイプロフィール編集</Typography> 
             </div>
@@ -101,27 +106,14 @@ return(
                     />
             </div>
             
-           
+            
             <div className={classes.upload}>
                     <Typography variant="h8">プロフィール画像のアップロード</Typography>
 
                     <br></br>
-                    
-                   
-                    <input accept="image/*" className={classes.input} id="icon-button-file" type="file" />
-                    <label htmlFor="icon-button">
-                        <IconButton color="primary" aria-label="upload picture" component="span">
-                        <PhotoCamera />
-                        </IconButton>
-                    </label>
+                    <GetImage name={name}/>
             </div>
 
-{/* 使用予定 */}
-    <div className="App">
-      <div style={style}>
-        <GetImage/>
-      </div>
-    </div>
 
 
             <div className={classes.plofile}>
