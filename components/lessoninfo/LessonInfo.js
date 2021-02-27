@@ -4,7 +4,6 @@
 import React,{useState} from "react";
 import firebase from "firebase";
 import {useRouter}from "next/router";
-import Profile from "../Profile";
 import {connect}from "react-redux";
 import Lib from "../../static/address_lib";
 import Link from "next/link";
@@ -26,11 +25,24 @@ const plofile = makeStyles({
     info: {
         margin: '10px',
     },
+    creatername : {
+      margin:"20px 10px 10px 10px",
+      paddingTop:"40px",
+    },
     buybtn: {
         display:"inlineBlock",
         marginLeft:"30px",
         fontSize:"23px",
         marginBottom:"15px",
+    },
+    img:{
+      height:"70px",
+      width:"70px",
+      borderRadius:"35px",
+      position:"absolute",
+      top:"155px",
+      left:"4px",
+
     },
 });
 
@@ -46,7 +58,7 @@ function LessonInfo (props){
   const [price,setPrice] = useState("");
   const [lessoncomment,setLessoncomment] = useState("");
   const [profileusername,setProfileusername] = useState("");
-  const [profileintroduction,setProfileintroduction]=useState("");
+  const [imageurl,setImageurl]=useState("");
 
   const db = firebase.firestore ();
   const router = useRouter();
@@ -80,7 +92,7 @@ function LessonInfo (props){
             const userdata = doc.data();
             console.log(createrid,userdata);
             setProfileusername(userdata.profile.name);
-            setProfileintroduction(userdata.profile.introduction)
+            setImageurl(userdata.imageurl)
           }else{
             console.log("no data");
           }
@@ -113,11 +125,9 @@ function LessonInfo (props){
                     <Button className = {classes.buybtn} size="large" variant="outlined" onClick={dobuy}>購入</Button>
                 </Link>
                 <Paper elevation={24} rounded>
-                <Avatar aria-label="recipe" className={classes.avatar}>
-                </Avatar>
-                
+                  <img src={imageurl} className={classes.img}></img>
                     <div className={classes.infolist}>
-                        <Typography variant="h6" className={classes.info}>講師名： {profileusername}</Typography><br></br><br></br>
+                        <Typography variant="h6" className={classes.creatername}>講師名： {profileusername}</Typography><br></br><br></br>
                         <Typography variant="h7" display="block" className={classes.info}>料金：{price}</Typography><br></br>
                         <Typography variant="h7" display="block" className={classes.info}>場所：{price}</Typography><br></br>
                         <Typography variant="h7" display="block" className={classes.info}>日時：{time}</Typography><br></br>

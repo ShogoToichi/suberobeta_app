@@ -103,9 +103,9 @@ function GetImage(props) {
     <div className="App">
       <form onSubmit={onSubmit}>
         <input type="file" onChange={handleImage} />
-        <button>Upload</button>
+        <button>アップロード</button>
       </form>
-      <img src={imageUrl} alt="uploaded" style={{height:"70px",width:"70px",borderRadius:"35px",margin:"20px 0px 0px 20px"}} />
+      <img src={imageUrl} alt="upload" style={{height:"70px",width:"70px",borderRadius:"35px",margin:"20px 0px 0px 20px"}} />
     </div>
   );
 }

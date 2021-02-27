@@ -47,7 +47,7 @@ export default function Lesson (props){
                     href="/lesson_info/[lessonid]">
                       <CardHeader
                           avatar={
-                          <Avatar aria-label="recipe" className={classes.avatar}>
+                          <Avatar aria-label="recipe" className={classes.avatar} src={props.imageurl}>
                           </Avatar>
                           }
                           className={classes.cardheader}
