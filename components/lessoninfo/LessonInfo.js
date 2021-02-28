@@ -12,6 +12,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button';
+import BuyBtn from "./parts/BuyBtn";
 
 const plofile = makeStyles({
     title: {
@@ -28,12 +29,6 @@ const plofile = makeStyles({
     creatername : {
       margin:"20px 10px 10px 10px",
       paddingTop:"40px",
-    },
-    buybtn: {
-        display:"inlineBlock",
-        marginLeft:"30px",
-        fontSize:"23px",
-        marginBottom:"15px",
     },
     img:{
       height:"70px",
@@ -119,11 +114,9 @@ function LessonInfo (props){
         <div style={{marginTop:"30px"}}>
                 
                 <Typography variant="h6" className={classes.title}>{lessonname}</Typography>
-
-                <Link as={`/message/${router.query.lessonid}`}
-                  href="/messge/[lessonid]">
-                    <Button className = {classes.buybtn} size="large" variant="outlined" onClick={dobuy}>購入</Button>
-                </Link>
+                <BuyBtn lessonid={router.query.lessonid} onClick={dobuy}>
+                  購入
+                </BuyBtn>
                 <Paper elevation={24} rounded>
                   <img src={imageurl} className={classes.img}></img>
                     <div className={classes.infolist}>
