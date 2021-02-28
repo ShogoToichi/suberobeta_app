@@ -120,7 +120,7 @@ function LessonInfo (props){
                 </BuyBtn>
                 <Paper elevation={24} rounded>
                   {/* <img src={imageurl} className={classes.img}></img> */}
-                  <Img src={imageurl} size="70"/>
+                  <Img src={imageurl} size="100"/>
                     <div className={classes.infolist}>
                         <Typography variant="h6" className={classes.creatername}>講師名： {profileusername}</Typography><br></br><br></br>
                         <Typography variant="h7" display="block" className={classes.info}>料金：{price}</Typography><br></br>
