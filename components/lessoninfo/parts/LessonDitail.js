@@ -16,7 +16,7 @@ const plofile = makeStyles({
     },
     info: {
         marginLeft: "50px",
-        marginTopn: "20px"
+        marginTop: "40px"
     }
 });
 
