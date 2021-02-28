@@ -52,7 +52,7 @@ function LessonList (){
   //lessondataはfirebaseのレッスンdataをいったん保管する
   //lessonidはfirebaseのレッスンidをいったん保管する
   //lessonitemsは値を渡された<Lesson/>が要素の配列ををいったん保管する
-  const getFireData= async()=>{
+  const getFireData = async()=>{
     const db = firebase.firestore ();
     const lessondata = [];
     const lessonid = [];

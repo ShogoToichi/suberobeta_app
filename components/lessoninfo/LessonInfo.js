@@ -13,6 +13,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button';
 import BuyBtn from "./parts/BuyBtn";
+import Img from "../normal_parts/Img";
 
 const plofile = makeStyles({
     title: {
@@ -118,7 +119,8 @@ function LessonInfo (props){
                   購入
                 </BuyBtn>
                 <Paper elevation={24} rounded>
-                  <img src={imageurl} className={classes.img}></img>
+                  {/* <img src={imageurl} className={classes.img}></img> */}
+                  <Img src={imageurl} size="70"/>
                     <div className={classes.infolist}>
                         <Typography variant="h6" className={classes.creatername}>講師名： {profileusername}</Typography><br></br><br></br>
                         <Typography variant="h7" display="block" className={classes.info}>料金：{price}</Typography><br></br>
