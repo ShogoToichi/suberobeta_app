@@ -6,41 +6,9 @@ import firebase from "firebase";
 import {useRouter}from "next/router";
 import {connect}from "react-redux";
 import Lib from "../../Lib/address_lib";
-import Link from "next/link";
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Avatar from '@material-ui/core/Avatar';
-import Paper from '@material-ui/core/Paper'
-import Button from '@material-ui/core/Button';
 import BuyBtn from "./parts/BuyBtn";
-import Img from "../normal_parts/Img";
-
-const plofile = makeStyles({
-    title: {
-        padding:"2px",
-        margin: '15px',
-        fontWeight: 'bold',
-        display:"inline",
-        marginTop:"30px",
-        fontSize:"30px",
-    },
-    info: {
-        margin: '10px',
-    },
-    creatername : {
-      margin:"20px 10px 10px 10px",
-      paddingTop:"40px",
-    },
-    img:{
-      height:"70px",
-      width:"70px",
-      borderRadius:"35px",
-      position:"absolute",
-      top:"155px",
-      left:"4px",
-
-    },
-});
+import LessonDitail from "./parts/LessonDitail";
+import Title from "../normal_parts/Title"
 
 function LessonInfo (props){
   
@@ -109,27 +77,20 @@ function LessonInfo (props){
       getLessonData();
     }
 
-    const classes = plofile();
-
       return(
         <div style={{marginTop:"30px"}}>
-                
-                <Typography variant="h6" className={classes.title}>{lessonname}</Typography>
+                <Title title={lessonname} />
                 <BuyBtn lessonid={router.query.lessonid} onClick={dobuy}>
                   購入
                 </BuyBtn>
-                <Paper elevation={24} rounded>
-                  {/* <img src={imageurl} className={classes.img}></img> */}
-                  <Img src={imageurl} size="100"/>
-                    <div className={classes.infolist}>
-                        <Typography variant="h6" className={classes.creatername}>講師名： {profileusername}</Typography><br></br><br></br>
-                        <Typography variant="h7" display="block" className={classes.info}>料金：{price}</Typography><br></br>
-                        <Typography variant="h7" display="block" className={classes.info}>場所：{price}</Typography><br></br>
-                        <Typography variant="h7" display="block" className={classes.info}>日時：{time}</Typography><br></br>
-                        <Typography variant="h7" display="block" className={classes.info}>レッスン内容：{lessoncomment}</Typography><br></br>
-                        <Typography variant="h7" display="block" className={classes.info}></Typography>
-                    </div>
-                </Paper>
+                <LessonDitail 
+                  imageurl={imageurl} 
+                  profileusername={profileusername} 
+                  price={price} 
+                  place={place} 
+                  time={time} 
+                  lessoncoment={lessoncomment}
+                />
         </div>
     );
     }

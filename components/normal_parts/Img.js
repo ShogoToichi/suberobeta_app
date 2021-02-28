@@ -8,9 +8,7 @@ export default function Img(props){
             height:`${props.size}px`,
             width:`${props.size}px`,
             borderRadius:`${radius}px`,
-            position:"absolute",
-            top:"155px",
-            left:"4px",
+            display: "inline-block"
         }
     
     return(

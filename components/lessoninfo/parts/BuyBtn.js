@@ -6,9 +6,14 @@ import Link from "next/link";
 
 
 const plofile = makeStyles({
+    btnarea: {
+        display: "inline-block",
+        float: "right",
+        marginRight: "100px",
+        marginTop: "15px"
+    },
     buybtn: {
-        display:"inlineBlock",
-        marginLeft:"30px",
+        marginLeft:"0px",
         fontSize:"23px",
         marginBottom:"15px",
     },
@@ -17,10 +22,12 @@ const plofile = makeStyles({
 
 export default function BuyBtn(props){
   const classes = plofile();
-  return(
+  return( 
+                <div className={classes.btnarea}>
                   <Link as={`/message/${props.lessonid}`}
                   href="/message/[lessonid]">
                     <Button className = {classes.buybtn} size="large" variant="outlined" onClick={props.onClick}>購入</Button>
                   </Link>
+                </div>
   );
 }
