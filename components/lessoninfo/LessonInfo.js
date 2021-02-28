@@ -89,7 +89,7 @@ function LessonInfo (props){
                   price={price} 
                   place={place} 
                   time={time} 
-                  lessoncoment={lessoncomment}
+                  lessoncomment={lessoncomment}
                 />
         </div>
     );

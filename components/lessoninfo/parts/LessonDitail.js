@@ -24,7 +24,7 @@ export default function LessonDitail(props) {
     const classes = plofile();
     return(
         <Paper className={classes.paper} elevation={24} rounded>
-                  <Img className={classes.img} src={props.imageurl} size="70"/>
+                <Img className={classes.img} src={props.imageurl} size="70"/>
                         <Typography variant="h6" className={classes.username}>講師名： {props.profileusername}</Typography>
                         <Typography variant="h7" display="block" className={classes.info}>料金：{props.price}
                         </Typography>
@@ -33,6 +33,6 @@ export default function LessonDitail(props) {
                         <Typography variant="h7" display="block" className={classes.info}>日時：{props.time}</Typography>
                         <Typography variant="h7" display="block" className={classes.info}>レッスン内容：{props.lessoncomment}</Typography>
                         <Typography variant="h7" display="block" className={classes.info}></Typography>
-                </Paper>
+        </Paper>
     );
 }

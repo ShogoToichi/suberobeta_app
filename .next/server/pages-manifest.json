@@ -3,5 +3,6 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/lesson_info/[lessonid]": "pages/lesson_info/[lessonid].js",
+  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js",
   "/lesson_list": "pages/lesson_list.js"
 }
