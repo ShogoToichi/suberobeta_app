@@ -2,13 +2,14 @@
 //レイアウトで読み込む
 
 
-import React, { Component } from "react";
+import React, { Component , useContext} from "react";
+import {Color}from "../../static/colors";
 
 export default function Footer (props){
 
 const footer_style={
   marginTop:"20px",
-  color:"#999",
+  color:useContext(Color).colors.footer_subero,
   position: "absolute",
   bottom:"0",
   right:"20px",
@@ -19,7 +20,7 @@ const footer_style={
 const footer_p={
   mergin:"0px",
   padding:"0px",
-  color:"#777",
+  color:useContext(Color).colors.footer_p,
 }
 
   const footer = {
@@ -29,13 +30,10 @@ const footer_p={
     margin:"50px 0px 10px 0px",
     position: "relative",
     height:"120px",
-    backgroundColor:"#E9E9E9",
+    backgroundColor:useContext(Color).colors.grayBtn,
     paddingLeft:"30px",
     paddingTop:"1px",
   }
- 
-const footertext_style={}
-
 
     return (<footer style={footer}>
       <p style={footer_p}>企業情報</p>

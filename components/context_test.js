@@ -2,24 +2,37 @@ import {Color} from "../static/colors";
 import React,{useContext}from "react";
 
 export default function Test(){
-  const color = useContext(Color); 
+  
+  const color = useContext(Color).colors; 
 
-  const conso=()=>{console.log(color);}
-
-  const colorred = "blue";
-
-  conso();
-
-  const test={
-    backgroundColor:useContext(Color).colors.headerColor,
+  const test1={
+    backgroundColor:useContext(Color).colors.header,
     width:"120px",
     height:"30px",
-    color:"#444",
+    color:"white",
+    margin:"20px",
+    padding:"20px",
+  }
+
+  const test2={
+    backgroundColor:color.anotherGreen,
+    width:"120px",
+    height:"30px",
+    color:"white",
+    margin:"20px",
+    padding:"20px",
   }
 
   return(
-      <div style={test}>
+    <div>
+
+      <div style={test1}>
+        hello youtube
+      </div>
+
+      <div style={test2}>
         こんにちは世界
       </div>
+    </div>
   );
 }
