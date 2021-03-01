@@ -1,10 +1,10 @@
 import React,{useContext} from "react";
 import "firebase/storage";
 import Link from "next/link";
-import { makeStyles } from '@material-ui/styles';
-import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import { makeStyles } from "@material-ui/styles";
+import Typography from "@material-ui/core/Typography";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 import {Color} from "../../../static/colors";
 
 const inputform = makeStyles((theme) => ({
@@ -27,6 +27,7 @@ const inputform = makeStyles((theme) => ({
         backgroundColor: useContext(Color).colors.bgGreen,
         marginTop:"10px",
         margin:"0 auto",
+        width: "200px"
 }
 }));
 

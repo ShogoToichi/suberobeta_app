@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { createContext } from \"react\";\nexport const colors = {\n  header: \"#285\",\n  footer_subero: \"#999\",\n  footer_p: \"#777\",\n  anotherGreen: \"#4A8\",\n  grayBtn: \"#E7E7E7\",\n  borderLine: \"#DDD\",\n  bgGreen: \"#CBFFD3\"\n};\nexport const Color = /*#__PURE__*/createContext(colors);","map":null,"metadata":{},"sourceType":"module"}

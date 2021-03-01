@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { jsx as _jsx } from \"react/jsx-runtime\";\nimport Layout from \"../components/normal/Layout\";\nimport LessonAdd from \"../components/lessonadd/LessonAdd\";\nexport default (function () {\n  return /*#__PURE__*/_jsx(Layout, {\n    children: /*#__PURE__*/_jsx(LessonAdd, {})\n  });\n});","map":null,"metadata":{},"sourceType":"module"}

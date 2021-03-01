@@ -1,0 +1,1 @@
+{"ast":null,"code":"//encode,decode処理\n//deepcopyはたぶん使わないやつ\nclass Lib {\n  static deepcopy(val) {\n    return JSON.parse(JSON.stringify(val));\n  }\n\n  static encodeEmail(val) {\n    return val.split(\".\").join(\"*\");\n  }\n\n  static decodeEmail(val) {\n    return val.split(\"*\").join(\".\");\n  }\n\n}\n\nexport default Lib;","map":null,"metadata":{},"sourceType":"module"}
