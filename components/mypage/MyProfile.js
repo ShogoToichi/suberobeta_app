@@ -16,6 +16,7 @@ import CardContent from '@material-ui/core/CardContent';
 import { CardHeader } from '@material-ui/core';
 import Avatar from '@material-ui/core/Avatar';
 import { PinDropSharp } from '@material-ui/icons';
+import MyProFileDetail from "./parts/MyProFileDetail";
 
 
 const myprofile = makeStyles({
@@ -58,13 +59,16 @@ const myprofile = makeStyles({
   if(name == "no data"){
     getFireData();
   }
-  
-
 
   const classes = myprofile();
   return(
         <div>
-            <Typography style={{fontWeight: 'bold',margin: '15px'}} variant="h3" className={classes.title}>My page</Typography>
+            <MyProFileDetail 
+                imageurl={imageurl} 
+                name={name} 
+                introduction={introduction}
+            />
+            {/* <Typography style={{fontWeight: 'bold',margin: '15px'}} variant="h3" className={classes.title}>My page</Typography>
             <div className={classes.card}>
                 <Card>
                     <CardHeader
@@ -87,7 +91,7 @@ const myprofile = makeStyles({
                         </Typography>
                     </CardContent>
                 </Card>
-            </div>
+            </div> */}
         </div>
     )
 }

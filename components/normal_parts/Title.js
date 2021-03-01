@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 const title = makeStyles({
     titlearea: {
         display:"inline-block",
+        width: "90%",
     },
     title: {
         fontWeight: 'bold',
@@ -12,7 +13,8 @@ const title = makeStyles({
     },
     subtitle: {
         marginLeft: "50px",
-        marginBottom: "20px"
+        marginBottom: "20px",
+        borderBottom:"solid 4px #DDD",
     },
 })
 
