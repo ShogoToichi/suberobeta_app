@@ -1,49 +1,8 @@
 import React,{useState} from "react";
 import firebase from "firebase";
 // import "firebase/storage";
-import Lesson from "./Lesson";
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import {Link} from "next/link";
-
-
-const lessonlist = makeStyles({
-  rayout: {
-    float: 'center',
-  },
-
-  top: {
-    width: '100%',
-    margin: '8px',
-    
-  },
-
-  lessonlist: {
-    width: '600px',
-    margin: '5px',
-  },
-
-  btn:{
-    float: 'right',
-    color: 'black',
-    backgroundColor: '#4A8' 
-  },
-  cardheader:{
-    cursor : "pointer",
-  },
-  subtitle:{
-    margin:"10px 0px 20px 40px", 
-    paddingBottom: "8px",
-    borderBottom:"solid 3px #CCC",
-  },
-  title:{
-    margin:" 30px 0px 20px 40px",
-  },
-});
-
-
-
-
+import Lesson from "./parts/Lesson";
+import Title from "../normal_parts/Title"
 
 function LessonList (){
   //ステートの設定
@@ -93,14 +52,12 @@ function LessonList (){
     getFireData();
   }
   
-  const classes = lessonlist();
-
   return (
-    <div className={classes.rayout}>
-        <div className={classes.top}>
-            <Typography variant="h3" style={{ margin:" 30px 0px 20px 40px"}}>レッスン一覧</Typography>
-            <Typography className={classes.subtitle} variant="h6">時間や場所、レベルなど自分に合ったレッスンを見つけよう</Typography>
-            </div>
+    <div>
+        <Title 
+          title={"レッスン一覧"} 
+          subtitle={"時間や場所、レベルなど自分に合ったレッスンを見つけよう"}
+        />
         {items}
     </div>
   );

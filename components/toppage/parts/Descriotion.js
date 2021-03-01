@@ -24,7 +24,7 @@ export default function Description(props) {
                 「教えたい人」と「学びたい人」のレッスンプラットフォーム
             </Typography>
         </div>
-        
+            {/* 中の<br></br>を有効にしたい  */}
         <DescriptionData 
             title={"手軽に自分に合ったレッスンが受けられる"}
             content={"ジャンル、レベル、場所、時間など目的に合ったレッスンを受けることができます。<br>現地集合・現地解散で気軽にレッスンを受けてみましょう。"}

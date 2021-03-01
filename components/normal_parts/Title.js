@@ -7,14 +7,12 @@ const title = makeStyles({
         display:"inline-block",
     },
     title: {
-        padding:"2px",
-        margin: '15px',
         fontWeight: 'bold',
-        marginTop:"30px",
-        fontSize:"30px",
+        margin: "40px",
     },
     subtitle: {
-
+        marginLeft: "50px",
+        marginBottom: "20px"
     },
 })
 
@@ -22,7 +20,8 @@ export default function Title(props) {
     const classes = title();
     return(
         <div className={classes.titlearea}>
-        <Typography className={classes.title} variant="h6">{props.title}</Typography>
+        <Typography className={classes.title} variant="h4">{props.title}</Typography>
+        <Typography className={classes.subtitle} variant="h6">{props.subtitle}</Typography>
         </div>
     );
 }
