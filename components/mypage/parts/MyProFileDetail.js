@@ -22,18 +22,28 @@ const myprofile = makeStyles((theme) => ({
         backgroundColor: useContext(Color).colors.bgGreen,
         color: 'balck',
     },
+    title: {
+        fontWeight: 'bold', 
+        margin: '5px',  
+        borderBottom: "solid 1px #BBB" ,
+        paddingBottom: "7px",
+    },
+    description:{
+        margin: '30px' 
+    },
 }));
 
 export default function MyProfileDetail(props){
     const classes = myprofile();
     return(
-        <div className={classes.myprof}>
+        <div>
             <Title title={"My Page"} />
-            <div className={classes.card}>
+            <div className={classes.myprof}>
                 <Card>
                     <CardHeader
+                    // avatarからIgmに変更する
                             avatar={
-                            <Avatar size="large" src={props.imageurl} className={classes.avatar}>
+                            <Avatar sizes="string" src={props.imageurl} className={classes.avatar}>
                             </Avatar>
                             }
                     action={
@@ -41,12 +51,12 @@ export default function MyProfileDetail(props){
                             <Button variant="outlined" size="large" className={classes.btn}>プロフィール変更</Button>
                         </Link>
                     }
-                    title={props.name}
+                    title ={props.name}
                     />
     
                     <CardContent>
-                        <Typography style={{fontWeight: 'bold', margin: '5px',  borderBottom: "solid 1px #BBB" ,paddingBottom: "7px"}} variant="h5">自己紹介</Typography>
-                        <Typography style={{marginTop: '10px' }} variant="h5">
+                        <Typography variant="h5" className={classes.title}>自己紹介</Typography>
+                        <Typography variant="h6" className={classes.description}>
                             {props.introduction}
                         </Typography>
                     </CardContent>
