@@ -1,0 +1,231 @@
+webpackHotUpdate_N_E("pages/lesson_add",{
+
+/***/ "./components/lessonadd/parts/InputForm.js":
+/*!*************************************************!*\
+  !*** ./components/lessonadd/parts/InputForm.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return InputForm; });
+/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ "./node_modules/react/jsx-dev-runtime.js");
+/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var firebase_storage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! firebase/storage */ "./node_modules/firebase/storage/dist/index.esm.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _material_ui_styles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/styles */ "./node_modules/@material-ui/styles/esm/index.js");
+/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core/Typography */ "./node_modules/@material-ui/core/esm/Typography/index.js");
+/* harmony import */ var _material_ui_core_TextField__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core/TextField */ "./node_modules/@material-ui/core/esm/TextField/index.js");
+/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/Button */ "./node_modules/@material-ui/core/esm/Button/index.js");
+
+var _jsxFileName = "C:\\Users\\t.osato\\Documents\\subero\\suberobeta_app-1\\components\\lessonadd\\parts\\InputForm.js";
+
+
+
+
+
+
+
+var inputform = Object(_material_ui_styles__WEBPACK_IMPORTED_MODULE_4__["makeStyles"])({
+  inputform: {
+    marginTop: '50px',
+    width: '80%',
+    margin: "0 auto"
+  },
+  inputtitle: {
+    margin: "0 auto"
+  },
+  textarea: {
+    marginTop: '20px',
+    margin: "0 auto"
+  },
+  detailinfo: {
+    marginTop: '20px',
+    margin: "0 auto"
+  },
+  btnarea: {
+    textAlign: "center"
+  },
+  addbtn: {
+    marginTop: "10px",
+    margin: "0 auto"
+  }
+});
+function InputForm(props) {
+  var classes = inputform();
+  return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])("div", {
+    className: classes.inputform,
+    children: [/*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])("div", {
+      children: [/*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        className: classes.inputtitle,
+        variant: "h8",
+        children: "\u30EC\u30C3\u30B9\u30F3\u306B\u95A2\u3059\u308B\u60C5\u5831\u3092\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044\u3002"
+      }, void 0, false, {
+        fileName: _jsxFileName,
+        lineNumber: 40,
+        columnNumber: 17
+      }, this), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])(_material_ui_core_TextField__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        id: "standard-textarea",
+        label: "\u30EC\u30C3\u30B9\u30F3\u540D",
+        fullWidth: true,
+        onChange: props.doChangeName
+      }, void 0, false, {
+        fileName: _jsxFileName,
+        lineNumber: 44,
+        columnNumber: 21
+      }, this), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])(_material_ui_core_TextField__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        id: "standard-textarea",
+        label: "\u65E5\u6642",
+        placeholder: "\u3007\u6708\u3007\u65E5\u5348\u524D\u3007\u6642\uFF5E\u3007\u6708\u3007\u65E5\u5348\u524D\u3007\u6642",
+        fullWidth: true,
+        onChange: props.doChangeTime
+      }, void 0, false, {
+        fileName: _jsxFileName,
+        lineNumber: 50,
+        columnNumber: 21
+      }, this), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])(_material_ui_core_TextField__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        id: "standard-textarea",
+        label: "\u5834\u6240",
+        placeholder: "\u3007\u3007\u30B9\u30AD\u30FC\u5834",
+        fullWidth: true,
+        onChange: props.doChangePlace
+      }, void 0, false, {
+        fileName: _jsxFileName,
+        lineNumber: 57,
+        columnNumber: 21
+      }, this), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])(_material_ui_core_TextField__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        id: "standard-textarea",
+        label: "\u6599\u91D1",
+        placeholder: "\uFFE5\u3007\u3007\u3007\u3007\u5186",
+        fullWidth: true,
+        onChange: props.doChangePrice
+      }, void 0, false, {
+        fileName: _jsxFileName,
+        lineNumber: 64,
+        columnNumber: 21
+      }, this), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])("div", {
+        className: classes.detailinfo,
+        children: /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])(_material_ui_core_TextField__WEBPACK_IMPORTED_MODULE_6__["default"], {
+          id: "outlined-multiline-static",
+          label: "\u30EC\u30C3\u30B9\u30F3\u5185\u5BB9",
+          multiline: true,
+          rows: 8,
+          variant: "outlined",
+          fullWidth: true,
+          onChange: props.doChangeComment
+        }, void 0, false, {
+          fileName: _jsxFileName,
+          lineNumber: 72,
+          columnNumber: 21
+        }, this)
+      }, void 0, false, {
+        fileName: _jsxFileName,
+        lineNumber: 71,
+        columnNumber: 17
+      }, this)]
+    }, void 0, true, {
+      fileName: _jsxFileName,
+      lineNumber: 39,
+      columnNumber: 13
+    }, this), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])("div", {
+      className: classes.btnarea,
+      children: /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
+        href: "/mypage",
+        children: /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_7__["default"], {
+          className: classes.addbtn,
+          variant: "outlined",
+          size: "large",
+          onClick: props.doSubmit,
+          children: "\u8FFD \u52A0"
+        }, void 0, false, {
+          fileName: _jsxFileName,
+          lineNumber: 85,
+          columnNumber: 17
+        }, this)
+      }, void 0, false, {
+        fileName: _jsxFileName,
+        lineNumber: 84,
+        columnNumber: 17
+      }, this)
+    }, void 0, false, {
+      fileName: _jsxFileName,
+      lineNumber: 83,
+      columnNumber: 13
+    }, this)]
+  }, void 0, true, {
+    fileName: _jsxFileName,
+    lineNumber: 38,
+    columnNumber: 9
+  }, this);
+}
+_c = InputForm;
+
+var _c;
+
+$RefreshReg$(_c, "InputForm");
+
+;
+    var _a, _b;
+    // Legacy CSS implementations will `eval` browser code in a Node.js context
+    // to extract CSS. For backwards compatibility, we need to check we're in a
+    // browser context before continuing.
+    if (typeof self !== 'undefined' &&
+        // AMP / No-JS mode does not inject these helpers:
+        '$RefreshHelpers$' in self) {
+        var currentExports = module.__proto__.exports;
+        var prevExports = (_b = (_a = module.hot.data) === null || _a === void 0 ? void 0 : _a.prevExports) !== null && _b !== void 0 ? _b : null;
+        // This cannot happen in MainTemplate because the exports mismatch between
+        // templating and execution.
+        self.$RefreshHelpers$.registerExportsForReactRefresh(currentExports, module.i);
+        // A module can be accepted automatically based on its exports, e.g. when
+        // it is a Refresh Boundary.
+        if (self.$RefreshHelpers$.isReactRefreshBoundary(currentExports)) {
+            // Save the previous exports on update so we can compare the boundary
+            // signatures.
+            module.hot.dispose(function (data) {
+                data.prevExports = currentExports;
+            });
+            // Unconditionally accept an update to this module, we'll check if it's
+            // still a Refresh Boundary later.
+            module.hot.accept();
+            // This field is set when the previous version of this module was a
+            // Refresh Boundary, letting us know we need to check for invalidation or
+            // enqueue an update.
+            if (prevExports !== null) {
+                // A boundary can become ineligible if its exports are incompatible
+                // with the previous exports.
+                //
+                // For example, if you add/remove/change exports, we'll want to
+                // re-execute the importing modules, and force those components to
+                // re-render. Similarly, if you convert a class component to a
+                // function, we want to invalidate the boundary.
+                if (self.$RefreshHelpers$.shouldInvalidateReactRefreshBoundary(prevExports, currentExports)) {
+                    module.hot.invalidate();
+                }
+                else {
+                    self.$RefreshHelpers$.scheduleUpdate();
+                }
+            }
+        }
+        else {
+            // Since we just executed the code for the module, it's possible that the
+            // new exports made it ineligible for being a boundary.
+            // We only care about the case when we were _previously_ a boundary,
+            // because we already accepted this update (accidental side effect).
+            var isNoLongerABoundary = prevExports !== null;
+            if (isNoLongerABoundary) {
+                module.hot.invalidate();
+            }
+        }
+    }
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../node_modules/next/dist/compiled/webpack/harmony-module.js */ "./node_modules/next/dist/compiled/webpack/harmony-module.js")(module)))
+
+/***/ })
+
+})
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9fTl9FLy4vY29tcG9uZW50cy9sZXNzb25hZGQvcGFydHMvSW5wdXRGb3JtLmpzIl0sIm5hbWVzIjpbImlucHV0Zm9ybSIsIm1ha2VTdHlsZXMiLCJtYXJnaW5Ub3AiLCJ3aWR0aCIsIm1hcmdpbiIsImlucHV0dGl0bGUiLCJ0ZXh0YXJlYSIsImRldGFpbGluZm8iLCJidG5hcmVhIiwidGV4dEFsaWduIiwiYWRkYnRuIiwiSW5wdXRGb3JtIiwicHJvcHMiLCJjbGFzc2VzIiwiZG9DaGFuZ2VOYW1lIiwiZG9DaGFuZ2VUaW1lIiwiZG9DaGFuZ2VQbGFjZSIsImRvQ2hhbmdlUHJpY2UiLCJkb0NoYW5nZUNvbW1lbnQiLCJkb1N1Ym1pdCJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBRUEsSUFBTUEsU0FBUyxHQUFHQyxzRUFBVSxDQUFDO0FBQ3pCRCxXQUFTLEVBQUU7QUFDUEUsYUFBUyxFQUFFLE1BREo7QUFFUEMsU0FBSyxFQUFFLEtBRkE7QUFHUEMsVUFBTSxFQUFDO0FBSEEsR0FEYztBQU16QkMsWUFBVSxFQUFFO0FBQ1JELFVBQU0sRUFBQztBQURDLEdBTmE7QUFTekJFLFVBQVEsRUFBRTtBQUNOSixhQUFTLEVBQUUsTUFETDtBQUVORSxVQUFNLEVBQUM7QUFGRCxHQVRlO0FBYXpCRyxZQUFVLEVBQUU7QUFDUkwsYUFBUyxFQUFFLE1BREg7QUFFUkUsVUFBTSxFQUFDO0FBRkMsR0FiYTtBQWlCekJJLFNBQU8sRUFBRTtBQUNMQyxhQUFTLEVBQUU7QUFETixHQWpCZ0I7QUFvQnpCQyxRQUFNLEVBQUU7QUFDSlIsYUFBUyxFQUFDLE1BRE47QUFFSkUsVUFBTSxFQUFDO0FBRkg7QUFwQmlCLENBQUQsQ0FBNUI7QUEwQmUsU0FBU08sU0FBVCxDQUFtQkMsS0FBbkIsRUFBeUI7QUFDcEMsTUFBTUMsT0FBTyxHQUFHYixTQUFTLEVBQXpCO0FBQ0Esc0JBQ0k7QUFBSyxhQUFTLEVBQUlhLE9BQU8sQ0FBQ2IsU0FBMUI7QUFBQSw0QkFDSTtBQUFBLDhCQUNJLHFFQUFDLG9FQUFEO0FBQ0EsaUJBQVMsRUFBRWEsT0FBTyxDQUFDUixVQURuQjtBQUMrQixlQUFPLEVBQUMsSUFEdkM7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsY0FESixlQUtRLHFFQUFDLG1FQUFEO0FBQ0ksVUFBRSxFQUFDLG1CQURQO0FBRUksYUFBSyxFQUFDLGdDQUZWO0FBR0ksaUJBQVMsTUFIYjtBQUlJLGdCQUFRLEVBQUVPLEtBQUssQ0FBQ0U7QUFKcEI7QUFBQTtBQUFBO0FBQUE7QUFBQSxjQUxSLGVBV1EscUVBQUMsbUVBQUQ7QUFDSSxVQUFFLEVBQUMsbUJBRFA7QUFFSSxhQUFLLEVBQUMsY0FGVjtBQUdJLG1CQUFXLEVBQUMsd0dBSGhCO0FBSUksaUJBQVMsTUFKYjtBQUtJLGdCQUFRLEVBQUVGLEtBQUssQ0FBQ0c7QUFMcEI7QUFBQTtBQUFBO0FBQUE7QUFBQSxjQVhSLGVBa0JRLHFFQUFDLG1FQUFEO0FBQ0ksVUFBRSxFQUFDLG1CQURQO0FBRUksYUFBSyxFQUFDLGNBRlY7QUFHSSxtQkFBVyxFQUFDLHNDQUhoQjtBQUlJLGlCQUFTLE1BSmI7QUFLSSxnQkFBUSxFQUFFSCxLQUFLLENBQUNJO0FBTHBCO0FBQUE7QUFBQTtBQUFBO0FBQUEsY0FsQlIsZUF5QlEscUVBQUMsbUVBQUQ7QUFDSSxVQUFFLEVBQUMsbUJBRFA7QUFFSSxhQUFLLEVBQUMsY0FGVjtBQUdJLG1CQUFXLEVBQUMsc0NBSGhCO0FBSUksaUJBQVMsTUFKYjtBQUtJLGdCQUFRLEVBQUVKLEtBQUssQ0FBQ0s7QUFMcEI7QUFBQTtBQUFBO0FBQUE7QUFBQSxjQXpCUixlQWdDSTtBQUFLLGlCQUFTLEVBQUVKLE9BQU8sQ0FBQ04sVUFBeEI7QUFBQSwrQkFDSSxxRUFBQyxtRUFBRDtBQUNJLFlBQUUsRUFBQywyQkFEUDtBQUVJLGVBQUssRUFBQyxzQ0FGVjtBQUdJLG1CQUFTLE1BSGI7QUFJSSxjQUFJLEVBQUUsQ0FKVjtBQUtJLGlCQUFPLEVBQUMsVUFMWjtBQU1JLG1CQUFTLE1BTmI7QUFPSSxrQkFBUSxFQUFFSyxLQUFLLENBQUNNO0FBUHBCO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFESjtBQUFBO0FBQUE7QUFBQTtBQUFBLGNBaENKO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxZQURKLGVBNkNJO0FBQUssZUFBUyxFQUFFTCxPQUFPLENBQUNMLE9BQXhCO0FBQUEsNkJBQ0kscUVBQUMsZ0RBQUQ7QUFBTSxZQUFJLEVBQUMsU0FBWDtBQUFBLCtCQUNBLHFFQUFDLGdFQUFEO0FBQVEsbUJBQVMsRUFBRUssT0FBTyxDQUFDSCxNQUEzQjtBQUFtQyxpQkFBTyxFQUFDLFVBQTNDO0FBQXNELGNBQUksRUFBQyxPQUEzRDtBQUFtRSxpQkFBTyxFQUFFRSxLQUFLLENBQUNPLFFBQWxGO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBREE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQURKO0FBQUE7QUFBQTtBQUFBO0FBQUEsWUE3Q0o7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLFVBREo7QUFxREg7S0F2RHVCUixTIiwiZmlsZSI6InN0YXRpYy93ZWJwYWNrL3BhZ2VzL2xlc3Nvbl9hZGQuNGU2ZDViYmI3ZWM0YTVmOTBmZGIuaG90LXVwZGF0ZS5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCx7dXNlU3RhdGV9IGZyb20gXCJyZWFjdFwiO1xyXG5pbXBvcnQgXCJmaXJlYmFzZS9zdG9yYWdlXCI7XHJcbmltcG9ydCBMaW5rIGZyb20gXCJuZXh0L2xpbmtcIjtcclxuaW1wb3J0IHsgbWFrZVN0eWxlcyB9IGZyb20gJ0BtYXRlcmlhbC11aS9zdHlsZXMnO1xyXG5pbXBvcnQgVHlwb2dyYXBoeSBmcm9tICdAbWF0ZXJpYWwtdWkvY29yZS9UeXBvZ3JhcGh5JztcclxuaW1wb3J0IFRleHRGaWVsZCBmcm9tICdAbWF0ZXJpYWwtdWkvY29yZS9UZXh0RmllbGQnO1xyXG5pbXBvcnQgQnV0dG9uIGZyb20gJ0BtYXRlcmlhbC11aS9jb3JlL0J1dHRvbidcclxuXHJcbmNvbnN0IGlucHV0Zm9ybSA9IG1ha2VTdHlsZXMoe1xyXG4gICAgaW5wdXRmb3JtOiB7XHJcbiAgICAgICAgbWFyZ2luVG9wOiAnNTBweCcsXHJcbiAgICAgICAgd2lkdGg6ICc4MCUnLFxyXG4gICAgICAgIG1hcmdpbjpcIjAgYXV0b1wiLFxyXG59LFxyXG4gICAgaW5wdXR0aXRsZToge1xyXG4gICAgICAgIG1hcmdpbjpcIjAgYXV0b1wiLFxyXG59LFxyXG4gICAgdGV4dGFyZWE6IHtcclxuICAgICAgICBtYXJnaW5Ub3A6ICcyMHB4JyxcclxuICAgICAgICBtYXJnaW46XCIwIGF1dG9cIixcclxufSxcclxuICAgIGRldGFpbGluZm86IHtcclxuICAgICAgICBtYXJnaW5Ub3A6ICcyMHB4JyxcclxuICAgICAgICBtYXJnaW46XCIwIGF1dG9cIixcclxufSxcclxuICAgIGJ0bmFyZWE6IHtcclxuICAgICAgICB0ZXh0QWxpZ246IFwiY2VudGVyXCIsXHJcbiAgICB9LFxyXG4gICAgYWRkYnRuOiB7XHJcbiAgICAgICAgbWFyZ2luVG9wOlwiMTBweFwiLFxyXG4gICAgICAgIG1hcmdpbjpcIjAgYXV0b1wiLFxyXG59XHJcbn0pXHJcblxyXG5leHBvcnQgZGVmYXVsdCBmdW5jdGlvbiBJbnB1dEZvcm0ocHJvcHMpe1xyXG4gICAgY29uc3QgY2xhc3NlcyA9IGlucHV0Zm9ybSgpO1xyXG4gICAgcmV0dXJuKFxyXG4gICAgICAgIDxkaXYgY2xhc3NOYW1lID0ge2NsYXNzZXMuaW5wdXRmb3JtfT5cclxuICAgICAgICAgICAgPGRpdj5cclxuICAgICAgICAgICAgICAgIDxUeXBvZ3JhcGh5IFxyXG4gICAgICAgICAgICAgICAgY2xhc3NOYW1lPXtjbGFzc2VzLmlucHV0dGl0bGV9IHZhcmlhbnQ9XCJoOFwiPlxyXG4gICAgICAgICAgICAgICAgICAgIOODrOODg+OCueODs+OBq+mWouOBmeOCi+aDheWgseOCkuWFpeWKm+OBl+OBpuOBj+OBoOOBleOBhOOAglxyXG4gICAgICAgICAgICAgICAgPC9UeXBvZ3JhcGh5PlxyXG4gICAgICAgICAgICAgICAgICAgIDxUZXh0RmllbGRcclxuICAgICAgICAgICAgICAgICAgICAgICAgaWQ9XCJzdGFuZGFyZC10ZXh0YXJlYVwiXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIGxhYmVsPVwi44Os44OD44K544Oz5ZCNXCJcclxuICAgICAgICAgICAgICAgICAgICAgICAgZnVsbFdpZHRoXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIG9uQ2hhbmdlPXtwcm9wcy5kb0NoYW5nZU5hbWV9XHJcbiAgICAgICAgICAgICAgICAgICAgLz5cclxuICAgICAgICAgICAgICAgICAgICA8VGV4dEZpZWxkXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIGlkPVwic3RhbmRhcmQtdGV4dGFyZWFcIlxyXG4gICAgICAgICAgICAgICAgICAgICAgICBsYWJlbD1cIuaXpeaZglwiXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIHBsYWNlaG9sZGVyPVwi44CH5pyI44CH5pel5Y2I5YmN44CH5pmC772e44CH5pyI44CH5pel5Y2I5YmN44CH5pmCXCJcclxuICAgICAgICAgICAgICAgICAgICAgICAgZnVsbFdpZHRoXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIG9uQ2hhbmdlPXtwcm9wcy5kb0NoYW5nZVRpbWV9XHJcbiAgICAgICAgICAgICAgICAgICAgLz5cclxuICAgICAgICAgICAgICAgICAgICA8VGV4dEZpZWxkXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIGlkPVwic3RhbmRhcmQtdGV4dGFyZWFcIlxyXG4gICAgICAgICAgICAgICAgICAgICAgICBsYWJlbD1cIuWgtOaJgFwiXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIHBsYWNlaG9sZGVyPVwi44CH44CH44K544Kt44O85aC0XCJcclxuICAgICAgICAgICAgICAgICAgICAgICAgZnVsbFdpZHRoXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIG9uQ2hhbmdlPXtwcm9wcy5kb0NoYW5nZVBsYWNlfVxyXG4gICAgICAgICAgICAgICAgICAgIC8+XHJcbiAgICAgICAgICAgICAgICAgICAgPFRleHRGaWVsZFxyXG4gICAgICAgICAgICAgICAgICAgICAgICBpZD1cInN0YW5kYXJkLXRleHRhcmVhXCJcclxuICAgICAgICAgICAgICAgICAgICAgICAgbGFiZWw9XCLmlpnph5FcIlxyXG4gICAgICAgICAgICAgICAgICAgICAgICBwbGFjZWhvbGRlcj1cIu+/peOAh+OAh+OAh+OAh+WGhlwiXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIGZ1bGxXaWR0aFxyXG4gICAgICAgICAgICAgICAgICAgICAgICBvbkNoYW5nZT17cHJvcHMuZG9DaGFuZ2VQcmljZX1cclxuICAgICAgICAgICAgICAgICAgICAvPlxyXG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9e2NsYXNzZXMuZGV0YWlsaW5mb30+XHJcbiAgICAgICAgICAgICAgICAgICAgPFRleHRGaWVsZFxyXG4gICAgICAgICAgICAgICAgICAgICAgICBpZD1cIm91dGxpbmVkLW11bHRpbGluZS1zdGF0aWNcIlxyXG4gICAgICAgICAgICAgICAgICAgICAgICBsYWJlbD1cIuODrOODg+OCueODs+WGheWuuVwiXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIG11bHRpbGluZVxyXG4gICAgICAgICAgICAgICAgICAgICAgICByb3dzPXs4fVxyXG4gICAgICAgICAgICAgICAgICAgICAgICB2YXJpYW50PVwib3V0bGluZWRcIlxyXG4gICAgICAgICAgICAgICAgICAgICAgICBmdWxsV2lkdGhcclxuICAgICAgICAgICAgICAgICAgICAgICAgb25DaGFuZ2U9e3Byb3BzLmRvQ2hhbmdlQ29tbWVudH1cclxuICAgICAgICAgICAgICAgICAgICAgICAgLz5cclxuICAgICAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9e2NsYXNzZXMuYnRuYXJlYX0+XHJcbiAgICAgICAgICAgICAgICA8TGluayBocmVmPVwiL215cGFnZVwiPlxyXG4gICAgICAgICAgICAgICAgPEJ1dHRvbiBjbGFzc05hbWU9e2NsYXNzZXMuYWRkYnRufSB2YXJpYW50PVwib3V0bGluZWRcIiBzaXplPVwibGFyZ2VcIiBvbkNsaWNrPXtwcm9wcy5kb1N1Ym1pdH0+6L+9IOWKoDwvQnV0dG9uPlxyXG4gICAgICAgICAgICAgICAgPC9MaW5rPlxyXG4gICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICA8L2Rpdj5cclxuICAgIClcclxufSJdLCJzb3VyY2VSb290IjoiIn0=
