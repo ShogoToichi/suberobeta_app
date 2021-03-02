@@ -19,8 +19,8 @@ const myprofile = makeStyles((theme) => ({
         marginTop: '20px',
     },
     btn: {
-        backgroundColor: useContext(Color).colors.bgGreen,
-        color: 'balck',
+        backgroundColor: useContext(Color).colors.Green,
+        color: 'white',
     },
     title: {
         fontWeight: 'bold', 

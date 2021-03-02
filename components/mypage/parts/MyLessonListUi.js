@@ -1,19 +1,50 @@
-import React from "react";
-import MyLesson from "./parts/MyLesson";
-import { connect } from "react-redux";
-import Lib from "../../Lib/address_lib";
+import React, {useContext} from "react";
+import { makeStyles } from "@material-ui/styles";
 import Link from "next/link";
-import { makeStyles } from '@material-ui/styles';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
-import List from '@material-ui/core/List';
-import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
+import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import Icon from "@material-ui/core/Icon";
+import {Color} from "../../../static/colors";
 
-const mylessonlist = makeStyles({
 
-})
+const mylessonlist = makeStyles((theme) => ({
+    list:{
+        marginTop: '40px',
+        width: "80%",
+
+    },
+    box: {
+        color: "white",
+        fontWeight: "bold",
+        backgroundColor: useContext(Color).colors.Green,
+
+    },
+    addbtn: {
+        textAlign: 'center',
+    },
+    btn: {
+        backgroundColor: useContext(Color).colors.Green,
+        color:"white",
+    },
+}));
 
 export default function MyLessonListUi (props){
-    
+    const classes = mylessonlist();
+    return(
+        <div className={classes.list}>
+            <div className={classes.list}>
+                <Box p={1} className={classes.box}>
+                    <Typography variant="h8">　投稿したレッスン</Typography>
+                </Box>
+            </div>
+                {props.items}
+            <div className={classes.addbtn}>
+                <Link href="/lesson_add">
+                    <Button variant="contained" size="large" startIcon={<Icon>add_circle</Icon>} className={classes.btn}>レッスン追加</Button>
+                </Link>
+                <button onClick={props.getFireData}>検証</button>
+            </div>
+        </div>
+    )
 }
