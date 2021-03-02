@@ -13,11 +13,6 @@ import Link from "next/link";
 import {Color} from "../../../static/colors";
 
 const toptitle = makeStyles((theme) => ({
-    maintitle:{
-        marginTop: '200px',
-        textWeight: 'bold',
-        textAlign: 'center',
-    },
     container: {
         backgroundColor: useContext(Color).colors.bgGreen,
         marginTop: '80px',
@@ -40,9 +35,10 @@ export default function DescriotionData(props){
                             title={props.title}
                             titleTypographyProps={{ align: 'center',}}
                             subheaderTypographyProps={{ align: 'center' }}
+                            className={classes.contenttitle}
                             />
                             <CardContent>
-                                    <Typography variant="h6" color="textSecondary" style={{textAlign:'center'}}>
+                                    <Typography variant="h8" color="textSecondary" style={{textAlign:'center'}}>
                                     {props.content}
                                     </Typography>
                             </CardContent>
