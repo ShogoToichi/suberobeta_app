@@ -66,8 +66,8 @@ function LessonInfo (props){
     });
   }
 
+  const email = Lib.encodeEmail(props.email);
     const dobuy = async()=>{
-      const email = Lib.encodeEmail(props.email);
       await db.collection("lessons").doc(router.query.lessonid).set({
       buyerid:email
     },{merge: true})
@@ -80,7 +80,7 @@ function LessonInfo (props){
       return(
         <div style={{marginTop:"30px"}}>
                 <Title title={lessonname} />
-                <BuyBtn lessonid={router.query.lessonid} onClick={dobuy}>
+                <BuyBtn lessonid={router.query.lessonid} buyerid={email} onClick={dobuy}>
                   購入
                 </BuyBtn>
                 <LessonDitail 

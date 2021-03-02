@@ -1,5 +1,5 @@
 import Layout from "../components/normal/Layout";
-import Test from "../components/context_test";
+import Test from "../components/message/parts/chat";
 
 
 export default () =>(

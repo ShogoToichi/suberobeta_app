@@ -24,10 +24,10 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
-    "/lesson_list": [
+    "/mypage": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/lesson_list.js"
+      "static/chunks/pages/mypage.js"
     ],
     "/toppage": [
       "static/chunks/main.js",

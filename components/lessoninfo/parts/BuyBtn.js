@@ -24,8 +24,7 @@ export default function BuyBtn(props){
   const classes = plofile();
   return( 
                 <div className={classes.btnarea}>
-                  <Link as={`/message/${props.lessonid}`}
-                  href="/message/[lessonid]">
+                  <Link href={`/message/${props.lessonid}/${props.buyerid}`}>
                     <Button className = {classes.buybtn} size="large" variant="outlined" onClick={props.onClick}>購入</Button>
                   </Link>
                 </div>

@@ -6,21 +6,9 @@ import { connect } from "react-redux";
 import firebase from "firebase";
 import {useRouter}from "next/router";
 import Lib from "../../Lib/address_lib";
-import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+import TextBox from "./parts/TextBox";
+import AddButton from "./parts/AddButton"
 
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-      margin: theme.spacing(1),
-      width: '500px',
-  },
-  btn:{
-    width:"80px",
-    marginLeft:"210px",
-  }
-}));
 
 function MessageAdd(props){
 
@@ -42,17 +30,18 @@ function MessageAdd(props){
   const doSubmit = async()=>{
     const db = firebase.firestore ();
     const email = Lib.encodeEmail(props.email);
+    const buyeremail = Lib.encodeEmail(router.query.buyerid)
     let d = new Date().getTime();
-    await db.collection("lessons").doc(router.query.lessonid).collection("message").add({
+    await db.collection("lessons").doc(router.query.lessonid).collection("buyerid").doc(buyeremail).collection("message").add({
       userid: email,
       text: message,
       time: firebase.firestore.FieldValue.serverTimestamp(),
       }).then(function(){
         setMessage("");
       })
-      //userfilterのTorFを、マテリアルUIの表示に関する属性に用いて、
-      //作成者、購入者以外にフォームを表示しなくする予定
-      if (email==createrid || email==buyerid){
+      //userfilterのTorFを、マテリアルUIのdisabled属性に用いて、
+      //作成者、購入者以外にフォームを表示しなくする
+      if (email==props.createrid || email==buyeremail){
         setUserfilter(false);
     }
     else{
@@ -60,14 +49,11 @@ function MessageAdd(props){
     }
   }
 
-const classes = useStyles();
 
 return(
   <div>
-<form className={classes.root} noValidate autoComplete="off">
-  <TextField id="outlined-basic"  variant="outlined" onChange={doChangeMessage} value={message} multiline={true} rows={3} fullWidth={true} disabled={userfilter}/>
-</form>
-<Button variant="outlined" className={classes.btn} onClick={doSubmit} disabled={userfilter}>送信</Button>
+<TextBox onChange={doChangeMessage} value={message} disabled={userfilter}/>
+<AddButton onClick={doSubmit} disabled={userfilter}/>
   </div>
 );}
 
