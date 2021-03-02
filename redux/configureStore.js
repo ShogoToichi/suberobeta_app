@@ -25,7 +25,7 @@ export default (initialState) => {
  
     const persistConfig = {
       key: 'root',
-      storage //q
+      storage
     };
  
     store = createStore(
