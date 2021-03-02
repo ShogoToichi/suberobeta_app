@@ -6,6 +6,8 @@ import { connect } from "react-redux";
 import "firebase/storage";
 import MessageAdd from "./MessageAdd";
 import { borderRadius } from "@material-ui/system";
+import Chat from "./parts/chat";
+import Title from "../normal_parts/Title";
 
 function Message (props){
   //ステート定義
@@ -17,19 +19,6 @@ function Message (props){
   const [createrimg,setCreaterImg] = useState("");
   const [buyerimg,setBuyerImg] = useState("");
   
-  //送信者によってスタイルを変更するテスト用のスタイル
-  const style = {
-    // border:"solid 1px #DDD", 
-    backgroundColor :"#E0E0E0",
-    borderRadius: "7px",
-    height:"40px",
-    verticalAlign:"middle",
-    padding:"10px 20px 0px 20px",
-    fontSize:"20px",
-    display:"inline-block",
-    marginBottom:"10px",
-    marginLeft:"50px",
-  }
   const messagedata=[];
   const messageitems=[];
   
@@ -78,25 +67,14 @@ function Message (props){
             for(let i in messagedata){
               let text = messagedata[i].text;
               let userid = messagedata[i].userid;
-              //送信者とReduxメアドの比較でスタイル分岐
+              //送信者とReduxメアドの比較で名前と画像を表示
               if(userid == email){
                 messageitems.push(
-                  <div>
-                    <img src={createrimg} style={{display:"inline", borderRadius:"15px",width:"30px",height:"30px"}}></img>
-                    <p style={{marginBottom:"1px",width:"200px",display:"inline" }}>{creatername}</p>
-                    <br></br>
-                    <div style={style}>{text}</div>
-                    <br/>
-                  </div>
+                    <Chat username={creatername} imageurl={createrimg} text={text}/>
                 );}
               else {
                 messageitems.push(
-                  <div>
-                    <img src={buyerimg} style={{display:"inline"}}></img>
-                    <p style={{marginBottom:"3px"}}>{buyername}</p>
-                    <div style={style}>{text}</div>
-                    <br/>
-                  </div>
+                    <Chat username={buyername} imageurl={buyerimg} text={text}/>
                 );
               }
             }
@@ -113,8 +91,8 @@ function Message (props){
   
 return(
   <div>
-    <button onClick={getMessageData}>読み込み</button>
-    <h2>{lessonname}</h2>
+    <button onClick={getMessageData} style={{display:"block",}}>読み込み</button>
+    <Title title={lessonname}/>
     {messages}
     <MessageAdd createrid={createrid}/>
   </div>
