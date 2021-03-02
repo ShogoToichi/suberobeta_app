@@ -3,7 +3,7 @@ import thunkMiddleware from "redux-thunk";
 import firebase from "firebase";
 import "firebase/storage";
 
-//Firebaseの初期化
+// Firebaseの初期化
 var firebaseConfig = {
     apiKey: "AIzaSyDT8vE8-4oyfaupBRZCr_2grNoiIGfMfIg",
     authDomain: "subero-prototype.firebaseapp.com",
@@ -31,21 +31,20 @@ const initial = {
   imageurl:"",
 }
 
-export function fireReducer (state = initial, action) {
-    switch (action.type) {
-      case "UPDATE_USER":
-        return action.value;
-      default:
-        return state;
+export const fireReducer = (state=initial, action) => {
+  switch (action.type) {
+    case "UPDATE_USER":
+      return action.value;
+    default:
+      return state;
     }
-  }
+}
 
-//   //initStore関数
-  export function initStore(state = initial) {
-    return createStore(fireReducer, state,
-        applyMiddleware(thunkMiddleware))
-  }
-  
+// initStore関数
+export function initStore(state = initial) {
+  return createStore(fireReducer, state,
+      applyMiddleware(thunkMiddleware))
+}
 
-  export const storage = firebase.storage();
-  export default firebase;
+export const storage = firebase.storage();
+export default firebase;
