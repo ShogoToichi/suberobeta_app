@@ -7,11 +7,8 @@ import "firebase/storage";
 import React,{useState} from "react";
 import {connect} from "react-redux";
 import Lib from "../../Lib/address_lib";
-import PhotoCamera from '@material-ui/icons/PhotoCamera';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/styles';
-import IconButton from '@material-ui/core/IconButton';
+import GetImageUi from "./parts/GetImageUi";
 
 
 const plofiledit = makeStyles({
@@ -101,6 +98,11 @@ function GetImage(props) {
 
   return (
     <div className="App">
+      <GetImageUi
+      onSubmit={onSubmit}
+      handleImage={handleImage}
+      imageUrl={imageUrl}
+      />
       <form onSubmit={onSubmit}>
         <input type="file" onChange={handleImage} />
         <button>アップロード</button>
