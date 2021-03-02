@@ -1,6 +1,5 @@
 import "firebase/storage";
 import React,{useContext} from "react";
-import {connect} from "react-redux";
 import { makeStyles } from '@material-ui/styles';
 import Button from "@material-ui/core/Button";
 import {Color} from "../../../static/colors";
@@ -22,9 +21,9 @@ export default function GetImage(props){
     const classes = getimage();
     return(
         <div>
-            <form onSubmit={props.onSubmit}>
+            <form>
                 <input type="file" onChange={props.handleImage} />
-                <Button variant="outlined" className={classes.uploadbtn}>アップロード</Button>
+                <Button onClick={props.onSubmit} variant="contained"   className={classes.uploadbtn}>アップロード</Button>
             </form>
             <img src={props.imageUrl} alt="upload" className={classes.img} />
         </div>

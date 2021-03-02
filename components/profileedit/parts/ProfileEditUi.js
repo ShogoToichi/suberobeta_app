@@ -76,10 +76,10 @@ export default function ProfileEdit(props){
             <div className={classes.buttongroup}>
                     <ButtonGroup disableElevation variant="outlined">
                         <Link href="/mypage">
-                            <Button className={classes.button} onClick={props.doSubmit}>変更</Button>
+                            <Button className={classes.button} onClick={props.doSubmit} variant="contained">変更</Button>
                         </Link>
                         <Link href="/mypage">
-                            <Button className={classes.button}>キャンセル</Button>
+                            <Button className={classes.button} variant="contained">キャンセル</Button>
                         </Link>
                     </ButtonGroup>
             </div>

@@ -7,38 +7,7 @@ import "firebase/storage";
 import React,{useState} from "react";
 import {connect} from "react-redux";
 import Lib from "../../Lib/address_lib";
-import { makeStyles } from '@material-ui/styles';
 import GetImageUi from "./parts/GetImageUi";
-
-
-const plofiledit = makeStyles({
-    title: {
-        margin: '10px',
-        fontWeight: 'bold',
-    },
-    name: {
-        marginTop: '20px'
-    },
-    upload: {
-        marginTop: '40px'
-    },
-    plofile: {
-        marginTop: '40px',
-    },
-    buttongroup:{
-        marginTop: '40px',
-        textAlign: 'center',
-    },
-    button:{
-        width: '200px',
-        backgroundColor: '#DDD',
-        color: 'black',
-        margin:"0px 20px",
-    },
-
-});
-
-
 
 function GetImage(props) {
   const [image, setImage] = useState("");
@@ -94,8 +63,6 @@ function GetImage(props) {
       });
   };
 
-    const classes = plofiledit();
-
   return (
     <div className="App">
       <GetImageUi
@@ -103,11 +70,6 @@ function GetImage(props) {
       handleImage={handleImage}
       imageUrl={imageUrl}
       />
-      <form onSubmit={onSubmit}>
-        <input type="file" onChange={handleImage} />
-        <button>アップロード</button>
-      </form>
-      <img src={imageUrl} alt="upload" style={{height:"70px",width:"70px",borderRadius:"35px",margin:"20px 0px 0px 20px"}} />
     </div>
   );
 }
