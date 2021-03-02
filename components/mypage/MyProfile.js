@@ -5,7 +5,6 @@ import firebase from "firebase";
 import "firebase/storage";
 import { connect } from "react-redux";
 import Lib from "../../Lib/address_lib";
-import { makeStyles } from '@material-ui/core/styles';
 import MyProFileDetail from "./parts/MyProFileDetail";
 
     function MyProfile (props){
