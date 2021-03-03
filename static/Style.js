@@ -1,6 +1,7 @@
-import css from 'styled-jsx/css';
+import css from "styled-jsx/css";
 
-export default <style>{`
+export default (
+  <style>{`
   body{
     margin:10px;
     padding:5px;
@@ -91,4 +92,5 @@ export default <style>{`
   width: 100px;
   padding: 1em;
 }
-`}</style>;
+`}</style>
+);
