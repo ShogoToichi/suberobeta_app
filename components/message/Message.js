@@ -1,6 +1,6 @@
 import React, { useState } from "react"
-import firebase from "firebase"
-import { useRouter } from "next/router"
+import firebase from "../lessoninfo/node_modules/firebase"
+import { useRouter } from "../lessoninfo/node_modules/next/router"
 import Lib from "../../Lib/address_lib"
 import { connect } from "react-redux"
 import "firebase/storage"

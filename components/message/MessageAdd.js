@@ -3,8 +3,8 @@
 
 import React, { useState } from "react"
 import { connect } from "react-redux"
-import firebase from "firebase"
-import { useRouter } from "next/router"
+import firebase from "../lessoninfo/node_modules/firebase"
+import { useRouter } from "../lessoninfo/node_modules/next/router"
 import Lib from "../../Lib/address_lib"
 import TextBox from "./parts/TextBox"
 import AddButton from "./parts/AddButton"
@@ -28,20 +28,27 @@ function MessageAdd(props) {
     const db = firebase.firestore()
     const email = Lib.encodeEmail(props.email)
     const buyeremail = Lib.encodeEmail(router.query.buyerid)
-    let d = new Date().getTime()
     await db
-      .collection("lessons")
-      .doc(router.query.lessonid)
-      .collection("buyerid")
-      .doc(buyeremail)
-      .collection("message")
-      .add({
-        userid: email,
-        text: message,
-        time: firebase.firestore.FieldValue.serverTimestamp()
-      })
-      .then(function () {
-        setMessage("")
+      .collection("messages")
+      .where("lessonid", "==", router.query.lessonid)
+      .where("buyerid", "==", router.query.buyerid)
+      .get()
+      .then(function (doc) {
+        const data = doc.data()
+        console.log(data)
+        console.log(doc.id)
+        const id = doc.id
+        db.collection("messages")
+          .doc(id)
+          .collection("message")
+          .add({
+            userid: email,
+            text: message,
+            time: firebase.firestore.FieldValue.serverTimestamp()
+          })
+          .then(function () {
+            setMessage("")
+          })
       })
     //userfilterのTorFを、マテリアルUIのdisabled属性に用いて、
     //作成者、購入者以外にフォームを表示しなくする

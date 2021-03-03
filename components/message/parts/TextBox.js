@@ -1,6 +1,6 @@
 import { PinDropSharp } from "@material-ui/icons"
 import React from "react"
-import { makeStyles } from "@material-ui/core/styles"
+import { makeStyles } from "../../lessoninfo/parts/node_modules/@material-ui/core/styles"
 import TextField from "@material-ui/core/TextField"
 
 export default function TextBox(props) {

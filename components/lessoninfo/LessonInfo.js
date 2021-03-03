@@ -9,6 +9,7 @@ import Lib from "../../Lib/address_lib"
 import BuyBtn from "./parts/BuyBtn"
 import LessonDitail from "./parts/LessonDitail"
 import Title from "../normal_parts/Title"
+import EditBtn from "./parts/EditBtn"
 
 function LessonInfo(props) {
   // 使用するステートの定義
@@ -73,12 +74,14 @@ function LessonInfo(props) {
 
   const email = Lib.encodeEmail(props.email)
   const dobuy = async () => {
-    await db.collection("lessons").doc(router.query.lessonid).set(
-      {
-        buyerid: email
-      },
-      { merge: true }
-    )
+    await db.collection("messages").add({
+      lessonid: router.query.lessonid,
+      buyerid: email,
+      createrid: createrid,
+      lessonname: lessonname,
+      buytime: firebase.firestore.FieldValue.serverTimestamp(),
+      trading: true
+    })
   }
 
   if (lessonname == "") {
@@ -88,9 +91,15 @@ function LessonInfo(props) {
   return (
     <div style={{ marginTop: "30px" }}>
       <Title title={lessonname} />
-      <BuyBtn lessonid={router.query.lessonid} buyerid={email} onClick={dobuy}>
-        購入
-      </BuyBtn>
+      {email == createrid ? (
+        <EditBtn />
+      ) : (
+        <BuyBtn
+          lessonid={router.query.lessonid}
+          buyerid={email}
+          onClick={dobuy}
+        />
+      )}
       <LessonDitail
         imageurl={imageurl}
         profileusername={profileusername}

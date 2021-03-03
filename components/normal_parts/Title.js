@@ -1,6 +1,6 @@
 import React from "react"
-import { makeStyles } from "@material-ui/core/styles"
-import Typography from "@material-ui/core/Typography"
+import { makeStyles } from "../lessoninfo/parts/node_modules/@material-ui/core/styles"
+import Typography from "../lessoninfo/parts/node_modules/@material-ui/core/Typography"
 
 const title = makeStyles({
   titlearea: {
