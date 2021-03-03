@@ -42,6 +42,7 @@ function Message(props) {
         const lessondata = doc.data()
         setCreaterid(lessondata.createrid)
         setLessonname(lessondata.lessonname)
+        console.log(createrid)
       })
     //作成者の情報を取得
     await db
@@ -52,6 +53,7 @@ function Message(props) {
         const createrdata = doc.data()
         setCreaterName(createrdata.profile.name)
         setCreaterImg(createrdata.imageurl)
+        console.log(creatername)
       })
     //購入者の情報を取得
     await db
