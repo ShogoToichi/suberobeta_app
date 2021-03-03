@@ -7,16 +7,16 @@ import Grid from "@material-ui/core/Grid"
 const toptitle = makeStyles((theme) => ({
   title: {
     width: "100%",
-    margin: "5px"
+    marginTop: "40px"
   },
   cap: {
-    marginLeft: "20px"
+    marginLeft: "0px"
   },
   maincap: {
     marginLeft: "30px",
     color: useContext(Color).colors.header,
     fontWeight: "bold",
-    padding: "4px",
+    marginTop: "20px",
     marginLeft: "20px"
   },
   img: {
@@ -31,9 +31,10 @@ export default function Caption(props) {
 
   return (
     <div className={classes.title}>
+      
       <Grid container justify="center" textAlign="center">
         <Grid item xs={12} sm={6}>
-          <Typography variant="h6" align="center" clasName={classes.cap}>
+          <Typography variant="h5" align="center" clasName={classes.cap}>
             好きな時間に好きな場所で
             <br />
             スキー・スノーボードレッスンは

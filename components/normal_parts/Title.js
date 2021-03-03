@@ -9,7 +9,8 @@ const title = makeStyles({
   },
   title: {
     fontWeight: "bold",
-    margin: "40px"
+    marginTop: "40px",
+    marginBottom: "20px"
   },
   subtitle: {
     marginLeft: "50px",

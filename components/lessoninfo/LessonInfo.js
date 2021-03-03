@@ -7,7 +7,7 @@ import { useRouter } from "next/router"
 import { connect } from "react-redux"
 import Lib from "../../Lib/address_lib"
 import BuyBtn from "./parts/BuyBtn"
-import LessonDitail from "./parts/LessonDitail"
+import LessonDetail from "./parts/LessonDetail"
 import Title from "../normal_parts/Title"
 
 function LessonInfo(props) {
@@ -91,7 +91,7 @@ function LessonInfo(props) {
       <BuyBtn lessonid={router.query.lessonid} buyerid={email} onClick={dobuy}>
         購入
       </BuyBtn>
-      <LessonDitail
+      <LessonDetail
         imageurl={imageurl}
         profileusername={profileusername}
         price={price}

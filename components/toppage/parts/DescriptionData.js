@@ -16,6 +16,9 @@ const toptitle = makeStyles((theme) => ({
     backgroundColor: useContext(Color).colors.bgGreen,
     marginTop: "80px"
   },
+  cardcontent: {
+    textAlign: "center"
+  },
   LinkBtn: {
     backgroundColor: useContext(Color).colors.bgGreen
   }
@@ -35,13 +38,14 @@ export default function DescriotionData(props) {
                 subheaderTypographyProps={{ align: "center" }}
                 className={classes.contenttitle}
               />
-              <CardContent>
+              <CardContent className={classes.cardcontent}>
                 <Typography
                   variant="h8"
                   color="textSecondary"
-                  style={{ textAlign: "center" }}
                 >
-                  {props.content}
+                  {props.content1}
+                  <br />
+                  {props.content2}
                 </Typography>
               </CardContent>
               <CardActions>

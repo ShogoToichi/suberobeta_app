@@ -6,7 +6,6 @@ import Typography from "@material-ui/core/Typography"
 
 const plofile = makeStyles({
   paper: {
-    position: "absolute",
     width: "80%",
     marginTop: "20px"
   },
@@ -20,7 +19,7 @@ const plofile = makeStyles({
   }
 })
 
-export default function LessonDitail(props) {
+export default function LessonDetail(props) {
   const classes = plofile()
   return (
     <Paper className={classes.paper} elevation={24} rounded>

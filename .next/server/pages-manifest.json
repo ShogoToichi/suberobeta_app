@@ -2,6 +2,6 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/toppage": "pages/toppage.js",
-  "/mypage": "pages/mypage.js"
+  "/lesson_list": "pages/lesson_list.js",
+  "/lesson_info/[lessonid]": "pages/lesson_info/[lessonid].js"
 }
