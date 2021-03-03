@@ -3,6 +3,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import { Color } from "../../../static/colors";
 import DescriptionData from "./DescriptionData";
+import MediaQuery from "react-responsive";
 
 const toptitle = makeStyles((theme) => ({
   maintitle: {
@@ -18,12 +19,20 @@ export default function Description(props) {
 
   return (
     <div>
-      <div className={classes.maintitle}>
-        <Typography variant="h5">
-          「教えたい人」と「学びたい人」のレッスンプラットフォーム
-        </Typography>
-      </div>
-      {/* 中の<br></br>を有効にしたい  */}
+      <MediaQuery query="(max-width: 600px)">
+        <div className={classes.maintitle}>
+          <Typography variant="h7">
+            「教えたい人」と「学びたい人」のレッスンプラットフォーム
+          </Typography>
+        </div>
+      </MediaQuery>
+      <MediaQuery query="(min-width: 601px)">
+        <div className={classes.maintitle}>
+          <Typography variant="h5">
+            「教えたい人」と「学びたい人」のレッスンプラットフォーム
+          </Typography>
+        </div>
+      </MediaQuery>
       <DescriptionData
         title={"手軽に自分に合ったレッスンが受けられる"}
         content1={
@@ -51,9 +60,7 @@ export default function Description(props) {
         content1={
           "スノースクールなどの企業ではなく、個人同士で納得した金額でレッスンを契約するため<br></br>"
         }
-        content2={
-          "比較的リーズナブルに教えてもらうことができます。"
-        }
+        content2={"比較的リーズナブルに教えてもらうことができます。"}
         herf={"/lesson_list"}
         btnName={"レッスンを探す"}
       />
