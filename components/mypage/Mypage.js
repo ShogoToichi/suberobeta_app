@@ -1,14 +1,14 @@
-import MyLessonList from "./MyLessonList";
-import React from "react";
+import MyLessonList from "./MyLessonList"
+import React from "react"
 import MyBuyLessonList from "./MyBuyLessonList"
-import MyProfile from "./MyProfile";
+import MyProfile from "./MyProfile"
 
-export default function Mypage (){
-  return(
+export default function Mypage() {
+  return (
     <div>
-      <MyProfile/>
-      <MyLessonList/>
-      <MyBuyLessonList/>
+      <MyProfile />
+      <MyLessonList />
+      <MyBuyLessonList />
     </div>
-  );
+  )
 }

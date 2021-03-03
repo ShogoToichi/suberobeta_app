@@ -1,18 +1,14 @@
-import React from "react";
+import React from "react"
 
-export default function Img(props){
+export default function Img(props) {
+  const radius = (props.size * 1) / 2
 
-    const radius = props.size*1/2;
-    
-    const img={
-            height:`${props.size}px`,
-            width:`${props.size}px`,
-            borderRadius:`${radius}px`,
-            display: "inline-block"
-        }
-    
-    return(
-        <img src={props.src} size={props.size} style={img}></img>
-    );
+  const img = {
+    height: `${props.size}px`,
+    width: `${props.size}px`,
+    borderRadius: `${radius}px`,
+    display: "inline-block"
+  }
 
+  return <img src={props.src} size={props.size} style={img}></img>
 }
