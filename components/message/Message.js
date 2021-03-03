@@ -9,8 +9,7 @@ import Lib from "../../Lib/address_lib"
 import { connect } from "react-redux"
 import "firebase/storage"
 import MessageAdd from "./MessageAdd"
-import { borderRadius } from "@material-ui/system"
-import Chat from "./parts/chat"
+import Chat from "./parts/Chat"
 import Title from "../normal_parts/Title"
 
 function Message(props) {
@@ -23,7 +22,6 @@ function Message(props) {
   const [createrimg, setCreaterImg] = useState("")
   const [buyerimg, setBuyerImg] = useState("")
 
-  const messagedata = []
   const messageitems = []
 
   const router = useRouter()
@@ -33,13 +31,13 @@ function Message(props) {
 
   //lessondata及びmessageを取得
   const getMessageData = async () => {
-    //router.query.lessonidでページのurlの末尾を取得
+    //router.query.lessonidでレッスンIDを取得
     //先にレッスン名と作成者のidを取得
     await db
       .collection("lessons")
       .doc(router.query.lessonid)
       .get()
-      //取得したデータをlessondataにしまってから、それをステートに突っ込む
+      //取得したデータをステートに突っ込む
       .then(function (doc) {
         const lessondata = doc.data()
         setCreaterid(lessondata.createrid)
@@ -76,7 +74,7 @@ function Message(props) {
       .then(function (querySnapshot) {
         querySnapshot.forEach(function (doc) {
           db.collection("messages")
-            .doc(doc.id)
+            .doc(doc.id) //取得したidを使う
             .collection("message")
             .orderBy("time") //orderBy(time)で時間の古い順に並べる
             .get()
@@ -84,18 +82,13 @@ function Message(props) {
             //繰り返し処理でChatコンポーネントに値を渡して、そのチャットコンポーネントをmessageitems配列にまとめていく
             .then(function (querySnapshot) {
               querySnapshot.forEach(function (doc) {
-                messagedata.push(doc.data())
-              })
-              for (let i in messagedata) {
-                let text = messagedata[i].text
-                let userid = messagedata[i].userid
-                //送信者とReduxメアドの比較で名前と画像を表示
-                if (userid == createrid) {
+                //メッセージを送った人のidと作成者のidを比較して、名前とアイコンの表示を変える
+                if (doc.data().userid == createrid) {
                   messageitems.push(
                     <Chat
                       username={creatername}
                       imageurl={createrimg}
-                      text={text}
+                      text={doc.data().text}
                     />
                   )
                 } else {
@@ -103,11 +96,11 @@ function Message(props) {
                     <Chat
                       username={buyername}
                       imageurl={buyerimg}
-                      text={text}
+                      text={doc.data().text}
                     />
                   )
                 }
-              }
+              })
               //作成者、購入者以外メッセージが見れないようにする
               if (email == createrid || email == buyerid) {
                 setMessages(messageitems)

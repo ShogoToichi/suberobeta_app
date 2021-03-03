@@ -26,11 +26,11 @@ function MyLessonList(props) {
           querySnapshot.forEach(function (doc) {
             lessonitems.push(
               <MyLesson
-              lessonid={doc.id}
-              name={doc.data().lessonname}
-              place={doc.data().lessonplace}
+                lessonid={doc.id}
+                name={doc.data().lessonname}
+                place={doc.data().lessonplace}
               />
-              )
+            )
           })
           setItems(lessonitems)
         })

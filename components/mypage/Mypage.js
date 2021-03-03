@@ -9,7 +9,7 @@ export default function Mypage() {
     <div>
       <MyProfile />
       <MyLessonList />
-      <MyMessageList/>
+      <MyMessageList />
       {/* <MyBuyLessonList /> */}
     </div>
   )

@@ -1,6 +1,3 @@
-//基本的には<LessonList/>と同じなのでそちらを参照
-//.whereでレッスン作成者とReduxのemailが一致するデータを参照
-
 import React, { useState } from "react"
 import firebase from "firebase"
 import "firebase/storage"
@@ -10,6 +7,7 @@ import Lib from "../../Lib/address_lib"
 import MyMessageListUi from "./parts/MyMessageListUi"
 
 function MyMessageList(props) {
+  //最終的に表示するJSXの配列を入れるステート
   const [mymessages, setMyMessages] = useState("no item")
   const [buymessages, setBuyMessages] = useState("no item")
 
@@ -18,13 +16,13 @@ function MyMessageList(props) {
     const mymessageitems = []
     const buymessageitems = []
     const email = Lib.encodeEmail(props.email)
-
+    //自分が作成したレッスンで現在進行中のものを取得
     if (props.login) {
       await db
         .collection("messages")
         .where("createrid", "==", email)
         .where("trading", "==", true)
-        // .orderBy("buytime")
+        // .orderBy("buytime") 後々メッセージを直近で送った時間で並び替えたい
         .get()
         .then(function (querySnapshot) {
           querySnapshot.forEach(function (doc) {
@@ -39,12 +37,12 @@ function MyMessageList(props) {
           })
           setMyMessages(mymessageitems)
         })
-
+      //自分が購入したレッスンで現在進行中のものを取得
       await db
         .collection("messages")
         .where("buyerid", "==", email)
         .where("trading", "==", true)
-        // .orderBy("buytime")
+        // .orderBy("buytime")  上に同じくゆくゆくやる
         .get()
         .then(function (querySnapshot) {
           querySnapshot.forEach(function (doc) {
@@ -60,6 +58,7 @@ function MyMessageList(props) {
           setBuyMessages(buymessageitems)
         })
     } else {
+      //ログインしてないとメッセージが表示しなくなってる、なんでこんなこと書いたんだっけ。
       setMyMessages("取引中のメッセージはありません")
     }
   }
@@ -67,6 +66,7 @@ function MyMessageList(props) {
   if (mymessages == "no item") {
     getFireData()
   }
+  // 取得した2つのステートの値を一つの配列にする処理
   let items = mymessages.concat(buymessages)
 
   return (

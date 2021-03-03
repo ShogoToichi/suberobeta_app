@@ -1,5 +1,3 @@
-//※要追加 :  ・purchasedか何かで受付中のレッスンとそうでないレッスン購入ボタンの表示を変更
-//            ・購入後purchasedの書き換え及びmessageへの移動
 import React, { useState } from "react"
 import firebase from "firebase"
 import { useRouter } from "next/router"
@@ -35,10 +33,8 @@ function LessonInfo(props) {
       .get()
       //データ取得後の処理
       //取得したデータをlessondataにしまってから、それをステートに突っ込む
-      //lessonidは取得しなくていいかも
       .then(function (doc) {
         const lessondata = doc.data()
-        const lesson_id = doc.id
         setCreaterid(lessondata.createrid)
         setLessonid(lesson_id)
         setPurchased(lessondata.purchased)
@@ -70,6 +66,7 @@ function LessonInfo(props) {
       })
   }
 
+  //firebaseのmessagesに必要な情報を書き込む
   const email = Lib.encodeEmail(props.email)
   const dobuy = async () => {
     await db.collection("messages").add({
@@ -79,7 +76,7 @@ function LessonInfo(props) {
       creatername: profileusername,
       lessonname: lessonname,
       buytime: firebase.firestore.FieldValue.serverTimestamp(),
-      trading: true
+      trading: true //取引中かどうかの真偽値、まだどこでも利用してない
     })
   }
 
@@ -90,6 +87,8 @@ function LessonInfo(props) {
   return (
     <div style={{ marginTop: "30px" }}>
       <Title title={lessonname} />
+      {/* 作成者がレッスンページを開くと、レッスン編集ボタンが表示される
+      リンクは今のところマイページにしてある */}
       {email == createrid ? (
         <EditBtn />
       ) : (

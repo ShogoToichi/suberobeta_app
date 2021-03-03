@@ -41,4 +41,3 @@ export default function MessageLink(props) {
     </div>
   )
 }
-
