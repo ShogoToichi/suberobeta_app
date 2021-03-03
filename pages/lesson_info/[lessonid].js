@@ -1,9 +1,8 @@
-import Layout from "../../components/normal/Layout";
-import LessonInfo from "../../components/lessoninfo/LessonInfo";
+import Layout from "../../components/normal/Layout"
+import LessonInfo from "../../components/lessoninfo/LessonInfo"
 
-
-export default () =>(
+export default () => (
   <Layout>
-    <LessonInfo/>
+    <LessonInfo />
   </Layout>
-);
+)

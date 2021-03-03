@@ -1,7 +1,7 @@
-import Layout from "../components/normal/Layout";
-import TopContents from "../components/toppage/TopContents";
-import Footer from "../components/toppage/Footer";
-import Grid from "@material-ui/core/Grid";
+import Layout from "../components/normal/Layout"
+import TopContents from "../components/toppage/TopContents"
+import Footer from "../components/toppage/Footer"
+import Grid from "@material-ui/core/Grid"
 
 export default () => (
   <Layout header="トップページ" title="トップページ">
@@ -12,4 +12,4 @@ export default () => (
     </Grid>
     <Footer footer="copy right by subero corp." />
   </Layout>
-);
+)

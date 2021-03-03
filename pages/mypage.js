@@ -1,9 +1,8 @@
-import Layout from "../components/normal/Layout";
-import Mypage from "../components/mypage/Mypage";
+import Layout from "../components/normal/Layout"
+import Mypage from "../components/mypage/Mypage"
 
-
-export default () =>(
+export default () => (
   <Layout>
-    <Mypage/>
+    <Mypage />
   </Layout>
-);
+)

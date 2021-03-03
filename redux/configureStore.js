@@ -1,49 +1,26 @@
-//persist試行錯誤のファイル
-//使ってない
+// 参照https://qiita.com/yasuhiro-yamada/items/bd86d7c9f35ebb1c1e7c
 
+// redux-persistの設定を行う
+import { createStore } from "redux"
+import { persistReducer, persistStore } from "redux-persist"
+import storage from "redux-persist/lib/storage"
+import { fireReducer } from "./store"
 
+const persistConfig = {
+  key: "root", // Storageに保存されるキー名を指定する，とりあえず例のままのroot
+  storage, // 保存先としてlocalStorageがここで設定される
+  whitelist: ["login", "username", "email", "imageurl"] // Storageに保存するstateを指定
+  // blacklist: ['visibilityFilter']  // 保存しない設定?
+}
 
-import { createStore, applyMiddleware } from 'redux';
+// 永続化設定されたReducerとして定義?
+const persistedReducer = persistReducer(persistConfig, fireReducer)
 
- 
-import createSagaMiddleware from 'redux-saga';
-import { persistStore } from 'redux-persist';
- 
-import rootSaga from './saga';
-import rootReducer from '../store';
- 
-export default (initialState) => {
-  let store;
- 
-  const sagaMiddleware = createSagaMiddleware();
- 
-  const isClient = typeof window !== 'undefined';
- 
-  if (isClient) {
-    const { persistReducer } = require('redux-persist');
-    const storage = require('redux-persist/lib/storage').default;
- 
-    const persistConfig = {
-      key: 'root',
-      storage
-    };
- 
-    store = createStore(
-      persistReducer(persistConfig, rootReducer),
-      initialState,
-      applyMiddleware(sagaMiddleware)
-    );
- 
-     store.__PERSISTOR = persistStore(store);
-  } else {
-    store = createStore(
-      rootReducer,
-      initialState,
-      applyMiddleware(sagaMiddleware)
-    );
-  }
- 
-  store.sagaTask = sagaMiddleware.run(rootSaga);
- 
-  return store;
-};
+const store = createStore(
+  persistedReducer
+  // ↓ SSR時にwindowがないよってエラーが出るよ．消しても動いたからコメントアウトしたままにしておく, どんな影響があるのかはわからず
+  // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
+
+export const persistor = persistStore(store)
+export default store
