@@ -1,8 +1,9 @@
 import Layout from "../components/normal/Layout"
 import LessonList from "../components/lessonlist/LessonList"
 
-export default () => (
+const LessonListPage = () => (
   <Layout>
     <LessonList />
   </Layout>
 )
+export default LessonListPage
