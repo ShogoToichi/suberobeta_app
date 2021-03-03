@@ -1,6 +1,10 @@
+//firebase呼び出す回数が明らかに多いから、どうにか改善しなきゃ
+//少なくともmessageコレクションを呼び出すのに、messagesコレクションを参照する必要があるのは、頭悪そうだし、すぐ治せそうだから直そう
+//まあとりあえず使えればいっかって感じで
+
 import React, { useState } from "react"
-import firebase from "../lessoninfo/node_modules/firebase"
-import { useRouter } from "../lessoninfo/node_modules/next/router"
+import firebase from "firebase"
+import { useRouter } from "next/router"
 import Lib from "../../Lib/address_lib"
 import { connect } from "react-redux"
 import "firebase/storage"
@@ -24,7 +28,7 @@ function Message(props) {
 
   const router = useRouter()
   const email = Lib.encodeEmail(props.email)
-  const buyerid = Lib.encodeEmail(router.query.buyerid)
+  const buyerid = router.query.buyerid
   const db = firebase.firestore()
 
   //lessondata及びmessageを取得
@@ -63,43 +67,56 @@ function Message(props) {
       })
 
     //メッセージ情報取得処理
-    //orderBy(time)で時間の古い順に並べる
+    //messageが入っているサブコレクションがあるドキュメントidを取得してから、messageサブコレクションを参照
     await db
-      .collection("lessons")
-      .doc(router.query.lessonid)
-      .collection("buyerid")
-      .doc(buyerid)
-      .collection("message")
-      .orderBy("time")
+      .collection("messages")
+      .where("lessonid", "==", router.query.lessonid)
+      .where("buyerid", "==", router.query.buyerid)
       .get()
-      //取得したデータをmessagedata配列に入れる。
-      //配列の繰り返し処理でメッセージのjsxを作り、
-      //messageitemsに入れて、最後にstateに入れる
       .then(function (querySnapshot) {
         querySnapshot.forEach(function (doc) {
-          messagedata.push(doc.data())
+          db.collection("messages")
+            .doc(doc.id)
+            .collection("message")
+            .orderBy("time") //orderBy(time)で時間の古い順に並べる
+            .get()
+            //取得したデータをmessagedata配列に入れる。
+            //繰り返し処理でChatコンポーネントに値を渡して、そのチャットコンポーネントをmessageitems配列にまとめていく
+            .then(function (querySnapshot) {
+              querySnapshot.forEach(function (doc) {
+                messagedata.push(doc.data())
+              })
+              for (let i in messagedata) {
+                let text = messagedata[i].text
+                let userid = messagedata[i].userid
+                //送信者とReduxメアドの比較で名前と画像を表示
+                if (userid == createrid) {
+                  messageitems.push(
+                    <Chat
+                      username={creatername}
+                      imageurl={createrimg}
+                      text={text}
+                    />
+                  )
+                } else {
+                  messageitems.push(
+                    <Chat
+                      username={buyername}
+                      imageurl={buyerimg}
+                      text={text}
+                    />
+                  )
+                }
+              }
+              //作成者、購入者以外メッセージが見れないようにする
+              if (email == createrid || email == buyerid) {
+                setMessages(messageitems)
+              } else {
+                const errorMessage = <p>ご利用いただけません</p>
+                setMessages(errorMessage)
+              }
+            })
         })
-        for (let i in messagedata) {
-          let text = messagedata[i].text
-          let userid = messagedata[i].userid
-          //送信者とReduxメアドの比較で名前と画像を表示
-          if (userid == email) {
-            messageitems.push(
-              <Chat username={creatername} imageurl={createrimg} text={text} />
-            )
-          } else {
-            messageitems.push(
-              <Chat username={buyername} imageurl={buyerimg} text={text} />
-            )
-          }
-        }
-        //作成者、購入者以外メッセージが見れないようにする
-        if (email == createrid || email == buyerid) {
-          setMessages(messageitems)
-        } else {
-          const errorMessage = <p>ご利用いただけません</p>
-          setMessages(errorMessage)
-        }
       })
   }
 

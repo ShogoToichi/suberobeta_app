@@ -1,0 +1,39 @@
+☆はサブコレクション
+(uni)はfirebaseが自動生成したユニークなID
+
+
+
+root   + users --+--userid1(gmail) : {
+       |         |                     imgurl:
+       |         |                     profile:{
+       |         +--userid2                name:
+       |         :                         introduction:
+       |         :                     }
+       |                            }
+       |
+       |         
+       +lessons--+--lessonid1(uni) :{
+       |         |                     createrid:
+       |         |                     lessonname:
+       |         +--lessonid2          lessonplace:
+       |         :                     lessonprice:
+       |         :                     lessontext:
+       |                               lessontime:
+       |                           }          
+       |         
+       |
+       |
+       +messages--+--messagesid1(uni):{
+                  |                   buyerid:
+                  |                   buytime:  TIME
+                  +--messagesid2      createrid:
+                  :                   lessonid:
+                  :                   lessonname:
+                                      trading:  T or F
+                                     }
+                                     ☆message--+--messageid1(uni):{
+                                              |                     text:
+                                              |                     time:  TIME
+                                              +--messageid2         userid:
+                                              :                  }
+                                              :

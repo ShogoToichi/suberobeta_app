@@ -3,8 +3,8 @@
 
 import React, { useState } from "react"
 import { connect } from "react-redux"
-import firebase from "../lessoninfo/node_modules/firebase"
-import { useRouter } from "../lessoninfo/node_modules/next/router"
+import firebase from "firebase"
+import { useRouter } from "next/router"
 import Lib from "../../Lib/address_lib"
 import TextBox from "./parts/TextBox"
 import AddButton from "./parts/AddButton"
@@ -29,27 +29,30 @@ function MessageAdd(props) {
     const email = Lib.encodeEmail(props.email)
     const buyeremail = Lib.encodeEmail(router.query.buyerid)
     await db
+    //messageサブコレクションを参照するために必要なmessages内のドキュメントのidを先に参照している
       .collection("messages")
       .where("lessonid", "==", router.query.lessonid)
       .where("buyerid", "==", router.query.buyerid)
       .get()
-      .then(function (doc) {
-        const data = doc.data()
-        console.log(data)
-        console.log(doc.id)
-        const id = doc.id
-        db.collection("messages")
-          .doc(id)
-          .collection("message")
-          .add({
-            userid: email,
-            text: message,
-            time: firebase.firestore.FieldValue.serverTimestamp()
-          })
-          .then(function () {
-            setMessage("")
-          })
-      })
+      .then(function (querySnapshot) {
+        querySnapshot.forEach(function(doc){
+          console.log(router.query.lessonid)
+          console.log(router.query.buyerid)
+          const id = doc.id
+          db.collection("messages")
+            .doc(id)
+            .collection("message")
+            .add({
+              userid: email,
+              text: message,
+              time: firebase.firestore.FieldValue.serverTimestamp()
+            })
+            .then(function () {
+              setMessage("")
+            })
+        })
+        })
+        // const data = doc.data()
     //userfilterのTorFを、マテリアルUIのdisabled属性に用いて、
     //作成者、購入者以外にフォームを表示しなくする
     if (email == props.createrid || email == buyeremail) {
@@ -73,3 +76,4 @@ function MessageAdd(props) {
 
 MessageAdd = connect((state) => state)(MessageAdd)
 export default MessageAdd
+

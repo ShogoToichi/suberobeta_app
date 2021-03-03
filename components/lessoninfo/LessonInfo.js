@@ -1,6 +1,5 @@
 //※要追加 :  ・purchasedか何かで受付中のレッスンとそうでないレッスン購入ボタンの表示を変更
 //            ・購入後purchasedの書き換え及びmessageへの移動
-
 import React, { useState } from "react"
 import firebase from "firebase"
 import { useRouter } from "next/router"
@@ -59,7 +58,6 @@ function LessonInfo(props) {
           .then(function (doc) {
             if (doc.exists) {
               const userdata = doc.data()
-              console.log(createrid, userdata)
               setProfileusername(userdata.profile.name)
               setImageurl(userdata.imageurl)
             } else {
@@ -78,6 +76,7 @@ function LessonInfo(props) {
       lessonid: router.query.lessonid,
       buyerid: email,
       createrid: createrid,
+      creatername: profileusername,
       lessonname: lessonname,
       buytime: firebase.firestore.FieldValue.serverTimestamp(),
       trading: true
