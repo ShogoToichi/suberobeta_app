@@ -1,6 +1,6 @@
-import React from "react";
-import Message from "../../../components/message/Message";
-import Layout from "../../../components/normal/Layout";
+import React from "react"
+import Message from "../../../components/message/Message"
+import Layout from "../../../components/normal/Layout"
 
 export default function message() {
   return (
@@ -9,5 +9,5 @@ export default function message() {
         <Message />
       </Layout>
     </div>
-  );
+  )
 }

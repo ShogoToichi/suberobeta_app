@@ -1,4 +1,4 @@
-import css from "styled-jsx/css";
+import css from "styled-jsx/css"
 
 export default (
   <style>{`
@@ -93,4 +93,4 @@ export default (
   padding: 1em;
 }
 `}</style>
-);
+)
