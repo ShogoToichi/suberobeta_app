@@ -9,7 +9,7 @@ import { connect } from "react-redux"
 import Lib from "../../Lib/address_lib"
 import MyLessonListUi from "./parts/MyLessonListUi"
 
-items = "no item"
+let items = "no item"
 
 function MyLessonList(props) {
   // const [items, setItems] = useState("no item")

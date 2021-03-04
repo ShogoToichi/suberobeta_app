@@ -42,6 +42,7 @@ export default function InputForm(props) {
         <TextField
           required
           defaultValue={props.lessonName}
+          // value={props.lessonNameValue}
           id="standard-textarea"
           label="レッスン名"
           fullWidth
@@ -51,6 +52,7 @@ export default function InputForm(props) {
         <TextField
           required
           defaultValue={props.lessonTime}
+          // value={props.lessonTimeValue}
           id="standard-textarea"
           label="日時"
           fullWidth
@@ -85,22 +87,10 @@ export default function InputForm(props) {
             rows={8}
             variant="outlined"
             fullWidth
-            onChange={props.onChangeDescription}
+            onChange={props.onChangeLessonDescription}
             className={classes.contents}
           />
         </div>
-      </div>
-      <div className={classes.btnArea}>
-        {/* <Link href="/mypage"> */}
-          <Button
-            className={classes.addBtn}
-            variant="outlined"
-            size="large"
-            onClick={props.doSubmit}
-          >
-            編 集
-          </Button>
-        {/* </Link> */}
       </div>
     </div>
   )

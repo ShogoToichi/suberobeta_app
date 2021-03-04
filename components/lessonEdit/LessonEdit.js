@@ -6,6 +6,8 @@ import Lib from "../../Lib/address_lib"
 import Title from "../commonParts/Title"
 import InputForm from "./parts/InputForm"
 import { useRouter } from "next/router"
+import SubmitButton from "./parts/SubmitButton"
+import { SystemUpdateAlt } from "@material-ui/icons"
 
 function LessonEdit(props) {
   //使用するステートの設定(Hook)
@@ -15,6 +17,7 @@ function LessonEdit(props) {
   const [lessonTime, setLessonTime] = useState("")
   const [lessonPrice, setLessonPrice] = useState("")
   const [lessonDescription, setLessonDescription] = useState("")
+  const [updata, setUpdata] = useState("")
 
   //初期値を入れたインプットフォームを入れるステート
   const [inputForm, setInputForm] = useState("")
@@ -40,6 +43,7 @@ function LessonEdit(props) {
   const doSubmit = async () => {
     const db = firebase.firestore()
     const email = Lib.encodeEmail(props.email)
+    setUpdata(updata ? false : true)
     await db
       .collection("lessons")
       .doc(router.query.lessonid)
@@ -75,12 +79,16 @@ function LessonEdit(props) {
             lessonTime={doc.data().lessonTime}
             lessonPlace={doc.data().lessonPlace}
             lessonDescription={doc.data().lessonDescription}
+            // lessonNameValue={lessonName}
+            // lessonPriceValue={lessonPrice}
+            // lessonTimeValue={lessonTime}
+            // lessonPlaceValue={lessonPlace}
+            // lessonDescriptionValue={lessonDescription}
             onChangeLessonName={doChangeLessonName}
             onChangeLessonTime={doChangeLessonTime}
             onChangeLessonPlace={doChangeLessonPlace}
             onChangeLessonPrice={doChangeLessonPrice}
             onChangeLessonDescription={doChangeLessonDescription}
-            doSubmit={doSubmit}
           />
         )
       })
@@ -88,6 +96,11 @@ function LessonEdit(props) {
 
   useEffect(() => {
     getCurrentData()
+    doChangeLessonName
+    doChangeLessonPlace
+    doChangeLessonTime
+    doChangeLessonPrice
+    doChangeLessonDescription
     return () => {}
   }, [])
 
@@ -106,6 +119,7 @@ function LessonEdit(props) {
         }
       />
       {inputForm}
+      <SubmitButton onClick={doSubmit}>submit</SubmitButton>
     </div>
   )
 }
