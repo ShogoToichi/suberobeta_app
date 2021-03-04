@@ -1,5 +1,5 @@
-import Layout from "../components/normal/Layout"
-import LessonList from "../components/lessonlist/LessonList"
+import Layout from "../components/common/Layout"
+import LessonList from "../components/lessonList/LessonList"
 
 const LessonListPage = () => (
   <Layout>

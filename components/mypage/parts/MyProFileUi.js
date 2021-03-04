@@ -7,11 +7,11 @@ import Card from "@material-ui/core/Card"
 import CardContent from "@material-ui/core/CardContent"
 import { CardHeader } from "@material-ui/core"
 import Avatar from "@material-ui/core/Avatar"
-import Title from "../../normal_parts/Title"
+import Title from "../../commonParts/Title"
 import { Color } from "../../../static/colors"
 
-const myprofile = makeStyles((theme) => ({
-  myprof: {
+const myProfile = makeStyles((theme) => ({
+  myProfile: {
     width: "80%"
   },
   card: {
@@ -33,18 +33,18 @@ const myprofile = makeStyles((theme) => ({
 }))
 
 export default function MyProfileDetail(props) {
-  const classes = myprofile()
+  const classes = myProfile()
   return (
-    <div>
+    <>
       <Title title={"My Page"} />
-      <div className={classes.myprof}>
+      <div className={classes.myProfile}>
         <Card>
           <CardHeader
             // avatarからIgmに変更する
             avatar={
               <Avatar
                 sizes="string"
-                src={props.imageurl}
+                src={props.imageUrl}
                 className={classes.avatar}
               ></Avatar>
             }
@@ -68,6 +68,6 @@ export default function MyProfileDetail(props) {
           </CardContent>
         </Card>
       </div>
-    </div>
+    </>
   )
 }

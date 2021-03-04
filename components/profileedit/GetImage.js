@@ -10,6 +10,7 @@ import Lib from "../../Lib/address_lib"
 import GetImageUi from "./parts/GetImageUi"
 
 function GetImage(props) {
+  // image, imageUrlはstateじゃなくても大丈夫だろうか．．？
   const [image, setImage] = useState("")
   const [imageUrl, setImageUrl] = useState("")
   const handleImage = (event) => {
@@ -22,7 +23,7 @@ function GetImage(props) {
       console.log("ファイルが選択されていません")
     }
     // アップロード処理
-    const uploadTask = storage.ref(`/profileimages/${image.name}`).put(image)
+    const uploadTask = storage.ref(`/profileImages/${image.name}`).put(image) // profileimages => profileImagesに変更．大丈夫かな？
     uploadTask.on(
       firebase.storage.TaskEvent.STATE_CHANGED,
       next,

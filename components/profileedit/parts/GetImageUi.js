@@ -4,8 +4,8 @@ import { makeStyles } from "@material-ui/styles"
 import Button from "@material-ui/core/Button"
 import { Color } from "../../../static/colors"
 
-const getimage = makeStyles((theme) => ({
-  uploadbtn: {
+const getImage = makeStyles((theme) => ({
+  uploadBtn: {
     backgroundColor: useContext(Color).colors.Green,
     color: "white"
   },
@@ -18,20 +18,20 @@ const getimage = makeStyles((theme) => ({
 }))
 
 export default function GetImage(props) {
-  const classes = getimage()
+  const classes = getImage()
   return (
-    <div>
+    <>
       <form>
         <input type="file" onChange={props.handleImage} />
         <Button
           onClick={props.onSubmit}
           variant="contained"
-          className={classes.uploadbtn}
+          className={classes.uploadBtn}
         >
           アップロード
         </Button>
       </form>
       <img src={props.imageUrl} alt="upload" className={classes.img} />
-    </div>
+    </>
   )
 }

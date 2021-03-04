@@ -11,7 +11,7 @@ function MyProfile(props) {
   // ステートの設定
   const [name, setName] = useState("no data")
   const [introduction, setIntroduction] = useState("no data")
-  const [imageurl, setImageurl] = useState(null)
+  const [imageUrl, setImageUrl] = useState(null)
 
   const getFireData = async () => {
     const db = firebase.firestore()
@@ -22,12 +22,12 @@ function MyProfile(props) {
       .collection("users")
       .doc(email)
       .get()
-      .then(function (doc) {
+      .then((doc) => {
         // 取得したデータを定数に入れてから、ステートに入れる
-        const profiledata = doc.data()
-        setName(profiledata.profile.name)
-        setIntroduction(profiledata.profile.introduction)
-        setImageurl(profiledata.imageurl)
+        const profileData = doc.data()
+        setName(profileData.profile.name)
+        setIntroduction(profileData.profile.introduction)
+        setImageUrl(profileData.imageUrl)
       })
   }
 
@@ -36,13 +36,13 @@ function MyProfile(props) {
   }
 
   return (
-    <div>
+    <>
       <MyProFileUi
-        imageurl={imageurl}
+        imageUrl={imageUrl}
         name={name}
         introduction={introduction}
       />
-    </div>
+    </>
   )
 }
 

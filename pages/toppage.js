@@ -1,6 +1,6 @@
-import Layout from "../components/normal/Layout"
-import TopContents from "../components/toppage/TopContents"
-import Footer from "../components/toppage/Footer"
+import Layout from "../components/common/Layout"
+import TopContents from "../components/topPage/TopContents"
+import Footer from "../components/topPage/Footer"
 import Grid from "@material-ui/core/Grid"
 
 const TopPage = () => (

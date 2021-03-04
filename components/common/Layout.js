@@ -5,13 +5,13 @@
 import React, { Component } from "react"
 import Head from "next/head"
 import HeaderUi from "./Header"
-import Footer from "../toppage/Footer"
+import Footer from "../topPage/Footer"
 // import style from "../static/Style";
 
 class Layout extends Component {
   render() {
     return (
-      <div>
+      <>
         <head>
           <meta charSet="utf-8" />
           <meta
@@ -33,7 +33,7 @@ class Layout extends Component {
           <HeaderUi />
           {this.props.children}
         </body>
-      </div>
+      </>
     )
   }
 }

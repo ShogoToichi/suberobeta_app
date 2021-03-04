@@ -10,12 +10,12 @@ import PhotoCamera from "@material-ui/icons/PhotoCamera"
 import ButtonGroup from "@material-ui/core/ButtonGroup"
 import { Color } from "../../../static/colors"
 
-const profileedit = makeStyles((props) => ({
+const profileEdit = makeStyles((props) => ({
   name: {
     marginTop: "40px",
     marginLeft: "20px"
   },
-  uploadtext: {
+  uploadText: {
     marginTop: "40px",
     marginLeft: "20px"
   },
@@ -26,7 +26,7 @@ const profileedit = makeStyles((props) => ({
     marginTop: "40px",
     width: "80%"
   },
-  buttongroup: {
+  buttonGroup: {
     marginTop: "40px",
     textAlign: "center"
   },
@@ -39,15 +39,15 @@ const profileedit = makeStyles((props) => ({
 }))
 
 export default function ProfileEdit(props) {
-  const classes = profileedit()
+  const classes = profileEdit()
   return (
-    <div>
+    <>
       <div className={classes.name}>
         <Typography variant="h8">ユーザ名</Typography>
         <TextField label="ユーザ名" maxWidth onChange={props.doChangeName} />
       </div>
 
-      <div className={classes.uploadtext}>
+      <div className={classes.uploadText}>
         <Typography variant="h8">プロフィール画像のアップロード</Typography>
       </div>
 
@@ -68,7 +68,7 @@ export default function ProfileEdit(props) {
         />
       </div>
 
-      <div className={classes.buttongroup}>
+      <div className={classes.buttonGroup}>
         <ButtonGroup disableElevation variant="outlined">
           <Link href="/mypage">
             <Button
@@ -86,6 +86,6 @@ export default function ProfileEdit(props) {
           </Link>
         </ButtonGroup>
       </div>
-    </div>
+    </>
   )
 }

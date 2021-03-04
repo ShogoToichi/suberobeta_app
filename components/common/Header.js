@@ -27,7 +27,7 @@ function Header(props) {
   const classes = useStyles()
 
   return (
-    <div>
+    <>
       <AppBar position="static" className={classes.bar}>
         <Toolbar>
           <Link href="/toppage">
@@ -52,7 +52,7 @@ function Header(props) {
           )}
         </Toolbar>
       </AppBar>
-    </div>
+    </>
   )
 }
 

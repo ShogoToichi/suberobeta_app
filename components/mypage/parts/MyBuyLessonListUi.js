@@ -5,7 +5,7 @@ import Box from "@material-ui/core/Box"
 import Typography from "@material-ui/core/Typography"
 import { Color } from "../../../static/colors"
 
-const mybuylessonlist = makeStyles((theme) => ({
+const myBuyLessonList = makeStyles((theme) => ({
   list: {
     marginTop: "40px",
     width: "80%"
@@ -15,7 +15,7 @@ const mybuylessonlist = makeStyles((theme) => ({
     fontWeight: "bold",
     backgroundColor: useContext(Color).colors.Green
   },
-  addbtn: {
+  addBtn: {
     textAlign: "center"
   },
   btn: {
@@ -25,7 +25,7 @@ const mybuylessonlist = makeStyles((theme) => ({
 }))
 
 export default function MyBuyLessonListUi(props) {
-  const classes = mybuylessonlist()
+  const classes = myBuyLessonList()
   return (
     <div className={classes.list}>
       <div className={classes.list}>

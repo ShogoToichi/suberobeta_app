@@ -11,7 +11,7 @@ import Button from "@material-ui/core/Button"
 import Link from "next/link"
 import { Color } from "../../../static/colors"
 
-const toptitle = makeStyles((theme) => ({
+const topTitle = makeStyles((theme) => ({
   container: {
     backgroundColor: useContext(Color).colors.bgGreen,
     marginTop: "80px"
@@ -22,9 +22,9 @@ const toptitle = makeStyles((theme) => ({
 }))
 
 export default function DescriotionData(props) {
-  const classes = toptitle()
+  const classes = topTitle()
   return (
-    <div>
+    <>
       <Container maxWidth="md" component="main" className={classes.container}>
         <Grid container>
           <Grid xs={12}>
@@ -59,6 +59,6 @@ export default function DescriotionData(props) {
           </Grid>
         </Grid>
       </Container>
-    </div>
+    </>
   )
 }

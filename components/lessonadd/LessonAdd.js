@@ -3,7 +3,7 @@ import firebase from "firebase"
 import "firebase/storage"
 import { connect } from "react-redux"
 import Lib from "../../Lib/address_lib"
-import Title from "../normal_parts/Title"
+import Title from "../commonParts/Title"
 import InputForm from "./parts/InputForm"
 
 function LessonAdd(props) {

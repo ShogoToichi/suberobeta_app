@@ -7,7 +7,7 @@ import firebase from "firebase"
 import { useRouter } from "next/router"
 import Lib from "../../Lib/address_lib"
 import { connect } from "react-redux"
-import "firebase/storage"
+import "firebase/st../commonParts/Title
 import MessageAdd from "./MessageAdd"
 import Chat from "./parts/Chat"
 import Title from "../normal_parts/Title"

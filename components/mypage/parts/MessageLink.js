@@ -6,38 +6,38 @@ import Button from "@material-ui/core/Button"
 import { makeStyles } from "@material-ui/styles"
 
 export default function MessageLink(props) {
-  const mylessonlist = makeStyles({
-    lessonitem: {
+  const myLessonList = makeStyles({
+    lessonItem: {
       margin: "30px 30px 30px 30px"
     },
-    addbtn: {
+    addBtn: {
       textAlign: "center"
     },
-    messagebtn: {
+    messageBtn: {
       backgroundColor: "#DDD",
       color: "black"
     }
   })
 
-  const classes = mylessonlist()
+  const classes = myLessonList()
 
   return (
-    <div>
-      <ListItem divider={true} className={classes.lessonitem}>
+    <>
+      <ListItem divider={true} className={classes.lessonItem}>
         <ListItemText
           style={{ fontSize: "30px" }}
-          primary={`${props.lessonname}　　${props.username}さんとのメッセージ`}
+          primary={`${props.lessonName}　　${props.username}さんとのメッセージ`}
         />
-        <Link href={`/message/${props.lessonid}/${props.buyerid}`}>
+        <Link href={`/message/${props.lessonId}/${props.buyerId}`}>
           <Button
             size="large"
-            className={classes.messagebtn}
+            className={classes.messageBtn}
             onClick={props.onClick}
           >
             取引メッセージ
           </Button>
         </Link>
       </ListItem>
-    </div>
+    </>
   )
 }

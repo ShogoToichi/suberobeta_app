@@ -4,13 +4,13 @@ import React from "react"
 import MyProfile from "./MyProfile"
 import MyMessageList from "./MyMessageList"
 
-export default function Mypage() {
-  return (
-    <div>
-      <MyProfile />
-      <MyLessonList />
-      <MyMessageList />
-      {/* <MyBuyLessonList /> */}
-    </div>
-  )
-}
+const Mypage = () => (
+  <>
+    <MyProfile />
+    <MyLessonList />
+    <MyMessageList />
+    {/* <MyBuyLessonList /> */}
+  </>
+)
+
+export default Mypage

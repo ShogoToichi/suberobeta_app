@@ -17,40 +17,40 @@ function MyBuyLessonList(props) {
 
   const getFireData = async () => {
     const db = firebase.firestore()
-    const lessondata = []
-    const lessonid = []
-    const lessonitems = []
+    const lessonData = []
+    const lessonId = []
+    const lessonItems = []
     const email = Lib.encodeEmail(props.email)
 
     if (props.login) {
       await db
         .collection("lessons")
-        .where("buyerid", "==", email)
+        .where("buyerId", "==", email)
         .get()
-        .then(function (querySnapshot) {
-          querySnapshot.forEach(function (doc) {
-            lessondata.unshift(doc.data())
-            lessonid.unshift(doc.id)
+        .then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            lessonData.unshift(doc.data())
+            lessonId.unshift(doc.id)
           })
-          for (let i in lessonid) {
-            let id = lessonid[i]
-            let name = lessondata[i].lessonname
-            let place = lessondata[i].lessonplace
-            let time = lessondata[i].lessontime
-            let text = lessondata[i].lessontext
-            let price = lessondata[i].lessonprice
-            lessonitems.push(
+          for (let i in lessonId) {
+            let lessonId = lessonId[i]
+            let lessonName = lessonData[i].lessonName
+            let lessonPlace = lessonData[i].lessonPlace
+            let lessonTime = lessonData[i].lessonTime
+            let lessonDescription = lessonData[i].lessonDescription
+            let lessonPrice = lessonData[i].lessonPrice
+            lessonItems.push(
               <MyLesson
-                lessonid={id}
-                name={name}
-                place={place}
-                time={time}
-                text={text}
-                price={price}
+                lessonId={lessonId}
+                lessonName={lessonName}
+                lessonPlace={lessonPlace}
+                lessonTime={lessonTime}
+                lessonDescription={lessonDescription}
+                lessonPrice={lessonPrice}
               />
             )
           }
-          setItems(lessonitems)
+          setItems(lessonItems)
         })
     } else {
       setItems("購入済みのレッスンはありません")
@@ -62,9 +62,9 @@ function MyBuyLessonList(props) {
   }
 
   return (
-    <div>
+    <>
       <MyBuyLessonListUi items={items} />
-    </div>
+    </>
   )
 }
 

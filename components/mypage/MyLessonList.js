@@ -14,25 +14,25 @@ function MyLessonList(props) {
 
   const getFireData = async () => {
     const db = firebase.firestore()
-    const lessonitems = []
+    const lessonItems = []
     const email = Lib.encodeEmail(props.email)
 
     if (props.login) {
       await db
         .collection("lessons")
-        .where("createrid", "==", email)
+        .where("createrId", "==", email)
         .get()
         .then(function (querySnapshot) {
-          querySnapshot.forEach(function (doc) {
-            lessonitems.push(
+          querySnapshot.forEach((doc) => {
+            lessonItems.push(
               <MyLesson
-                lessonid={doc.id}
-                name={doc.data().lessonname}
-                place={doc.data().lessonplace}
+                lessonId={doc.id}
+                lessonName={doc.data().lessonName}
+                lessonPlace={doc.data().lessonPlace}
               />
             )
           })
-          setItems(lessonitems)
+          setItems(lessonItems)
         })
     } else {
       setItems("投稿したレッスンはありません")
@@ -44,9 +44,9 @@ function MyLessonList(props) {
   }
 
   return (
-    <div>
+    <>
       <MyLessonListUi items={items} getFireData={getFireData} />
-    </div>
+    </>
   )
 }
 

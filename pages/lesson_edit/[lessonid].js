@@ -1,4 +1,4 @@
-import Layout from "../../components/normal/Layout"
+import Layout from "../../components/common/Layout"
 import LessonEdit from "../../components/LessonEdit/LessonEdit"
 
 export default () => (

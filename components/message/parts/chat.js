@@ -1,5 +1,5 @@
 import React from "react"
-import Img from "../../normal_parts/Img"
+import Img from "../../commonParts/Img"
 
 export default function Chat(props) {
   const userImg = {

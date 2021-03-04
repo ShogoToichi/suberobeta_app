@@ -1,5 +1,5 @@
 //値を渡してレッスンを表示する箱
-//Linkタグのところはlessoninfo/[lessonid]にページ移動する処理
+//Linkタグのところはlesson_info/[lessonId]にページ移動する処理
 
 import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
@@ -10,7 +10,7 @@ import CardContent from "@material-ui/core/CardContent"
 import { CardHeader } from "@material-ui/core"
 import Avatar from "@material-ui/core/Avatar"
 
-const lessonlist = makeStyles({
+const lessonList = makeStyles({
   rayout: {
     float: "center"
   },
@@ -20,7 +20,7 @@ const lessonlist = makeStyles({
     margin: "8px"
   },
 
-  lessonlist: {
+  lessonList: {
     width: "600px",
     margin: "5px",
     marginLeft: "70px"
@@ -31,44 +31,44 @@ const lessonlist = makeStyles({
     color: "black",
     backgroundColor: "#5B9"
   },
-  cardheader: {
+  cardHeader: {
     cursor: "pointer"
   }
 })
 
 export default function Lesson(props) {
-  const classes = lessonlist()
+  const classes = lessonList()
   return (
-    <div className={classes.lessonlist}>
+    <div className={classes.lessonList}>
       <Card>
         <Link
-          as={`/lesson_info/${props.lessonid}`}
-          href="/lesson_info/[lessonid]"
+          as={`/lesson_info/${props.lessonId}`}
+          href="/lesson_info/[lessonId]"
         >
           <CardHeader
             avatar={
               <Avatar
                 aria-label="recipe"
                 className={classes.avatar}
-                src={props.imageurl}
+                src={props.imageUrl}
               ></Avatar>
             }
-            className={classes.cardheader}
-            title={props.name}
+            className={classes.cardHeader}
+            title={props.lessonName}
           />
         </Link>
         <CardContent>
           <Typography style={{ marginBottom: "5px" }} variant="body2">
-            日時:{props.time}
+            日時:{props.lessonTime}
           </Typography>
           <Typography style={{ marginBottom: "5px" }} variant="body2">
-            場所：{props.place}
+            場所：{props.lessonPlace}
           </Typography>
           <Typography style={{ marginBottom: "5px" }} variant="body2">
-            料金：{props.price}
+            料金：{props.lessonPrice}
           </Typography>
           <Typography style={{ marginBottom: "5px" }} variant="body2">
-            レッスン内容：{props.text}
+            レッスン内容：{props.lessonDescription}
           </Typography>
         </CardContent>
       </Card>

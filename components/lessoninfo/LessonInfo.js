@@ -5,7 +5,7 @@ import { connect } from "react-redux"
 import Lib from "../../Lib/address_lib"
 import BuyBtn from "./parts/BuyBtn"
 import LessonDitail from "./parts/LessonDitail"
-import Title from "../normal_parts/Title"
+import Title from "../commonParts/Title"
 import EditBtn from "./parts/EditBtn"
 
 function LessonInfo(props) {

@@ -4,8 +4,8 @@ import { makeStyles } from "@material-ui/core/styles"
 import { Color } from "../../../static/colors"
 import DescriptionData from "./DescriptionData"
 
-const toptitle = makeStyles((theme) => ({
-  maintitle: {
+const topTitle = makeStyles((theme) => ({
+  mainTitle: {
     color: useContext(Color).colors.header,
     marginTop: "200px",
     textWeight: "bold",
@@ -14,11 +14,11 @@ const toptitle = makeStyles((theme) => ({
 }))
 
 export default function Description(props) {
-  const classes = toptitle()
+  const classes = topTitle()
 
   return (
-    <div>
-      <div className={classes.maintitle}>
+    <>
+      <div className={classes.mainTitle}>
         <Typography variant="h5">
           「教えたい人」と「学びたい人」のレッスンプラットフォーム
         </Typography>
@@ -50,6 +50,6 @@ export default function Description(props) {
         herf={"/lesson_list"}
         btnName={"レッスンを探す"}
       />
-    </div>
+    </>
   )
 }

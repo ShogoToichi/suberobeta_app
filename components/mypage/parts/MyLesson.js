@@ -6,38 +6,38 @@ import Button from "@material-ui/core/Button"
 import { makeStyles } from "@material-ui/styles"
 
 export default function Lesson(props) {
-  const mylessonlist = makeStyles({
-    lessonitem: {
+  const myLessonList = makeStyles({
+    lessonItem: {
       margin: "30px 30px 30px 30px"
     },
-    addbtn: {
+    addBtn: {
       textAlign: "center"
     },
-    messagebtn: {
+    messageBtn: {
       backgroundColor: "#DDD",
       color: "black"
     }
   })
 
-  const classes = mylessonlist()
+  const classes = myLessonList()
 
   return (
-    <div>
-      <ListItem divider={true} className={classes.lessonitem}>
+    <>
+      <ListItem divider={true} className={classes.lessonItem}>
         <ListItemText
           style={{ fontSize: "30px" }}
-          primary={`${props.name}　in ${props.place}`}
+          primary={`${props.lessonName}　in ${props.lessonPlace}`}
         />
-        {/* <Link as={`/message/${props.lessonid}`} href="/message/[lessonid]"> */}
+        {/* <Link as={`/message/${props.lessonId}`} href="/message/[lessonId]"> */}
         <Button
           size="large"
-          className={classes.messagebtn}
+          className={classes.messageBtn}
           // onClick={props.onClick}
         >
           レッスン編集
         </Button>
         {/* </Link> */}
       </ListItem>
-    </div>
+    </>
   )
 }

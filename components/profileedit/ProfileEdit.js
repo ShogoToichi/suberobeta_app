@@ -5,7 +5,7 @@ import firebase from "firebase"
 import "firebase/storage"
 import { connect } from "react-redux"
 import Lib from "../../Lib/address_lib"
-import Title from "../normal_parts/Title"
+import Title from "../commonParts/Title"
 import ProfileEditUi from "./parts/ProfileEditUi"
 
 function ProfileEdit(props) {
@@ -40,14 +40,14 @@ function ProfileEdit(props) {
         },
         { merge: true }
       )
-      .then(function () {
+      .then(() => {
         //いろいろ確認に利用、いらない処理
         console.log(name, introduction)
       })
   }
 
   return (
-    <div>
+    <>
       <Title title={"マイプロフィール編集"} />
       <ProfileEditUi
         doChangeName={doChangeName}
@@ -55,7 +55,7 @@ function ProfileEdit(props) {
         doChangeIntroduction={doChangeIntroduction}
         doSubmit={doSubmit}
       />
-    </div>
+    </>
   )
 }
 

@@ -1,9 +1,9 @@
-import Layout from "../components/normal/Layout"
-import Test from "../components/mypage/MyMessageList"
+import Layout from "../components/common/Layout"
+import Test from "../components/myPage/MyMessageList"
 import Grid from "@material-ui/core/Grid"
 
 const IndexPage = () => (
-  <Layout header="トップページ" title="Top page.">
+  <Layout header="トップページ" title="Top Page.">
     <Test />
   </Layout>
 )
