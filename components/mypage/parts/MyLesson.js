@@ -1,5 +1,5 @@
 import React from "react"
-// import Link from "next/link"
+import Link from "next/link"
 import ListItem from "@material-ui/core/ListItem"
 import ListItemText from "@material-ui/core/ListItemText"
 import Button from "@material-ui/core/Button"
@@ -28,7 +28,7 @@ export default function Lesson(props) {
           style={{ fontSize: "30px" }}
           primary={`${props.lessonName}　in ${props.lessonPlace}`}
         />
-        {/* <Link as={`/message/${props.lessonId}`} href="/message/[lessonId]"> */}
+        <Link href={`/lesson_edit/${props.lessonId}`}>
         <Button
           size="large"
           className={classes.messageBtn}
@@ -36,7 +36,7 @@ export default function Lesson(props) {
         >
           レッスン編集
         </Button>
-        {/* </Link> */}
+        </Link>
       </ListItem>
     </>
   )

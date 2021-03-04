@@ -11,6 +11,7 @@ import EditBtn from "./parts/EditBtn"
 let createrId = ""
 let createrName = ""
 let createrImageUrl = ""
+let buyerName=""
 let lessonName = ""
 let lessonPlace = ""
 let lessonPrice = ""
@@ -18,6 +19,7 @@ let lessonDescription = ""
 let lessonTime = ""
 let lessonData = ""
 let userData = ""
+const email = Lib.encodeEmail(props.email)
 
 function LessonInfo(props) {
   //強制レンダリング用ステート
@@ -54,27 +56,30 @@ function LessonInfo(props) {
       //if文の処理はエラーがあった時のための処理
       //ネット記事のコピペなので、必要性がどれほどあるかは謎
       .then((doc) => {
-        if (doc.exists) {
           userData = doc.data()
           createrName = userData.profile.name
           createrImageUrl = userData.imageUrl
-        } else {
-          console.log("no data")
-        }
       })
-      .catch((error) => {
-        console.log("Error getting document:", error)
-      })
-    //関数の最後で強制的にレンダリング
-    setUpdata(update ? false : true)
-  }
 
+      await db
+      .collection("users")
+      .doc(email)
+      .get()
+      .then((doc)=>{
+        buyerName = doc.data().profile.name
+      })
+
+      //関数の最後で強制的にレンダリング
+      setUpdata(update ? false : true)
+    }
+
+      
   //firebaseのmessagesに必要な情報を書き込む
-  const email = Lib.encodeEmail(props.email)
   const doBuy = async () => {
     await db.collection("messages").add({
       lessonId: router.query.lessonid,
       buyerId: email,
+      buyerName:buyerName,
       createrId: createrId,
       createrName: createrName,
       lessonName: lessonName,
@@ -85,7 +90,6 @@ function LessonInfo(props) {
 
   useEffect(() => {
     getLessonData()
-    return () => {}
   }, [])
 
   return (

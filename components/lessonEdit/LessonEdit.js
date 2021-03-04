@@ -16,7 +16,7 @@ function LessonEdit(props) {
   const [lessonPrice, setLessonPrice] = useState("")
   const [lessonDescription, setLessonDescription] = useState("")
 
-  //初期値を入れたインプットフォームを入れるsテート
+  //初期値を入れたインプットフォームを入れるステート
   const [inputForm, setInputForm] = useState("")
 
   //inputに入力された処理をeで受け取ってステートに入れる関数
@@ -98,8 +98,9 @@ function LessonEdit(props) {
   return (
     <div>
       <button onClick={lessonnameconso}>conso</button>
+      <button onClick={doSubmit}>submit</button>
       <Title
-        title={"新規レッスンの追加"}
+        title={"レッスンの編集"}
         subtitle={
           "自分の能力を生かして、ウィンタースポーツの輪を広げましょう。"
         }
