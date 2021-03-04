@@ -11,7 +11,7 @@ import EditBtn from "./parts/EditBtn"
 let createrId = ""
 let createrName = ""
 let createrImageUrl = ""
-let buyerName=""
+let buyerName = ""
 let lessonName = ""
 let lessonPlace = ""
 let lessonPrice = ""
@@ -22,6 +22,7 @@ let userData = ""
 
 function LessonInfo(props) {
   const email = Lib.encodeEmail(props.email)
+
   //強制レンダリング用ステート
   const [update, setUpdata] = useState(false)
 
@@ -35,8 +36,7 @@ function LessonInfo(props) {
       .collection("lessons")
       .doc(router.query.lessonid)
       .get()
-      //データ取得後の処理
-      //取得したデータをlessondataにしまってから、それをステートに突っ込む
+      //取得したデータをlessondataにしまってから、それを変数に突っ込む
       .then((doc) => {
         lessonData = doc.data()
         createrId = lessonData.createrId
@@ -53,38 +53,36 @@ function LessonInfo(props) {
       .collection("users")
       .doc(createrId)
       .get()
-      //if文の処理はエラーがあった時のための処理
-      //ネット記事のコピペなので、必要性がどれほどあるかは謎
       .then((doc) => {
-          userData = doc.data()
-          createrName = userData.profile.name
-          createrImageUrl = userData.imageUrl
+        userData = doc.data()
+        createrName = userData.profile.name
+        createrImageUrl = userData.imageUrl
       })
 
-      await db
+    //購入したときに購入者の名前もfirebaseに書き込みたいから取得する
+    await db
       .collection("users")
       .doc(email)
       .get()
-      .then((doc)=>{
+      .then((doc) => {
         buyerName = doc.data().profile.name
       })
 
-      //関数の最後で強制的にレンダリング
-      setUpdata(update ? false : true)
-    }
+    //関数の最後で強制的にレンダリング
+    setUpdata(update ? false : true)
+  }
 
-      
   //firebaseのmessagesに必要な情報を書き込む
   const doBuy = async () => {
     await db.collection("messages").add({
       lessonId: router.query.lessonid,
       buyerId: email,
-      buyerName:buyerName,
+      buyerName: buyerName,
       createrId: createrId,
       createrName: createrName,
       lessonName: lessonName,
       buyTime: firebase.firestore.FieldValue.serverTimestamp(),
-      trading: true //取引中かどうかの真偽値、まだどこでも利用してない
+      trading: true //取引中かどうかの真偽値、メッセージ検索で使用中
     })
   }
 
@@ -94,17 +92,13 @@ function LessonInfo(props) {
 
   return (
     <div style={{ marginTop: "30px" }}>
-      <button onClick={getLessonData}>getfiredaata</button>
-      <button onClick={doBuy}>dobuy</button>
-      {/* <button onClick={getLessonData}>yomikomi</button> */}
       <Title title={lessonName} />
-      {/* 作成者がレッスンページを開くと、レッスン編集ボタンが表示される
-      リンクは今のところマイページにしてある */}
+      {/* クリエーターIDとじぶんのIDが一致していたらレッスン編集ボタンを表示 */}
       {email == createrId ? (
-        <EditBtn />
+        <EditBtn lessonId={router.query.lessonid} />
       ) : (
         <BuyBtn
-          lessonId={router.query.lessonId}
+          lessonId={router.query.lessonid}
           buyerId={email}
           onClick={doBuy}
         />

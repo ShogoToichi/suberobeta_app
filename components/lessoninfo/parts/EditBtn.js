@@ -21,13 +21,8 @@ export default function EditBtn(props) {
   const classes = plofile()
   return (
     <div className={classes.btnArea}>
-      <Link href={"/mypage"}>
-        <Button
-          className={classes.editBtn}
-          size="large"
-          variant="outlined"
-          onClick={props.onClick}
-        >
+      <Link href={`/lesson_edit/${props.lessonId}`}>
+        <Button className={classes.editBtn} size="large" variant="outlined">
           レッスン編集
         </Button>
       </Link>
