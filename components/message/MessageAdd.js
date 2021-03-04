@@ -26,17 +26,17 @@ function MessageAdd(props) {
   const doSubmit = async () => {
     const db = firebase.firestore()
     const email = Lib.encodeEmail(props.email)
-    const buyerEmail = Lib.encodeEmail(router.query.buyerId)
+    const buyerEmail = Lib.encodeEmail(router.query.buyerid)
     await db
       //messageサブコレクションを参照するために必要なmessages内のドキュメントのidを先に参照している
       .collection("messages")
-      .where("lessonId", "==", router.query.lessonId)
-      .where("buyerId", "==", router.query.buyerId)
+      .where("lessonId", "==", router.query.lessonid)
+      .where("buyerId", "==", router.query.buyerid)
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          console.log(router.query.lessonId)
-          console.log(router.query.buyerId)
+          console.log(router.query.lessonid)
+          console.log(router.query.buyerid)
           const id = doc.id
           db.collection("messages")
             .doc(id) //先に取得したIDを使ってサブコレクションを参照

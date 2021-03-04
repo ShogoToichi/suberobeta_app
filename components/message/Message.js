@@ -34,7 +34,7 @@ function Message(props) {
 
   const router = useRouter()
   const email = Lib.encodeEmail(props.email)
-  const buyerId = router.query.buyerId
+  const buyerId = router.query.buyerid
   const db = firebase.firestore()
 
   //lessondata及びmessageを取得
@@ -43,43 +43,41 @@ function Message(props) {
     //先にレッスン名と作成者のidを取得
     await db
       .collection("lessons")
-      .doc(router.query.lessonId)
+      .doc(router.query.lessonid)
       .get()
       //取得したデータをステートに突っ込む
       .then(function (doc) {
-        const lessonData = doc.data()
-        setCreaterId(lessonData.createrId)
-        setLessonName(lessonData.lessonName)
-        console.log(createrId)
+        let lessonData = doc.data()
+        setLessonName(doc.data().lessonName)
+        setCreaterId(doc.data().createrId)
       })
-    //作成者の情報を取得
-    await db
-      .collection("users")
-      .doc(createrId)
-      .get()
-      .then(function (doc) {
-        const createrData = doc.data()
-        setCreaterName(createrData.profile.name)
-        setCreaterImage(createrData.imageUrl)
-        console.log(createrName)
-      })
-    //購入者の情報を取得
-    await db
-      .collection("users")
-      .doc(buyerId)
-      .get()
-      .then(function (doc) {
-        const buyerData = doc.data()
-        setBuyerName(buyerData.profile.name)
-        setBuyerImage(buyerData.imageUrl)
-      })
+      //作成者の情報を取得
+      await db
+        .collection("users")
+        .doc(createrId)
+        .get()
+        .then(function (doc) {
+          const createrData = doc.data()
+          setCreaterName(createrData.profile.name)
+          setCreaterImage(createrData.imageUrl)
+        })
+      //購入者の情報を取得
+      await db
+        .collection("users")
+        .doc(buyerId)
+        .get()
+        .then(function (doc) {
+          const buyerData = doc.data()
+          setBuyerName(buyerData.profile.name)
+          setBuyerImage(buyerData.imageUrl)
+        })
 
     //メッセージ情報取得処理
     //messageが入っているサブコレクションがあるドキュメントidを取得してから、messageサブコレクションを参照
     await db
       .collection("messages")
-      .where("lessonId", "==", router.query.lessonId)
-      .where("buyerId", "==", router.query.buyerId)
+      .where("lessonId", "==", router.query.lessonid)
+      .where("buyerId", "==", router.query.buyerid)
       .get()
       .then(function (querySnapshot) {
         querySnapshot.forEach(function (doc) {
