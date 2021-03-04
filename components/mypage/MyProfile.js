@@ -7,11 +7,15 @@ import { connect } from "react-redux"
 import Lib from "../../Lib/address_lib"
 import MyProfileUi from "./parts/MyProfileUi"
 
+let name = "no data"
+let introduction = "no data"
+let imageUrl = null
+
 function MyProfile(props) {
-  // ステートの設定
-  const [name, setName] = useState("no data")
-  const [introduction, setIntroduction] = useState("no data")
-  const [imageUrl, setImageUrl] = useState(null)
+  // const [name, setName] = useState("no data")
+  // const [introduction, setIntroduction] = useState("no data")
+  // const [imageUrl, setImageUrl] = useState(null)
+  const [update, setUpdate] = useState(false)
 
   const getFireData = async () => {
     const db = firebase.firestore()
@@ -25,10 +29,14 @@ function MyProfile(props) {
       .then((doc) => {
         // 取得したデータを定数に入れてから、ステートに入れる
         const profileData = doc.data()
-        setName(profileData.profile.name)
-        setIntroduction(profileData.profile.introduction)
-        setImageUrl(profileData.imageUrl)
+        // setName(profileData.profile.name)
+        // setIntroduction(profileData.profile.introduction)
+        // setImageUrl(profileData.imageUrl)
+        name = profileData.profile.name
+        introduction = profileData.profile.introduction
+        imageUrl = profileData.imageUrl
       })
+    setUpdate(update ? false : true)
   }
 
   if (name == "no data") {
@@ -36,13 +44,7 @@ function MyProfile(props) {
   }
 
   return (
-    <>
-      <MyProfileUi
-        imageUrl={imageUrl}
-        name={name}
-        introduction={introduction}
-      />
-    </>
+    <MyProfileUi imageUrl={imageUrl} name={name} introduction={introduction} />
   )
 }
 

@@ -9,8 +9,11 @@ import { connect } from "react-redux"
 import Lib from "../../Lib/address_lib"
 import MyLessonListUi from "./parts/MyLessonListUi"
 
+items = "no item"
+
 function MyLessonList(props) {
-  const [items, setItems] = useState("no item")
+  // const [items, setItems] = useState("no item")
+  const [update, setUpdate] = useState(false)
 
   const getFireData = async () => {
     const db = firebase.firestore()
@@ -32,22 +35,21 @@ function MyLessonList(props) {
               />
             )
           })
-          setItems(lessonItems)
+          // setItems(lessonItems)
+          items = lessonItems
         })
     } else {
-      setItems("投稿したレッスンはありません")
+      // setItems("投稿したレッスンはありません")
+      items = "投稿したレッスンはありません"
     }
+    setUpdate(update ? false : true)
   }
 
   if (items == "no item") {
     getFireData()
   }
 
-  return (
-    <>
-      <MyLessonListUi items={items} getFireData={getFireData} />
-    </>
-  )
+  return <MyLessonListUi items={items} getFireData={getFireData} />
 }
 
 MyLessonList = connect((state) => state)(MyLessonList)
