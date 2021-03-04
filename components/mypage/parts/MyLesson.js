@@ -29,13 +29,13 @@ export default function Lesson(props) {
           primary={`${props.lessonName}　in ${props.lessonPlace}`}
         />
         <Link href={`/lesson_edit/${props.lessonId}`}>
-        <Button
-          size="large"
-          className={classes.messageBtn}
-          // onClick={props.onClick}
-        >
-          レッスン編集
-        </Button>
+          <Button
+            size="large"
+            className={classes.messageBtn}
+            // onClick={props.onClick}
+          >
+            レッスン編集
+          </Button>
         </Link>
       </ListItem>
     </>

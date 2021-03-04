@@ -1,3 +1,6 @@
+//ちょっとごり押し気味なコード
+//知識がついたり、余裕ができたら修正しよう
+
 import React, { useEffect, useState, useCallback } from "react"
 import firebase from "firebase"
 import "firebase/storage"
@@ -10,16 +13,14 @@ import SubmitButton from "./parts/SubmitButton"
 import { SystemUpdateAlt } from "@material-ui/icons"
 
 function LessonEdit(props) {
-  //使用するステートの設定(Hook)
-
+  //使用するステートの設定、上の5個はテキストフィールドの値を見るためのやつ
   const [lessonName, setLessonName] = useState("")
   const [lessonPlace, setLessonPlace] = useState("")
   const [lessonTime, setLessonTime] = useState("")
   const [lessonPrice, setLessonPrice] = useState("")
   const [lessonDescription, setLessonDescription] = useState("")
-  const [updata, setUpdata] = useState("")
 
-  //初期値を入れたインプットフォームを入れるステート
+  //初期値を入れたインプットフォームコンポーネントを入れるステート
   const [inputForm, setInputForm] = useState("")
 
   //inputに入力された処理をeで受け取ってステートに入れる関数
@@ -43,23 +44,16 @@ function LessonEdit(props) {
   const doSubmit = async () => {
     const db = firebase.firestore()
     const email = Lib.encodeEmail(props.email)
-    setUpdata(updata ? false : true)
-    await db
-      .collection("lessons")
-      .doc(router.query.lessonid)
-      .set(
-        {
-          lessonName: lessonName,
-          lessonPlace: lessonPlace,
-          lessonPrice: lessonPrice,
-          lessonDescription: lessonDescription,
-          lessonTime: lessonTime
-        },
-        { merge: true }
-      )
-      .then(function () {
-        console.log(lessonName)
-      })
+    await db.collection("lessons").doc(router.query.lessonid).set(
+      {
+        lessonName: lessonName,
+        lessonPlace: lessonPlace,
+        lessonPrice: lessonPrice,
+        lessonDescription: lessonDescription,
+        lessonTime: lessonTime
+      },
+      { merge: true }
+    )
   }
 
   //現在のデータの取得及びインプットフォームの作成
@@ -72,6 +66,14 @@ function LessonEdit(props) {
       .doc(router.query.lessonid)
       .get()
       .then((doc) => {
+        //テキストボックスの中身を書き換えないと、それぞれのステートが初期値から変更されない。それぞれのステートに現在のレッスン情報を入れる
+        //この処理がないと、書き換えが行われなかった値がステートを定義した時の初期値の" "になってしまう
+        setLessonName(doc.data().lessonName)
+        setLessonTime(doc.data().lessonTime)
+        setLessonPlace(doc.data().lessonPlace)
+        setLessonPrice(doc.data().lessonPrice)
+        setLessonDescription(doc.data().lessonDescription)
+        //firebaseから取得した現在のレッスン情報をInputFormコンポーネントのそれぞれのテキストボックスのdefaultValueに渡したものをステートに代入している
         setInputForm(
           <InputForm
             lessonName={doc.data().lessonName}
@@ -79,11 +81,7 @@ function LessonEdit(props) {
             lessonTime={doc.data().lessonTime}
             lessonPlace={doc.data().lessonPlace}
             lessonDescription={doc.data().lessonDescription}
-            // lessonNameValue={lessonName}
-            // lessonPriceValue={lessonPrice}
-            // lessonTimeValue={lessonTime}
-            // lessonPlaceValue={lessonPlace}
-            // lessonDescriptionValue={lessonDescription}
+            //onChange属性の設定
             onChangeLessonName={doChangeLessonName}
             onChangeLessonTime={doChangeLessonTime}
             onChangeLessonPlace={doChangeLessonPlace}
@@ -96,22 +94,11 @@ function LessonEdit(props) {
 
   useEffect(() => {
     getCurrentData()
-    doChangeLessonName
-    doChangeLessonPlace
-    doChangeLessonTime
-    doChangeLessonPrice
-    doChangeLessonDescription
     return () => {}
   }, [])
 
-  const lessonnameconso = () => {
-    console.log(lessonName)
-  }
-
   return (
     <div>
-      <button onClick={lessonnameconso}>conso</button>
-      <button onClick={doSubmit}>submit</button>
       <Title
         title={"レッスンの編集"}
         subtitle={

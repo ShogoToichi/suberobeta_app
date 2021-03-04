@@ -42,7 +42,6 @@ export default function InputForm(props) {
         <TextField
           required
           defaultValue={props.lessonName}
-          // value={props.lessonNameValue}
           id="standard-textarea"
           label="レッスン名"
           fullWidth
@@ -52,7 +51,6 @@ export default function InputForm(props) {
         <TextField
           required
           defaultValue={props.lessonTime}
-          // value={props.lessonTimeValue}
           id="standard-textarea"
           label="日時"
           fullWidth

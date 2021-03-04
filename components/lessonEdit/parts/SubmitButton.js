@@ -1,5 +1,5 @@
 import Button from "@material-ui/core/Button"
-import React, {useContext} from "react"
+import React, { useContext } from "react"
 import Link from "next/link"
 import { makeStyles } from "@material-ui/styles"
 import { Color } from "../../../static/colors"
