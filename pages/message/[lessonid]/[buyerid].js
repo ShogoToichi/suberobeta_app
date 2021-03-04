@@ -3,11 +3,9 @@ import Message from "../../../components/message/Message"
 import Layout from "../../../components/common/Layout"
 
 const message = () => (
-  <div>
-    <Layout>
-      <Message />
-    </Layout>
-  </div>
+  <Layout>
+    <Message />
+  </Layout>
 )
 
 export default message

@@ -40,19 +40,22 @@ function LessonEdit(props) {
   const doSubmit = async () => {
     const db = firebase.firestore()
     const email = Lib.encodeEmail(props.email)
-    await db.collection("lessons").doc(router.query.lessonid).set(
-      {
-        lessonName: lessonName,
-        lessonPlace: lessonPlace,
-        lessonPrice: lessonPrice,
-        lessonDescription: lessonDescription,
-        lessonTime: lessonTime
-      },
-      { merge: true }
-    )
-    .then(function(){
-      console.log(lessonName)
-    })
+    await db
+      .collection("lessons")
+      .doc(router.query.lessonid)
+      .set(
+        {
+          lessonName: lessonName,
+          lessonPlace: lessonPlace,
+          lessonPrice: lessonPrice,
+          lessonDescription: lessonDescription,
+          lessonTime: lessonTime
+        },
+        { merge: true }
+      )
+      .then(function () {
+        console.log(lessonName)
+      })
   }
 
   //現在のデータの取得及びインプットフォームの作成
@@ -64,7 +67,7 @@ function LessonEdit(props) {
       .collection("lessons")
       .doc(router.query.lessonid)
       .get()
-      .then(function (doc) {
+      .then((doc) => {
         setInputForm(
           <InputForm
             lessonName={doc.data().lessonName}

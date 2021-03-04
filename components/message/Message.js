@@ -11,7 +11,6 @@ import MessageAdd from "./MessageAdd"
 import Chat from "./parts/Chat"
 import Title from "../commonParts/Title"
 
-
 // let createrId = ""
 // let messages = ""
 // let lessonName =""
@@ -46,31 +45,31 @@ function Message(props) {
       .doc(router.query.lessonid)
       .get()
       //取得したデータをステートに突っ込む
-      .then(function (doc) {
+      .then((doc) => {
         let lessonData = doc.data()
         setLessonName(doc.data().lessonName)
         setCreaterId(doc.data().createrId)
       })
-      //作成者の情報を取得
-      await db
-        .collection("users")
-        .doc(createrId)
-        .get()
-        .then(function (doc) {
-          const createrData = doc.data()
-          setCreaterName(createrData.profile.name)
-          setCreaterImage(createrData.imageUrl)
-        })
-      //購入者の情報を取得
-      await db
-        .collection("users")
-        .doc(buyerId)
-        .get()
-        .then(function (doc) {
-          const buyerData = doc.data()
-          setBuyerName(buyerData.profile.name)
-          setBuyerImage(buyerData.imageUrl)
-        })
+    //作成者の情報を取得
+    await db
+      .collection("users")
+      .doc(createrId)
+      .get()
+      .then((doc) => {
+        const createrData = doc.data()
+        setCreaterName(createrData.profile.name)
+        setCreaterImage(createrData.imageUrl)
+      })
+    //購入者の情報を取得
+    await db
+      .collection("users")
+      .doc(buyerId)
+      .get()
+      .then((doc) => {
+        const buyerData = doc.data()
+        setBuyerName(buyerData.profile.name)
+        setBuyerImage(buyerData.imageUrl)
+      })
 
     //メッセージ情報取得処理
     //messageが入っているサブコレクションがあるドキュメントidを取得してから、messageサブコレクションを参照
@@ -79,8 +78,8 @@ function Message(props) {
       .where("lessonId", "==", router.query.lessonid)
       .where("buyerId", "==", router.query.buyerid)
       .get()
-      .then(function (querySnapshot) {
-        querySnapshot.forEach(function (doc) {
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
           db.collection("messages")
             .doc(doc.id) //取得したidを使う
             .collection("message")
@@ -88,8 +87,8 @@ function Message(props) {
             .get()
             //取得したデータをmessagedata配列に入れる。
             //繰り返し処理でChatコンポーネントに値を渡して、そのチャットコンポーネントをmessageitems配列にまとめていく
-            .then(function (querySnapshot) {
-              querySnapshot.forEach(function (doc) {
+            .then((querySnapshot) => {
+              querySnapshot.forEach((doc) => {
                 //メッセージを送った人のidと作成者のidを比較して、名前とアイコンの表示を変える
                 if (doc.data().userId == createrId) {
                   messageItems.push(

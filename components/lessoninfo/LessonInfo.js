@@ -1,4 +1,4 @@
-import React, { useState,useEffect} from "react"
+import React, { useState, useEffect } from "react"
 import firebase from "firebase"
 import { useRouter } from "next/router"
 import { connect } from "react-redux"
@@ -35,7 +35,7 @@ function LessonInfo(props) {
       .get()
       //データ取得後の処理
       //取得したデータをlessondataにしまってから、それをステートに突っ込む
-      .then(function (doc) {
+      .then((doc) => {
         lessonData = doc.data()
         createrId = lessonData.createrId
         lessonName = lessonData.lessonName
@@ -53,7 +53,7 @@ function LessonInfo(props) {
       .get()
       //if文の処理はエラーがあった時のための処理
       //ネット記事のコピペなので、必要性がどれほどあるかは謎
-      .then(function (doc) {
+      .then((doc) => {
         if (doc.exists) {
           userData = doc.data()
           createrName = userData.profile.name
@@ -62,7 +62,7 @@ function LessonInfo(props) {
           console.log("no data")
         }
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log("Error getting document:", error)
       })
     //関数の最後で強制的にレンダリング

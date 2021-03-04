@@ -4,12 +4,10 @@ import MessageAdd from "../../components/message/MessageAdd"
 import Layout from "../../components/common/Layout"
 
 const message = () => (
-  <div>
-    <Layout>
-      <Message />
-      <MessageAdd />
-    </Layout>
-  </div>
+  <Layout>
+    <Message />
+    <MessageAdd />
+  </Layout>
 )
 
 export default message

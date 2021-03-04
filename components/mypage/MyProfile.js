@@ -5,7 +5,7 @@ import firebase from "firebase"
 import "firebase/storage"
 import { connect } from "react-redux"
 import Lib from "../../Lib/address_lib"
-import MyProFileUi from "./parts/MyProFileUi"
+import MyProfileUi from "./parts/MyProfileUi"
 
 function MyProfile(props) {
   // ステートの設定
@@ -37,7 +37,7 @@ function MyProfile(props) {
 
   return (
     <>
-      <MyProFileUi
+      <MyProfileUi
         imageUrl={imageUrl}
         name={name}
         introduction={introduction}

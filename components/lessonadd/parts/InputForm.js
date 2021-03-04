@@ -35,53 +35,52 @@ export default function InputForm(props) {
   const classes = inputForm()
   return (
     <div className={classes.inputForm}>
-      <div>
-        <Typography className={classes.inputTitle} variant="h8">
-          レッスンに関する情報を入力してください。
-        </Typography>
+      <Typography className={classes.inputTitle} variant="h8">
+        レッスンに関する情報を入力してください。
+      </Typography>
+      <TextField
+        id="standard-textarea"
+        label="レッスン名"
+        fullWidth
+        onChange={props.onChangeLessonName}
+        className={classes.contents}
+      />
+      <TextField
+        id="standard-textarea"
+        label="日時"
+        placeholder="〇月〇日午前〇時～〇月〇日午前〇時"
+        fullWidth
+        onChange={props.onChangeLessonTime}
+        className={classes.contents}
+      />
+      <TextField
+        id="standard-textarea"
+        label="場所"
+        placeholder="〇〇スキー場"
+        fullWidth
+        onChange={props.onChangeLessonPlace}
+        className={classes.contents}
+      />
+      <TextField
+        id="standard-textarea"
+        label="料金"
+        placeholder="￥〇〇〇〇円"
+        fullWidth
+        onChange={props.onChangeLessonPrice}
+        className={classes.contents}
+      />
+
+      <div className={classes.detailInfo}>
         <TextField
-          id="standard-textarea"
-          label="レッスン名"
+          id="outlined-multiline-static"
+          label="レッスン内容"
+          multiline
+          rows={8}
+          variant="outlined"
           fullWidth
-          onChange={props.onChangeLessonName}
+          onChange={props.onChangeLessonDescription}
           className={classes.contents}
         />
-        <TextField
-          id="standard-textarea"
-          label="日時"
-          placeholder="〇月〇日午前〇時～〇月〇日午前〇時"
-          fullWidth
-          onChange={props.onChangeLessonTime}
-          className={classes.contents}
-        />
-        <TextField
-          id="standard-textarea"
-          label="場所"
-          placeholder="〇〇スキー場"
-          fullWidth
-          onChange={props.onChangeLessonPlace}
-          className={classes.contents}
-        />
-        <TextField
-          id="standard-textarea"
-          label="料金"
-          placeholder="￥〇〇〇〇円"
-          fullWidth
-          onChange={props.onChangeLessonPrice}
-          className={classes.contents}
-        />
-        <div className={classes.detailInfo}>
-          <TextField
-            id="outlined-multiline-static"
-            label="レッスン内容"
-            multiline
-            rows={8}
-            variant="outlined"
-            fullWidth
-            onChange={props.onChangeLessonDescription}
-            className={classes.contents}
-          />
-        </div>
       </div>
       <div className={classes.btnArea}>
         <Link href="/mypage">
