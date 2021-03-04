@@ -4,13 +4,13 @@ import Button from "@material-ui/core/Button"
 import Link from "next/link"
 
 const plofile = makeStyles({
-  btnarea: {
+  btnArea: {
     display: "inline-block",
     float: "right",
     marginRight: "100px",
     marginTop: "15px"
   },
-  buybtn: {
+  buyBtn: {
     marginLeft: "0px",
     fontSize: "23px",
     marginBottom: "15px"
@@ -20,10 +20,10 @@ const plofile = makeStyles({
 export default function BuyBtn(props) {
   const classes = plofile()
   return (
-    <div className={classes.btnarea}>
-      <Link href={`/message/${props.lessonid}/${props.buyerid}`}>
+    <div className={classes.btnArea}>
+      <Link href={`/message/${props.lessonId}/${props.buyerId}`}>
         <Button
-          className={classes.buybtn}
+          className={classes.buyBtn}
           size="large"
           variant="outlined"
           onClick={props.onClick}

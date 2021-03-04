@@ -7,8 +7,8 @@ import TextField from "@material-ui/core/TextField"
 import Button from "@material-ui/core/Button"
 import { Color } from "../../../static/colors"
 
-const inputform = makeStyles((theme) => ({
-  inputform: {
+const inputForm = makeStyles((theme) => ({
+  inputForm: {
     marginTop: "50px",
     width: "80%",
     margin: "0 auto"
@@ -16,14 +16,14 @@ const inputform = makeStyles((theme) => ({
   contents: {
     marginTop: "20px"
   },
-  detailinfo: {
+  detailInfo: {
     marginTop: "20px",
     margin: "0 auto"
   },
-  btnarea: {
+  btnArea: {
     textAlign: "center"
   },
-  addbtn: {
+  addBtn: {
     backgroundColor: useContext(Color).colors.bgGreen,
     marginTop: "10px",
     margin: "0 auto",
@@ -32,18 +32,18 @@ const inputform = makeStyles((theme) => ({
 }))
 
 export default function InputForm(props) {
-  const classes = inputform()
+  const classes = inputForm()
   return (
-    <div className={classes.inputform}>
+    <div className={classes.inputForm}>
       <div>
-        <Typography className={classes.inputtitle} variant="h8">
+        <Typography className={classes.inputTitle} variant="h8">
           レッスンに関する情報を入力してください。
         </Typography>
         <TextField
           id="standard-textarea"
           label="レッスン名"
           fullWidth
-          onChange={props.doChangeName}
+          onChange={props.onChangeLessonName}
           className={classes.contents}
         />
         <TextField
@@ -51,7 +51,7 @@ export default function InputForm(props) {
           label="日時"
           placeholder="〇月〇日午前〇時～〇月〇日午前〇時"
           fullWidth
-          onChange={props.doChangeTime}
+          onChange={props.onChangeLessonTime}
           className={classes.contents}
         />
         <TextField
@@ -59,7 +59,7 @@ export default function InputForm(props) {
           label="場所"
           placeholder="〇〇スキー場"
           fullWidth
-          onChange={props.doChangePlace}
+          onChange={props.onChangeLessonPlace}
           className={classes.contents}
         />
         <TextField
@@ -67,10 +67,10 @@ export default function InputForm(props) {
           label="料金"
           placeholder="￥〇〇〇〇円"
           fullWidth
-          onChange={props.doChangePrice}
+          onChange={props.onChangeLessonPrice}
           className={classes.contents}
         />
-        <div className={classes.detailinfo}>
+        <div className={classes.detailInfo}>
           <TextField
             id="outlined-multiline-static"
             label="レッスン内容"
@@ -78,15 +78,15 @@ export default function InputForm(props) {
             rows={8}
             variant="outlined"
             fullWidth
-            onChange={props.doChangeComment}
+            onChange={props.onChangeLessonDescription}
             className={classes.contents}
           />
         </div>
       </div>
-      <div className={classes.btnarea}>
+      <div className={classes.btnArea}>
         <Link href="/mypage">
           <Button
-            className={classes.addbtn}
+            className={classes.addBtn}
             variant="outlined"
             size="large"
             onClick={props.doSubmit}

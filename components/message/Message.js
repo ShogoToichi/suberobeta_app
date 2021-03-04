@@ -12,21 +12,30 @@ import MessageAdd from "./MessageAdd"
 import Chat from "./parts/Chat"
 import Title from "../normal_parts/Title"
 
+
+// let createrId = ""
+// let messages = ""
+// let lessonName =""
+// let createrName = ""
+// let buyerName = ""
+// let createrImage = ""
+// let buyerImage = ""
+
 function Message(props) {
   //ステート定義
-  const [createrid, setCreaterid] = useState("")
+  const [createrId, setCreaterId] = useState("")
   const [messages, setMessages] = useState("")
-  const [lessonname, setLessonname] = useState("")
-  const [creatername, setCreaterName] = useState("")
-  const [buyername, setBuyerName] = useState("")
-  const [createrimg, setCreaterImg] = useState("")
-  const [buyerimg, setBuyerImg] = useState("")
+  const [lessonName, setLessonName] = useState("")
+  const [createrName, setCreaterName] = useState("")
+  const [buyerName, setBuyerName] = useState("")
+  const [createrImage, setCreaterImage] = useState("")
+  const [buyerImage, setBuyerImage] = useState("")
 
-  const messageitems = []
+  const messageItems = []
 
   const router = useRouter()
   const email = Lib.encodeEmail(props.email)
-  const buyerid = router.query.buyerid
+  const buyerId = router.query.buyerId
   const db = firebase.firestore()
 
   //lessondata及びmessageを取得
@@ -35,43 +44,43 @@ function Message(props) {
     //先にレッスン名と作成者のidを取得
     await db
       .collection("lessons")
-      .doc(router.query.lessonid)
+      .doc(router.query.lessonId)
       .get()
       //取得したデータをステートに突っ込む
       .then(function (doc) {
-        const lessondata = doc.data()
-        setCreaterid(lessondata.createrid)
-        setLessonname(lessondata.lessonname)
-        console.log(createrid)
+        const lessonData = doc.data()
+        setCreaterid(lessonData.createrId)
+        setLessonname(lessonData.lessonName)
+        console.log(createrId)
       })
     //作成者の情報を取得
     await db
       .collection("users")
-      .doc(createrid)
+      .doc(createrId)
       .get()
       .then(function (doc) {
-        const createrdata = doc.data()
-        setCreaterName(createrdata.profile.name)
-        setCreaterImg(createrdata.imageurl)
-        console.log(creatername)
+        const createrData = doc.data()
+        setCreaterName(createrData.profile.name)
+        setCreaterImg(createrData.imageUrl)
+        console.log(createrName)
       })
     //購入者の情報を取得
     await db
       .collection("users")
-      .doc(buyerid)
+      .doc(buyerId)
       .get()
       .then(function (doc) {
-        const buyerdata = doc.data()
-        setBuyerName(buyerdata.profile.name)
-        setBuyerImg(buyerdata.imageurl)
+        const buyerData = doc.data()
+        setBuyerName(buyerData.profile.name)
+        setBuyerImg(buyerData.imageUrl)
       })
 
     //メッセージ情報取得処理
     //messageが入っているサブコレクションがあるドキュメントidを取得してから、messageサブコレクションを参照
     await db
       .collection("messages")
-      .where("lessonid", "==", router.query.lessonid)
-      .where("buyerid", "==", router.query.buyerid)
+      .where("lessonId", "==", router.query.lessonId)
+      .where("buyerId", "==", router.query.buyerId)
       .get()
       .then(function (querySnapshot) {
         querySnapshot.forEach(function (doc) {
@@ -85,27 +94,27 @@ function Message(props) {
             .then(function (querySnapshot) {
               querySnapshot.forEach(function (doc) {
                 //メッセージを送った人のidと作成者のidを比較して、名前とアイコンの表示を変える
-                if (doc.data().userid == createrid) {
-                  messageitems.push(
+                if (doc.data().userId == createrId) {
+                  messageItems.push(
                     <Chat
-                      username={creatername}
-                      imageurl={createrimg}
+                      userName={createrName}
+                      imageUrl={createrImage}
                       text={doc.data().text}
                     />
                   )
                 } else {
-                  messageitems.push(
+                  messageItems.push(
                     <Chat
-                      username={buyername}
-                      imageurl={buyerimg}
+                      userName={buyerName}
+                      imageUrl={buyerImage}
                       text={doc.data().text}
                     />
                   )
                 }
               })
               //作成者、購入者以外メッセージが見れないようにする
-              if (email == createrid || email == buyerid) {
-                setMessages(messageitems)
+              if (email == createrId || email == buyerId) {
+                setMessages(messageItems)
               } else {
                 const errorMessage = <p>ご利用いただけません</p>
                 setMessages(errorMessage)
@@ -120,9 +129,9 @@ function Message(props) {
       <button onClick={getMessageData} style={{ display: "block" }}>
         読み込み
       </button>
-      <Title title={lessonname} />
+      <Title title={lessonName} />
       {messages}
-      <MessageAdd createrid={createrid} />
+      <MessageAdd createrId={createrId} />
     </div>
   )
 }
