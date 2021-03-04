@@ -19,9 +19,9 @@ let lessonDescription = ""
 let lessonTime = ""
 let lessonData = ""
 let userData = ""
-const email = Lib.encodeEmail(props.email)
 
 function LessonInfo(props) {
+  const email = Lib.encodeEmail(props.email)
   //強制レンダリング用ステート
   const [update, setUpdata] = useState(false)
 
