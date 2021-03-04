@@ -1,5 +1,5 @@
 import React from "react"
-import Link from "next/link"
+// import Link from "next/link"
 import ListItem from "@material-ui/core/ListItem"
 import ListItemText from "@material-ui/core/ListItemText"
 import Button from "@material-ui/core/Button"
@@ -28,15 +28,15 @@ export default function Lesson(props) {
           style={{ fontSize: "30px" }}
           primary={`${props.name}　in ${props.place}`}
         />
-        <Link as={`/message/${props.lessonid}`} href="/message/[lessonid]">
-          <Button
-            size="large"
-            className={classes.messagebtn}
-            onClick={props.onClick}
-          >
-            取引メッセージ
-          </Button>
-        </Link>
+        {/* <Link as={`/message/${props.lessonid}`} href="/message/[lessonid]"> */}
+        <Button
+          size="large"
+          className={classes.messagebtn}
+          // onClick={props.onClick}
+        >
+          レッスン編集
+        </Button>
+        {/* </Link> */}
       </ListItem>
     </div>
   )

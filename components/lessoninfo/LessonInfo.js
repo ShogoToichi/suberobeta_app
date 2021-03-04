@@ -1,6 +1,3 @@
-//※要追加 :  ・purchasedか何かで受付中のレッスンとそうでないレッスン購入ボタンの表示を変更
-//            ・購入後purchasedの書き換え及びmessageへの移動
-
 import React, { useState } from "react"
 import firebase from "firebase"
 import { useRouter } from "next/router"
@@ -9,6 +6,7 @@ import Lib from "../../Lib/address_lib"
 import BuyBtn from "./parts/BuyBtn"
 import LessonDitail from "./parts/LessonDitail"
 import Title from "../normal_parts/Title"
+import EditBtn from "./parts/EditBtn"
 
 function LessonInfo(props) {
   // 使用するステートの定義
@@ -35,10 +33,8 @@ function LessonInfo(props) {
       .get()
       //データ取得後の処理
       //取得したデータをlessondataにしまってから、それをステートに突っ込む
-      //lessonidは取得しなくていいかも
       .then(function (doc) {
         const lessondata = doc.data()
-        const lesson_id = doc.id
         setCreaterid(lessondata.createrid)
         setLessonid(lesson_id)
         setPurchased(lessondata.purchased)
@@ -58,7 +54,6 @@ function LessonInfo(props) {
           .then(function (doc) {
             if (doc.exists) {
               const userdata = doc.data()
-              console.log(createrid, userdata)
               setProfileusername(userdata.profile.name)
               setImageurl(userdata.imageurl)
             } else {
@@ -71,14 +66,18 @@ function LessonInfo(props) {
       })
   }
 
+  //firebaseのmessagesに必要な情報を書き込む
   const email = Lib.encodeEmail(props.email)
   const dobuy = async () => {
-    await db.collection("lessons").doc(router.query.lessonid).set(
-      {
-        buyerid: email
-      },
-      { merge: true }
-    )
+    await db.collection("messages").add({
+      lessonid: router.query.lessonid,
+      buyerid: email,
+      createrid: createrid,
+      creatername: profileusername,
+      lessonname: lessonname,
+      buytime: firebase.firestore.FieldValue.serverTimestamp(),
+      trading: true //取引中かどうかの真偽値、まだどこでも利用してない
+    })
   }
 
   if (lessonname == "") {
@@ -88,9 +87,17 @@ function LessonInfo(props) {
   return (
     <div style={{ marginTop: "30px" }}>
       <Title title={lessonname} />
-      <BuyBtn lessonid={router.query.lessonid} buyerid={email} onClick={dobuy}>
-        購入
-      </BuyBtn>
+      {/* 作成者がレッスンページを開くと、レッスン編集ボタンが表示される
+      リンクは今のところマイページにしてある */}
+      {email == createrid ? (
+        <EditBtn />
+      ) : (
+        <BuyBtn
+          lessonid={router.query.lessonid}
+          buyerid={email}
+          onClick={dobuy}
+        />
+      )}
       <LessonDitail
         imageurl={imageurl}
         profileusername={profileusername}

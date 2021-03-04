@@ -23,25 +23,34 @@ function MessageAdd(props) {
 
   //追加ボタンを押したらfirebaseにステートの情報を書き込む処理
   //addで追加しているから、ドキュメントidはユニークなidが自動で当てられる
-  //Reduxからユーザーのemail(id)をencode( .→* )にして定数に代入
   const doSubmit = async () => {
     const db = firebase.firestore()
     const email = Lib.encodeEmail(props.email)
     const buyeremail = Lib.encodeEmail(router.query.buyerid)
-    let d = new Date().getTime()
     await db
-      .collection("lessons")
-      .doc(router.query.lessonid)
-      .collection("buyerid")
-      .doc(buyeremail)
-      .collection("message")
-      .add({
-        userid: email,
-        text: message,
-        time: firebase.firestore.FieldValue.serverTimestamp()
-      })
-      .then(function () {
-        setMessage("")
+      //messageサブコレクションを参照するために必要なmessages内のドキュメントのidを先に参照している
+      .collection("messages")
+      .where("lessonid", "==", router.query.lessonid)
+      .where("buyerid", "==", router.query.buyerid)
+      .get()
+      .then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc) {
+          console.log(router.query.lessonid)
+          console.log(router.query.buyerid)
+          const id = doc.id
+          db.collection("messages")
+            .doc(id) //先に取得したIDを使ってサブコレクションを参照
+            .collection("message")
+            .add({
+              userid: email,
+              text: message,
+              time: firebase.firestore.FieldValue.serverTimestamp()
+            })
+            //テキストボックスを空にする
+            .then(function () {
+              setMessage("")
+            })
+        })
       })
     //userfilterのTorFを、マテリアルUIのdisabled属性に用いて、
     //作成者、購入者以外にフォームを表示しなくする

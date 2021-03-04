@@ -14,8 +14,6 @@ function MyLessonList(props) {
 
   const getFireData = async () => {
     const db = firebase.firestore()
-    const lessondata = []
-    const lessonid = []
     const lessonitems = []
     const email = Lib.encodeEmail(props.email)
 
@@ -26,27 +24,14 @@ function MyLessonList(props) {
         .get()
         .then(function (querySnapshot) {
           querySnapshot.forEach(function (doc) {
-            lessondata.unshift(doc.data())
-            lessonid.unshift(doc.id)
-          })
-          for (let i in lessonid) {
-            let id = lessonid[i]
-            let name = lessondata[i].lessonname
-            let place = lessondata[i].lessonplace
-            let time = lessondata[i].lessontime
-            let text = lessondata[i].lessontext
-            let price = lessondata[i].lessonprice
             lessonitems.push(
               <MyLesson
-                lessonid={id}
-                name={name}
-                place={place}
-                time={time}
-                text={text}
-                price={price}
+                lessonid={doc.id}
+                name={doc.data().lessonname}
+                place={doc.data().lessonplace}
               />
             )
-          }
+          })
           setItems(lessonitems)
         })
     } else {

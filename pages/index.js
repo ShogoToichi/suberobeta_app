@@ -1,5 +1,5 @@
 import Layout from "../components/normal/Layout"
-import Test from "../components/message/parts/chat"
+import Test from "../components/mypage/MyMessageList"
 import Grid from "@material-ui/core/Grid"
 
 const IndexPage = () => (
