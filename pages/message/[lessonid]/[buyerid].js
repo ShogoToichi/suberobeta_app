@@ -5,6 +5,7 @@ import Layout from "../../../components/common/Layout"
 const message = () => (
   <div>
     <Layout>
+      Test
       <Message />
     </Layout>
   </div>

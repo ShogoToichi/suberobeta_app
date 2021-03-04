@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState,useEffect} from "react"
 import firebase from "firebase"
 import { useRouter } from "next/router"
 import { connect } from "react-redux"
@@ -73,10 +73,10 @@ function LessonInfo(props) {
   const email = Lib.encodeEmail(props.email)
   const doBuy = async () => {
     await db.collection("messages").add({
-      lessonId: router.query.lessonId,
+      lessonId: router.query.lessonid,
       buyerId: email,
       createrId: createrId,
-      createrName: userName,
+      createrName: createrName,
       lessonName: lessonName,
       buyTime: firebase.firestore.FieldValue.serverTimestamp(),
       trading: true //取引中かどうかの真偽値、まだどこでも利用してない
@@ -90,6 +90,8 @@ function LessonInfo(props) {
 
   return (
     <div style={{ marginTop: "30px" }}>
+      <button onClick={getLessonData}>getfiredaata</button>
+      <button onClick={doBuy}>dobuy</button>
       {/* <button onClick={getLessonData}>yomikomi</button> */}
       <Title title={lessonName} />
       {/* 作成者がレッスンページを開くと、レッスン編集ボタンが表示される

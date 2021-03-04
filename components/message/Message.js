@@ -7,10 +7,9 @@ import firebase from "firebase"
 import { useRouter } from "next/router"
 import Lib from "../../Lib/address_lib"
 import { connect } from "react-redux"
-import "firebase/st../commonParts/Title
 import MessageAdd from "./MessageAdd"
 import Chat from "./parts/Chat"
-import Title from "../normal_parts/Title"
+import Title from "../commonParts/Title"
 
 
 // let createrId = ""
@@ -49,8 +48,8 @@ function Message(props) {
       //取得したデータをステートに突っ込む
       .then(function (doc) {
         const lessonData = doc.data()
-        setCreaterid(lessonData.createrId)
-        setLessonname(lessonData.lessonName)
+        setCreaterId(lessonData.createrId)
+        setLessonName(lessonData.lessonName)
         console.log(createrId)
       })
     //作成者の情報を取得
@@ -61,7 +60,7 @@ function Message(props) {
       .then(function (doc) {
         const createrData = doc.data()
         setCreaterName(createrData.profile.name)
-        setCreaterImg(createrData.imageUrl)
+        setCreaterImage(createrData.imageUrl)
         console.log(createrName)
       })
     //購入者の情報を取得
@@ -72,7 +71,7 @@ function Message(props) {
       .then(function (doc) {
         const buyerData = doc.data()
         setBuyerName(buyerData.profile.name)
-        setBuyerImg(buyerData.imageUrl)
+        setBuyerImage(buyerData.imageUrl)
       })
 
     //メッセージ情報取得処理

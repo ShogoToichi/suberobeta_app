@@ -22,7 +22,7 @@ const LessonList = () => {
           lessonItems.push(
             <Lesson
               lessonId={doc.id}
-              lessonName={doc.data().lessonIame}
+              lessonName={doc.data().lessonName}
               lessonPlace={doc.data().lessonPlace}
               lessonTime={doc.data().lessonTime}
               lessonDescription={doc.data().lessonDescription}

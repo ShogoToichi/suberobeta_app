@@ -3,7 +3,6 @@ import Mypage from "../components/myPage/Mypage"
 
 const MypagePage = () => (
   <Layout>
-    s
     <Mypage />
   </Layout>
 )
