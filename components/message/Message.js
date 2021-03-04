@@ -11,7 +11,6 @@ import MessageAdd from "./MessageAdd"
 import Chat from "./parts/Chat"
 import Title from "../commonParts/Title"
 
-
 // let createrId = ""
 // let messages = ""
 // let lessonName =""
@@ -51,26 +50,26 @@ function Message(props) {
         setLessonName(doc.data().lessonName)
         setCreaterId(doc.data().createrId)
       })
-      //作成者の情報を取得
-      await db
-        .collection("users")
-        .doc(createrId)
-        .get()
-        .then(function (doc) {
-          const createrData = doc.data()
-          setCreaterName(createrData.profile.name)
-          setCreaterImage(createrData.imageUrl)
-        })
-      //購入者の情報を取得
-      await db
-        .collection("users")
-        .doc(buyerId)
-        .get()
-        .then(function (doc) {
-          const buyerData = doc.data()
-          setBuyerName(buyerData.profile.name)
-          setBuyerImage(buyerData.imageUrl)
-        })
+    //作成者の情報を取得
+    await db
+      .collection("users")
+      .doc(createrId)
+      .get()
+      .then(function (doc) {
+        const createrData = doc.data()
+        setCreaterName(createrData.profile.name)
+        setCreaterImage(createrData.imageUrl)
+      })
+    //購入者の情報を取得
+    await db
+      .collection("users")
+      .doc(buyerId)
+      .get()
+      .then(function (doc) {
+        const buyerData = doc.data()
+        setBuyerName(buyerData.profile.name)
+        setBuyerImage(buyerData.imageUrl)
+      })
 
     //メッセージ情報取得処理
     //messageが入っているサブコレクションがあるドキュメントidを取得してから、messageサブコレクションを参照

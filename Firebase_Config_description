@@ -4,7 +4,7 @@
 
 
 root   + users --+--userid1(gmail) : {
-       |         |                     imgurl:
+       |         |                     imageUrl:
        |         |                     profile:{
        |         +--userid2                name:
        |         :                         introduction:
@@ -13,27 +13,27 @@ root   + users --+--userid1(gmail) : {
        |
        |         
        +lessons--+--lessonid1(uni) :{
-       |         |                     createrid:
-       |         |                     lessonname:
-       |         +--lessonid2          lessonplace:
-       |         :                     lessonprice:
-       |         :                     lessontext:
-       |                               lessontime:
+       |         |                     createrId:
+       |         |                     lessonName:
+       |         +--lessonid2          lessonPlace:
+       |         :                     lessonPrice:
+       |         :                     lessonText:
+       |                               lessonTime:
        |                           }          
        |         
        |
        |
        +messages--+--messagesid1(uni):{
-                  |                   buyerid:
-                  |                   buytime:  TIME
-                  +--messagesid2      createrid:
-                  :                   lessonid:
-                  :                   lessonname:
+                  |                   buyerId:
+                  |                   buyTime:  TIME
+                  +--messagesid2      createrId:
+                  :                   lessonId:
+                  :                   lessonName:
                                       trading:  T or F
                                      }
                                      ☆message--+--messageid1(uni):{
                                               |                     text:
                                               |                     time:  TIME
-                                              +--messageid2         userid:
+                                              +--messageid2         userId:
                                               :                  }
                                               :
