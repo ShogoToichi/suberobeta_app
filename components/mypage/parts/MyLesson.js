@@ -5,20 +5,20 @@ import ListItemText from "@material-ui/core/ListItemText"
 import Button from "@material-ui/core/Button"
 import { makeStyles } from "@material-ui/styles"
 
-export default function Lesson(props) {
-  const myLessonList = makeStyles({
-    lessonItem: {
-      margin: "30px 30px 30px 30px"
-    },
-    addBtn: {
-      textAlign: "center"
-    },
-    messageBtn: {
-      backgroundColor: "#DDD",
-      color: "black"
-    }
-  })
+const myLessonList = makeStyles({
+  lessonItem: {
+    margin: "30px 30px 30px 30px"
+  },
+  addBtn: {
+    textAlign: "center"
+  },
+  messageBtn: {
+    backgroundColor: "#DDD",
+    color: "black"
+  }
+})
 
+export default function Lesson(props) {
   const classes = myLessonList()
 
   return (

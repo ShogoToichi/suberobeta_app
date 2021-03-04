@@ -22,22 +22,20 @@ export default function MessageLink(props) {
   const classes = myLessonList()
 
   return (
-    <>
-      <ListItem divider={true} className={classes.lessonItem}>
-        <ListItemText
-          style={{ fontSize: "30px" }}
-          primary={`${props.lessonName}　　${props.username}さんとのメッセージ`}
-        />
-        <Link href={`/message/${props.lessonId}/${props.buyerId}`}>
-          <Button
-            size="large"
-            className={classes.messageBtn}
-            onClick={props.onClick}
-          >
-            取引メッセージ
-          </Button>
-        </Link>
-      </ListItem>
-    </>
+    <ListItem divider={true} className={classes.lessonItem}>
+      <ListItemText
+        style={{ fontSize: "30px" }}
+        primary={`${props.lessonName}　　${props.username}さんとのメッセージ`}
+      />
+      <Link href={`/message/${props.lessonId}/${props.buyerId}`}>
+        <Button
+          size="large"
+          className={classes.messageBtn}
+          onClick={props.onClick}
+        >
+          取引メッセージ
+        </Button>
+      </Link>
+    </ListItem>
   )
 }

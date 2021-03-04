@@ -9,13 +9,19 @@ import { connect } from "react-redux"
 import Lib from "../../Lib/address_lib"
 import GetImageUi from "./parts/GetImageUi"
 
+let image = ""
+let imageUrl = ""
+
 function GetImage(props) {
   // image, imageUrlはstateじゃなくても大丈夫だろうか．．？
-  const [image, setImage] = useState("")
-  const [imageUrl, setImageUrl] = useState("")
+  // const [image, setImage] = useState("")
+  // const [imageUrl, setImageUrl] = useState("")
+  const [update, setUpdata] = useState(false)
+
   const handleImage = (event) => {
-    const image = event.target.files[0]
-    setImage(image)
+    image = event.target.files[0]
+    // const image = event.target.files[0]
+    // setImage(image)
   }
   const onSubmit = (event) => {
     event.preventDefault()
@@ -23,7 +29,7 @@ function GetImage(props) {
       console.log("ファイルが選択されていません")
     }
     // アップロード処理
-    const uploadTask = storage.ref(`/profileImages/${image.name}`).put(image) // profileimages => profileImagesに変更．大丈夫かな？
+    const uploadTask = storage.ref(`/profileImages/${image.name}`).put(image)
     uploadTask.on(
       firebase.storage.TaskEvent.STATE_CHANGED,
       next,
@@ -46,27 +52,27 @@ function GetImage(props) {
     // 完了後の処理
     // 画像表示のため、アップロードした画像のURLを取得
     storage
-      .ref("profileimages")
+      .ref("profileImages")
       .child(image.name)
       .getDownloadURL()
-      .then((fireBaseUrl) => {
-        setImageUrl(fireBaseUrl)
+      .then((firebaseUrl) => {
+        // setImageUrl(firebaseUrl)
+        imageUrl = firebaseUrl
         // 取得した画像の名前をfirebaseに保存
         const db = firebase.firestore()
         const email = Lib.encodeEmail(props.email)
-        db.collection("users")
-          .doc(email)
-          .set(
-            {
-              imageUrl: fireBaseUrl
-            },
-            { merge: true }
-          )
-          .then(function () {
-            console.log(fireBaseUrl)
-            console.log(imageUrl)
-          })
+        db.collection("users").doc(email).set(
+          {
+            imageUrl: firebaseUrl
+          },
+          { merge: true }
+        )
+        // .then(() => {
+        //   console.log(firebaseUrl)
+        //   console.log(imageUrl)
+        // })
       })
+    setUpdata(update ? false : true)
   }
 
   return (

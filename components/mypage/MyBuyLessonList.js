@@ -12,8 +12,11 @@ import Box from "@material-ui/core/Box"
 import Typography from "@material-ui/core/Typography"
 import MyBuyLessonListUi from "./parts/MyBuyLessonListUi"
 
+let items = "no item"
+
 function MyBuyLessonList(props) {
-  const [items, setItems] = useState("no item")
+  // const [items, setItems] = useState("no item")
+  const [update, setUpdate] = useState(false)
 
   const getFireData = async () => {
     const db = firebase.firestore()
@@ -50,22 +53,21 @@ function MyBuyLessonList(props) {
               />
             )
           }
-          setItems(lessonItems)
+          // setItems(lessonItems)
+          items = lessonItems
         })
     } else {
-      setItems("購入済みのレッスンはありません")
+      items = "購入済みのレッスンはありません"
+      // setItems("購入済みのレッスンはありません")
     }
+    setUpdate(update ? false : true)
   }
 
   if (items == "no item") {
     getFireData()
   }
 
-  return (
-    <>
-      <MyBuyLessonListUi items={items} />
-    </>
-  )
+  return <MyBuyLessonListUi items={items} />
 }
 
 MyBuyLessonList = connect((state) => state)(MyBuyLessonList)

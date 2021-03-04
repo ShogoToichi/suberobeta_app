@@ -6,10 +6,13 @@ import { connect } from "react-redux"
 import Lib from "../../Lib/address_lib"
 import MyMessageListUi from "./parts/MyMessageListUi"
 
+let myMessages = "no item"
+let buyMessages = "no item"
 function MyMessageList(props) {
   //最終的に表示するJSXの配列を入れるステート
-  const [myMessages, setMyMessages] = useState("no item")
-  const [buyMessages, setBuyMessages] = useState("no item")
+  // const [myMessages, setMyMessages] = useState("no item")
+  // const [buyMessages, setBuyMessages] = useState("no item")
+  const [update, setUpdate] = useState(false)
 
   const getFireData = async () => {
     const db = firebase.firestore()
@@ -24,7 +27,7 @@ function MyMessageList(props) {
         .where("trading", "==", true)
         // .orderBy("buytime") 後々メッセージを直近で送った時間で並び替えたい
         .get()
-        .then(function (querySnapshot) {
+        .then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
             myMessageItems.push(
               <MessageLink
@@ -35,7 +38,8 @@ function MyMessageList(props) {
               />
             )
           })
-          setMyMessages(myMessageItems)
+          // setMyMessages(myMessageItems)
+          myMessages = myMessageItems
         })
       //自分が購入したレッスンで現在進行中のものを取得
       await db
@@ -44,7 +48,7 @@ function MyMessageList(props) {
         .where("trading", "==", true)
         // .orderBy("buytime")  上に同じくゆくゆくやる
         .get()
-        .then(function (querySnapshot) {
+        .then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
             buyMessageItems.push(
               <MessageLink
@@ -55,12 +59,15 @@ function MyMessageList(props) {
               />
             )
           })
-          setBuyMessages(buyMessageItems)
+          // setBuyMessages(buyMessageItems)
+          buyMessages = buyMessageItems
         })
     } else {
       //ログインしてないとメッセージが表示しなくなってる、なんでこんなこと書いたんだっけ。
-      setMyMessages("取引中のメッセージはありません")
+      // setMyMessages("取引中のメッセージはありません")
+      myMessages = "取引中のメッセージはありません"
     }
+    setUpdate(update ? false : true)
   }
 
   if (myMessages == "no item") {
@@ -69,11 +76,7 @@ function MyMessageList(props) {
   // 取得した2つのステートの値を一つの配列にする処理
   let items = myMessages.concat(buyMessages)
 
-  return (
-    <>
-      <MyMessageListUi items={items} />
-    </>
-  )
+  return <MyMessageListUi items={items} />
 }
 
 MyMessageList = connect((state) => state)(MyMessageList)
