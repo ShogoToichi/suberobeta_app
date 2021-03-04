@@ -1,7 +1,7 @@
 //基本的には<LessonList/>と同じなのでそちらを参照
 //.whereでレッスン作成者とReduxのemailが一致するデータを参照
 
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import firebase from "firebase"
 import "firebase/storage"
 import MyLesson from "./parts/MyLesson"
@@ -45,11 +45,11 @@ function MyLessonList(props) {
     setUpdate(update ? false : true)
   }
 
-  if (items == "no item") {
+  useEffect(() => {
     getFireData()
-  }
+  }, [])
 
-  return <MyLessonListUi items={items} getFireData={getFireData} />
+  return <MyLessonListUi items={items} />
 }
 
 MyLessonList = connect((state) => state)(MyLessonList)

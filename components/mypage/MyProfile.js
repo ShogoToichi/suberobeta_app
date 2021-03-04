@@ -1,4 +1,3 @@
-//要追加 : 画像アップロード
 
 import React, { useState } from "react"
 import firebase from "firebase"
@@ -12,9 +11,6 @@ let introduction = "no data"
 let imageUrl = null
 
 function MyProfile(props) {
-  // const [name, setName] = useState("no data")
-  // const [introduction, setIntroduction] = useState("no data")
-  // const [imageUrl, setImageUrl] = useState(null)
   const [update, setUpdate] = useState(false)
 
   const getFireData = async () => {
@@ -29,9 +25,6 @@ function MyProfile(props) {
       .then((doc) => {
         // 取得したデータを定数に入れてから、ステートに入れる
         const profileData = doc.data()
-        // setName(profileData.profile.name)
-        // setIntroduction(profileData.profile.introduction)
-        // setImageUrl(profileData.imageUrl)
         name = profileData.profile.name
         introduction = profileData.profile.introduction
         imageUrl = profileData.imageUrl

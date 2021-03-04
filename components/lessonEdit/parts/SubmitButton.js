@@ -20,16 +20,16 @@ export default function InputForm(props) {
   const classes = inputForm()
   return (
     <div className={classes.btnArea}>
-      {/* <Link href="/mypage"> */}
-      <Button
-        className={classes.addBtn}
-        variant="outlined"
-        size="large"
-        onClick={props.onClick}
-      >
-        編 集
-      </Button>
-      {/* </Link> */}
+      <Link href="/mypage">
+        <Button
+          className={classes.addBtn}
+          variant="outlined"
+          size="large"
+          onClick={props.onClick}
+        >
+          編 集
+        </Button>
+      </Link>
     </div>
   )
 }

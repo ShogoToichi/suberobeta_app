@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import firebase from "firebase"
 import "firebase/storage"
 import MessageLink from "./parts/MessageLink"
@@ -10,8 +10,6 @@ let myMessages = "no item"
 let buyMessages = "no item"
 function MyMessageList(props) {
   //最終的に表示するJSXの配列を入れるステート
-  // const [myMessages, setMyMessages] = useState("no item")
-  // const [buyMessages, setBuyMessages] = useState("no item")
   const [update, setUpdate] = useState(false)
 
   const getFireData = async () => {
@@ -59,7 +57,6 @@ function MyMessageList(props) {
               />
             )
           })
-          // setBuyMessages(buyMessageItems)
           buyMessages = buyMessageItems
         })
     } else {
@@ -70,9 +67,10 @@ function MyMessageList(props) {
     setUpdate(update ? false : true)
   }
 
-  if (myMessages == "no item") {
+  useEffect(() => {
     getFireData()
-  }
+  }, [])
+
   // 取得した2つのステートの値を一つの配列にする処理
   let items = myMessages.concat(buyMessages)
 

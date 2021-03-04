@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import firebase from "firebase"
 // import "firebase/storage";
 import Lesson from "./parts/Lesson"
@@ -35,9 +35,9 @@ const LessonList = () => {
       })
   }
 
-  if (items == "no item") {
+  useEffect(() => {
     getFireData()
-  }
+  }, [])
 
   return (
     <>

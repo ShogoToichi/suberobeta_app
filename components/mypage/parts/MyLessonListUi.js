@@ -47,7 +47,6 @@ export default function MyLessonListUi(props) {
             レッスン追加
           </Button>
         </Link>
-        <button onClick={props.getFireData}>検証</button>
       </div>
     </div>
   )
