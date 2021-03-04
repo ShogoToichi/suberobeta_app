@@ -7,8 +7,8 @@ import TextField from "@material-ui/core/TextField"
 import Button from "@material-ui/core/Button"
 import { Color } from "../../../static/colors"
 
-const inputform = makeStyles((theme) => ({
-  inputform: {
+const inputForm = makeStyles((theme) => ({
+  inputForm: {
     marginTop: "50px",
     width: "80%",
     margin: "0 auto"
@@ -16,14 +16,14 @@ const inputform = makeStyles((theme) => ({
   contents: {
     marginTop: "20px"
   },
-  detailinfo: {
+  detailInfo: {
     marginTop: "20px",
     margin: "0 auto"
   },
-  btnarea: {
+  btnArea: {
     textAlign: "center"
   },
-  addbtn: {
+  addBtn: {
     backgroundColor: useContext(Color).colors.bgGreen,
     marginTop: "10px",
     margin: "0 auto",
@@ -32,75 +32,75 @@ const inputform = makeStyles((theme) => ({
 }))
 
 export default function InputForm(props) {
-  const classes = inputform()
+  const classes = inputForm()
   return (
-    <div className={classes.inputform}>
+    <div className={classes.inputForm}>
       <div>
-        <Typography className={classes.inputtitle} variant="h8">
+        <Typography className={classes.inputTitle} variant="h8">
           レッスンに関する情報を入力してください。
         </Typography>
         <TextField
           required
-          defaultValue={props.lessonname}
+          defaultValue={props.lessonName}
           id="standard-textarea"
           label="レッスン名"
           fullWidth
-          onChange={props.doChangeName}
+          onChange={props.onChangeLessonName}
           className={classes.contents}
         />
         <TextField
           required
-          defaultValue={props.lessontime}
+          defaultValue={props.lessonTime}
           id="standard-textarea"
           label="日時"
           fullWidth
-          onChange={props.doChangeTime}
+          onChange={props.onChangeLessonTime}
           className={classes.contents}
         />
         <TextField
           required
-          defaultValue={props.lessonplace}
+          defaultValue={props.lessonPlace}
           id="standard-textarea"
           label="場所"
           fullWidth
-          onChange={props.doChangePlace}
+          onChange={props.onChangeLessonPlace}
           className={classes.contents}
         />
         <TextField
           required
-          defaultValue={props.lessonprice}
+          defaultValue={props.lessonPrice}
           id="standard-textarea"
           label="料金"
           fullWidth
-          onChange={props.doChangePrice}
+          onChange={props.onChangeLessonPrice}
           className={classes.contents}
         />
-        <div className={classes.detailinfo}>
+        <div className={classes.detailInfo}>
           <TextField
             required
-            defaultValue={props.lessoncomment}
+            defaultValue={props.lessonDescription}
             id="outlined-multiline-static"
             label="レッスン内容"
             multiline
             rows={8}
             variant="outlined"
             fullWidth
-            onChange={props.doChangeComment}
+            onChange={props.onChangeDescription}
             className={classes.contents}
           />
         </div>
       </div>
-      <div className={classes.btnarea}>
-        <Link href="/mypage">
+      <div className={classes.btnArea}>
+        {/* <Link href="/mypage"> */}
           <Button
-            className={classes.addbtn}
+            className={classes.addBtn}
             variant="outlined"
             size="large"
             onClick={props.doSubmit}
           >
-            追 加
+            編 集
           </Button>
-        </Link>
+        {/* </Link> */}
       </div>
     </div>
   )

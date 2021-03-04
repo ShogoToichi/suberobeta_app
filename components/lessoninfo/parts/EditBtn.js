@@ -4,13 +4,13 @@ import Button from "@material-ui/core/Button"
 import Link from "next/link"
 
 const plofile = makeStyles({
-  btnarea: {
+  btnArea: {
     display: "inline-block",
     float: "right",
     marginRight: "100px",
     marginTop: "15px"
   },
-  editbtn: {
+  editBtn: {
     marginLeft: "0px",
     fontSize: "23px",
     marginBottom: "15px"
@@ -20,10 +20,10 @@ const plofile = makeStyles({
 export default function EditBtn(props) {
   const classes = plofile()
   return (
-    <div className={classes.btnarea}>
+    <div className={classes.btnArea}>
       <Link href={"/mypage"}>
         <Button
-          className={classes.editbtn}
+          className={classes.editBtn}
           size="large"
           variant="outlined"
           onClick={props.onClick}
