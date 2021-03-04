@@ -57,7 +57,7 @@ function LessonInfo(props) {
         if (doc.exists) {
           userData = doc.data()
           createrName = userData.profile.name
-          createrImageUrl = userData.imageurl
+          createrImageUrl = userData.imageUrl
         } else {
           console.log("no data")
         }

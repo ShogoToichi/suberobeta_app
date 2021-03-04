@@ -58,7 +58,7 @@ function GetImage(props) {
           .doc(email)
           .set(
             {
-              imageurl: fireBaseUrl
+              imageUrl: fireBaseUrl
             },
             { merge: true }
           )
