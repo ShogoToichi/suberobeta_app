@@ -15,7 +15,11 @@ export default function MessageLink(props) {
     },
     messageBtn: {
       backgroundColor: "#DDD",
-      color: "black"
+      color: "black",
+      marginLeft: "10px"
+    },
+    unReadText: {
+      color: "red"
     }
   })
 
@@ -27,6 +31,11 @@ export default function MessageLink(props) {
         style={{ fontSize: "30px" }}
         primary={`${props.lessonName}　　${props.username}さんとのメッセージ`}
       />
+      {props.readMessage ? (
+        <span></span>
+      ) : (
+        <span className={classes.unReadText}> 未読のメッセージがあります</span>
+      )}
       <Link href={`/message/${props.lessonId}/${props.buyerId}`}>
         <Button
           size="large"

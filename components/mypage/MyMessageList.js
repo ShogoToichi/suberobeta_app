@@ -33,6 +33,7 @@ function MyMessageList(props) {
                 buyerId={doc.data().buyerId}
                 lessonName={doc.data().lessonName}
                 username={doc.data().buyerName}
+                readMessage={doc.data().readMessage}
               />
             )
           })
@@ -54,8 +55,10 @@ function MyMessageList(props) {
                 buyerId={doc.data().buyerId}
                 lessonName={doc.data().lessonName}
                 username={doc.data().createrName}
+                readMessage={doc.data().readMessage}
               />
             )
+            console.log(doc.data().readMessage)
           })
           buyMessages = buyMessageItems
         })
