@@ -9,6 +9,7 @@ import Card from "@material-ui/core/Card"
 import CardContent from "@material-ui/core/CardContent"
 import { CardHeader } from "@material-ui/core"
 import Avatar from "@material-ui/core/Avatar"
+import Img from "../../commonParts/Img"
 
 const lessonList = makeStyles({
   rayout: {
@@ -50,7 +51,7 @@ export default function Lesson(props) {
               <Avatar
                 aria-label="recipe"
                 className={classes.avatar}
-                src={props.imageUrl}
+                src={props.createrImageUrl}
               ></Avatar>
             }
             className={classes.cardHeader}
