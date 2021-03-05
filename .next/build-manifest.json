@@ -24,20 +24,17 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
-    "/lesson_info/[lessonid]": [
+
+    "/message/[lessonid]/[buyerid]": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/lesson_info/[lessonid].js"
+      "static/chunks/pages/message/[lessonid]/[buyerid].js"
     ],
-    "/next/dist/pages/_error": [
+    "/mypage": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/next/dist/pages/_error.js"
-    ],
-    "/toppage": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/toppage.js"
+      "static/chunks/pages/mypage.js"
+
     ]
   },
   "ampFirstPages": []

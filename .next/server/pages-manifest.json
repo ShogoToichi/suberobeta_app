@@ -2,7 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/lesson_info/[lessonid]": "pages/lesson_info/[lessonid].js",
-  "/toppage": "pages/toppage.js",
-  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js"
+  "/mypage": "pages/mypage.js",
+  "/message/[lessonid]/[buyerid]": "pages/message/[lessonid]/[buyerid].js"
+
 }
