@@ -30,7 +30,7 @@ export default function MyLessonListUi(props) {
   const classes = myLessonList()
   return (
     <div className={classes.list}>
-      <div className={classes.list}>
+      <div>
         <Box p={1} className={classes.box}>
           <Typography variant="h8">　メッセージ一覧</Typography>
         </Box>

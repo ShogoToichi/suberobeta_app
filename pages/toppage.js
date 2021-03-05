@@ -1,15 +1,13 @@
-import Layout from "../components/common/Layout"
-import TopContents from "../components/topPage/TopContents"
-import Footer from "../components/topPage/Footer"
-import Grid from "@material-ui/core/Grid"
+import Layout from "../components/common/Layout";
+import TopContents from "../components/toppage/TopContents";
+import Footer from "../components/toppage/Footer";
+import Container from "@material-ui/core/Container";
 
 const TopPage = () => (
   <Layout header="トップページ" title="トップページ">
-    <Grid container justify="center">
-      <Grid item xs={12}>
-        <TopContents />
-      </Grid>
-    </Grid>
+    <Container maxWidth="lg">
+      <TopContents />
+    </Container>
     <Footer footer="copy right by subero corp." />
   </Layout>
 )

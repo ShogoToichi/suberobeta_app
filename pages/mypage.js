@@ -1,9 +1,12 @@
-import Layout from "../components/common/Layout"
-import Mypage from "../components/myPage/Mypage"
+import Layout from "../components/common/Layout";
+import Mypage from "../components/mypage/Mypage";
+import Container from "@material-ui/core/Container";
 
 const MypagePage = () => (
   <Layout>
-    <Mypage />
+    <Container maxWidth="lg">
+      <Mypage />
+    </Container>
   </Layout>
 )
 

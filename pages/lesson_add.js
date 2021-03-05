@@ -1,9 +1,12 @@
-import Layout from "../components/common/Layout"
-import LessonAdd from "../components/lessonAdd/LessonAdd"
+import Layout from "../components/common/Layout";
+import LessonAdd from "../components/lessonadd/LessonAdd";
+import Container from "@material-ui/core/Container";
 
 const LessonAddPage = () => (
   <Layout>
-    <LessonAdd />
+    <Container maxWidth="lg">
+      <LessonAdd />
+    </Container>
   </Layout>
 )
 

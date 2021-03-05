@@ -1,11 +1,14 @@
-import Link from "next/link"
-import Layout from "../components/common/Layout"
-import ProfileEdit from "../components/profileEdit/ProfileEdit"
-import React from "react"
+import Link from "next/link";
+import Layout from "../components/common/Layout";
+import ProfileEdit from "../components/profileedit/ProfileEdit";
+import React from "react";
+import Container from "@material-ui/core/Container";
 
 const ProfileEditPage = () => (
   <Layout>
-    <ProfileEdit />
+    <Container maxWidth="lg">
+      <ProfileEdit />
+    </Container>
   </Layout>
 )
 

@@ -7,13 +7,12 @@ import Link from "next/link"
 
 const plofile = makeStyles({
   paper: {
-    position: "absolute",
     width: "80%",
-    marginTop: "20px"
+    marginTop: "20px",
   },
   userName: {
     display: "inline-block",
-    margin: "0px"
+    margin: "0px",
   },
   info: {
     marginLeft: "50px",
@@ -24,8 +23,8 @@ const plofile = makeStyles({
   }
 })
 
-export default function LessonDitail(props) {
-  const classes = plofile()
+export default function LessonDetail(props) {
+  const classes = plofile();
   return (
     <Paper className={classes.paper} elevation={24} rounded>
       <Link href={`/profile_show/${props.userId}`}>
@@ -58,5 +57,5 @@ export default function LessonDitail(props) {
         className={classes.info}
       ></Typography>
     </Paper>
-  )
+  );
 }
