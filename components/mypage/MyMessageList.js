@@ -58,7 +58,6 @@ function MyMessageList(props) {
                 readMessage={doc.data().buyerReadMessage}
               />
             )
-            console.log(doc.data().readMessage)
           })
           buyMessages = buyMessageItems
         })
