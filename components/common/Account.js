@@ -43,16 +43,11 @@ function Account(props) {
   const router = useRouter()
   const dispatch = useDispatch()
 
-  // constructor(props) {
-  //   super(props)
-  // 属性値として使うためにバインド
-  // this.loginCheck = this.loginCheck.bind(this)
-  // }
   //ログイン処理
   const login = () => {
     firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
     let provider = new firebase.auth.GoogleAuthProvider()
-    // var self = this  // ???
+
     firebase
       .auth()
       .signInWithPopup(provider)
