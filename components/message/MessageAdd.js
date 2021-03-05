@@ -9,6 +9,7 @@ import Lib from "../../Lib/address_lib"
 import TextBox from "./parts/TextBox"
 import AddButton from "./parts/AddButton"
 
+//messagesコレクションの中のドキュメントのidを保管する変数
 let docid = ""
 
 function MessageAdd(props) {
@@ -56,6 +57,8 @@ function MessageAdd(props) {
       })
 
     //メッセージ一覧で時間の並び替えと未読の判別をするための処理
+    //ReadMessageのTorFで未読かを判断する
+    //どちらかがメッセージを送信したら、creater,buyer共にreadMessageをfalseにする
     await db.collection("messages").doc(docid).set(
       {
         messageTimeStamp: firebase.firestore.FieldValue.serverTimestamp(),
