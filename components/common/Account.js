@@ -113,8 +113,17 @@ class Account extends Component {
     }
   }
   render() {
-    if (this.props.login === false) {
-      return (
+    return this.props.login ? (
+      <Button
+        variant="outlined"
+        size="large"
+        color="inherit"
+        onClick={this.loginCheck}
+      >
+        {this.props.text}
+      </Button>
+    ) : (
+      <Link href="/toppage">
         <Button
           variant="outlined"
           size="large"
@@ -123,22 +132,8 @@ class Account extends Component {
         >
           {this.props.text}
         </Button>
-      )
-    } else {
-      // 無理やりログアウト時にtoppageに飛ばしてます
-      return (
-        <Link href="/toppage">
-          <Button
-            variant="outlined"
-            size="large"
-            color="inherit"
-            onClick={this.loginCheck}
-          >
-            {this.props.text}
-          </Button>
-        </Link>
-      )
-    }
+      </Link>
+    )
   }
 }
 
