@@ -82,8 +82,8 @@ function LessonInfo(props) {
       createrName: createrName,
       lessonName: lessonName,
       buyTime: firebase.firestore.FieldValue.serverTimestamp(),
-      createrReadMessage:true,
-      buyerReadMessage:true,
+      createrReadMessage: true,
+      buyerReadMessage: true,
       trading: true //取引中かどうかの真偽値、メッセージ検索で使用中
     })
   }
@@ -112,6 +112,7 @@ function LessonInfo(props) {
         lessonPlace={lessonPlace}
         lessonTime={lessonTime}
         lessonDescription={lessonDescription}
+        userId={createrId}
       />
     </div>
   )
