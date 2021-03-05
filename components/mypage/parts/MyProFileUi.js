@@ -1,49 +1,50 @@
-import React, { useContext } from "react";
-import Link from "next/link";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import { CardHeader } from "@material-ui/core";
-import Title from "../../commonParts/Title";
-import { Color } from "../../../static/colors";
-import Img from "../../commonParts/Img";
+import React, { useContext } from "react"
+import Link from "next/link"
+import Typography from "@material-ui/core/Typography"
+import Button from "@material-ui/core/Button"
+import { makeStyles } from "@material-ui/core/styles"
+import Card from "@material-ui/core/Card"
+import CardContent from "@material-ui/core/CardContent"
+import { CardHeader } from "@material-ui/core"
+import Title from "../../commonParts/Title"
+import { Color } from "../../../static/colors"
+import Img from "../../commonParts/Img"
 
 const myProfile = makeStyles((theme) => ({
   myprof: {
-    width: "80%",
+    width: "80%"
   },
   card: {
-    marginTop: "20px",
+    marginTop: "20px"
   },
   img: {
     display: "inline-block",
-    verticalAlign: "top",
+    verticalAlign: "top"
   },
   cardHeader: {
     display: "inline-block",
     verticalAlign: "top",
-    width: "80%",
+    width: "80%"
   },
   btn: {
     backgroundColor: useContext(Color).colors.Green,
     color: "white",
-    float: "right",
+    float: "right"
   },
   title: {
     fontWeight: "bold",
     margin: "5px",
     borderBottom: "solid 1px #BBB",
-    paddingBottom: "7px",
+    paddingBottom: "7px"
   },
   description: {
     margin: "30px",
-  },
-}));
+    whiteSpace: "pre-wrap" // 改行反映用css
+  }
+}))
 
 export default function MyProfileDetail(props) {
-  const classes = myProfile();
+  const classes = myProfile()
   return (
     <div className={classes.myprof}>
       <Title title={"My Page"} />
@@ -78,5 +79,5 @@ export default function MyProfileDetail(props) {
         </Card>
       </div>
     </div>
-  );
+  )
 }

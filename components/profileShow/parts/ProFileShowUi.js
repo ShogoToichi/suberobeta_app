@@ -28,7 +28,8 @@ const myProfile = makeStyles((theme) => ({
     paddingBottom: "7px"
   },
   description: {
-    margin: "30px"
+    margin: "30px",
+    whiteSpace: "pre-wrap" // 改行反映用css
   }
 }))
 
