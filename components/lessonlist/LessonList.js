@@ -15,6 +15,7 @@ const LessonList = () => {
 
     await db
       .collection("lessons")
+      .orderBy("createdAt", "desc")
       .get()
       .then((querySnapshot) => {
         // 受け取ったオブジェクトの配列に対して、forEachで繰り返し処理でレッスンコンポーネントに値を渡し、それをlessonitemsにpushする
