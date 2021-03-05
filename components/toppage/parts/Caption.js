@@ -10,13 +10,14 @@ const topTitle = makeStyles((theme) => ({
     marginTop: "40px"
   },
   cap: {
-    marginLeft: "0px"
+    marginLeft: "0px",
+    color: useContext(Color).colors.header,
   },
   mainCap: {
     marginLeft: "30px",
     color: useContext(Color).colors.header,
     fontWeight: "bold",
-    marginTop: "20px",
+    marginTop: "40px",
     marginLeft: "20px"
   },
   img: {
@@ -34,13 +35,13 @@ export default function Caption(props) {
       
       <Grid container justify="center" textAlign="center">
         <Grid item xs={12} sm={6}>
-          <Typography variant="h5" align="center" clasName={classes.cap}>
+          <Typography variant="h5" align="center" className={classes.cap}>
             好きな時間に好きな場所で
             <br />
             スキー・スノーボードレッスンは
           </Typography>
 
-          <Typography variant="h1" align="center" classNames={classes.mainCap}>
+          <Typography variant="h1" align="center" className={classes.mainCap}>
             subero
           </Typography>
         </Grid>

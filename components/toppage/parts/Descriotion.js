@@ -20,14 +20,14 @@ export default function Description(props) {
   return (
     <div>
       <MediaQuery query="(max-width: 600px)">
-        <div className={classes.maintitle}>
+        <div className={classes.mainTitle}>
           <Typography variant="h7">
             「教えたい人」と「学びたい人」のレッスンプラットフォーム
           </Typography>
         </div>
       </MediaQuery>
       <MediaQuery query="(min-width: 601px)">
-        <div className={classes.maintitle}>
+        <div className={classes.mainTitle}>
           <Typography variant="h5">
             「教えたい人」と「学びたい人」のレッスンプラットフォーム
           </Typography>

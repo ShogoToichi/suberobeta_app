@@ -24,25 +24,15 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
-    "/lesson_add": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/lesson_add.js"
-    ],
-    "/lesson_list": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/lesson_list.js"
-    ],
     "/mypage": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
       "static/chunks/pages/mypage.js"
     ],
-    "/next/dist/pages/_error": [
+    "/toppage": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/next/dist/pages/_error.js"
+      "static/chunks/pages/toppage.js"
     ]
   },
   "ampFirstPages": []
