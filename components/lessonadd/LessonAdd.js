@@ -1,10 +1,12 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import firebase from "firebase"
 import "firebase/storage"
 import { connect } from "react-redux"
 import Lib from "../../Lib/address_lib"
 import Title from "../commonParts/Title"
 import InputForm from "./parts/InputForm"
+
+let imageUrl = ""
 
 function LessonAdd(props) {
   //使用するステートの設定(Hook)
@@ -31,14 +33,26 @@ function LessonAdd(props) {
     setLessonDescription(e.target.value)
   }
 
+  const db = firebase.firestore()
+  const email = Lib.encodeEmail(props.email)
+
+  const getCreaterImage = async () => {
+    await db
+      .collection("users")
+      .doc(email)
+      .get()
+      .then(function (doc) {
+        imageUrl = doc.data().imageUrl
+      })
+  }
+
   //追加ボタンを押したらfirebaseにステートの情報を書き込む処理
   //addで追加しているから、ドキュメントidはユニークなidが自動で当てられる
   //Reduxからユーザーのemail(id)をencode( .→* )にして定数に代入
   const doSubmit = async () => {
-    const db = firebase.firestore()
-    const email = Lib.encodeEmail(props.email)
     await db.collection("lessons").add({
       createrId: email,
+      createrImageUrl: imageUrl,
       lessonName: lessonName,
       lessonPlace: lessonPlace,
       lessonPrice: lessonPrice,
@@ -47,6 +61,10 @@ function LessonAdd(props) {
       createdAt: firebase.firestore.FieldValue.serverTimestamp()
     })
   }
+
+  useEffect(() => {
+    getCreaterImage()
+  }, [])
 
   return (
     <div>

@@ -22,6 +22,7 @@ const LessonList = () => {
         querySnapshot.forEach((doc) => {
           lessonItems.push(
             <Lesson
+              createrImageUrl={doc.data().createrImageUrl}
               lessonId={doc.id}
               lessonName={doc.data().lessonName}
               lessonPlace={doc.data().lessonPlace}
