@@ -41,7 +41,7 @@ export default function Lesson(props) {
   return (
     <div className={classes.lessonList}>
       <Card>
-        <Img className={classes.img} src={props.imageurl} size="90" />
+        <Img className={classes.img} src={props.createrImageUrl} size="90" />
         <Link
           as={`/lesson_info/${props.lessonId}`}
           href="/lesson_info/[lessonId]"
