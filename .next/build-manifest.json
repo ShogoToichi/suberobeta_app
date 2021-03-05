@@ -33,6 +33,11 @@
       "static/chunks/main.js",
       "static/chunks/webpack.js",
       "static/chunks/pages/lesson_list.js"
+    ],
+    "/toppage": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/toppage.js"
     ]
   },
   "ampFirstPages": []
