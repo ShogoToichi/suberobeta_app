@@ -12,62 +12,64 @@ import Img from "../../commonParts/Img";
 import { Color } from "../../../static/colors";
 
 const lessonList = makeStyles((theme) => ({
-  top: {
-    width: "100%",
-    margin: "8px",
-  },
-  img: {
-    display: "inline-block",
-    verticalAlign: "top",
-  },
-  lessonList: {
+  lesson: {
     width: "80%",
     margin: "5px",
-    marginLeft: "70px",
+    marginLeft: "70px"
   },
-
-  contents: {
+  cardHeader: {
     display: "inline-block",
     verticalAlign: "top",
-    width: "60%"
-  },
-
-  cardHeader: {
-    cursor: "pointer",
     color: useContext(Color).colors.Green,
-    marginLeft: "30px",
+    fontWeight: "bold",
+    marginLeft: "30px"
   },
+  contents: {
+    width: "100%",
+    marginLeft: "50px"
+  },
+  info: {
+    marginTop: "10px"
+  }
 }));
 
 export default function Lesson(props) {
   const classes = lessonList();
   return (
-    <div className={classes.lessonList}>
-      <Card>
-        <Img className={classes.img} src={props.createrImageUrl} size="70" />
-        <div className={classes.contents}>
-        <Link
-          as={`/lesson_info/${props.lessonId}`}
-          href="/lesson_info/[lessonId]"
+    <Card className={classes.lesson}>
+      <Link href={`/profile_show/${props.userId}`}>
+        <Img src={props.createrImageUrl} size="70" />
+      </Link>
+
+      <Link
+        as={`/lesson_info/${props.lessonId}`}
+        href="/lesson_info/[lessonId]"
+      >
+        <CardHeader className={classes.cardHeader} title={props.lessonName} />
+      </Link>
+      <CardContent className={classes.contents}>
+        <Typography
+          style={{ marginBottom: "5px" }}
+          variant="body2"
+          className={classes.info}
         >
-          <CardHeader className={classes.cardHeader} title={props.lessonName} />
-        </Link>
-        <CardContent>
-          <Typography style={{ marginBottom: "5px" }} variant="body2">
-            日時:{props.lessonTime}
-          </Typography>
-          <Typography style={{ marginBottom: "5px" }} variant="body2">
-            場所：{props.lessonPlace}
-          </Typography>
-          <Typography style={{ marginBottom: "5px" }} variant="body2">
-            料金：{props.lessonPrice}
-          </Typography>
-          <Typography style={{ marginBottom: "5px" }} variant="body2">
-            レッスン内容：{props.lessonDescription}
-          </Typography>
-        </CardContent>
-        </div>
-      </Card>
-    </div>
+          日時:{props.lessonTime}
+        </Typography>
+        <Typography
+          style={{ marginBottom: "5px" }}
+          variant="body2"
+          className={classes.info}
+        >
+          場所：{props.lessonPlace}
+        </Typography>
+        <Typography
+          style={{ marginBottom: "5px" }}
+          variant="body2"
+          className={classes.info}
+        >
+          料金：{props.lessonPrice}
+        </Typography>
+      </CardContent>
+    </Card>
   );
 }
