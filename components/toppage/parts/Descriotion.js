@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
-import { Color } from "../../../static/colors";
-import DescriptionData from "./DescriptionData";
-import MediaQuery from "react-responsive";
+import React, { useContext } from "react"
+import Typography from "@material-ui/core/Typography"
+import { makeStyles } from "@material-ui/core/styles"
+import { Color } from "../../../static/colors"
+import DescriptionData from "./DescriptionData"
+import MediaQuery from "react-responsive"
 
 const topTitle = makeStyles((theme) => ({
   mainTitle: {
@@ -12,10 +12,10 @@ const topTitle = makeStyles((theme) => ({
     textWeight: "bold",
     textAlign: "center"
   }
-}));
+}))
 
 export default function Description(props) {
-  const classes = topTitle();
+  const classes = topTitle()
 
   return (
     <div>
@@ -65,5 +65,5 @@ export default function Description(props) {
         btnName={"レッスンを探す"}
       />
     </div>
-  );
+  )
 }

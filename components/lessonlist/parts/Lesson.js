@@ -1,15 +1,15 @@
 //値を渡してレッスンを表示する箱
 //Linkタグのところはlesson_info/[lessonId]にページ移動する処理
 
-import React, { useContext } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Link from "next/link";
-import Typography from "@material-ui/core/Typography";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import { CardHeader } from "@material-ui/core";
-import Img from "../../commonParts/Img";
-import { Color } from "../../../static/colors";
+import React, { useContext } from "react"
+import { makeStyles } from "@material-ui/core/styles"
+import Link from "next/link"
+import Typography from "@material-ui/core/Typography"
+import Card from "@material-ui/core/Card"
+import CardContent from "@material-ui/core/CardContent"
+import { CardHeader } from "@material-ui/core"
+import Img from "../../commonParts/Img"
+import { Color } from "../../../static/colors"
 
 const lessonList = makeStyles((theme) => ({
   lesson: {
@@ -31,10 +31,10 @@ const lessonList = makeStyles((theme) => ({
   info: {
     marginTop: "10px"
   }
-}));
+}))
 
 export default function Lesson(props) {
-  const classes = lessonList();
+  const classes = lessonList()
   return (
     <Card className={classes.lesson}>
       <Link href={`/profile_show/${props.userId}`}>
@@ -71,5 +71,5 @@ export default function Lesson(props) {
         </Typography>
       </CardContent>
     </Card>
-  );
+  )
 }

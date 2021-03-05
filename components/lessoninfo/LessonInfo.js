@@ -85,8 +85,8 @@ function LessonInfo(props) {
       createrReadMessage: true,
       buyerReadMessage: true,
       trading: true //取引中かどうかの真偽値、メッセージ検索で使用中
-    });
-  };
+    })
+  }
 
   useEffect(() => {
     getLessonData()
@@ -97,7 +97,7 @@ function LessonInfo(props) {
       {/* クリエーターIDとじぶんのIDが一致していたらレッスン編集ボタンを表示 */}
       <div style={{ position: "relative" }}>
         <Title title={lessonName} />
-        <span style={{ position: "absolute", width: "200px", right: "100px"}}>
+        <span style={{ position: "absolute", width: "200px", right: "100px" }}>
           {email == createrId ? (
             <EditBtn lessonId={router.query.lessonid} />
           ) : (

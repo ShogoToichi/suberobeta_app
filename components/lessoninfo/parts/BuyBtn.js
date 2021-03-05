@@ -1,4 +1,4 @@
-import React,{ useContext } from "react"
+import React, { useContext } from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import Button from "@material-ui/core/Button"
 import Link from "next/link"
@@ -15,9 +15,9 @@ const plofile = makeStyles((theme) => ({
     marginLeft: "0px",
     fontSize: "23px",
     marginBottom: "15px",
-    backgroundColor: useContext(Color).colors.bgGreen,
+    backgroundColor: useContext(Color).colors.bgGreen
   }
-}));
+}))
 
 export default function BuyBtn(props) {
   const classes = plofile()

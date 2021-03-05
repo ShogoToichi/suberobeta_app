@@ -11,7 +11,7 @@ const topTitle = makeStyles((theme) => ({
   },
   cap: {
     marginLeft: "0px",
-    color: useContext(Color).colors.header,
+    color: useContext(Color).colors.header
   },
   mainCap: {
     marginLeft: "30px",
@@ -32,7 +32,6 @@ export default function Caption(props) {
 
   return (
     <div className={classes.title}>
-      
       <Grid container justify="center" textAlign="center">
         <Grid item xs={12} sm={6}>
           <Typography variant="h5" align="center" className={classes.cap}>
