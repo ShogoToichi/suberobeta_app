@@ -4,11 +4,13 @@
 
 import firebase, { storage } from "../../redux/store"
 import "firebase/storage"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { connect } from "react-redux"
 import Lib from "../../Lib/address_lib"
 import GetImageUi from "./parts/GetImageUi"
+import { SystemUpdateAlt } from "@material-ui/icons"
 
+let currentImageUrl
 let image = ""
 let imageUrl = ""
 
@@ -16,13 +18,29 @@ function GetImage(props) {
   // image, imageUrlはstateじゃなくても大丈夫だろうか．．？
   // const [image, setImage] = useState("")
   // const [imageUrl, setImageUrl] = useState("")
-  const [update, setUpdata] = useState(false)
+  const db = firebase.firestore()
+  const email = Lib.encodeEmail(props.email)
+  const [upload, setUpload] = useState(true)
+  const [update, setUpdate] = useState(false)
 
+  //画像取得する関数
   const handleImage = (event) => {
     image = event.target.files[0]
     // const image = event.target.files[0]
     // setImage(image)
   }
+
+  //現在の画像を取得する関数
+  const getCurrentImage = (props) => {
+    db.collection("users")
+      .doc(email)
+      .get()
+      .then(function (doc) {
+        currentImageUrl = doc.data().imageUrl
+        setUpload(false)
+      })
+  }
+
   const onSubmit = (event) => {
     event.preventDefault()
     if (image === "") {
@@ -48,10 +66,10 @@ function GetImage(props) {
     // エラーハンドリング
     console.log(error)
   }
-  const complete = () => {
+  const complete = async () => {
     // 完了後の処理
     // 画像表示のため、アップロードした画像のURLを取得
-    storage
+    await storage
       .ref("profileImages")
       .child(image.name)
       .getDownloadURL()
@@ -59,8 +77,6 @@ function GetImage(props) {
         // setImageUrl(firebaseUrl)
         imageUrl = firebaseUrl
         // 取得した画像の名前をfirebaseに保存
-        const db = firebase.firestore()
-        const email = Lib.encodeEmail(props.email)
         db.collection("users").doc(email).set(
           {
             imageUrl: firebaseUrl
@@ -72,14 +88,21 @@ function GetImage(props) {
         //   console.log(imageUrl)
         // })
       })
-    setUpdata(update ? false : true)
+    setUpload(true)
+    setUpdate(update ? false : true)
   }
+
+  useEffect(() => {
+    getCurrentImage()
+  }, [])
 
   return (
     <div className="App">
       <GetImageUi
         onSubmit={onSubmit}
         handleImage={handleImage}
+        upload={upload}
+        currentImageUrl={currentImageUrl}
         imageUrl={imageUrl}
       />
     </div>

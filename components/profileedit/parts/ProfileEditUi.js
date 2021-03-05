@@ -1,13 +1,8 @@
 import React, { useContext } from "react"
-import Link from "next/link"
 import GetImage from "../GetImage"
 import { makeStyles } from "@material-ui/styles"
 import Typography from "@material-ui/core/Typography"
 import TextField from "@material-ui/core/TextField"
-import Button from "@material-ui/core/Button"
-import IconButton from "@material-ui/core/IconButton"
-import PhotoCamera from "@material-ui/icons/PhotoCamera"
-import ButtonGroup from "@material-ui/core/ButtonGroup"
 import { Color } from "../../../static/colors"
 
 const profileEdit = makeStyles((props) => ({
@@ -25,16 +20,6 @@ const profileEdit = makeStyles((props) => ({
   plofile: {
     marginTop: "40px",
     width: "80%"
-  },
-  buttonGroup: {
-    marginTop: "40px",
-    textAlign: "center"
-  },
-  button: {
-    width: "200px",
-    backgroundColor: useContext(Color).colors.Green,
-    color: "white",
-    margin: "0px 20px"
   }
 }))
 
@@ -44,7 +29,12 @@ export default function ProfileEdit(props) {
     <>
       <div className={classes.name}>
         <Typography variant="h8">ユーザ名</Typography>
-        <TextField label="ユーザ名" maxWidth onChange={props.doChangeName} />
+        <TextField
+          label="ユーザ名"
+          maxWidth
+          onChange={props.doChangeName}
+          defaultValue={props.currentName}
+        />
       </div>
 
       <div className={classes.uploadText}>
@@ -52,7 +42,7 @@ export default function ProfileEdit(props) {
       </div>
 
       <div className={classes.upload}>
-        <GetImage name={props.name} />
+        <GetImage />
       </div>
 
       <div className={classes.plofile}>
@@ -65,26 +55,8 @@ export default function ProfileEdit(props) {
           variant="outlined"
           fullWidth
           onChange={props.doChangeIntroduction}
+          defaultValue={props.currentIntroduction}
         />
-      </div>
-
-      <div className={classes.buttonGroup}>
-        <ButtonGroup disableElevation variant="outlined">
-          <Link href="/mypage">
-            <Button
-              className={classes.button}
-              onClick={props.doSubmit}
-              variant="contained"
-            >
-              変更
-            </Button>
-          </Link>
-          <Link href="/mypage">
-            <Button className={classes.button} variant="contained">
-              キャンセル
-            </Button>
-          </Link>
-        </ButtonGroup>
       </div>
     </>
   )

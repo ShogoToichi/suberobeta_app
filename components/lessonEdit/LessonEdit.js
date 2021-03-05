@@ -13,7 +13,7 @@ import SubmitButton from "./parts/SubmitButton"
 import { SystemUpdateAlt } from "@material-ui/icons"
 
 function LessonEdit(props) {
-  //使用するステートの設定、上の5個はテキストフィールドの値を見るためのやつ
+  //使用するステートの設定、テキストフィールドの値を見るためのやつ
   const [lessonName, setLessonName] = useState("")
   const [lessonPlace, setLessonPlace] = useState("")
   const [lessonTime, setLessonTime] = useState("")

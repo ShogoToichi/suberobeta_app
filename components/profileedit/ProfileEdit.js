@@ -1,22 +1,23 @@
 //要検討画像アップロード処理
 
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import firebase from "firebase"
 import "firebase/storage"
 import { connect } from "react-redux"
 import Lib from "../../Lib/address_lib"
 import Title from "../commonParts/Title"
 import ProfileEditUi from "./parts/ProfileEditUi"
+import ChangeBtn from "./parts/ChangeBtn"
 
 function ProfileEdit(props) {
-  const style = {
-    width: "50%",
-    margin: "0 auto",
-    marginTop: "150px"
-  }
   //使用するステートの設定(Hook)
   const [name, setName] = useState("")
   const [introduction, setIntroduction] = useState("")
+
+  const [inputForm, setInputForm] = useState("")
+
+  const db = firebase.firestore()
+  const email = Lib.encodeEmail(props.email)
 
   //inputに入力された処理をeで受け取ってステートに入れる関数
   const doChangeName = (e) => {
@@ -29,8 +30,6 @@ function ProfileEdit(props) {
   //追加ボタンを押したらfirebaseにステートの情報を書き込む処理
   //Reduxからユーザーのemail(id)をencode( .→* )にして定数に代入
   const doSubmit = async () => {
-    const db = firebase.firestore()
-    const email = Lib.encodeEmail(props.email)
     await db
       .collection("users")
       .doc(email)
@@ -46,15 +45,36 @@ function ProfileEdit(props) {
       })
   }
 
+  const getCurrentData = async () => {
+    await db
+      .collection("users")
+      .doc(email)
+      .get()
+      .then(function (doc) {
+        setName(doc.data().profile.name)
+        setIntroduction(doc.data().profile.introduction)
+
+        setInputForm(
+          <ProfileEditUi
+            currentName={doc.data().profile.name}
+            currentIntroduction={doc.data().profile.introduction}
+            doChangeName={doChangeName}
+            doChangeIntroduction={doChangeIntroduction}
+            doSubmit={doSubmit}
+          />
+        )
+      })
+  }
+
+  useEffect(() => {
+    getCurrentData()
+  }, [])
+
   return (
     <>
       <Title title={"マイプロフィール編集"} />
-      <ProfileEditUi
-        doChangeName={doChangeName}
-        name={name}
-        doChangeIntroduction={doChangeIntroduction}
-        doSubmit={doSubmit}
-      />
+      {inputForm}
+      <ChangeBtn onClick={doSubmit} />
     </>
   )
 }
