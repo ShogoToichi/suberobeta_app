@@ -1,31 +1,59 @@
-import React, { Component } from "react"
-import { connect } from "react-redux"
+import React from "react"
+import { connect, useDispatch } from "react-redux"
 import firebase from "firebase"
 import Button from "@material-ui/core/Button"
+import Lib from "../../Lib/address_lib"
+import { useRouter } from "next/router"
 
-class Account extends Component {
-  style = {
-    fontSize: "12pt",
-    padding: "5px 10px"
+// 初回ログイン時に名前を自動的に設定するために初回ログインかどうかを判定する関数
+const isFirstLogin = async (db, email) => {
+  const doc = await db.collection("users").doc(email).get()
+  // 存在しないときisFirstLoginはtrueを返す
+  if (!doc.exists) {
+    return true
+  } else {
+    return false
   }
+}
 
-  constructor(props) {
-    super(props)
-    // 属性値として使うためにバインド
-    this.loginCheck = this.loginCheck.bind(this)
-  }
+// 初期値の登録
+const doRegister = async (db, email, name) => {
+  const initIntroduction = "自己紹介を入力してください！"
+
+  // 初期の画像設定用urlの取得
+  const imageRef = firebase.storage().ref().child("suberoアプリロゴ.png")
+  let initImageUrl = ""
+  await imageRef.getDownloadURL().then((url) => {
+    initImageUrl = url
+  })
+  // firestoreに登録
+  await db
+    .collection("users")
+    .doc(email)
+    .set(
+      {
+        imageUrl: initImageUrl,
+        profile: { name: name, introduction: initIntroduction }
+      },
+      { marge: true }
+    )
+}
+
+function Account(props) {
+  const router = useRouter()
+  const dispatch = useDispatch()
 
   //ログイン処理
-  login() {
+  const login = () => {
     firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
     let provider = new firebase.auth.GoogleAuthProvider()
-    var self = this
+
     firebase
       .auth()
       .signInWithPopup(provider)
       //ログイン処理完了後resultで値を受け取りReduxへ
-      .then((result) => {
-        this.props.dispatch({
+      .then(async (result) => {
+        dispatch({
           type: "UPDATE_USER",
           value: {
             login: true,
@@ -34,17 +62,26 @@ class Account extends Component {
             imageUrl: ""
           }
         })
-        //ログイン時の処理をpropsで受け取れるようにする
-        //とりま使ってない
-        // this.props.onLogined();
+        // 初回ログインかどうかの判断
+        const db = firebase.firestore()
+        const email = Lib.encodeEmail(result.user.email)
+
+        if (await isFirstLogin(db, email)) {
+          // 初回ログインの場合trueとなる
+          // データベースに初期値を入力する
+          doRegister(db, email, result.user.displayName)
+        }
       })
+    //ログイン時の処理をpropsで受け取れるようにする
+    //とりま使ってない
+    // this.props.onLogined();
   }
 
   //ログアウト機能
-  logout() {
+  const logout = () => {
     console.log("logout")
     firebase.auth().signOut()
-    this.props.dispatch({
+    dispatch({
       type: "UPDATE_USER",
       value: {
         login: false,
@@ -58,26 +95,25 @@ class Account extends Component {
   }
 
   //ログイン、ログアウト処理をクリック時に分岐する関数
-  loginCheck() {
-    if (this.props.login === false) {
-      this.login()
+  const loginCheck = () => {
+    if (props.text === "ログイン") {
+      login()
     } else {
-      this.logout()
+      logout()
+      router.push("/toppage")
     }
   }
 
-  render() {
-    return (
-      <Button
-        variant="outlined"
-        size="large"
-        color="inherit"
-        onClick={this.loginCheck}
-      >
-        ログイン
-      </Button>
-    )
-  }
+  return (
+    <Button
+      variant="outlined"
+      size="large"
+      color="inherit"
+      onClick={loginCheck}
+    >
+      {props.text}
+    </Button>
+  )
 }
 
 Account = connect((state) => state)(Account)

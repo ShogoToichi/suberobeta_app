@@ -40,14 +40,20 @@ function Header(props) {
             レッスン一覧
           </Button>
         </Link>
+
         {props.login ? (
-          <Link href="/mypage">
-            <Button variant="text" size="large" color="inherit">
-              マイページ
-            </Button>
-          </Link>
+          <>
+            <Link href="/mypage">
+              <Button variant="text" size="large" color="inherit">
+                マイページ
+              </Button>
+            </Link>
+            <Link href="/toppage">
+              <Account text="ログアウト" />
+            </Link>
+          </>
         ) : (
-          <Account />
+          <Account text="ログイン" />
         )}
       </Toolbar>
     </AppBar>

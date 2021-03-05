@@ -47,7 +47,7 @@ function ProfileEdit(props) {
       .collection("users")
       .doc(email)
       .get()
-      .then(function (doc) {
+      .then((doc) => {
         //テキストボックスの中身を書き換えないと、それぞれのステートが初期値から変更されない。それぞれのステートに現在のレッスン情報を入れる
         //この処理がないと、書き換えが行われなかった値がステートを定義した時の初期値の" "になってしまう
         setName(doc.data().profile.name)
