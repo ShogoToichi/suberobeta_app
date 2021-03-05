@@ -1,5 +1,5 @@
 import React from "react"
-import Img from "../../normal_parts/Img"
+import Img from "../../commonParts/Img"
 
 export default function Chat(props) {
   const userImg = {
@@ -9,7 +9,7 @@ export default function Chat(props) {
     left: "10px"
   }
 
-  const username = {
+  const userName = {
     display: "inline-block",
     width: "200px",
     padding: "0px 0px 5px 5px",
@@ -35,16 +35,16 @@ export default function Chat(props) {
     top: "14px",
     left: "10px"
   }
-  const chatdiv = {
+  const chatDiv = {
     position: "relative"
   }
 
   return (
-    <div style={chatdiv}>
+    <div style={chatDiv}>
       <div style={ImgDiv}>
-        <Img src={props.imageurl} size="45" />
+        <Img src={props.imageUrl} size="45" />
       </div>
-      <p style={username}>{props.username}</p>
+      <p style={userName}>{props.userName}</p>
       <br></br>
       <div style={style}>{props.text}</div>
       <br />

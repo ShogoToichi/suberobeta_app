@@ -1,5 +1,5 @@
 //メッセージ送信フォーム
-//message/[lessonid]でインポート
+//message/[lessonId]でインポート
 
 import React, { useState } from "react"
 import { connect } from "react-redux"
@@ -12,7 +12,7 @@ import AddButton from "./parts/AddButton"
 function MessageAdd(props) {
   //使用するステートの設定(Hook)
   const [message, setMessage] = useState("")
-  const [userfilter, setUserfilter] = useState("")
+  const [userFilter, setUserfilter] = useState("")
 
   //inputに入力された処理をeで受け取ってステートに入れる関数
   const doChangeMessage = (e) => {
@@ -23,29 +23,38 @@ function MessageAdd(props) {
 
   //追加ボタンを押したらfirebaseにステートの情報を書き込む処理
   //addで追加しているから、ドキュメントidはユニークなidが自動で当てられる
-  //Reduxからユーザーのemail(id)をencode( .→* )にして定数に代入
   const doSubmit = async () => {
     const db = firebase.firestore()
     const email = Lib.encodeEmail(props.email)
-    const buyeremail = Lib.encodeEmail(router.query.buyerid)
-    let d = new Date().getTime()
+    const buyerEmail = Lib.encodeEmail(router.query.buyerid)
     await db
-      .collection("lessons")
-      .doc(router.query.lessonid)
-      .collection("buyerid")
-      .doc(buyeremail)
-      .collection("message")
-      .add({
-        userid: email,
-        text: message,
-        time: firebase.firestore.FieldValue.serverTimestamp()
+      //messageサブコレクションを参照するために必要なmessages内のドキュメントのidを先に参照している
+      .collection("messages")
+      .where("lessonId", "==", router.query.lessonid)
+      .where("buyerId", "==", router.query.buyerid)
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          console.log(router.query.lessonid)
+          console.log(router.query.buyerid)
+          const id = doc.id
+          db.collection("messages")
+            .doc(id) //先に取得したIDを使ってサブコレクションを参照
+            .collection("message")
+            .add({
+              userId: email,
+              text: message,
+              time: firebase.firestore.FieldValue.serverTimestamp()
+            })
+            //テキストボックスを空にする
+            .then(() => {
+              setMessage("")
+            })
+        })
       })
-      .then(function () {
-        setMessage("")
-      })
-    //userfilterのTorFを、マテリアルUIのdisabled属性に用いて、
+    //userFilterのTorFを、マテリアルUIのdisabled属性に用いて、
     //作成者、購入者以外にフォームを表示しなくする
-    if (email == props.createrid || email == buyeremail) {
+    if (email == props.createrId || email == buyerEmail) {
       setUserfilter(false)
     } else {
       setUserfilter(true)
@@ -53,14 +62,14 @@ function MessageAdd(props) {
   }
 
   return (
-    <div>
+    <>
       <TextBox
         onChange={doChangeMessage}
         value={message}
-        disabled={userfilter}
+        disabled={userFilter}
       />
-      <AddButton onClick={doSubmit} disabled={userfilter} />
-    </div>
+      <AddButton onClick={doSubmit} disabled={userFilter} />
+    </>
   )
 }
 

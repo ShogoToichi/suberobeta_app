@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography"
 import { Color } from "../../../static/colors"
 import Grid from "@material-ui/core/Grid"
 
-const toptitle = makeStyles((theme) => ({
+const topTitle = makeStyles((theme) => ({
   title: {
     width: "100%",
     marginTop: "40px"
@@ -12,7 +12,7 @@ const toptitle = makeStyles((theme) => ({
   cap: {
     marginLeft: "0px"
   },
-  maincap: {
+  mainCap: {
     marginLeft: "30px",
     color: useContext(Color).colors.header,
     fontWeight: "bold",
@@ -27,7 +27,7 @@ const toptitle = makeStyles((theme) => ({
 }))
 
 export default function Caption(props) {
-  const classes = toptitle()
+  const classes = topTitle()
 
   return (
     <div className={classes.title}>
@@ -40,7 +40,7 @@ export default function Caption(props) {
             スキー・スノーボードレッスンは
           </Typography>
 
-          <Typography variant="h1" align="center" className={classes.maincap}>
+          <Typography variant="h1" align="center" classNames={classes.mainCap}>
             subero
           </Typography>
         </Grid>

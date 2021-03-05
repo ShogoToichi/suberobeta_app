@@ -7,7 +7,7 @@ import Button from "@material-ui/core/Button"
 import Icon from "@material-ui/core/Icon"
 import { Color } from "../../../static/colors"
 
-const mylessonlist = makeStyles((theme) => ({
+const myLessonList = makeStyles((theme) => ({
   list: {
     marginTop: "40px",
     width: "80%"
@@ -17,7 +17,7 @@ const mylessonlist = makeStyles((theme) => ({
     fontWeight: "bold",
     backgroundColor: useContext(Color).colors.Green
   },
-  addbtn: {
+  addBtn: {
     textAlign: "center"
   },
   btn: {
@@ -27,7 +27,7 @@ const mylessonlist = makeStyles((theme) => ({
 }))
 
 export default function MyLessonListUi(props) {
-  const classes = mylessonlist()
+  const classes = myLessonList()
   return (
     <div className={classes.list}>
       <div className={classes.list}>
@@ -36,7 +36,7 @@ export default function MyLessonListUi(props) {
         </Box>
       </div>
       {props.items}
-      <div className={classes.addbtn}>
+      <div className={classes.addBtn}>
         <Link href="/lesson_add">
           <Button
             variant="contained"
@@ -47,7 +47,6 @@ export default function MyLessonListUi(props) {
             レッスン追加
           </Button>
         </Link>
-        <button onClick={props.getFireData}>検証</button>
       </div>
     </div>
   )

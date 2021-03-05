@@ -1,15 +1,13 @@
 import React from "react"
 import Message from "../../components/message/Message"
 import MessageAdd from "../../components/message/MessageAdd"
-import Layout from "../../components/normal/Layout"
+import Layout from "../../components/common/Layout"
 
-export default function message() {
-  return (
-    <div>
-      <Layout>
-        <Message />
-        <MessageAdd />
-      </Layout>
-    </div>
-  )
-}
+const message = () => (
+  <Layout>
+    <Message />
+    <MessageAdd />
+  </Layout>
+)
+
+export default message

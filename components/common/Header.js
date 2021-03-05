@@ -27,32 +27,30 @@ function Header(props) {
   const classes = useStyles()
 
   return (
-    <div>
-      <AppBar position="static" className={classes.bar}>
-        <Toolbar>
-          <Link href="/toppage">
-            <Button size="small" color="inherit">
-              <img className={classes.img} src="/static/subero_icon.png" />
-            </Button>
-          </Link>
-          <h1 className={classes.blank}> </h1>
-          <Link href="/lesson_list">
+    <AppBar position="static" className={classes.bar}>
+      <Toolbar>
+        <Link href="/toppage">
+          <Button size="small" color="inherit">
+            <img className={classes.img} src="/static/subero_icon.png" />
+          </Button>
+        </Link>
+        <h1 className={classes.blank}> </h1>
+        <Link href="/lesson_list">
+          <Button variant="text" size="large" color="inherit">
+            レッスン一覧
+          </Button>
+        </Link>
+        {props.login ? (
+          <Link href="/mypage">
             <Button variant="text" size="large" color="inherit">
-              レッスン一覧
+              マイページ
             </Button>
           </Link>
-          {props.login ? (
-            <Link href="/mypage">
-              <Button variant="text" size="large" color="inherit">
-                マイページ
-              </Button>
-            </Link>
-          ) : (
-            <Account />
-          )}
-        </Toolbar>
-      </AppBar>
-    </div>
+        ) : (
+          <Account />
+        )}
+      </Toolbar>
+    </AppBar>
   )
 }
 

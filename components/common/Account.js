@@ -12,7 +12,7 @@ class Account extends Component {
   constructor(props) {
     super(props)
     // 属性値として使うためにバインド
-    this.login_check = this.login_check.bind(this)
+    this.loginCheck = this.loginCheck.bind(this)
   }
 
   //ログイン処理
@@ -29,9 +29,9 @@ class Account extends Component {
           type: "UPDATE_USER",
           value: {
             login: true,
-            username: result.user.displayName,
+            userName: result.user.displayName,
             email: result.user.email,
-            imageurl: ""
+            imageUrl: ""
           }
         })
         //ログイン時の処理をpropsで受け取れるようにする
@@ -48,17 +48,17 @@ class Account extends Component {
       type: "UPDATE_USER",
       value: {
         login: false,
-        username: "(click here!)",
+        userName: "(click here!)",
         email: "",
         data: [],
-        imageurl: ""
+        imageUrl: ""
       }
     })
     // this.props.onLogouted();
   }
 
   //ログイン、ログアウト処理をクリック時に分岐する関数
-  login_check() {
+  loginCheck() {
     if (this.props.login === false) {
       this.login()
     } else {
@@ -72,7 +72,7 @@ class Account extends Component {
         variant="outlined"
         size="large"
         color="inherit"
-        onClick={this.login_check}
+        onClick={this.loginCheck}
       >
         ログイン
       </Button>

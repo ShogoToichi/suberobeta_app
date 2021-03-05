@@ -4,25 +4,50 @@
 
 import firebase, { storage } from "../../redux/store"
 import "firebase/storage"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { connect } from "react-redux"
 import Lib from "../../Lib/address_lib"
 import GetImageUi from "./parts/GetImageUi"
+import { SystemUpdateAlt } from "@material-ui/icons"
+
+let currentImageUrl
+let image = ""
+let imageUrl = ""
 
 function GetImage(props) {
-  const [image, setImage] = useState("")
-  const [imageUrl, setImageUrl] = useState("")
+  // image, imageUrlはstateじゃなくても大丈夫だろうか．．？
+  // const [image, setImage] = useState("")
+  // const [imageUrl, setImageUrl] = useState("")
+  const db = firebase.firestore()
+  const email = Lib.encodeEmail(props.email)
+  const [upload, setUpload] = useState(true)
+  const [update, setUpdate] = useState(false)
+
+  //画像取得する関数
   const handleImage = (event) => {
-    const image = event.target.files[0]
-    setImage(image)
+    image = event.target.files[0]
+    // const image = event.target.files[0]
+    // setImage(image)
   }
+
+  //現在の画像を取得する関数
+  const getCurrentImage = (props) => {
+    db.collection("users")
+      .doc(email)
+      .get()
+      .then(function (doc) {
+        currentImageUrl = doc.data().imageUrl
+        setUpload(false)
+      })
+  }
+
   const onSubmit = (event) => {
     event.preventDefault()
     if (image === "") {
       console.log("ファイルが選択されていません")
     }
     // アップロード処理
-    const uploadTask = storage.ref(`/profileimages/${image.name}`).put(image)
+    const uploadTask = storage.ref(`/profileImages/${image.name}`).put(image)
     uploadTask.on(
       firebase.storage.TaskEvent.STATE_CHANGED,
       next,
@@ -41,38 +66,43 @@ function GetImage(props) {
     // エラーハンドリング
     console.log(error)
   }
-  const complete = () => {
+  const complete = async () => {
     // 完了後の処理
     // 画像表示のため、アップロードした画像のURLを取得
-    storage
-      .ref("profileimages")
+    await storage
+      .ref("profileImages")
       .child(image.name)
       .getDownloadURL()
-      .then((fireBaseUrl) => {
-        setImageUrl(fireBaseUrl)
+      .then((firebaseUrl) => {
+        // setImageUrl(firebaseUrl)
+        imageUrl = firebaseUrl
         // 取得した画像の名前をfirebaseに保存
-        const db = firebase.firestore()
-        const email = Lib.encodeEmail(props.email)
-        db.collection("users")
-          .doc(email)
-          .set(
-            {
-              imageurl: fireBaseUrl
-            },
-            { merge: true }
-          )
-          .then(function () {
-            console.log(fireBaseUrl)
-            console.log(imageUrl)
-          })
+        db.collection("users").doc(email).set(
+          {
+            imageUrl: firebaseUrl
+          },
+          { merge: true }
+        )
+        // .then(() => {
+        //   console.log(firebaseUrl)
+        //   console.log(imageUrl)
+        // })
       })
+    setUpload(true)
+    setUpdate(update ? false : true)
   }
+
+  useEffect(() => {
+    getCurrentImage()
+  }, [])
 
   return (
     <div className="App">
       <GetImageUi
         onSubmit={onSubmit}
         handleImage={handleImage}
+        upload={upload}
+        currentImageUrl={currentImageUrl}
         imageUrl={imageUrl}
       />
     </div>

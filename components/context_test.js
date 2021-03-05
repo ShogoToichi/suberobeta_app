@@ -1,7 +1,7 @@
 import { Color } from "../static/colors"
 import React, { useContext } from "react"
 
-export default function Test() {
+const Test = () => {
   const color = useContext(Color).colors
 
   const test1 = {
@@ -23,10 +23,12 @@ export default function Test() {
   }
 
   return (
-    <div>
+    <>
       <div style={test1}>bnbn hello youtube</div>
 
       <div style={test2}>こんにちは世界</div>
-    </div>
+    </>
   )
 }
+
+export default Test

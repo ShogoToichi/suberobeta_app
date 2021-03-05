@@ -1,15 +1,15 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import Img from "../../normal_parts/Img";
-import Typography from "@material-ui/core/Typography";
+import React from "react"
+import { makeStyles } from "@material-ui/core/styles"
+import Paper from "@material-ui/core/Paper"
+import Img from "../../commonParts/Img"
+import Typography from "@material-ui/core/Typography"
 
 const plofile = makeStyles({
   paper: {
     width: "80%",
     marginTop: "20px",
   },
-  username: {
+  userName: {
     display: "inline-block",
     margin: "0px",
   },
@@ -23,23 +23,22 @@ export default function LessonDetail(props) {
   const classes = plofile();
   return (
     <Paper className={classes.paper} elevation={24} rounded>
-      <Img className={classes.img} src={props.imageurl} size="90" />
+      <Img className={classes.img} src={props.createrImageUrl} size="70" />
+      <Typography variant="h6" className={classes.userName}>
+        講師名： {props.createrName}
+      </Typography>
+      <Typography variant="h7" display="block" className={classes.info}>
+        料金：{props.lessonPrice}
+      </Typography>
+      <Typography variant="h7" display="block" className={classes.info}>
+        場所：{props.lessonPlace}
+      </Typography>
 
-      <Typography variant="h6" className={classes.username}>
-        講師名： {props.profileusername}
+      <Typography variant="h7" display="block" className={classes.info}>
+        日時：{props.lessonTime}
       </Typography>
       <Typography variant="h7" display="block" className={classes.info}>
-        料金：{props.price}
-      </Typography>
-      <Typography variant="h7" display="block" className={classes.info}>
-        場所：{props.place}
-      </Typography>
-
-      <Typography variant="h7" display="block" className={classes.info}>
-        日時：{props.time}
-      </Typography>
-      <Typography variant="h7" display="block" className={classes.info}>
-        レッスン内容：{props.lessoncomment}
+        レッスン内容：{props.lessonDescription}
       </Typography>
       <Typography
         variant="h7"

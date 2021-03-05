@@ -1,11 +1,11 @@
-//フッター設定用ファイル
-//レイアウトで読み込む
+// フッター設定用ファイル
+// レイアウトで読み込む
 
 import React, { Component, useContext } from "react"
 import { Color } from "../../static/colors"
 
 export default function Footer(props) {
-  const footer_style = {
+  const footerStyle = {
     marginTop: "20px",
     color: useContext(Color).colors.footer_subero,
     position: "absolute",
@@ -37,7 +37,7 @@ export default function Footer(props) {
       <p style={footer_p}>企業情報</p>
       <p style={footer_p}>アクセス</p>
       <p style={footer_p}>採用情報</p>
-      <div style={footer_style}>{props.footer}</div>
+      <div style={footerStyle}>{props.footer}</div>
     </footer>
   )
 }

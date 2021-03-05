@@ -33,11 +33,11 @@ const myprofile = makeStyles((theme) => ({
 }));
 
 export default function MyProfileDetail(props) {
-  const classes = myprofile();
+  const classes = myProfile()
   return (
-    <div>
+    <>
       <Title title={"My Page"} />
-      <div className={classes.myprof}>
+      <div className={classes.myProfile}>
         <Card>
           <Img className={classes.img} src={props.imageurl} size="70" />
           <CardHeader
@@ -61,6 +61,6 @@ export default function MyProfileDetail(props) {
           </CardContent>
         </Card>
       </div>
-    </div>
-  );
+    </>
+  )
 }

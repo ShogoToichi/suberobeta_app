@@ -3,32 +3,32 @@ import firebase from "firebase"
 import "firebase/storage"
 import { connect } from "react-redux"
 import Lib from "../../Lib/address_lib"
-import Title from "../normal_parts/Title"
+import Title from "../commonParts/Title"
 import InputForm from "./parts/InputForm"
 
 function LessonAdd(props) {
   //使用するステートの設定(Hook)
-  const [lessonname, setLessonname] = useState("")
-  const [place, setPlace] = useState("")
-  const [time, setTime] = useState("")
-  const [price, setPrice] = useState("")
-  const [lessoncomment, setLessoncomment] = useState("")
+  const [lessonName, setLessonName] = useState("")
+  const [lessonPlace, setLessonPlace] = useState("")
+  const [lessonTime, setLessonTime] = useState("")
+  const [lessonPrice, setLessonPrice] = useState("")
+  const [lessonDescription, setLessonDescription] = useState("")
 
   //inputに入力された処理をeで受け取ってステートに入れる関数
-  const doChangeName = (e) => {
-    setLessonname(e.target.value)
+  const doChangeLessonName = (e) => {
+    setLessonName(e.target.value)
   }
-  const doChangePlace = (e) => {
-    setPlace(e.target.value)
+  const doChangeLessonPlace = (e) => {
+    setLessonPlace(e.target.value)
   }
-  const doChangeTime = (e) => {
-    setTime(e.target.value)
+  const doChangeLessonTime = (e) => {
+    setLessonTime(e.target.value)
   }
-  const doChangePrice = (e) => {
-    setPrice(e.target.value)
+  const doChangeLessonPrice = (e) => {
+    setLessonPrice(e.target.value)
   }
-  const doChangeComment = (e) => {
-    setLessoncomment(e.target.value)
+  const doChangeLessonDescription = (e) => {
+    setLessonDescription(e.target.value)
   }
 
   //追加ボタンを押したらfirebaseにステートの情報を書き込む処理
@@ -37,19 +37,14 @@ function LessonAdd(props) {
   const doSubmit = async () => {
     const db = firebase.firestore()
     const email = Lib.encodeEmail(props.email)
-    await db
-      .collection("lessons")
-      .add({
-        createrid: email,
-        lessonname: lessonname,
-        lessonplace: place,
-        lessonprice: price,
-        lessontext: lessoncomment,
-        lessontime: time
-      })
-      .then(function (doc) {
-        console.log("LessonID:", doc.id)
-      })
+    await db.collection("lessons").add({
+      createrId: email,
+      lessonName: lessonName,
+      lessonPlace: lessonPlace,
+      lessonPrice: lessonPrice,
+      lessonDescription: lessonDescription,
+      lessonTime: lessonTime
+    })
   }
 
   return (
@@ -61,11 +56,11 @@ function LessonAdd(props) {
         }
       />
       <InputForm
-        doChangeName={doChangeName}
-        doChangeTime={doChangeTime}
-        doChangePlace={doChangePlace}
-        doChangePrice={doChangePrice}
-        doChangeComment={doChangeComment}
+        onChangeLessonName={doChangeLessonName}
+        onChangeLessonTime={doChangeLessonTime}
+        onChangeLessonPlace={doChangeLessonPlace}
+        onChangeLessonPrice={doChangeLessonPrice}
+        onChangeLessonDescription={doChangeLessonDescription}
         doSubmit={doSubmit}
       />
     </div>

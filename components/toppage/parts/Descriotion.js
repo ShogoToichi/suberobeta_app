@@ -5,8 +5,8 @@ import { Color } from "../../../static/colors";
 import DescriptionData from "./DescriptionData";
 import MediaQuery from "react-responsive";
 
-const toptitle = makeStyles((theme) => ({
-  maintitle: {
+const topTitle = makeStyles((theme) => ({
+  mainTitle: {
     color: useContext(Color).colors.header,
     marginTop: "200px",
     textWeight: "bold",

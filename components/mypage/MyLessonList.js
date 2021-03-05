@@ -1,7 +1,7 @@
 //基本的には<LessonList/>と同じなのでそちらを参照
 //.whereでレッスン作成者とReduxのemailが一致するデータを参照
 
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import firebase from "firebase"
 import "firebase/storage"
 import MyLesson from "./parts/MyLesson"
@@ -9,60 +9,47 @@ import { connect } from "react-redux"
 import Lib from "../../Lib/address_lib"
 import MyLessonListUi from "./parts/MyLessonListUi"
 
+let items = "no item"
+
 function MyLessonList(props) {
-  const [items, setItems] = useState("no item")
+  // const [items, setItems] = useState("no item")
+  const [update, setUpdate] = useState(false)
 
   const getFireData = async () => {
     const db = firebase.firestore()
-    const lessondata = []
-    const lessonid = []
-    const lessonitems = []
+    const lessonItems = []
     const email = Lib.encodeEmail(props.email)
 
     if (props.login) {
       await db
         .collection("lessons")
-        .where("createrid", "==", email)
+        .where("createrId", "==", email)
         .get()
         .then(function (querySnapshot) {
-          querySnapshot.forEach(function (doc) {
-            lessondata.unshift(doc.data())
-            lessonid.unshift(doc.id)
-          })
-          for (let i in lessonid) {
-            let id = lessonid[i]
-            let name = lessondata[i].lessonname
-            let place = lessondata[i].lessonplace
-            let time = lessondata[i].lessontime
-            let text = lessondata[i].lessontext
-            let price = lessondata[i].lessonprice
-            lessonitems.push(
+          querySnapshot.forEach((doc) => {
+            lessonItems.push(
               <MyLesson
-                lessonid={id}
-                name={name}
-                place={place}
-                time={time}
-                text={text}
-                price={price}
+                lessonId={doc.id}
+                lessonName={doc.data().lessonName}
+                lessonPlace={doc.data().lessonPlace}
               />
             )
-          }
-          setItems(lessonitems)
+          })
+          // setItems(lessonItems)
+          items = lessonItems
         })
     } else {
-      setItems("投稿したレッスンはありません")
+      // setItems("投稿したレッスンはありません")
+      items = "投稿したレッスンはありません"
     }
+    setUpdate(update ? false : true)
   }
 
-  if (items == "no item") {
+  useEffect(() => {
     getFireData()
-  }
+  }, [])
 
-  return (
-    <div>
-      <MyLessonListUi items={items} getFireData={getFireData} />
-    </div>
-  )
+  return <MyLessonListUi items={items} />
 }
 
 MyLessonList = connect((state) => state)(MyLessonList)

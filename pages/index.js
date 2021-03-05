@@ -1,9 +1,11 @@
-import Layout from "../components/normal/Layout"
-import Test from "../components/message/parts/chat"
+import Layout from "../components/common/Layout"
+import Test from "../components/commonParts/Img"
 import Grid from "@material-ui/core/Grid"
 
-export default () => (
-  <Layout header="トップページ" title="Top page.">
-    <Test />
+const IndexPage = () => (
+  <Layout header="トップページ" title="Top Page.">
+    <Test src="../static/snowboard.jpg" size="100" />
   </Layout>
 )
+
+export default IndexPage

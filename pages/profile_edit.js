@@ -4,10 +4,12 @@ import ProfileEdit from "../components/profileedit/ProfileEdit";
 import React from "react";
 import Container from "@material-ui/core/Container";
 
-export default () => (
+const ProfileEditPage = () => (
   <Layout>
     <Container maxWidth="lg">
       <ProfileEdit />
     </Container>
   </Layout>
-);
+)
+
+export default ProfileEditPage

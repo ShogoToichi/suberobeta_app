@@ -5,39 +5,39 @@ import ListItemText from "@material-ui/core/ListItemText"
 import Button from "@material-ui/core/Button"
 import { makeStyles } from "@material-ui/styles"
 
-export default function Lesson(props) {
-  const mylessonlist = makeStyles({
-    lessonitem: {
-      margin: "30px 30px 30px 30px"
-    },
-    addbtn: {
-      textAlign: "center"
-    },
-    messagebtn: {
-      backgroundColor: "#DDD",
-      color: "black"
-    }
-  })
+const myLessonList = makeStyles({
+  lessonItem: {
+    margin: "30px 30px 30px 30px"
+  },
+  addBtn: {
+    textAlign: "center"
+  },
+  messageBtn: {
+    backgroundColor: "#DDD",
+    color: "black"
+  }
+})
 
-  const classes = mylessonlist()
+export default function Lesson(props) {
+  const classes = myLessonList()
 
   return (
-    <div>
-      <ListItem divider={true} className={classes.lessonitem}>
+    <>
+      <ListItem divider={true} className={classes.lessonItem}>
         <ListItemText
           style={{ fontSize: "30px" }}
-          primary={`${props.name}　in ${props.place}`}
+          primary={`${props.lessonName}　in ${props.lessonPlace}`}
         />
-        <Link as={`/message/${props.lessonid}`} href="/message/[lessonid]">
+        <Link href={`/lesson_edit/${props.lessonId}`}>
           <Button
             size="large"
-            className={classes.messagebtn}
-            onClick={props.onClick}
+            className={classes.messageBtn}
+            // onClick={props.onClick}
           >
-            取引メッセージ
+            レッスン編集
           </Button>
         </Link>
       </ListItem>
-    </div>
+    </>
   )
 }

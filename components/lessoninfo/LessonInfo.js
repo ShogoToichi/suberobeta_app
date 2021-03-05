@@ -1,27 +1,30 @@
-//※要追加 :  ・purchasedか何かで受付中のレッスンとそうでないレッスン購入ボタンの表示を変更
-//            ・購入後purchasedの書き換え及びmessageへの移動
-
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import firebase from "firebase"
 import { useRouter } from "next/router"
 import { connect } from "react-redux"
 import Lib from "../../Lib/address_lib"
 import BuyBtn from "./parts/BuyBtn"
-import LessonDetail from "./parts/LessonDetail"
-import Title from "../normal_parts/Title"
+import LessonDitail from "./parts/LessonDitail"
+import Title from "../commonParts/Title"
+import EditBtn from "./parts/EditBtn"
+
+let createrId = ""
+let createrName = ""
+let createrImageUrl = ""
+let buyerName = ""
+let lessonName = ""
+let lessonPlace = ""
+let lessonPrice = ""
+let lessonDescription = ""
+let lessonTime = ""
+let lessonData = ""
+let userData = ""
 
 function LessonInfo(props) {
-  // 使用するステートの定義
-  const [createrid, setCreaterid] = useState("")
-  const [lessonid, setLessonid] = useState("")
-  const [purchased, setPurchased] = useState("")
-  const [lessonname, setLessonname] = useState("")
-  const [place, setPlace] = useState("")
-  const [time, setTime] = useState("")
-  const [price, setPrice] = useState("")
-  const [lessoncomment, setLessoncomment] = useState("")
-  const [profileusername, setProfileusername] = useState("")
-  const [imageurl, setImageurl] = useState("")
+  const email = Lib.encodeEmail(props.email)
+
+  //強制レンダリング用ステート
+  const [update, setUpdata] = useState(false)
 
   const db = firebase.firestore()
   const router = useRouter()
@@ -33,71 +36,80 @@ function LessonInfo(props) {
       .collection("lessons")
       .doc(router.query.lessonid)
       .get()
-      //データ取得後の処理
-      //取得したデータをlessondataにしまってから、それをステートに突っ込む
-      //lessonidは取得しなくていいかも
-      .then(function (doc) {
-        const lessondata = doc.data()
-        const lesson_id = doc.id
-        setCreaterid(lessondata.createrid)
-        setLessonid(lesson_id)
-        setPurchased(lessondata.purchased)
-        setLessonname(lessondata.lessonname)
-        setPlace(lessondata.lessonplace)
-        setTime(lessondata.lessontime)
-        setPrice(lessondata.lessonprice)
-        setLessoncomment(lessondata.lessontext)
-        console.log(createrid)
-        //ここからプロフィール取得処理
-        //レッスン情報で取得したcreateridでfirebaseを参照
-        db.collection("users")
-          .doc(createrid)
-          .get()
-          //if文の処理はエラーがあった時のための処理
-          //ネット記事のコピペなので、必要性がどれほどあるかは謎
-          .then(function (doc) {
-            if (doc.exists) {
-              const userdata = doc.data()
-              console.log(createrid, userdata)
-              setProfileusername(userdata.profile.name)
-              setImageurl(userdata.imageurl)
-            } else {
-              console.log("no data")
-            }
-          })
-          .catch(function (error) {
-            console.log("Error getting document:", error)
-          })
+      //取得したデータをlessondataにしまってから、それを変数に突っ込む
+      .then((doc) => {
+        lessonData = doc.data()
+        createrId = lessonData.createrId
+        lessonName = lessonData.lessonName
+        lessonPlace = lessonData.lessonPlace
+        lessonTime = lessonData.lessonTime
+        lessonPrice = lessonData.lessonPrice
+        lessonDescription = lessonData.lessonDescription
       })
+
+    //ここからプロフィール取得処理
+    //レッスン情報で取得したcreateridでfirebaseを参照
+    await db
+      .collection("users")
+      .doc(createrId)
+      .get()
+      .then((doc) => {
+        userData = doc.data()
+        createrName = userData.profile.name
+        createrImageUrl = userData.imageUrl
+      })
+
+    //購入したときに購入者の名前もfirebaseに書き込みたいから取得する
+    await db
+      .collection("users")
+      .doc(email)
+      .get()
+      .then((doc) => {
+        buyerName = doc.data().profile.name
+      })
+
+    //関数の最後で強制的にレンダリング
+    setUpdata(update ? false : true)
   }
 
-  const email = Lib.encodeEmail(props.email)
-  const dobuy = async () => {
-    await db.collection("lessons").doc(router.query.lessonid).set(
-      {
-        buyerid: email
-      },
-      { merge: true }
-    )
+  //firebaseのmessagesに必要な情報を書き込む
+  const doBuy = async () => {
+    await db.collection("messages").add({
+      lessonId: router.query.lessonid,
+      buyerId: email,
+      buyerName: buyerName,
+      createrId: createrId,
+      createrName: createrName,
+      lessonName: lessonName,
+      buyTime: firebase.firestore.FieldValue.serverTimestamp(),
+      trading: true //取引中かどうかの真偽値、メッセージ検索で使用中
+    })
   }
 
-  if (lessonname == "") {
+  useEffect(() => {
     getLessonData()
-  }
+  }, [])
 
   return (
     <div style={{ marginTop: "30px" }}>
-      <Title title={lessonname} />
-      <BuyBtn lessonid={router.query.lessonid} buyerid={email} onClick={dobuy}>
-        購入
-      </BuyBtn>
-      <LessonDetail
-        imageurl={imageurl}
-        profileusername={profileusername}
-        price={price}
-        place={place}
-        time={time}
-        lessoncomment={lessoncomment}
+      <Title title={lessonName} />
+      {/* クリエーターIDとじぶんのIDが一致していたらレッスン編集ボタンを表示 */}
+      {email == createrId ? (
+        <EditBtn lessonId={router.query.lessonid} />
+      ) : (
+        <BuyBtn
+          lessonId={router.query.lessonid}
+          buyerId={email}
+          onClick={doBuy}
+        />
+      )}
+      <LessonDitail
+        createrImageUrl={createrImageUrl}
+        createrName={createrName}
+        lessonPrice={lessonPrice}
+        lessonPlace={lessonPlace}
+        lessonTime={lessonTime}
+        lessonDescription={lessonDescription}
       />
     </div>
   )

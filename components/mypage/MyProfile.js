@@ -1,17 +1,16 @@
-//要追加 : 画像アップロード
-
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import firebase from "firebase"
 import "firebase/storage"
 import { connect } from "react-redux"
 import Lib from "../../Lib/address_lib"
-import MyProFileUi from "./parts/MyProFileUi"
+import MyProfileUi from "./parts/MyProfileUi"
+
+let name = "no data"
+let introduction = "no data"
+let imageUrl = null
 
 function MyProfile(props) {
-  // ステートの設定
-  const [name, setName] = useState("no data")
-  const [introduction, setIntroduction] = useState("no data")
-  const [imageurl, setImageurl] = useState(null)
+  const [update, setUpdate] = useState(false)
 
   const getFireData = async () => {
     const db = firebase.firestore()
@@ -22,27 +21,21 @@ function MyProfile(props) {
       .collection("users")
       .doc(email)
       .get()
-      .then(function (doc) {
+      .then((doc) => {
         // 取得したデータを定数に入れてから、ステートに入れる
-        const profiledata = doc.data()
-        setName(profiledata.profile.name)
-        setIntroduction(profiledata.profile.introduction)
-        setImageurl(profiledata.imageurl)
+        const profileData = doc.data()
+        name = profileData.profile.name
+        introduction = profileData.profile.introduction
+        imageUrl = profileData.imageUrl
       })
+    setUpdate(update ? false : true)
   }
-
-  if (name == "no data") {
+  useEffect(() => {
     getFireData()
-  }
+  }, [])
 
   return (
-    <div>
-      <MyProFileUi
-        imageurl={imageurl}
-        name={name}
-        introduction={introduction}
-      />
-    </div>
+    <MyProfileUi imageUrl={imageUrl} name={name} introduction={introduction} />
   )
 }
 
