@@ -45,6 +45,7 @@ function Header(props) {
             <Button variant="text" size="large" color="inherit">
               マイページ
             </Button>
+            {/* <Account /> */}
           </Link>
         ) : (
           <Account />
