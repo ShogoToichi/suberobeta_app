@@ -10,6 +10,7 @@ import Title from "../commonParts/Title"
 import InputForm from "./parts/InputForm"
 import { useRouter } from "next/router"
 import SubmitButton from "./parts/SubmitButton"
+import DeleteAlertButton from "./parts/DeleteAlertButton"
 import { SystemUpdateAlt } from "@material-ui/icons"
 
 function LessonEdit(props) {
@@ -58,9 +59,8 @@ function LessonEdit(props) {
 
   //現在のデータの取得及びインプットフォームの作成
   const router = useRouter()
+  const db = firebase.firestore()
   const getCurrentData = async () => {
-    const db = firebase.firestore()
-
     await db
       .collection("lessons")
       .doc(router.query.lessonid)
@@ -92,6 +92,11 @@ function LessonEdit(props) {
       })
   }
 
+  //レッスン削除処理
+  const deleteLesson = () => {
+    db.collection("lessons").doc(router.query.lessonid).delete()
+  }
+
   useEffect(() => {
     getCurrentData()
   }, [])
@@ -104,6 +109,7 @@ function LessonEdit(props) {
           "自分の能力を生かして、ウィンタースポーツの輪を広げましょう。"
         }
       />
+      <DeleteAlertButton onClick={deleteLesson} />
       {inputForm}
       <SubmitButton onClick={doSubmit}>submit</SubmitButton>
     </div>
