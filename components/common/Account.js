@@ -3,7 +3,8 @@ import { connect } from "react-redux"
 import firebase from "firebase"
 import Button from "@material-ui/core/Button"
 import Lib from "../../Lib/address_lib"
-import { useRouter } from "next/router"
+import Link from "next/link"
+// import { useRouter } from "next/router"  クラスコンポーネントだとHooksのuseRouterは使えない
 
 // 初回ログイン時に名前を自動的に設定するために初回ログインかどうかを判定する関数
 const isFirstLogin = async (db, email) => {
@@ -107,23 +108,37 @@ class Account extends Component {
   loginCheck() {
     if (this.props.login === false) {
       this.login()
-      // router.push("/toppage")
     } else {
       this.logout()
     }
   }
-
   render() {
-    return (
-      <Button
-        variant="outlined"
-        size="large"
-        color="inherit"
-        onClick={this.loginCheck}
-      >
-        {this.props.text}
-      </Button>
-    )
+    if (this.props.login === false) {
+      return (
+        <Button
+          variant="outlined"
+          size="large"
+          color="inherit"
+          onClick={this.loginCheck}
+        >
+          {this.props.text}
+        </Button>
+      )
+    } else {
+      // 無理やりログアウト時にtoppageに飛ばしてます
+      return (
+        <Link href="/toppage">
+          <Button
+            variant="outlined"
+            size="large"
+            color="inherit"
+            onClick={this.loginCheck}
+          >
+            {this.props.text}
+          </Button>
+        </Link>
+      )
+    }
   }
 }
 
