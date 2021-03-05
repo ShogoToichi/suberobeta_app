@@ -23,7 +23,6 @@ function MyMessageList(props) {
         .collection("messages")
         .where("createrId", "==", email)
         .where("trading", "==", true)
-        // .orderBy("buytime") 後々メッセージを直近で送った時間で並び替えたい
         .get()
         .then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
@@ -37,7 +36,6 @@ function MyMessageList(props) {
               />
             )
           })
-          // setMyMessages(myMessageItems)
           myMessages = myMessageItems
         })
       //自分が購入したレッスンで現在進行中のものを取得
@@ -45,7 +43,6 @@ function MyMessageList(props) {
         .collection("messages")
         .where("buyerId", "==", email)
         .where("trading", "==", true)
-        // .orderBy("buytime")  上に同じくゆくゆくやる
         .get()
         .then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
