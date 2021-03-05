@@ -29,11 +29,6 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/lesson_info/[lessonid].js"
     ],
-    "/lesson_list": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/lesson_list.js"
-    ],
     "/toppage": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
