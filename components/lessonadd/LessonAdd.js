@@ -43,7 +43,8 @@ function LessonAdd(props) {
       lessonPlace: lessonPlace,
       lessonPrice: lessonPrice,
       lessonDescription: lessonDescription,
-      lessonTime: lessonTime
+      lessonTime: lessonTime,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
     })
   }
 
