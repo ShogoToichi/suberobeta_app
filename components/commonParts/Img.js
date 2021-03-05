@@ -1,7 +1,7 @@
 import React from "react"
 
 export default function Img(props) {
-  const radius = (props.size * 1) / 2
+  let radius = (props.size * 1) / 2
 
   const img = {
     height: `${props.size}px`,
@@ -10,5 +10,5 @@ export default function Img(props) {
     display: "inline-block"
   }
 
-  return <img src={props.src} size={props.size} style={img}></img>
+  return <img src={props.src} style={img}></img>
 }

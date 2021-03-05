@@ -3,6 +3,7 @@ import React, { useContext } from "react"
 import { makeStyles } from "@material-ui/styles"
 import Button from "@material-ui/core/Button"
 import { Color } from "../../../static/colors"
+import Img from "../../commonParts/Img"
 
 const getImage = makeStyles((theme) => ({
   uploadBtn: {
@@ -10,9 +11,6 @@ const getImage = makeStyles((theme) => ({
     color: "white"
   },
   img: {
-    height: "70px",
-    width: "70px",
-    borderRadius: "35px",
     margin: "20px 0px 0px 20px"
   }
 }))
@@ -31,7 +29,11 @@ export default function GetImage(props) {
           アップロード
         </Button>
       </form>
-      <img src={props.imageUrl} alt="upload" className={classes.img} />
+      {props.upload ? (
+        <Img src={props.imageUrl} size="180" />
+      ) : (
+        <Img src={props.currentImageUrl} size="180" />
+      )}
     </>
   )
 }

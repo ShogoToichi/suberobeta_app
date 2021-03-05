@@ -1,22 +1,24 @@
 //要検討画像アップロード処理
 
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import firebase from "firebase"
 import "firebase/storage"
 import { connect } from "react-redux"
 import Lib from "../../Lib/address_lib"
 import Title from "../commonParts/Title"
 import ProfileEditUi from "./parts/ProfileEditUi"
+import ChangeBtn from "./parts/ChangeBtn"
 
 function ProfileEdit(props) {
-  const style = {
-    width: "50%",
-    margin: "0 auto",
-    marginTop: "150px"
-  }
-  //使用するステートの設定(Hook)
+  //使用するステートの設定,テキストフィールドの値のやつ
   const [name, setName] = useState("")
   const [introduction, setIntroduction] = useState("")
+
+  //初期値を入れたインプットフォームコンポーネントを入れるステート
+  const [inputForm, setInputForm] = useState("")
+
+  const db = firebase.firestore()
+  const email = Lib.encodeEmail(props.email)
 
   //inputに入力された処理をeで受け取ってステートに入れる関数
   const doChangeName = (e) => {
@@ -26,11 +28,8 @@ function ProfileEdit(props) {
     setIntroduction(e.target.value)
   }
 
-  //追加ボタンを押したらfirebaseにステートの情報を書き込む処理
-  //Reduxからユーザーのemail(id)をencode( .→* )にして定数に代入
+  //変更ボタンを押したらfirebaseにステートの情報を書き込む処理
   const doSubmit = async () => {
-    const db = firebase.firestore()
-    const email = Lib.encodeEmail(props.email)
     await db
       .collection("users")
       .doc(email)
@@ -40,21 +39,41 @@ function ProfileEdit(props) {
         },
         { merge: true }
       )
-      .then(() => {
-        //いろいろ確認に利用、いらない処理
-        console.log(name, introduction)
+  }
+
+  //現在のデータの取得及びインプットフォームの作成
+  const getCurrentData = async () => {
+    await db
+      .collection("users")
+      .doc(email)
+      .get()
+      .then(function (doc) {
+        //テキストボックスの中身を書き換えないと、それぞれのステートが初期値から変更されない。それぞれのステートに現在のレッスン情報を入れる
+        //この処理がないと、書き換えが行われなかった値がステートを定義した時の初期値の" "になってしまう
+        setName(doc.data().profile.name)
+        setIntroduction(doc.data().profile.introduction)
+
+        //firebaseから取得した現在のプロフィール情報をInputFormコンポーネントのそれぞれのテキストボックスのdefaultValueに渡したものをステートに代入している
+        setInputForm(
+          <ProfileEditUi
+            currentName={doc.data().profile.name}
+            currentIntroduction={doc.data().profile.introduction}
+            doChangeName={doChangeName}
+            doChangeIntroduction={doChangeIntroduction}
+          />
+        )
       })
   }
+
+  useEffect(() => {
+    getCurrentData()
+  }, [])
 
   return (
     <>
       <Title title={"マイプロフィール編集"} />
-      <ProfileEditUi
-        doChangeName={doChangeName}
-        name={name}
-        doChangeIntroduction={doChangeIntroduction}
-        doSubmit={doSubmit}
-      />
+      {inputForm}
+      <ChangeBtn onClick={doSubmit} />
     </>
   )
 }

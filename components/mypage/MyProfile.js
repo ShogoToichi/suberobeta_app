@@ -1,5 +1,4 @@
-
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import firebase from "firebase"
 import "firebase/storage"
 import { connect } from "react-redux"
@@ -31,10 +30,9 @@ function MyProfile(props) {
       })
     setUpdate(update ? false : true)
   }
-
-  if (name == "no data") {
+  useEffect(() => {
     getFireData()
-  }
+  }, [])
 
   return (
     <MyProfileUi imageUrl={imageUrl} name={name} introduction={introduction} />
