@@ -19,18 +19,24 @@ root   + users --+--userid1(gmail) : {
        |         :                     lessonPrice:
        |         :                     lessonText:
        |                               lessonTime:
+       |                               createdAt:
+       |                               createrImageUrl:
        |                           }          
        |         
        |
        |
        +messages--+--messagesid1(uni):{
                   |                   buyerId:
+                  |                   buyerName:
                   |                   buyTime:  TIME
-                  +--messagesid2      createrId
-                  :                   createrName
+                  +--messagesid2      createrId :
+                  :                   createrName :
                   :                   lessonId:
                   :                   lessonName:
                                       trading:  T or F
+                                      messageTimeStamp : TIME
+                                      createrReadMessage: T or F
+                                      buyerReadMessage : T or F
                                      }
                                      ☆message--+--messageid1(uni):{
                                                 |                     text:

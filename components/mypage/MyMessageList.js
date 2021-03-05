@@ -33,6 +33,7 @@ function MyMessageList(props) {
                 buyerId={doc.data().buyerId}
                 lessonName={doc.data().lessonName}
                 username={doc.data().buyerName}
+                readMessage={doc.data().createrReadMessage} //既読判別用の値、自分がクリエーターのレッスンはreadMessageにcreaterReadMessageを渡す
               />
             )
           })
@@ -54,6 +55,7 @@ function MyMessageList(props) {
                 buyerId={doc.data().buyerId}
                 lessonName={doc.data().lessonName}
                 username={doc.data().createrName}
+                readMessage={doc.data().buyerReadMessage} //既読判別用の値、自分が購入者のレッスンはreadMessageにbuyerReadMessageを渡す
               />
             )
           })
@@ -61,7 +63,6 @@ function MyMessageList(props) {
         })
     } else {
       //ログインしてないとメッセージが表示しなくなってる、なんでこんなこと書いたんだっけ。
-      // setMyMessages("取引中のメッセージはありません")
       myMessages = "取引中のメッセージはありません"
     }
     setUpdate(update ? false : true)
