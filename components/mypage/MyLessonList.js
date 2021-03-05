@@ -24,6 +24,7 @@ function MyLessonList(props) {
       await db
         .collection("lessons")
         .where("createrId", "==", email)
+        .orderBy("createdAt", "desc")
         .get()
         .then(function (querySnapshot) {
           querySnapshot.forEach((doc) => {
