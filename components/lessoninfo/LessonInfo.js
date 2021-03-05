@@ -85,27 +85,30 @@ function LessonInfo(props) {
       createrReadMessage: true,
       buyerReadMessage: true,
       trading: true //取引中かどうかの真偽値、メッセージ検索で使用中
-    })
-  }
+    });
+  };
 
   useEffect(() => {
     getLessonData();
   }, []);
 
   return (
-    <div style={{ marginTop: "30px",position:"relative" }}>
-      <Title style={{position:"absolute"}} title={lessonName} />
+    <div>
       {/* クリエーターIDとじぶんのIDが一致していたらレッスン編集ボタンを表示 */}
-      {email == createrId ? (
-        <EditBtn lessonId={router.query.lessonid} />
-      ) : (
-        <BuyBtn
-          lessonId={router.query.lessonid}
-          buyerId={email}
-          onClick={doBuy}
-          style={{position:"absolute"}}
-        />
-      )}
+      <div style={{ position: "relative" }}>
+        <Title title={lessonName} />
+        <span style={{ position: "absolute", width: "200px", right: "100px"}}>
+          {email == createrId ? (
+            <EditBtn lessonId={router.query.lessonid} />
+          ) : (
+            <BuyBtn
+              lessonId={router.query.lessonid}
+              buyerId={email}
+              onClick={doBuy}
+            />
+          )}
+        </span>
+      </div>
       <LessonDetail
         createrImageUrl={createrImageUrl}
         createrName={createrName}
