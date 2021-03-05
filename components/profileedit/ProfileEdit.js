@@ -10,10 +10,11 @@ import ProfileEditUi from "./parts/ProfileEditUi"
 import ChangeBtn from "./parts/ChangeBtn"
 
 function ProfileEdit(props) {
-  //使用するステートの設定(Hook)
+  //使用するステートの設定,テキストフィールドの値のやつ
   const [name, setName] = useState("")
   const [introduction, setIntroduction] = useState("")
 
+  //初期値を入れたインプットフォームコンポーネントを入れるステート
   const [inputForm, setInputForm] = useState("")
 
   const db = firebase.firestore()
@@ -27,8 +28,7 @@ function ProfileEdit(props) {
     setIntroduction(e.target.value)
   }
 
-  //追加ボタンを押したらfirebaseにステートの情報を書き込む処理
-  //Reduxからユーザーのemail(id)をencode( .→* )にして定数に代入
+  //変更ボタンを押したらfirebaseにステートの情報を書き込む処理
   const doSubmit = async () => {
     await db
       .collection("users")
@@ -39,28 +39,27 @@ function ProfileEdit(props) {
         },
         { merge: true }
       )
-      .then(() => {
-        //いろいろ確認に利用、いらない処理
-        console.log(name, introduction)
-      })
   }
 
+  //現在のデータの取得及びインプットフォームの作成
   const getCurrentData = async () => {
     await db
       .collection("users")
       .doc(email)
       .get()
       .then(function (doc) {
+        //テキストボックスの中身を書き換えないと、それぞれのステートが初期値から変更されない。それぞれのステートに現在のレッスン情報を入れる
+        //この処理がないと、書き換えが行われなかった値がステートを定義した時の初期値の" "になってしまう
         setName(doc.data().profile.name)
         setIntroduction(doc.data().profile.introduction)
 
+        //firebaseから取得した現在のプロフィール情報をInputFormコンポーネントのそれぞれのテキストボックスのdefaultValueに渡したものをステートに代入している
         setInputForm(
           <ProfileEditUi
             currentName={doc.data().profile.name}
             currentIntroduction={doc.data().profile.introduction}
             doChangeName={doChangeName}
             doChangeIntroduction={doChangeIntroduction}
-            doSubmit={doSubmit}
           />
         )
       })

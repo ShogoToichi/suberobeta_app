@@ -94,7 +94,6 @@ function LessonEdit(props) {
 
   useEffect(() => {
     getCurrentData()
-    return () => {}
   }, [])
 
   return (
