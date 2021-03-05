@@ -8,7 +8,7 @@ import Typography from "@material-ui/core/Typography"
 import Card from "@material-ui/core/Card"
 import CardContent from "@material-ui/core/CardContent"
 import { CardHeader } from "@material-ui/core"
-import Avatar from "@material-ui/core/Avatar"
+import Img from "../../normal_parts/Img";
 
 const lessonlist = makeStyles({
   rayout: {
@@ -41,18 +41,12 @@ export default function Lesson(props) {
   return (
     <div className={classes.lessonlist}>
       <Card>
+        <Img className={classes.img} src={props.imageurl} size="90" />
         <Link
           as={`/lesson_info/${props.lessonid}`}
           href="/lesson_info/[lessonid]"
         >
           <CardHeader
-            avatar={
-              <Avatar
-                aria-label="recipe"
-                className={classes.avatar}
-                src={props.imageurl}
-              ></Avatar>
-            }
             className={classes.cardheader}
             title={props.name}
           />

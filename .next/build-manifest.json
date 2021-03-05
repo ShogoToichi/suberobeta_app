@@ -29,10 +29,10 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/lesson_list.js"
     ],
-    "/toppage": [
+    "/profile_edit": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/toppage.js"
+      "static/chunks/pages/profile_edit.js"
     ]
   },
   "ampFirstPages": []

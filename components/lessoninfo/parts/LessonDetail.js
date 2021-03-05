@@ -1,29 +1,30 @@
-import React from "react"
-import { makeStyles } from "@material-ui/core/styles"
-import Paper from "@material-ui/core/Paper"
-import Img from "../../normal_parts/Img"
-import Typography from "@material-ui/core/Typography"
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import Img from "../../normal_parts/Img";
+import Typography from "@material-ui/core/Typography";
 
 const plofile = makeStyles({
   paper: {
     width: "80%",
-    marginTop: "20px"
+    marginTop: "20px",
   },
   username: {
     display: "inline-block",
-    margin: "0px"
+    margin: "0px",
   },
   info: {
     marginLeft: "50px",
-    marginTop: "40px"
-  }
-})
+    marginTop: "40px",
+  },
+});
 
 export default function LessonDetail(props) {
-  const classes = plofile()
+  const classes = plofile();
   return (
     <Paper className={classes.paper} elevation={24} rounded>
-      <Img className={classes.img} src={props.imageurl} size="70" />
+      <Img className={classes.img} src={props.imageurl} size="90" />
+
       <Typography variant="h6" className={classes.username}>
         講師名： {props.profileusername}
       </Typography>
@@ -46,5 +47,5 @@ export default function LessonDetail(props) {
         className={classes.info}
       ></Typography>
     </Paper>
-  )
+  );
 }
