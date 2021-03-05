@@ -6,11 +6,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import { CardHeader } from "@material-ui/core";
-import Title from "../../normal_parts/Title";
+import Title from "../../commonParts/Title";
 import { Color } from "../../../static/colors";
-import Img from "../../normal_parts/Img";
+import Img from "../../commonParts/Img";
 
-const myprofile = makeStyles((theme) => ({
+const myProfile = makeStyles((theme) => ({
   myprof: {
     width: "80%",
   },

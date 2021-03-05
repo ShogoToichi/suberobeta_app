@@ -15,7 +15,7 @@ const topTitle = makeStyles((theme) => ({
 }));
 
 export default function Description(props) {
-  const classes = toptitle();
+  const classes = topTitle();
 
   return (
     <div>

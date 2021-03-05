@@ -1,4 +1,4 @@
-import Layout from "../components/normal/Layout";
+import Layout from "../components/common/Layout";
 import Mypage from "../components/mypage/Mypage";
 import Container from "@material-ui/core/Container";
 

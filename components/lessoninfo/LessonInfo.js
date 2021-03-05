@@ -1,33 +1,33 @@
-import React, { useState, useEffect } from "react"
-import firebase from "firebase"
-import { useRouter } from "next/router"
-import { connect } from "react-redux"
-import Lib from "../../Lib/address_lib"
-import BuyBtn from "./parts/BuyBtn"
-import LessonDitail from "./parts/LessonDitail"
-import Title from "../commonParts/Title"
-import EditBtn from "./parts/EditBtn"
+import React, { useState, useEffect } from "react";
+import firebase from "firebase";
+import { useRouter } from "next/router";
+import { connect } from "react-redux";
+import Lib from "../../Lib/address_lib";
+import BuyBtn from "./parts/BuyBtn";
+import LessonDetail from "./parts/LessonDetail";
+import Title from "../commonParts/Title";
+import EditBtn from "./parts/EditBtn";
 
-let createrId = ""
-let createrName = ""
-let createrImageUrl = ""
-let buyerName = ""
-let lessonName = ""
-let lessonPlace = ""
-let lessonPrice = ""
-let lessonDescription = ""
-let lessonTime = ""
-let lessonData = ""
-let userData = ""
+let createrId = "";
+let createrName = "";
+let createrImageUrl = "";
+let buyerName = "";
+let lessonName = "";
+let lessonPlace = "";
+let lessonPrice = "";
+let lessonDescription = "";
+let lessonTime = "";
+let lessonData = "";
+let userData = "";
 
 function LessonInfo(props) {
-  const email = Lib.encodeEmail(props.email)
+  const email = Lib.encodeEmail(props.email);
 
   //強制レンダリング用ステート
-  const [update, setUpdata] = useState(false)
+  const [update, setUpdata] = useState(false);
 
-  const db = firebase.firestore()
-  const router = useRouter()
+  const db = firebase.firestore();
+  const router = useRouter();
 
   //lessondata及びlessoncreaterのprofileを取得
   const getLessonData = async () => {
@@ -38,14 +38,14 @@ function LessonInfo(props) {
       .get()
       //取得したデータをlessondataにしまってから、それを変数に突っ込む
       .then((doc) => {
-        lessonData = doc.data()
-        createrId = lessonData.createrId
-        lessonName = lessonData.lessonName
-        lessonPlace = lessonData.lessonPlace
-        lessonTime = lessonData.lessonTime
-        lessonPrice = lessonData.lessonPrice
-        lessonDescription = lessonData.lessonDescription
-      })
+        lessonData = doc.data();
+        createrId = lessonData.createrId;
+        lessonName = lessonData.lessonName;
+        lessonPlace = lessonData.lessonPlace;
+        lessonTime = lessonData.lessonTime;
+        lessonPrice = lessonData.lessonPrice;
+        lessonDescription = lessonData.lessonDescription;
+      });
 
     //ここからプロフィール取得処理
     //レッスン情報で取得したcreateridでfirebaseを参照
@@ -54,10 +54,10 @@ function LessonInfo(props) {
       .doc(createrId)
       .get()
       .then((doc) => {
-        userData = doc.data()
-        createrName = userData.profile.name
-        createrImageUrl = userData.imageUrl
-      })
+        userData = doc.data();
+        createrName = userData.profile.name;
+        createrImageUrl = userData.imageUrl;
+      });
 
     //購入したときに購入者の名前もfirebaseに書き込みたいから取得する
     await db
@@ -65,12 +65,12 @@ function LessonInfo(props) {
       .doc(email)
       .get()
       .then((doc) => {
-        buyerName = doc.data().profile.name
-      })
+        buyerName = doc.data().profile.name;
+      });
 
     //関数の最後で強制的にレンダリング
-    setUpdata(update ? false : true)
-  }
+    setUpdata(update ? false : true);
+  };
 
   //firebaseのmessagesに必要な情報を書き込む
   const doBuy = async () => {
@@ -82,13 +82,13 @@ function LessonInfo(props) {
       createrName: createrName,
       lessonName: lessonName,
       buyTime: firebase.firestore.FieldValue.serverTimestamp(),
-      trading: true //取引中かどうかの真偽値、メッセージ検索で使用中
-    })
-  }
+      trading: true, //取引中かどうかの真偽値、メッセージ検索で使用中
+    });
+  };
 
   useEffect(() => {
-    getLessonData()
-  }, [])
+    getLessonData();
+  }, []);
 
   return (
     <div style={{ marginTop: "30px" }}>
@@ -112,8 +112,8 @@ function LessonInfo(props) {
         lessonDescription={lessonDescription}
       />
     </div>
-  )
+  );
 }
 
-LessonInfo = connect((state) => state)(LessonInfo)
-export default LessonInfo
+LessonInfo = connect((state) => state)(LessonInfo);
+export default LessonInfo;

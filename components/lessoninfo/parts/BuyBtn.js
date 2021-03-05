@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button"
 import Link from "next/link"
 import { Color } from "../../../static/colors"
 
-const plofile = makeStyles({
+const plofile = makeStyles((theme) => ({
   btnArea: {
     display: "inline-block",
     float: "right",
@@ -17,7 +17,7 @@ const plofile = makeStyles({
     marginBottom: "15px",
     backgroundColor: useContext(Color).colors.bgGreen,
   }
-});
+}));
 
 export default function BuyBtn(props) {
   const classes = plofile()
