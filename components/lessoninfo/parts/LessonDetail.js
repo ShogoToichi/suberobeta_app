@@ -30,7 +30,7 @@ const plofile = makeStyles((theme) => ({
 }));
 
 export default function LessonDetail(props) {
-  const classes = plofile();
+  const classes = plofile()
   return (
     <Card className={classes.lessonDetail}>
       <Link href={`/profile_show/${props.userId}`}>
