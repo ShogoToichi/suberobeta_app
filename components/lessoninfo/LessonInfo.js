@@ -93,8 +93,8 @@ function LessonInfo(props) {
   }, []);
 
   return (
-    <div style={{ marginTop: "30px" }}>
-      <Title title={lessonName} />
+    <div style={{ marginTop: "30px",position:"relative" }}>
+      <Title style={{position:"absolute"}} title={lessonName} />
       {/* クリエーターIDとじぶんのIDが一致していたらレッスン編集ボタンを表示 */}
       {email == createrId ? (
         <EditBtn lessonId={router.query.lessonid} />
@@ -103,9 +103,10 @@ function LessonInfo(props) {
           lessonId={router.query.lessonid}
           buyerId={email}
           onClick={doBuy}
+          style={{position:"absolute"}}
         />
       )}
-      <LessonDitail
+      <LessonDetail
         createrImageUrl={createrImageUrl}
         createrName={createrName}
         lessonPrice={lessonPrice}
