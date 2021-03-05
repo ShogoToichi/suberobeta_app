@@ -17,6 +17,12 @@ const myProfile = makeStyles((theme) => ({
   card: {
     marginTop: "20px",
   },
+  img: {
+    position: "absolute"
+  },
+  cardHeader: {
+    position: "relative"
+  },
   btn: {
     backgroundColor: useContext(Color).colors.Green,
     color: "white",
@@ -38,8 +44,8 @@ export default function MyProfileDetail(props) {
     <>
       <Title title={"My Page"} />
       <div className={classes.myProfile}>
-        <Card>
-          <Img className={classes.img} src={props.imageurl} size="70" />
+        <Card className={classes.card}>
+          <Img className={classes.img} src={props.imageUrl} size="70" classeName={classes.img}/>
           <CardHeader
             action={
               <Link href="/profile_edit">
@@ -49,6 +55,7 @@ export default function MyProfileDetail(props) {
               </Link>
             }
             title={props.name}
+            className={classes.cardHeader}
           />
 
           <CardContent>

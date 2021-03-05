@@ -1,4 +1,4 @@
-import Layout from "../components/normal/Layout";
+import Layout from "../components/common/Layout";
 import LessonAdd from "../components/lessonadd/LessonAdd";
 import Container from "@material-ui/core/Container";
 
