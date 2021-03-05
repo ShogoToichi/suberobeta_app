@@ -23,7 +23,6 @@ function MyMessageList(props) {
         .collection("messages")
         .where("createrId", "==", email)
         .where("trading", "==", true)
-        // .orderBy("buytime") 後々メッセージを直近で送った時間で並び替えたい
         .get()
         .then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
@@ -33,10 +32,10 @@ function MyMessageList(props) {
                 buyerId={doc.data().buyerId}
                 lessonName={doc.data().lessonName}
                 username={doc.data().buyerName}
+                readMessage={doc.data().createrReadMessage} //既読判別用の値、自分がクリエーターのレッスンはreadMessageにcreaterReadMessageを渡す
               />
             )
           })
-          // setMyMessages(myMessageItems)
           myMessages = myMessageItems
         })
       //自分が購入したレッスンで現在進行中のものを取得
@@ -44,7 +43,6 @@ function MyMessageList(props) {
         .collection("messages")
         .where("buyerId", "==", email)
         .where("trading", "==", true)
-        // .orderBy("buytime")  上に同じくゆくゆくやる
         .get()
         .then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
@@ -54,6 +52,7 @@ function MyMessageList(props) {
                 buyerId={doc.data().buyerId}
                 lessonName={doc.data().lessonName}
                 username={doc.data().createrName}
+                readMessage={doc.data().buyerReadMessage} //既読判別用の値、自分が購入者のレッスンはreadMessageにbuyerReadMessageを渡す
               />
             )
           })
@@ -61,7 +60,6 @@ function MyMessageList(props) {
         })
     } else {
       //ログインしてないとメッセージが表示しなくなってる、なんでこんなこと書いたんだっけ。
-      // setMyMessages("取引中のメッセージはありません")
       myMessages = "取引中のメッセージはありません"
     }
     setUpdate(update ? false : true)
