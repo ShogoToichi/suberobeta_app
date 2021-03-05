@@ -99,12 +99,21 @@ function Message(props) {
           }
         })
       })
-    await db.collection("messages").doc(messageId).set(
-      {
-        readMessage: true
-      },
-      { merge: true }
-    )
+    if (email == createrId) {
+      db.collection("messages").doc(messageId).set(
+        {
+          createrReadMessage: true
+        },
+        { merge: true }
+      )
+    } else {
+      db.collection("messages").doc(messageId).set(
+        {
+          buyerReadMessage: true
+        },
+        { merge: true }
+      )
+    }
     //作成者、購入者以外メッセージが見れないようにする
     if (email == createrId || email == buyerId) {
       setMessages(messageItems)

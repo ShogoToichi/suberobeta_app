@@ -59,7 +59,8 @@ function MessageAdd(props) {
     await db.collection("messages").doc(docid).set(
       {
         messageTimeStamp: firebase.firestore.FieldValue.serverTimestamp(),
-        readMessage: false
+        createrReadMessage: false,
+        buyerReadMessage: false
       },
       { merge: true }
     )
