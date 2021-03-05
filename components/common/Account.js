@@ -3,13 +3,14 @@ import { connect } from "react-redux"
 import firebase from "firebase"
 import Button from "@material-ui/core/Button"
 import Lib from "../../Lib/address_lib"
+import { useRouter } from "next/router"
 
 // 初回ログイン時に名前を自動的に設定するために初回ログインかどうかを判定する関数
 const isFirstLogin = async (db, email) => {
   const doc = await db.collection("users").doc(email).get()
-  // データベースにそのメールアドレスのデータが存在しないときisFirstLoginはtrueを返す
+  // 存在しないときisFirstLoginはtrueを返す
   if (!doc.exists) {
-    return ture
+    return true
   } else {
     return false
   }
@@ -23,7 +24,6 @@ const doRegister = async (db, email, name) => {
   const imageRef = firebase.storage().ref().child("suberoアプリロゴ.png")
   let initImageUrl = ""
   await imageRef.getDownloadURL().then((url) => {
-    console.log("Get initial imageUrl")
     initImageUrl = url
   })
   // firestoreに登録
@@ -40,6 +40,7 @@ const doRegister = async (db, email, name) => {
 }
 
 class Account extends Component {
+  // const router = useRouter()
   style = {
     fontSize: "12pt",
     padding: "5px 10px"
@@ -50,7 +51,6 @@ class Account extends Component {
     // 属性値として使うためにバインド
     this.loginCheck = this.loginCheck.bind(this)
   }
-
   //ログイン処理
   login() {
     firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
@@ -70,10 +70,12 @@ class Account extends Component {
             imageUrl: ""
           }
         })
-        const email = Lib.encodeEmail(result.user.email) // 初回ログインの判断用
         // 初回ログインかどうかの判断
         const db = firebase.firestore()
-        if (isFirstLogin(db, email)) {
+        const email = Lib.encodeEmail(result.user.email)
+
+        if (await isFirstLogin(db, email)) {
+          // 初回ログインの場合trueとなる
           console.log("Set initial value")
           // 初回ログインの場合データベースに初期値を入力する
           doRegister(db, email, result.user.displayName)
@@ -105,6 +107,7 @@ class Account extends Component {
   loginCheck() {
     if (this.props.login === false) {
       this.login()
+      // router.push("/toppage")
     } else {
       this.logout()
     }
@@ -118,7 +121,7 @@ class Account extends Component {
         color="inherit"
         onClick={this.loginCheck}
       >
-        ログイン
+        {this.props.text}
       </Button>
     )
   }
