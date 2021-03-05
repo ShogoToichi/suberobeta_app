@@ -18,14 +18,18 @@ const myProfile = makeStyles((theme) => ({
     marginTop: "20px",
   },
   img: {
-    position: "absolute"
+    display: "inline-block",
+    verticalAlign: "top",
   },
   cardHeader: {
-    position: "relative"
+    display: "inline-block",
+    verticalAlign: "top",
+    width: "80%",
   },
   btn: {
     backgroundColor: useContext(Color).colors.Green,
     color: "white",
+    float: "right",
   },
   title: {
     fontWeight: "bold",
@@ -39,13 +43,18 @@ const myProfile = makeStyles((theme) => ({
 }));
 
 export default function MyProfileDetail(props) {
-  const classes = myProfile()
+  const classes = myProfile();
   return (
-    <>
+    <div className={classes.myprof}>
       <Title title={"My Page"} />
       <div className={classes.myProfile}>
         <Card className={classes.card}>
-          <Img className={classes.img} src={props.imageUrl} size="70" classeName={classes.img}/>
+          <Img
+            className={classes.img}
+            src={props.imageUrl}
+            size="70"
+            classeName={classes.img}
+          />
           <CardHeader
             action={
               <Link href="/profile_edit">
@@ -68,6 +77,6 @@ export default function MyProfileDetail(props) {
           </CardContent>
         </Card>
       </div>
-    </>
-  )
+    </div>
+  );
 }

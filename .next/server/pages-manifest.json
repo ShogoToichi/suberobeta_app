@@ -3,6 +3,7 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/lesson_list": "pages/lesson_list.js",
-  "/toppage": "pages/toppage.js",
-  "/lesson_info/[lessonid]": "pages/lesson_info/[lessonid].js"
+  "/mypage": "pages/mypage.js",
+  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js",
+  "/lesson_add": "pages/lesson_add.js"
 }
