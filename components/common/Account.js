@@ -1,10 +1,9 @@
-import React, { Component } from "react"
-import { connect } from "react-redux"
+import React from "react"
+import { connect, useDispatch } from "react-redux"
 import firebase from "firebase"
 import Button from "@material-ui/core/Button"
 import Lib from "../../Lib/address_lib"
-import Link from "next/link"
-// import { useRouter } from "next/router"  クラスコンポーネントだとHooksのuseRouterは使えない
+import { useRouter } from "next/router"
 
 // 初回ログイン時に名前を自動的に設定するために初回ログインかどうかを判定する関数
 const isFirstLogin = async (db, email) => {
@@ -40,20 +39,17 @@ const doRegister = async (db, email, name) => {
     )
 }
 
-class Account extends Component {
-  // const router = useRouter()
-  style = {
-    fontSize: "12pt",
-    padding: "5px 10px"
-  }
+function Account(props) {
+  const router = useRouter()
+  const dispatch = useDispatch()
 
-  constructor(props) {
-    super(props)
-    // 属性値として使うためにバインド
-    this.loginCheck = this.loginCheck.bind(this)
-  }
+  // constructor(props) {
+  //   super(props)
+  // 属性値として使うためにバインド
+  // this.loginCheck = this.loginCheck.bind(this)
+  // }
   //ログイン処理
-  login() {
+  const login = () => {
     firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
     let provider = new firebase.auth.GoogleAuthProvider()
     // var self = this  // ???
@@ -62,7 +58,7 @@ class Account extends Component {
       .signInWithPopup(provider)
       //ログイン処理完了後resultで値を受け取りReduxへ
       .then(async (result) => {
-        this.props.dispatch({
+        dispatch({
           type: "UPDATE_USER",
           value: {
             login: true,
@@ -77,8 +73,7 @@ class Account extends Component {
 
         if (await isFirstLogin(db, email)) {
           // 初回ログインの場合trueとなる
-          console.log("Set initial value")
-          // 初回ログインの場合データベースに初期値を入力する
+          // データベースに初期値を入力する
           doRegister(db, email, result.user.displayName)
         }
       })
@@ -88,10 +83,10 @@ class Account extends Component {
   }
 
   //ログアウト機能
-  logout() {
+  const logout = () => {
     console.log("logout")
     firebase.auth().signOut()
-    this.props.dispatch({
+    dispatch({
       type: "UPDATE_USER",
       value: {
         login: false,
@@ -105,36 +100,25 @@ class Account extends Component {
   }
 
   //ログイン、ログアウト処理をクリック時に分岐する関数
-  loginCheck() {
-    if (this.props.login === false) {
-      this.login()
+  const loginCheck = () => {
+    if (props.text === "ログイン") {
+      login()
     } else {
-      this.logout()
+      logout()
+      router.push("/toppage")
     }
   }
-  render() {
-    return this.props.login ? (
-      <Button
-        variant="outlined"
-        size="large"
-        color="inherit"
-        onClick={this.loginCheck}
-      >
-        {this.props.text}
-      </Button>
-    ) : (
-      <Link href="/toppage">
-        <Button
-          variant="outlined"
-          size="large"
-          color="inherit"
-          onClick={this.loginCheck}
-        >
-          {this.props.text}
-        </Button>
-      </Link>
-    )
-  }
+
+  return (
+    <Button
+      variant="outlined"
+      size="large"
+      color="inherit"
+      onClick={loginCheck}
+    >
+      {props.text}
+    </Button>
+  )
 }
 
 Account = connect((state) => state)(Account)
