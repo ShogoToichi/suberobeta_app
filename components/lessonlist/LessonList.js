@@ -22,6 +22,7 @@ const LessonList = () => {
         querySnapshot.forEach((doc) => {
           lessonItems.push(
             <Lesson
+              createrImageUrl={doc.data().createrImageUrl}
               lessonId={doc.id}
               lessonName={doc.data().lessonName}
               lessonPlace={doc.data().lessonPlace}
@@ -44,7 +45,7 @@ const LessonList = () => {
     <>
       <Title
         title={"レッスン一覧"}
-        subtitle={"時間や場所、レベルなど自分に合ったレッスンを見つけよう"}
+        subTitle={"時間や場所、レベルなど自分に合ったレッスンを見つけよう"}
       />
       {items}
     </>

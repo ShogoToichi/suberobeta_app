@@ -47,8 +47,8 @@ export default function Lesson(props) {
           href="/lesson_info/[lessonId]"
         >
           <CardHeader
-            className={classes.cardheader}
-            title={props.name}
+            className={classes.cardHeader}
+            title={props.lessonName}
           />
         </Link>
         <CardContent>
