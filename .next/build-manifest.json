@@ -24,6 +24,7 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
+
     "/message/[lessonid]/[buyerid]": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
@@ -33,6 +34,7 @@
       "static/chunks/main.js",
       "static/chunks/webpack.js",
       "static/chunks/pages/mypage.js"
+
     ]
   },
   "ampFirstPages": []

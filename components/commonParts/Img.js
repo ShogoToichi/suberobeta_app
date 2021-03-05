@@ -7,7 +7,10 @@ export default function Img(props) {
     height: `${props.size}px`,
     width: `${props.size}px`,
     borderRadius: `${radius}px`,
-    display: "inline-block"
+    display: "inline-block",
+    verticalAlign: "top",
+    marginLeft: "20px",
+    marginTop: "20px"
   }
 
   return <img src={props.src} style={img}></img>

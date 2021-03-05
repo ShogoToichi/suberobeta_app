@@ -4,4 +4,5 @@
   "/_document": "pages/_document.js",
   "/mypage": "pages/mypage.js",
   "/message/[lessonid]/[buyerid]": "pages/message/[lessonid]/[buyerid].js"
+
 }
