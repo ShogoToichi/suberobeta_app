@@ -18,7 +18,8 @@ const plofile = makeStyles((theme) => ({
     color: useContext(Color).colors.Green,
     fontWeight: "bold",
     marginLeft: "30px",
-    marginTop: "30px"
+    marginTop: "30px",
+    cursor: "pointer"
   },
   cardContent: {
     width: "100%",
