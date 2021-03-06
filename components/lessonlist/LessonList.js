@@ -8,6 +8,7 @@ import Title from "../commonParts/Title"
 const LessonList = () => {
   //ステートの設定
   const [items, setItems] = useState("no item")
+  const [update,setUpdate] = useState(true)
 
   //lessonitemsは値を渡された<Lesson/>が要素の配列ををいったん保管する
   const getFireData = async () => {
@@ -31,10 +32,12 @@ const LessonList = () => {
               lessonDescription={doc.data().lessonDescription}
               lessonPrice={doc.data().lessonPrice}
             />
-          )
+            )
+            console.log(doc.data().createdAt)
         })
         //最後にlessonitemsをステートにいれる
         setItems(lessonItems)
+        setUpdate(update?false:true)
       })
   }
 
