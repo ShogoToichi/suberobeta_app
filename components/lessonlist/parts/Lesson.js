@@ -22,7 +22,8 @@ const lessonList = makeStyles((theme) => ({
     verticalAlign: "top",
     color: useContext(Color).colors.Green,
     fontWeight: "bold",
-    marginLeft: "30px"
+    marginLeft: "30px",
+    cursor: "pointer"
   },
   contents: {
     width: "100%",
