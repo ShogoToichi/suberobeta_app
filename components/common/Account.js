@@ -96,7 +96,7 @@ function Account(props) {
       login()
     } else {
       logout()
-      router.push("/toppage")
+      router.push("/")
     }
   }
 

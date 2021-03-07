@@ -5,7 +5,7 @@
 import React, { Component } from "react"
 import Head from "next/head"
 import HeaderUi from "./Header"
-import Footer from "../topPage/Footer"
+import FooterUi from "./Footer"
 // import style from "../static/Style";
 
 class Layout extends Component {
@@ -31,6 +31,7 @@ class Layout extends Component {
 
         <HeaderUi />
         {this.props.children}
+        <FooterUi />
       </>
     )
   }
