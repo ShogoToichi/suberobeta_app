@@ -10,6 +10,7 @@ import { connect } from "react-redux"
 import MessageAdd from "./MessageAdd"
 import Chat from "./parts/Chat"
 import Title from "../commonParts/Title"
+import getProfileImageUrl from "../commonParts/getProfileImageUrl"
 
 let createrId = ""
 let lessonName = ""
@@ -51,10 +52,10 @@ function Message(props) {
       .collection("users")
       .doc(createrId)
       .get()
-      .then((doc) => {
+      .then(async (doc) => {
         const createrData = doc.data()
         createrName = createrData.profile.name
-        createrImage = createrData.imageUrl
+        createrImage = await getProfileImageUrl(createrData.imageName)
       })
 
     //購入者の情報を取得
@@ -62,10 +63,10 @@ function Message(props) {
       .collection("users")
       .doc(buyerId)
       .get()
-      .then((doc) => {
+      .then(async (doc) => {
         const buyerData = doc.data()
         buyerName = buyerData.profile.name
-        buyerImage = buyerData.imageUrl
+        buyerImage = await getProfileImageUrl(buyerData.imageName)
       })
 
     // メッセージ情報の取得
@@ -99,7 +100,7 @@ function Message(props) {
           }
         })
       })
-      //ページが再レンダリングされる（新しいメッセージが画面に表示される）とそのページを開いている人のReadMessageをtrueにする
+    //ページが再レンダリングされる（新しいメッセージが画面に表示される）とそのページを開いている人のReadMessageをtrueにする
     if (email == createrId) {
       db.collection("messages").doc(messageId).set(
         {

@@ -9,15 +9,15 @@ import { connect } from "react-redux"
 import Lib from "../../Lib/address_lib"
 import GetImageUi from "./parts/GetImageUi"
 import { SystemUpdateAlt } from "@material-ui/icons"
+import getProfileImageUrl from "../commonParts/getProfileImageUrl"
 
 let currentImageUrl
 let image = ""
 let imageUrl = ""
+let updatedImageName = ""
+let previousImageName = ""
 
 function GetImage(props) {
-  // image, imageUrlはstateじゃなくても大丈夫だろうか．．？
-  // const [image, setImage] = useState("")
-  // const [imageUrl, setImageUrl] = useState("")
   const db = firebase.firestore()
   const email = Lib.encodeEmail(props.email)
   const [upload, setUpload] = useState(true)
@@ -31,23 +31,76 @@ function GetImage(props) {
   }
 
   //現在の画像を取得する関数
-  const getCurrentImage = (props) => {
+  const getCurrentImage = () => {
     db.collection("users")
       .doc(email)
       .get()
-      .then(function (doc) {
-        currentImageUrl = doc.data().imageUrl
+      .then(async (doc) => {
+        currentImageUrl = await getProfileImageUrl(doc.data().imageName)
+        console.log("getCurrentImage: ", doc.data().imageName)
+
         setUpload(false)
       })
   }
 
+  // 画像が初期の画像かどうかを判断して初期画像以外の時以前の画像を削除する関数
+  const remainInitImage = async () => {
+    // 初期画像の名前
+    const initImageName = "initImage.png"
+    if (previousImageName !== initImageName) {
+      await deleteImage(previousImageName)
+    } else {
+      // console.log("don't delete image")
+    }
+  }
+
+  // 画像の削除をする関数
+  const deleteImage = async (imageName) => {
+    await firebase
+      .storage()
+      .ref()
+      .child("profileImages")
+      .child(imageName)
+      .delete()
+      .then(() => {
+        console.log("File deleted successfully!")
+      })
+      .catch((error) => {
+        console.log("an error occurred!")
+      })
+  }
+
+  // 画像のファイル名の最初に年月日時分秒を付け加える
+  const namingImage = (ImageName) => {
+    const today = new Date()
+    return (
+      String(today.getFullYear()) +
+      String(today.getMonth() + 1) + // 月だけは0～11を返す
+      String(today.getDate()) +
+      String(today.getHours()) +
+      String(today.getMinutes()) +
+      String(today.getSeconds()) +
+      ImageName
+    )
+  }
+
   const onSubmit = (event) => {
+    db.collection("users")
+      .doc(email)
+      .get()
+      .then((doc) => {
+        previousImageName = doc.data().imageName
+      })
+    console.log(previousImageName)
     event.preventDefault()
     if (image === "") {
       console.log("ファイルが選択されていません")
     }
+    updatedImageName = namingImage(image.name)
     // アップロード処理
-    const uploadTask = storage.ref(`/profileImages/${image.name}`).put(image)
+    const uploadTask = storage
+      .ref(`/profileImages/${updatedImageName}`)
+      .put(image)
     uploadTask.on(
       firebase.storage.TaskEvent.STATE_CHANGED,
       next,
@@ -69,32 +122,23 @@ function GetImage(props) {
   const complete = async () => {
     // 完了後の処理
     // 画像表示のため、アップロードした画像のURLを取得
-    await storage
-      .ref("profileImages")
-      .child(image.name)
-      .getDownloadURL()
-      .then((firebaseUrl) => {
-        // setImageUrl(firebaseUrl)
-        imageUrl = firebaseUrl
-        // 取得した画像の名前をfirebaseに保存
-        db.collection("users").doc(email).set(
-          {
-            imageUrl: firebaseUrl
-          },
-          { merge: true }
-        )
-        // .then(() => {
-        //   console.log(firebaseUrl)
-        //   console.log(imageUrl)
-        // })
-      })
+    await db.collection("users").doc(email).set(
+      {
+        imageName: updatedImageName
+      },
+      { merge: true }
+    )
+
+    // アップロード後に以前の画像を削除する
+    await remainInitImage(previousImageName)
+
     setUpload(true)
     setUpdate(update ? false : true)
   }
 
   useEffect(() => {
     getCurrentImage()
-  }, [])
+  }, [update])
 
   return (
     <div className="App">
