@@ -4,6 +4,7 @@ import { useRouter } from "next/router"
 import { connect } from "react-redux"
 import Lib from "../../Lib/address_lib"
 import CreaterDetail from "./parts/CreaterDetail"
+import getProfileImageUrl from "../commonParts/getProfileImageUrl"
 
 let createrId = ""
 let createrName = ""
@@ -39,10 +40,10 @@ function CreaterInfo(props) {
       .collection("users")
       .doc(createrId)
       .get()
-      .then((doc) => {
+      .then(async (doc) => {
         userData = doc.data()
         createrName = userData.profile.name
-        createrImageUrl = userData.imageUrl
+        createrImageUrl = await getProfileImageUrl(userData.imageName)
       })
 
     //関数の最後で強制的にレンダリング
