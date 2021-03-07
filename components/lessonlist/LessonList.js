@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react"
-import firebase from "firebase"
+import React, { useEffect, useState } from "react";
+import firebase from "firebase";
 // import "firebase/storage";
-import Lesson from "./parts/Lesson"
-import Title from "../commonParts/Title"
+import Lesson from "./parts/Lesson";
+import Title from "../commonParts/Title";
 
 const LessonList = () => {
   //ステートの設定
-  const [items, setItems] = useState("no item")
+  const [items, setItems] = useState("no item");
 
   //lessonitemsは値を渡された<Lesson/>が要素の配列ををいったん保管する
   const getFireData = async () => {
-    const db = firebase.firestore()
-    const lessonItems = []
+    const db = firebase.firestore();
+    const lessonItems = [];
 
     await db
       .collection("lessons")
@@ -29,17 +29,21 @@ const LessonList = () => {
               lessonTime={doc.data().lessonTime}
               lessonDescription={doc.data().lessonDescription}
               lessonPrice={doc.data().lessonPrice}
+              tagLabel1={"カービング"}
+              tagLabel2={"グラトリ"}
+              tagLabel3={"キッカー"}
+
             />
-          )
-        })
+          );
+        });
         //最後にlessonitemsをステートにいれる
-        setItems(lessonItems)
-      })
-  }
+        setItems(lessonItems);
+      });
+  };
 
   useEffect(() => {
-    getFireData()
-  }, [])
+    getFireData();
+  }, []);
 
   return (
     <>
@@ -49,7 +53,7 @@ const LessonList = () => {
       />
       {items}
     </>
-  )
-}
+  );
+};
 
-export default LessonList
+export default LessonList;

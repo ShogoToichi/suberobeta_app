@@ -2,7 +2,6 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/mypage": "pages/mypage.js",
-  "/message/[lessonid]/[buyerid]": "pages/message/[lessonid]/[buyerid].js"
-
+  "/lesson_info/[lessonid]": "pages/lesson_info/[lessonid].js",
+  "/lesson_list": "pages/lesson_list.js"
 }
