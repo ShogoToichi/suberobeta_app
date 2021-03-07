@@ -12,8 +12,8 @@ const plofile = makeStyles((theme) => ({
     marginTop: "15px"
   },
   buyBtn: {
-    marginLeft: "0px",
-    fontSize: "23px",
+    fontWeight: "bold",
+    fontSize: "20px",
     marginBottom: "15px",
     backgroundColor: useContext(Color).colors.bgGreen
   }
@@ -26,7 +26,6 @@ export default function BuyBtn(props) {
       <Link href={`/message/${props.lessonId}/${props.buyerId}`}>
         <Button
           className={classes.buyBtn}
-          size="large"
           variant="outlined"
           onClick={props.onClick}
         >
