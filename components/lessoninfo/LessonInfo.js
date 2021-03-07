@@ -7,6 +7,7 @@ import BuyBtn from "./parts/BuyBtn"
 import LessonDetail from "./parts/LessonDetail"
 import Title from "../commonParts/Title"
 import EditBtn from "./parts/EditBtn"
+import getProfileImageUrl from "../commonParts/getProfileImageUrl"
 
 let createrId = ""
 let createrName = ""
@@ -53,10 +54,10 @@ function LessonInfo(props) {
       .collection("users")
       .doc(createrId)
       .get()
-      .then((doc) => {
+      .then(async (doc) => {
         userData = doc.data()
         createrName = userData.profile.name
-        createrImageUrl = userData.imageUrl
+        createrImageUrl = await getProfileImageUrl(userData.imageName)
       })
 
     //購入したときに購入者の名前もfirebaseに書き込みたいから取得する

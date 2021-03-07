@@ -4,6 +4,7 @@ import "firebase/storage"
 import { connect } from "react-redux"
 import Lib from "../../Lib/address_lib"
 import MyProfileUi from "./parts/MyProfileUi"
+import getProfileImageUrl from "../commonParts/getProfileImageUrl"
 
 let name = "no data"
 let introduction = "no data"
@@ -21,12 +22,12 @@ function MyProfile(props) {
       .collection("users")
       .doc(email)
       .get()
-      .then((doc) => {
+      .then(async (doc) => {
         // 取得したデータを定数に入れてから、ステートに入れる
         const profileData = doc.data()
         name = profileData.profile.name
         introduction = profileData.profile.introduction
-        imageUrl = profileData.imageUrl
+        imageUrl = await getProfileImageUrl(profileData.imageName)
       })
     setUpdate(update ? false : true)
   }

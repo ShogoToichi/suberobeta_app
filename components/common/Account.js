@@ -21,18 +21,14 @@ const doRegister = async (db, email, name) => {
   const initIntroduction = "自己紹介を入力してください！"
 
   // 初期の画像設定用urlの取得
-  const imageRef = firebase.storage().ref().child("suberoアプリロゴ.png")
-  let initImageUrl = ""
-  await imageRef.getDownloadURL().then((url) => {
-    initImageUrl = url
-  })
+  const initImageName = "initImage.png"
   // firestoreに登録
   await db
     .collection("users")
     .doc(email)
     .set(
       {
-        imageUrl: initImageUrl,
+        imageName: initImageName,
         profile: { name: name, introduction: initIntroduction }
       },
       { marge: true }
@@ -59,7 +55,7 @@ function Account(props) {
             login: true,
             userName: result.user.displayName,
             email: result.user.email,
-            imageUrl: ""
+            imageName: ""
           }
         })
         // 初回ログインかどうかの判断
@@ -88,7 +84,7 @@ function Account(props) {
         userName: "(click here!)",
         email: "",
         data: [],
-        imageUrl: ""
+        imageName: ""
       }
     })
     // this.props.onLogouted();

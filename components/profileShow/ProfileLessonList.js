@@ -26,7 +26,7 @@ function ProfileLessonList(props) {
         .where("createrId", "==", router.query.userid)
         .orderBy("createdAt", "desc")
         .get()
-        .then(function (querySnapshot) {
+        .then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
             lessonItems.push(
               <ProfileLesson
