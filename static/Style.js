@@ -2,95 +2,44 @@ import css from "styled-jsx/css"
 
 export default (
   <style>{`
-  body{
-    margin:10px;
-    padding:5px;
-    color;#669;
+  .loading_box{
+    position:relative;
   }
-  header{
-    font-size:64pt;
-    font-weight:bold;
-    text-align:right;
-    letter-spacing:-8px;
-    color:#ddddff;
-    margin:-32px 5px;
-  }
-  footer {
-    color:"99c;
-    font-size:12pt;
-    text-align:right;
-    border-bottom: 1px solid #99c;
-    margin:50px 0px 10px 0px;
-    position: relative;
-    bottom: 10px;
-    right: 10px;
-    left: 10px;
-  }
-  // h1 {
-  //   font-size:22pt;
-  //   font-weight:bold;
-  //   text-align:left;
-  //   letter-spacing:0px;
-  //   color:#77a;
-  //   margin:-50px 0px 50px 0px;
-  // }
-  p {
-    margin:0px;
-    color:black;
+  .loading_text{
+    position:absolute;
+    top:0px;
+    left:45px;
     font-size:16pt;
+    color:#777
+  } 
+  .loading_circle{
+    background-color:white;
+    border:solid #AFA 3pt;
+    border-radius:10pt;
+    height:20px;
+    width:20px;
   }
-  hr {
-    margin:25px 0px;
+
+
+  .loading_blank{
+    background-color: white;
+    animation: rotation 1s linear 0s infinite normal none running;
+    width:18px;
+    height:10px;
+    position:absolute;
+    top:11px;
+    left:0px;
   }
-  tr{
-    margin:0px;
+  @keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+    transform-origin:right;
   }
-  th{
-    font-size:14pt;
-    font-weight:plain;
-    text-align:left;
-    padding:0px 20px;
-    margin:0px;
+
+  100% {
+    transform: rotate(360deg);
+    transform-origin:right;
   }
-  td{
-    font-size:14pt;
-    font-weight:plain;
-    text-align:right;
-    padding:0px 20px;
-    margin:0px;
-  }
-  .label{
-    font-size:14pt;
-    margin:20px 5px;
-  }
-  .login{
-    text-align:right;
-  }
-  .account{
-    cursor:pointer;
-    font-size:12pt;
-    padding:5px 10px;
-    color:gray;
-    border:2px solid lightgray;
-  }
-  fieldset{
-    margin:0px 0px 30px 0px;
-  }
-  input{
-    border: 0px solid white;
-    border-bottom:1px solid gray;
-    font-size:14pt;
-  }
-  button{
-    font-size:14pt;
-    cursor:pointer;
-  }
-  .lessonprofile{
-    margin-top:150px;
-  }
-  img {
-  width: 100px;
-  padding: 1em;
 }
 `}</style>
 )
