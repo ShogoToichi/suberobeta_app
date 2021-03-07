@@ -13,6 +13,7 @@ import { Color } from "../../../static/colors"
 
 const lessonList = makeStyles((theme) => ({
   lesson: {
+    display: "inline-block",
     width: "80%",
     margin: "5px",
     marginLeft: "70px"
