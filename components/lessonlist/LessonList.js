@@ -30,9 +30,9 @@ const LessonList = () => {
               lessonTime={doc.data().lessonTime}
               lessonDescription={doc.data().lessonDescription}
               lessonPrice={doc.data().lessonPrice}
-              tagLabel1={"カービング"}
-              tagLabel2={"グラトリ"}
-              tagLabel3={"キッカー"}
+              tagLabel1={"女性大歓迎"}
+              tagLabel2={"初心者お断り"}
+              tagLabel3={"レンタル付き"}
             />
           )
         })
