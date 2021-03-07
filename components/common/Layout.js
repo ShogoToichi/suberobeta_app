@@ -12,7 +12,7 @@ class Layout extends Component {
   render() {
     return (
       <>
-        <head>
+        <Head>
           <meta charSet="utf-8" />
           <meta
             name="viewPort"
@@ -27,12 +27,10 @@ class Layout extends Component {
             rel="stylesheet"
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
           />
-        </head>
+        </Head>
 
-        <body>
-          <HeaderUi />
-          {this.props.children}
-        </body>
+        <HeaderUi />
+        {this.props.children}
       </>
     )
   }
