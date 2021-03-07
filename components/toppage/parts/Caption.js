@@ -1,8 +1,8 @@
-import React, { useContext } from "react"
-import { makeStyles } from "@material-ui/core/styles"
-import Typography from "@material-ui/core/Typography"
-import { Color } from "../../../static/colors"
-import Grid from "@material-ui/core/Grid"
+import React, { useContext } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import { Color } from "../../../static/colors";
+import Grid from "@material-ui/core/Grid";
 
 const topTitle = makeStyles((theme) => ({
   title: {
@@ -25,10 +25,10 @@ const topTitle = makeStyles((theme) => ({
     height: "300px",
     width: "300px"
   }
-}))
+}));
 
 export default function Caption(props) {
-  const classes = topTitle()
+  const classes = topTitle();
 
   return (
     <div className={classes.title}>
@@ -54,5 +54,5 @@ export default function Caption(props) {
         </Grid>
       </Grid>
     </div>
-  )
+  );
 }

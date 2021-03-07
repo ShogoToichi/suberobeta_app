@@ -39,14 +39,12 @@ export default function InputForm(props) {
         レッスンに関する情報を入力してください。
       </Typography>
       <TextField
-        id="standard-textarea"
         label="レッスン名"
         fullWidth
         onChange={props.onChangeLessonName}
         className={classes.contents}
       />
       <TextField
-        id="standard-textarea"
         label="日時"
         placeholder="〇月〇日午前〇時～〇月〇日午前〇時"
         fullWidth
@@ -54,7 +52,6 @@ export default function InputForm(props) {
         className={classes.contents}
       />
       <TextField
-        id="standard-textarea"
         label="場所"
         placeholder="〇〇スキー場"
         fullWidth
@@ -62,7 +59,6 @@ export default function InputForm(props) {
         className={classes.contents}
       />
       <TextField
-        id="standard-textarea"
         label="料金"
         placeholder="￥〇〇〇〇円"
         fullWidth
@@ -72,7 +68,6 @@ export default function InputForm(props) {
 
       <div className={classes.detailInfo}>
         <TextField
-          id="outlined-multiline-static"
           label="レッスン内容"
           multiline
           rows={8}
