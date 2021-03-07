@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from "react";
-import firebase from "firebase";
+import React, { useEffect, useState } from "react"
+import firebase from "firebase"
 // import "firebase/storage";
-import Lesson from "./parts/Lesson";
-import Title from "../commonParts/Title";
+import Lesson from "./parts/Lesson"
+import Title from "../commonParts/Title"
+import SearchCard from "./SearchCard"
 
 const LessonList = () => {
   //ステートの設定
-  const [items, setItems] = useState("no item");
+  const [items, setItems] = useState("no item")
 
   //lessonitemsは値を渡された<Lesson/>が要素の配列ををいったん保管する
   const getFireData = async () => {
-    const db = firebase.firestore();
-    const lessonItems = [];
+    const db = firebase.firestore()
+    const lessonItems = []
 
     await db
       .collection("lessons")
@@ -32,18 +33,17 @@ const LessonList = () => {
               tagLabel1={"カービング"}
               tagLabel2={"グラトリ"}
               tagLabel3={"キッカー"}
-
             />
-          );
-        });
+          )
+        })
         //最後にlessonitemsをステートにいれる
-        setItems(lessonItems);
-      });
-  };
+        setItems(lessonItems)
+      })
+  }
 
   useEffect(() => {
-    getFireData();
-  }, []);
+    getFireData()
+  }, [])
 
   return (
     <>
@@ -51,9 +51,14 @@ const LessonList = () => {
         title={"レッスン一覧"}
         subTitle={"時間や場所、レベルなど自分に合ったレッスンを見つけよう"}
       />
+      <SearchCard
+        tagLabel1="女性大歓迎"
+        tagLabel2="初心者お断り"
+        tagLabel3="レンタル付き"
+      />
       {items}
     </>
-  );
-};
+  )
+}
 
-export default LessonList;
+export default LessonList

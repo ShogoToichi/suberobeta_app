@@ -1,30 +1,30 @@
 //値を渡してレッスンを表示する箱
 //Linkタグのところはlesson_info/[lessonId]にページ移動する処理
 
-import React, { useContext } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Link from "next/link";
-import Typography from "@material-ui/core/Typography";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import { CardHeader } from "@material-ui/core";
-import Img from "../../commonParts/Img";
-import { Color } from "../../../static/colors";
-import Icon from "@mdi/react";
+import React, { useContext } from "react"
+import { makeStyles } from "@material-ui/core/styles"
+import Link from "next/link"
+import Typography from "@material-ui/core/Typography"
+import Card from "@material-ui/core/Card"
+import CardContent from "@material-ui/core/CardContent"
+import { CardHeader } from "@material-ui/core"
+import Img from "../../commonParts/Img"
+import { Color } from "../../../static/colors"
+import Icon from "@mdi/react"
 import {
   mdiCalendarClock,
   mdiMapMarkerRadiusOutline,
   mdiCurrencyUsd,
   mdiTagOutline
-} from "@mdi/js";
-import Chip from '@material-ui/core/Chip';
+} from "@mdi/js"
+import Chip from "@material-ui/core/Chip"
 
 const lessonList = makeStyles((theme) => ({
   lesson: {
     display: "inline-block",
-    width: "80%",
-    margin: "5px",
-    marginLeft: "70px"
+    width: "70%",
+    margin: "10px 0px 10px 20px",
+    float: "right"
   },
   cardHeader: {
     display: "inline-block",
@@ -64,10 +64,10 @@ const lessonList = makeStyles((theme) => ({
     display: "inline-block",
     width: "30%"
   }
-}));
+}))
 
 export default function Lesson(props) {
-  const classes = lessonList();
+  const classes = lessonList()
   return (
     <Card className={classes.lesson}>
       <Link href={`/profile_show/${props.userId}`}>
@@ -98,27 +98,20 @@ export default function Lesson(props) {
       </div>
       <br />
 
-      <div className={classes.tags} >
-      <Chip
-        icon={<Icon path={mdiTagOutline} size="20px" />}
-        label={props.tagLabel1}
-        clickable
-        className={classes.tag}
-      />
-      <Chip
-        icon={<Icon path={mdiTagOutline} size="20px" />}
-        label={props.tagLabel2}
-        clickable
-        className={classes.tag}
-      />
-      <Chip
-        icon={<Icon path={mdiTagOutline} size="20px" />}
-        label={props.tagLabel3}
-        clickable
-        className={classes.tag}
-      />
+      <div className={classes.tags}>
+        <Chip
+          icon={<Icon path={mdiTagOutline} size="20px" />}
+          label={props.tagLabel2}
+          clickable
+          className={classes.tag}
+        />
+        <Chip
+          icon={<Icon path={mdiTagOutline} size="20px" />}
+          label={props.tagLabel3}
+          clickable
+          className={classes.tag}
+        />
       </div>
-
 
       <CardContent className={classes.contents}>
         <Typography variant="body2" className={classes.info}>
@@ -135,5 +128,5 @@ export default function Lesson(props) {
         </Typography>
       </CardContent>
     </Card>
-  );
+  )
 }
