@@ -5,15 +5,13 @@ import { connect } from "react-redux"
 import Lib from "../../Lib/address_lib"
 import SearchCardDetail from "./parts/SearchCardDetail"
 
-
 function SearchCard(props) {
-
-  return(
+  return (
     <>
       <SearchCardDetail
-      tagLabel1={props.tagLabel1}
-      tagLabel2={props.tagLabel2}
-      tagLabel3={props.tagLabel3}
+        tagLabel1={props.tagLabel1}
+        tagLabel2={props.tagLabel2}
+        tagLabel3={props.tagLabel3}
       />
     </>
   )
