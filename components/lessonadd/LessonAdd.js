@@ -5,6 +5,7 @@ import { connect } from "react-redux"
 import Lib from "../../Lib/address_lib"
 import Title from "../commonParts/Title"
 import InputForm from "./parts/InputForm"
+import getProfileImageUrl from "../commonParts/getProfileImageUrl"
 
 let imageUrl = ""
 
@@ -41,8 +42,8 @@ function LessonAdd(props) {
       .collection("users")
       .doc(email)
       .get()
-      .then(function (doc) {
-        imageUrl = doc.data().imageUrl
+      .then(async (doc) => {
+        imageUrl = await getProfileImageUrl(doc.data().imageName)
       })
   }
 

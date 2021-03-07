@@ -4,6 +4,7 @@ import "firebase/storage"
 import { connect } from "react-redux"
 import ProfileShowUi from "./parts/ProFileShowUi"
 import { useRouter } from "next/router"
+import getProfileImageUrl from "../commonParts/getProfileImageUrl"
 
 let name = "no data"
 let introduction = "no data"
@@ -23,12 +24,12 @@ function ProfileShow(props) {
       .collection("users")
       .doc(router.query.userid)
       .get()
-      .then((doc) => {
+      .then(async (doc) => {
         // 取得したデータを定数に入れてから、ステートに入れる
         const profileData = doc.data()
         name = profileData.profile.name
         introduction = profileData.profile.introduction
-        imageUrl = profileData.imageUrl
+        imageUrl = await getProfileImageUrl(profileData.imageName)
       })
     setUpdate(update ? false : true)
   }
