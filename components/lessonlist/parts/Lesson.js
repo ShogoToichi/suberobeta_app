@@ -11,11 +11,14 @@ import { CardHeader } from "@material-ui/core";
 import Img from "../../commonParts/Img";
 import { Color } from "../../../static/colors";
 import Icon from "@mdi/react";
+import Avatar from '@material-ui/core/Avatar';
 import {
   mdiCalendarClock,
   mdiMapMarkerRadiusOutline,
-  mdiCurrencyUsd
+  mdiCurrencyUsd,
+  mdiTagOutline
 } from "@mdi/js";
+import Chip from '@material-ui/core/Chip';
 
 const lessonList = makeStyles((theme) => ({
   lesson: {
@@ -28,6 +31,7 @@ const lessonList = makeStyles((theme) => ({
     verticalAlign: "top",
     color: useContext(Color).colors.Green,
     fontWeight: "bold",
+    cursor: "pointer",
     margin: "20px 0px 0px 20px",
     width: "60%"
   },
@@ -37,12 +41,19 @@ const lessonList = makeStyles((theme) => ({
     justifyContent: "left",
     margin: "40px 0px 0px 0px",
     "& input": {
-      display: "none",
+      display: "none"
     },
-    "& label":{
+    "& label": {
       position: "relative",
       color: "#ffcc00"
     }
+  },
+  tags: {
+    marginLeft: "70px"
+  },
+  tag: {
+    margin: "0px 5px",
+    color: useContext(Color).colors.Green
   },
   contents: {
     marginLeft: "50px",
@@ -85,6 +96,29 @@ export default function Lesson(props) {
           <label for="star5">★</label>
         </Typography>
       </div>
+      <br />
+
+      <div className={classes.tags} >
+      <Chip
+        icon={<Icon path={mdiTagOutline} size="20px" />}
+        label={props.tagLabel1}
+        clickable
+        className={classes.tag}
+      />
+      <Chip
+        icon={<Icon path={mdiTagOutline} size="20px" />}
+        label={props.tagLabel2}
+        clickable
+        className={classes.tag}
+      />
+      <Chip
+        icon={<Icon path={mdiTagOutline} size="20px" />}
+        label={props.tagLabel3}
+        clickable
+        className={classes.tag}
+      />
+      </div>
+
 
       <CardContent className={classes.contents}>
         <Typography variant="body2" className={classes.info}>
