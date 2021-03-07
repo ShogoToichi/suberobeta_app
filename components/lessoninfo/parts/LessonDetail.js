@@ -15,7 +15,7 @@ import {
 const plofile = makeStyles((theme) => ({
   lessonInfo: {
     display: "inline-block",
-    width: "60%",
+    width: "70%",
     padding: "0px 0px 40px 40px",
   },
   cardHeader: {
@@ -51,25 +51,18 @@ export default function LessonDetail(props) {
   const classes = plofile();
   return (
     <Card className={classes.lessonInfo}>
-      {/* <Link href={`/profile_show/${props.userId}`}>
-        <Img src={props.createrImageUrl} size="90" />
-      </Link>
-      <Link href={`/profile_show/${props.userId}`}>
-        <CardHeader className={classes.cardHeader} title={props.createrName} />
-      </Link> */}
-
       <CardContent className={classes.cardContent}>
-        <Typography variant="h7" className={classes.info}>
+        <Typography  className={classes.info}>
           <Icon path={mdiCalendarClock} size="30px" />
           &emsp;{props.lessonTime}
         </Typography>
 
-        <Typography variant="h7" className={classes.info}>
+        <Typography className={classes.info}>
           <Icon path={mdiMapMarkerRadiusOutline} size="30px" />
           &emsp;{props.lessonPlace}
         </Typography>
 
-        <Typography variant="h7" className={classes.info}>
+        <Typography className={classes.info}>
           <Icon path={mdiCurrencyUsd} size="30px" />
           &emsp;{props.lessonPrice} 円
         </Typography>

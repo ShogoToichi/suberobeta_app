@@ -112,7 +112,7 @@ function LessonInfo(props) {
           lessonDescription={lessonDescription}
           userId={createrId}
           />
-          <span style={{position: "absolute", right: "200px", top: "100px"}}>
+          <span style={{position: "absolute", right: "80px", top: "100px"}}>
             {email == createrId ? (
               <EditBtn lessonId={router.query.lessonid} />
             ) : (
