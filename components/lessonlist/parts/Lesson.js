@@ -11,7 +11,6 @@ import { CardHeader } from "@material-ui/core";
 import Img from "../../commonParts/Img";
 import { Color } from "../../../static/colors";
 import Icon from "@mdi/react";
-import Avatar from '@material-ui/core/Avatar';
 import {
   mdiCalendarClock,
   mdiMapMarkerRadiusOutline,

@@ -5,8 +5,10 @@ import { connect } from "react-redux"
 import Lib from "../../Lib/address_lib"
 import BuyBtn from "./parts/BuyBtn"
 import LessonDetail from "./parts/LessonDetail"
+import creatorInfo from "./CreaterInfo"
 import Title from "../commonParts/Title"
 import EditBtn from "./parts/EditBtn"
+import CreatorInfo from "./CreaterInfo"
 
 let createrId = ""
 let createrName = ""
@@ -95,29 +97,32 @@ function LessonInfo(props) {
   return (
     <div>
       {/* クリエーターIDとじぶんのIDが一致していたらレッスン編集ボタンを表示 */}
-      <div style={{ position: "relative" }}>
-        <Title title={lessonName} />
-        <span style={{ position: "absolute", width: "200px", right: "100px" }}>
-          {email == createrId ? (
-            <EditBtn lessonId={router.query.lessonid} />
-          ) : (
-            <BuyBtn
-              lessonId={router.query.lessonid}
-              buyerId={email}
-              onClick={doBuy}
-            />
-          )}
-        </span>
+
+      <Title title={lessonName} />
+
+      <div style={{position: "relative"}}>
+        <CreatorInfo />
+        <LessonDetail
+          createrImageUrl={createrImageUrl}
+          createrName={createrName}
+          lessonPrice={lessonPrice}
+          lessonPlace={lessonPlace}
+          lessonTime={lessonTime}
+          lessonDescription={lessonDescription}
+          userId={createrId}
+          />
+          <span style={{position: "absolute", right: "200px", top: "100px"}}>
+            {email == createrId ? (
+              <EditBtn lessonId={router.query.lessonid} />
+            ) : (
+              <BuyBtn
+                lessonId={router.query.lessonid}
+                buyerId={email}
+                onClick={doBuy}
+              />
+            )}
+          </span>
       </div>
-      <LessonDetail
-        createrImageUrl={createrImageUrl}
-        createrName={createrName}
-        lessonPrice={lessonPrice}
-        lessonPlace={lessonPlace}
-        lessonTime={lessonTime}
-        lessonDescription={lessonDescription}
-        userId={createrId}
-      />
     </div>
   )
 }

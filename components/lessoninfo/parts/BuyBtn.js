@@ -26,7 +26,6 @@ export default function BuyBtn(props) {
       <Link href={`/message/${props.lessonId}/${props.buyerId}`}>
         <Button
           className={classes.buyBtn}
-          size="large"
           variant="outlined"
           onClick={props.onClick}
         >
