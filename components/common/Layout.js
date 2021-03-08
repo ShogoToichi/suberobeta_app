@@ -5,7 +5,7 @@
 import React, { Component } from "react"
 import Head from "next/head"
 import HeaderUi from "./Header"
-import Footer from "../topPage/Footer"
+import FooterUi from "./Footer"
 // import style from "../static/Style";
 
 class Layout extends Component {
@@ -18,7 +18,7 @@ class Layout extends Component {
             name="viewPort"
             content="width=device-width, initial-scale=1.0"
           />
-          <title>Subero</title>
+          <title>Subero | {this.props.title}</title>
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
@@ -31,6 +31,7 @@ class Layout extends Component {
 
         <HeaderUi />
         {this.props.children}
+        <FooterUi />
       </>
     )
   }

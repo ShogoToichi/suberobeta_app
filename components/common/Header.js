@@ -2,11 +2,11 @@
 //Layoutで読み込む
 
 import React, { useContext } from "react"
+import { useRouter } from "next/router"
 import { makeStyles } from "@material-ui/core/styles"
 import AppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
 import Button from "@material-ui/core/Button"
-import Link from "next/link"
 import Account from "./Account"
 import { connect } from "react-redux"
 import { Color } from "../../static/colors"
@@ -25,32 +25,35 @@ const useStyles = makeStyles((theme) => ({
 
 function Header(props) {
   const classes = useStyles()
+  const router = useRouter()
 
   return (
     <AppBar position="static" className={classes.bar}>
       <Toolbar>
-        <Link href="/toppage">
-          <Button size="small" color="inherit">
-            <img className={classes.img} src="/static/subero_icon.png" />
-          </Button>
-        </Link>
+        <Button size="small" color="inherit" onClick={() => router.push("/")}>
+          <img className={classes.img} src="/static/subero_icon.png" />
+        </Button>
         <h1 className={classes.blank}> </h1>
-        <Link href="/lesson_list">
-          <Button variant="text" size="large" color="inherit">
-            レッスン一覧
-          </Button>
-        </Link>
+        <Button
+          variant="text"
+          size="large"
+          color="inherit"
+          onClick={() => router.push("/lesson_list")}
+        >
+          レッスン一覧
+        </Button>
 
         {props.login ? (
           <>
-            <Link href="/mypage">
-              <Button variant="text" size="large" color="inherit">
-                マイページ
-              </Button>
-            </Link>
-            <Link href="/toppage">
-              <Account text="ログアウト" />
-            </Link>
+            <Button
+              variant="text"
+              size="large"
+              color="inherit"
+              onClick={() => router.push("/mypage")}
+            >
+              マイページ
+            </Button>
+            <Account text="ログアウト" />
           </>
         ) : (
           <Account text="ログイン" />
