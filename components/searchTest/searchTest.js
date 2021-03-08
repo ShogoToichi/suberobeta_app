@@ -1,96 +1,118 @@
+//参考URL : https://qiita.com/oukayuka/items/d3cee72501a55e8be44a
+//ngramのソースコードも上のサイトのリンクから見れる
+//リンクわかりずらそうだったから一応追加
+// https://github.com/oukayuka/ReactFirebaseBook/tree/master/04-firestore/mangarel-demo/src/utils
 
-import React, { Component } from "react";
-import SubmitPostComponent from "./SubmitPostComponent";
-import AllPostsComponent from "./AllPostsComponent";
-import SearchPostsComponent from "./SearchPostsComponent";
-// import algoliasearch from "algoliasearch/lite"
-import Grid from "@material-ui/core/Grid";
+import React, { useEffect, useState } from "react"
 import firebase from "firebase"
-const algoliasearch = require("algoliasearch")
-const ALGOLIA_APP_ID = "3NYWPSR8W3"
-const ALGOLIA_API_KEY = "b0fdb445be56447dabf35f8de1ddc53a"
-const client = algoliasearch(
-  ALGOLIA_APP_ID,
-  ALGOLIA_API_KEY
-);
-const index = client.initIndex("suberobeta");
-  const db=firebase.firestore()
+import Title from "../commonParts/Title"
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.onSubmit = this.onSubmit.bind(this);
-    this.ReadPosts = this.ReadPosts.bind(this);
-    this.onSearch = this.onSearch.bind(this);
-    this.state = {
-      posts: [],
-      searchResultPosts: []
-    };
-  }
+let hits = []
 
+const LessonList = () => {
+  //ざっくりimportみたいなもの、気になる人はrequireで検索
+  var nGram = require("n-gram")
+  //ステートの設定
+  const [items, setItems] = useState("")
+  const [searching, setSearching] = useState(false) //入力中かどうかの真偽値
+  const [focus, setFocus] = useState(false) //入力にフォーカスしているか
 
-  componentDidMount() {
-    this.ReadPosts();
-  }
+  // 入力された時の処理
+  const doChange = async (e) => {
+    let word = e.target.value
+    //入力された単語から二文字ずつ分割された配列を作成、詳しくはURLを参照
+    let searchWords = nGram(2)(word)
+    const db = firebase.firestore()
+    //二文字以上入力があるかで分岐(searchWordsは二文字入力があると配列に一つ目の要素が入る)
+    if (searchWords.length > 0) {
+      setSearching(true)
+      let query = db.collection("skiResorts").limit(10)
 
-  onSubmit(e) {
-    e.preventDefault();
-    let data = { lessonName: e.target.title.value, lessonDescription: e.target.content.value };
-    db.collection("lessons")
-      .doc()
-      .set(data);
-    e.target.title.value = "";
-    e.target.content.value = "";
-  }
-
-  async ReadPosts() {
-    let tempResults = [];
-    await db
-      .collection("lessons")
-      .get()
-      .then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-          tempResults.push({
-            title: doc.data().lessonName,
-            content: doc.data().lessonDescription
-          });
-        });
-      });
-    this.setState({ posts: tempResults });
-  }
-
-  async onSearch(e) {
-    let tempResults = [];
-    await index
-      .search({
-        query: e.target.value
+      searchWords.forEach((word) => {
+        query = query.where(`tokenMap.${word}`, "==", true)
+        //tokenmapの中身はfirebase参照
+        //forEachが回るとqueryがどんどん長くなる、AND検索になる
+        //exa.)query=db.collection(--).limit(-).where(--).where(--).where(--).wh...
       })
-      .then(function(responses) {
-        tempResults = responses.hits;
-        console.log(responses)
-      });
-
-    this.setState({ searchResultPosts: tempResults });
+      // データ取得
+      const snap = await query.get()
+      hits = []
+      snap.forEach(async (doc) => {
+        hits.push(
+          <a className="search" href={`/lesson_search/skiResorts/${doc.id}`}>
+            {doc.data().name}
+          </a>
+        )
+      })
+      // 検索結果の有無で表示の変更
+      if (hits.length > 0) {
+        setItems(hits)
+      } else {
+        setItems(<p style={{ color: "#888" }}>該当結果なし</p>)
+      }
+      //検索結果の初期化、これがないと検索結果が無限に重複して増えていく
+      hits = ""
+      word = ""
+      searchWords = []
+    } else {
+      setItems()
+      setSearching(false)
+    }
+  }
+  //フォーカスで表示を切り替えるための処理
+  const onFocus = () => {
+    setFocus(true)
+  }
+  //フォーカスが離れたとき表示を切り替えるための処理
+  //timeoutは0.2秒後に処理を開始するってやつ
+  //正しくリンクに飛ぶために設定
+  const onBlur = () => {
+    let timeout = ""
+    timeout = setTimeout(() => {
+      setFocus(false)
+    }, 200)
   }
 
-  render() {
-    return (
-      <Grid container>
-        <Grid item xs={12} sm={12} md={4}>
-          <SubmitPostComponent onSubmit={this.onSubmit} />
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <AllPostsComponent posts={this.state.posts} />
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <SearchPostsComponent
-            onSearch={this.onSearch}
-            searchResultPosts={this.state.searchResultPosts}
-          />
-        </Grid>
-      </Grid>
-    );
-  }
+  return (
+    <>
+      <Title title={"検索機能デモ"} />
+      <br />
+      <div style={{ position: "relative" }}>
+        <input
+          type="text"
+          onChange={doChange}
+          className="input"
+          onFocus={onFocus}
+          onBlur={onBlur}
+        ></input>
+        <div className="underline"></div>
+      </div>
+      <br />
+      {/* ifの入れ子でみずらい許して */}
+      {focus ? (
+        searching ? (
+          <div
+            style={{
+              textAlign: "center",
+              width: "280px",
+              margin: "0 auto",
+              boxShadow: "2px 10px 10px 0 #BBB",
+              borderRadius: "5px",
+              border: "solid 1pt #FFF",
+              backgroundColor: "white"
+            }}
+          >
+            {items}
+          </div>
+        ) : (
+          <>{items}</>
+        )
+      ) : (
+        <></>
+      )}
+      <br />
+    </>
+  )
 }
 
-export default App;
+export default LessonList
