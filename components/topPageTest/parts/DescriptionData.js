@@ -22,10 +22,8 @@ const topTitle = makeStyles((theme) => ({
     whiteSpace: "pre-wrap"
   },
   card: {
-    // height: "300px",
-    "@media (max-width: 800px)": {
-      marginBottom: "5px"
-    }
+    width: "100%",
+    "@media (max-width: 800px)": {}
   },
   cardHeader: {
     fontWeight: "bold"
@@ -34,17 +32,17 @@ const topTitle = makeStyles((theme) => ({
   },
   cardContent: {
     // textAlign: "center",
-    height: "80px",
-    "@media (max-width: 1200px)": {
-      height: "120px"
-    },
-    "@media (max-width: 500px)": {
-      height: "80px"
-    }
+    // height: "30rem"
   },
   LinkBtn: {
-    backgroundColor: useContext(Color).colors.bgGreen,
-    width: "200px"
+    // backgroundColor: useContext(Color).colors.bgGreen,
+    backgroundColor: useContext(Color).colors.header,
+    width: "15rem"
+    // marginBottom: "1rem"
+  },
+  test1: {
+    height: "16rem"
+    // backgroundColor: "red"
   }
 }))
 
@@ -53,45 +51,45 @@ export default function DescriotionData(props) {
   const router = useRouter()
 
   return (
-    <Container maxWidth="md" component="main" className={classes.container}>
-      <Card className={classes.card}>
-        <Grid
-          container
-          direction="column"
-          justifiy="space-around"
-          alignItems="center"
-        >
-          <Grid item>
-            <CardHeader
-              title={props.title}
-              titleTypographyProps={{ align: "center" }}
-              subheaderTypographyProps={{ align: "center" }}
-              className={classes.cardHeader}
-            />
-          </Grid>
-          <Grid item>
-            <CardContent className={classes.cardContent}>
-              <Typography variant="body1" color="textSecondary">
-                {props.content1}
-                <br />
-                {props.content2}
-              </Typography>
-            </CardContent>
-          </Grid>
-          <Grid item>
-            <CardActions>
-              <Button
-                variant="contained"
-                size="medium"
-                className={classes.LinkBtn}
-                onClick={() => router.push(props.herf)}
-              >
-                {props.btnName}
-              </Button>
-            </CardActions>
-          </Grid>
+    <Card className={classes.card}>
+      <Grid
+        container
+        direction="column"
+        justify="space-between"
+        alignItems="center"
+        className={classes.test1}
+      >
+        <Grid item>
+          <CardHeader
+            title={props.title}
+            titleTypographyProps={{ align: "center" }}
+            subheaderTypographyProps={{ align: "center" }}
+            className={classes.cardHeader}
+          />
         </Grid>
-      </Card>
-    </Container>
+        <Grid item>
+          <CardContent className={classes.cardContent}>
+            <Typography variant="body1" color="textSecondary">
+              {props.content1}
+              <br />
+              {props.content2}
+            </Typography>
+          </CardContent>
+        </Grid>
+        <Grid item>
+          <CardActions>
+            <Button
+              variant="contained"
+              size="medium"
+              // fullWidth
+              className={classes.LinkBtn}
+              onClick={() => router.push(props.herf)}
+            >
+              {props.btnName}
+            </Button>
+          </CardActions>
+        </Grid>
+      </Grid>
+    </Card>
   )
 }

@@ -4,8 +4,9 @@ export default (
   <style>{`
   body{
     margin: 0;
-    background-color: #D0D9EE;
-    font-family: "Noto Sans"
+    // background-color: #4C87C9;
+    font-family: "Noto Sans";
+    white-space: pre-wrap; // 改行反映用css
   }
 
 //   body{

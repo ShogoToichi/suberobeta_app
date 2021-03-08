@@ -11,7 +11,7 @@ import { makeStyles } from "@material-ui/core/styles"
 // @material-ui/icons
 
 // import styles from "assets/jss/material-kit-react/components/footerStyle.js"
-import { container, primaryColor } from "../commonParts/material-kit-react"
+import { container, primaryColor } from "./material-kit-react"
 
 const useStyles = makeStyles({
   block: {
@@ -35,7 +35,7 @@ const useStyles = makeStyles({
     float: "right!important"
   },
   footer: {
-    padding: "0.9375rem 0",
+    padding: "0.3375rem 0",
     textAlign: "center",
     display: "flex",
     zIndex: "2",
