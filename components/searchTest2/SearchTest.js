@@ -5,6 +5,7 @@ import Title from "../commonParts/Title"
 import { borderRadius } from "@material-ui/system"
 import { red } from "@material-ui/core/colors"
 import { CenterFocusStrong } from "@material-ui/icons"
+import zIndex from "@material-ui/core/styles/zIndex"
 
 let hits = []
 
@@ -57,14 +58,15 @@ const LessonList = () => {
     setFocus(true);
   }
   const onBlur= ()=>{
-    setFocus(false);
+    let timeout=""
+   timeout = setTimeout(()=>{setFocus(false)},200)
   }
 
   return (
     <>
       <Title title={"検索機能デモ"} />
       <br />
-      <div style={{position:"relative",}}>
+      <div style={{position:"relative",zIndex:"10" }}>
       <input type="text" onChange={doChange} className="input" onFocus={onFocus} onBlur={onBlur}></input>
       <div className="underline"></div>
       </div>
@@ -78,7 +80,10 @@ const LessonList = () => {
             margin: "0 auto",
             boxShadow: "2px 10px 10px 0 #BBB",
             borderRadius: "5px",
-            border: "solid 1pt #FFF"
+            border: "solid 1pt #FFF",
+            zIndex:"8",
+            backgroundColor:"white",
+            opacity:"1",
           }}
         >
           {items}
