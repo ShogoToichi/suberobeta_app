@@ -13,6 +13,7 @@ const LessonList = () => {
   //ステートの設定
   const [items, setItems] = useState("")
   const [searching, setSearching] = useState(false)
+  const [focus,setFocus] = useState(false)
 
   const doChange = async (e) => {
     let word = e.target.value
@@ -22,7 +23,7 @@ const LessonList = () => {
     const lessonItems = []
     if (searchWords.length > 0) {
       setSearching(true)
-      let query = db.collection("skiResorts").limit(5)
+      let query = db.collection("skiResorts").limit(10)
 
       searchWords.forEach((word) => {
         query = query.where(`tokenMap.${word}`, "==", true)
@@ -52,17 +53,24 @@ const LessonList = () => {
       setSearching(false)
     }
   }
+  const onFocus = ()=>{
+    setFocus(true);
+  }
+  const onBlur= ()=>{
+    setFocus(false);
+  }
 
   return (
     <>
       <Title title={"検索機能デモ"} />
       <br />
       <div style={{position:"relative",}}>
-      <input type="text" onChange={doChange} className="input"></input>
+      <input type="text" onChange={doChange} className="input" onFocus={onFocus} onBlur={onBlur}></input>
       <div className="underline"></div>
       </div>
       <br />
-      {searching ? (
+      {focus?(
+      searching ? (
         <div
           style={{
             textAlign: "center",
@@ -77,6 +85,8 @@ const LessonList = () => {
         </div>
       ) : (
         <>{items}</>
+      )):(
+        <></>
       )}
       <br />
     </>
