@@ -1,9 +1,15 @@
 import Layout from "../components/common/Layout"
-import Test from "../components/commonParts/Img"
+import SearchTest from "../components/searchTest2/SearchTest"
+import AddData from "../components/searchTest2/AddData"
 
 const IndexPage = () => (
   <Layout header="トップページ" title="Top Page.">
-    <Test src="../static/snowboard.jpg" size="100" />
+    <div style={{textAlign:"center"}}>
+    <div style={{textAlign:"center",width:"600px",display:"inline-block"}}>
+    <SearchTest />
+    <AddData/>
+    </div>
+    </div>
   </Layout>
 )
 

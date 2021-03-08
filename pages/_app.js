@@ -8,6 +8,7 @@ import { colors } from "../static/colors"
 import { Color } from "../static/colors"
 import { PersistGate } from "redux-persist/integration/react" // persist用
 import store, { persistor } from "../redux/configureStore" // persist用
+import style from "../static/Style";
 
 class _App extends App {
   render() {
@@ -18,6 +19,7 @@ class _App extends App {
         <Color.Provider value={{ colors }}>
           <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
+              {style}
               <Component {...pageProps} />
             </PersistGate>
           </Provider>
