@@ -22,7 +22,7 @@ import Chip from "@material-ui/core/Chip"
 const lessonList = makeStyles((theme) => ({
   lesson: {
     display: "inline-block",
-    width: "70%",
+    width: "95%",
     margin: "10px 0px 10px 20px",
     float: "right"
   },

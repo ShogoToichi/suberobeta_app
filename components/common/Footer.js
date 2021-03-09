@@ -23,7 +23,8 @@ const useStyles = makeStyles({
     borderRadius: "3px",
     textDecoration: "none",
     position: "relative",
-    display: "block"
+    display: "block",
+    clear:"right",
   },
   left: {
     float: "left!important",

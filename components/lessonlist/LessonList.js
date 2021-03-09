@@ -55,8 +55,10 @@ const LessonList = () => {
         tagLabel2="初心者お断り"
         tagLabel3="レンタル付き"
       />
+      <div style={{display:"inline-block" ,width:"75%" }}>
       {items}
-    </>
+      </div>
+      </>
   )
 }
 
