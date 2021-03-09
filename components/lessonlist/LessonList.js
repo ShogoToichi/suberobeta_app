@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react"
 import firebase from "firebase"
-// import "firebase/storage";
 import Lesson from "./parts/Lesson"
 import Title from "../commonParts/Title"
 import SearchCard from "./SearchCard"
@@ -69,11 +68,10 @@ const LessonList = () => {
         tagLabel2="初心者お断り"
         tagLabel3="レンタル付き"
       />
-      <div style={{display:"inline-block" ,width:"70%"}}>
-
+      <div style={{display:"inline-block" ,width:"75%" }}>
       {items}
       </div>
-    </>
+      </>
   )
 }
 

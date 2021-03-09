@@ -26,21 +26,36 @@ root   + users --+--userid1(gmail) : {
        |
        |
        +messages--+--messagesid1(uni):{
-                  |                   buyerId:
-                  |                   buyerName:
-                  |                   buyTime:  TIME
-                  +--messagesid2      createrId :
-                  :                   createrName :
-                  :                   lessonId:
-                  :                   lessonName:
-                                      trading:  T or F
-                                      messageTimeStamp : TIME
-                                      createrReadMessage: T or F
-                                      buyerReadMessage : T or F
-                                     }
-                                     ☆message--+--messageid1(uni):{
-                                                |                     text:
-                                                |                     time:  TIME
-                                                +--messageid2         userId:
-                                                :                  }
-                                                :
+       |          |                    buyerId:
+       |          |                    buyerName:
+       |          |                    buyTime:  TIME
+       |          +--messagesid2       createrId :
+       |          :                    createrName :
+       |          :                    lessonId:
+       |          :                    lessonName:
+       |                               trading:  T or F
+       |                               messageTimeStamp : TIME
+       |                               createrReadMessage: T or F
+       |                               buyerReadMessage : T or F
+       |                             }
+       |                             ☆message--+--messageid1(uni):{
+       |                                        |                     text:
+       |                                        |                     time:  TIME
+       |                                        +--messageid2         userId:
+       |                                        :                  }
+       |                                        :
+       |
+       |
+       +skiResorts--+--skiResortsId1(uni):{
+                    |                       name : 
+                    |                       prefecture : 
+                    |                       area : 
+                    |                       tokenMap : {
+                    +--skiResortsId2                     wordParts1 : true
+                    :                                    wordParts2 : true
+                    :                                    wordParts3 : true
+                    :                                    wordParts4 : true
+                                                             :
+                                                             :
+                                                        }
+                                          }
