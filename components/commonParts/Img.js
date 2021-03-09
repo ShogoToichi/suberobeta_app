@@ -8,9 +8,9 @@ export default function Img(props) {
     width: `${props.size}px`,
     borderRadius: `${radius}px`,
     display: "inline-block",
-    verticalAlign: "top"
-    // marginLeft: "20px",
-    // marginTop: "20px"
+    verticalAlign: "top",
+    marginLeft: "20px",
+    marginTop: "20px"
   }
 
   return <img src={props.src} style={img}></img>

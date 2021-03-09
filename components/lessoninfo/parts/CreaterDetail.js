@@ -16,7 +16,8 @@ const createrdetail = makeStyles((theme) => ({
     textAlign: "center"
   },
   img: {
-    display: "block"
+    display: "block",
+    cursor: "pointer"
   },
   name: {
     display: "block",
@@ -31,14 +32,13 @@ export default function CreaterDetail(props) {
   return (
     <div className={classes.createrdetail}>
       <Card className={classes.card}>
-        <Img
-          className={classes.img}
-          src={props.imageUrl}
-          size="100"
-          classeName={classes.img}
-        />
+          <Link href={`/profile_show/${props.userId}`}>
+        <div className={classes.img}>
+            <Img src={props.imageUrl} size="100" />
+        </div>
+          </Link>
 
-        <Link href={`/profile_show/${props.userId}`} >
+        <Link href={`/profile_show/${props.userId}`}>
           <Typography variant="h9" className={classes.name}>
             {props.name}
           </Typography>

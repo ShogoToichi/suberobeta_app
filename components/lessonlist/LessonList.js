@@ -33,8 +33,9 @@ const LessonList = () => {
           lessonItems.push(
             <Lesson
               createrName={userDoc.data().profile.name}
-              createrImageUrl={doc.data().createrImageUrl}
               lessonId={doc.id}
+              createrImageUrl={doc.data().createrImageUrl}
+              createrId={doc.data().createrId}
               lessonName={doc.data().lessonName}
               lessonPlace={doc.data().lessonPlace}
               lessonTime={doc.data().lessonTime}
