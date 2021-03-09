@@ -54,7 +54,7 @@ function CreaterInfo(props) {
     getCreaterData()
   }, [])
 
-  return <CreaterDetail imageUrl={createrImageUrl} name={createrName} />
+  return <CreaterDetail imageUrl={createrImageUrl} name={createrName} userId={createrId}/>
 }
 
 CreaterInfo = connect((state) => state)(CreaterInfo)

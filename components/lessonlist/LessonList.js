@@ -5,6 +5,9 @@ import Lesson from "./parts/Lesson"
 import Title from "../commonParts/Title"
 import SearchCard from "./SearchCard"
 
+let createrId = ""
+let userData = ""
+
 const LessonList = () => {
   //ステートの設定
   const [items, setItems] = useState("no item")
@@ -14,6 +17,8 @@ const LessonList = () => {
     const db = firebase.firestore()
     const lessonItems = []
 
+    
+
     await db
       .collection("lessons")
       .orderBy("createdAt", "desc")
@@ -21,8 +26,14 @@ const LessonList = () => {
       .then((querySnapshot) => {
         // 受け取ったオブジェクトの配列に対して、forEachで繰り返し処理でレッスンコンポーネントに値を渡し、それをlessonitemsにpushする
         querySnapshot.forEach((doc) => {
+          db 
+          .collection("users")
+          .doc(doc.data().createrId)
+          .get()
+          .then((userDoc) => {
           lessonItems.push(
             <Lesson
+              createrName={userDoc.data().profile.name}
               createrImageUrl={doc.data().createrImageUrl}
               lessonId={doc.id}
               lessonName={doc.data().lessonName}
@@ -36,9 +47,11 @@ const LessonList = () => {
             />
           )
         })
+      })
+      })
+    
         //最後にlessonitemsをステートにいれる
         setItems(lessonItems)
-      })
   }
 
   useEffect(() => {
@@ -56,7 +69,10 @@ const LessonList = () => {
         tagLabel2="初心者お断り"
         tagLabel3="レンタル付き"
       />
+      <div style={{display:"inline-block" ,width:"70%"}}>
+
       {items}
+      </div>
     </>
   )
 }

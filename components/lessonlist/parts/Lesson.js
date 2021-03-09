@@ -22,9 +22,9 @@ import Chip from "@material-ui/core/Chip"
 const lessonList = makeStyles((theme) => ({
   lesson: {
     display: "inline-block",
-    width: "70%",
+    width: "100%",
     margin: "10px 0px 10px 20px",
-    float: "right"
+    // float: "right"
   },
   cardHeader: {
     display: "inline-block",
@@ -73,6 +73,8 @@ export default function Lesson(props) {
       <Link href={`/profile_show/${props.userId}`}>
         <Img src={props.createrImageUrl} size="70" />
       </Link>
+
+      <Typography variant="h8" className={classes.createrName}>{props.createrName}</Typography>
 
       <Link
         as={`/lesson_info/${props.lessonId}`}
