@@ -57,7 +57,7 @@ const AddData = () => {
     <>
       <Title
         title={"スキー場情報追加フォーム"}
-        subTitle="Tabで移動、Enterで送信、Shift＋Tabで上に移動、ひたすら繰り返せ!!これは修行だ!!"
+        subTitle="Tabで移動！Enterで送信！Shift＋Tabで上に移動！ひたすら繰り返せ!!これは修行だ!!"
       />
       <p>スキー場名</p>
       <input type="text" onChange={doChange} value={name}></input>

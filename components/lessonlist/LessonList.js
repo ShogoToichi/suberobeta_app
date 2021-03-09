@@ -4,6 +4,7 @@ import Lesson from "./parts/Lesson"
 import Title from "../commonParts/Title"
 import SearchCard from "./SearchCard"
 
+
 const LessonList = () => {
   //ステートの設定
   const [items, setItems] = useState("no item")
