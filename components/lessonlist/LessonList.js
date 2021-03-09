@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import firebase from "firebase"
 import Lesson from "./parts/Lesson"
 import Title from "../commonParts/Title"
+import SearchCard from "./SearchCard"
 
 const LessonList = () => {
   //ステートの設定
@@ -28,6 +29,9 @@ const LessonList = () => {
               lessonTime={doc.data().lessonTime}
               lessonDescription={doc.data().lessonDescription}
               lessonPrice={doc.data().lessonPrice}
+              tagLabel1={"女性大歓迎"}
+              tagLabel2={"初心者お断り"}
+              tagLabel3={"レンタル付き"}
             />
           )
         })
@@ -45,6 +49,11 @@ const LessonList = () => {
       <Title
         title={"レッスン一覧"}
         subTitle={"時間や場所、レベルなど自分に合ったレッスンを見つけよう"}
+      />
+      <SearchCard
+        tagLabel1="女性大歓迎"
+        tagLabel2="初心者お断り"
+        tagLabel3="レンタル付き"
       />
       {items}
     </>

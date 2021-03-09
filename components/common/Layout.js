@@ -5,20 +5,20 @@
 import React, { Component } from "react"
 import Head from "next/head"
 import HeaderUi from "./Header"
-import Footer from "../topPage/Footer"
+import FooterUi from "./Footer"
 // import style from "../static/Style";
 
 class Layout extends Component {
   render() {
     return (
       <>
-        <head>
+        <Head>
           <meta charSet="utf-8" />
           <meta
             name="viewPort"
             content="width=device-width, initial-scale=1.0"
           />
-          <title>Subero</title>
+          <title>Subero | {this.props.title}</title>
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
@@ -27,12 +27,11 @@ class Layout extends Component {
             rel="stylesheet"
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
           />
-        </head>
+        </Head>
 
-        <body>
-          <HeaderUi />
-          {this.props.children}
-        </body>
+        <HeaderUi />
+        {this.props.children}
+        <FooterUi />
       </>
     )
   }

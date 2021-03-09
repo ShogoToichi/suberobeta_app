@@ -2,9 +2,6 @@ import css from "styled-jsx/css"
 
 export default (
   <style>{`
-body{
- margin:0
-}
 .search{
   display:block;
   color:#444;
@@ -43,5 +40,12 @@ body{
 .input:focus + .underline {
     transform: scaleX(1);
   }
+  body{
+    margin: 0;
+    // background-color: #4C87C9;
+    font-family: "Noto Sans";
+    white-space: pre-wrap; // 改行反映用css
+  }
+
 `}</style>
 )
