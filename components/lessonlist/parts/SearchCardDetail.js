@@ -1,4 +1,4 @@
-import React, { useContext, useTheme } from "react"
+import React, { useContext } from "react"
 import Typography from "@material-ui/core/Typography"
 import { makeStyles } from "@material-ui/core/styles"
 import Card from "@material-ui/core/Card"

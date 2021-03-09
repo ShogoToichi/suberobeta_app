@@ -1,20 +1,20 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
-import Icon from "@mdi/react";
+import React from "react"
+import { makeStyles } from "@material-ui/core/styles"
+import Card from "@material-ui/core/Card"
+import CardContent from "@material-ui/core/CardContent"
+import Typography from "@material-ui/core/Typography"
+import Icon from "@mdi/react"
 import {
   mdiCalendarClock,
   mdiMapMarkerRadiusOutline,
   mdiCurrencyUsd
-} from "@mdi/js";
+} from "@mdi/js"
 
 const plofile = makeStyles((theme) => ({
   lessonInfo: {
     display: "inline-block",
     width: "70%",
-    padding: "0px 0px 40px 40px",
+    padding: "0px 0px 40px 40px"
   },
   cardHeader: {
     display: "inline-block",
@@ -25,7 +25,7 @@ const plofile = makeStyles((theme) => ({
     cursor: "pointer"
   },
   cardContent: {
-    width: "100%",
+    width: "100%"
   },
   info: {
     textAlign: "center",
@@ -39,18 +39,17 @@ const plofile = makeStyles((theme) => ({
     fontWeight: "bold"
   },
   description: {
-    marginTop:"30px",
+    marginTop: "30px",
     width: "90%"
-
   }
-}));
+}))
 
 export default function LessonDetail(props) {
-  const classes = plofile();
+  const classes = plofile()
   return (
     <Card className={classes.lessonInfo}>
       <CardContent className={classes.cardContent}>
-        <Typography  className={classes.info}>
+        <Typography className={classes.info}>
           <Icon path={mdiCalendarClock} size="30px" />
           &emsp;{props.lessonTime}
         </Typography>
@@ -66,14 +65,14 @@ export default function LessonDetail(props) {
         </Typography>
 
         <Typography
-          variant="h7"
+          variant="h6"
           display="block"
           className={classes.descriptionTop}
         >
           学べる内容
         </Typography>
         <Typography
-          variant="h8"
+          variant="body1"
           display="block"
           className={classes.description}
         >
@@ -81,5 +80,5 @@ export default function LessonDetail(props) {
         </Typography>
       </CardContent>
     </Card>
-  );
+  )
 }

@@ -23,23 +23,25 @@ const lessonList = makeStyles((theme) => ({
   lesson: {
     display: "inline-block",
     width: "95%",
-    margin: "10px 0px 10px 20px",
-    float: "right"
+    margin: "10px 0px 10px 20px"
   },
-  cardHeader: {
+  img: {
     display: "inline-block",
     verticalAlign: "top",
-    color: useContext(Color).colors.Green,
-    fontWeight: "bold",
-    cursor: "pointer",
-    margin: "20px 0px 0px 20px",
-    width: "60%"
+    cursor: "pointer"
+  },
+  createrName: {
+    display: "inline-block",
+    fontSize: "15px",
+    margin: "40px 20px 0px 20px",
+    cursor: "pointer"
   },
   evaluation: {
     display: "inline-box",
+    verticalAlign: "top",
     flexDirection: "row-reverse",
-    justifyContent: "left",
-    margin: "40px 0px 0px 0px",
+    float: "right",
+    margin: "40px 100px 0px 0px",
     "& input": {
       display: "none"
     },
@@ -47,6 +49,14 @@ const lessonList = makeStyles((theme) => ({
       position: "relative",
       color: "#ffcc00"
     }
+  },
+  cardHeader: {
+    display: "inline-block",
+    verticalAlign: "top",
+    color: useContext(Color).colors.Green,
+    fontWeight: "bold",
+    cursor: "pointer",
+    margin: "0px 0px 0px 70px"
   },
   tags: {
     marginLeft: "70px"
@@ -70,9 +80,35 @@ export default function Lesson(props) {
   const classes = lessonList()
   return (
     <Card className={classes.lesson}>
-      <Link href={`/profile_show/${props.userId}`}>
-        <Img src={props.createrImageUrl} size="70" />
-      </Link>
+      <div>
+        <Link href={`/profile_show/${props.createrId}`}>
+          <div className={classes.img}>
+            <Img src={props.createrImageUrl} size="50" />
+          </div>
+        </Link>
+
+        <Link href={`/profile_show/${props.createrId}`}>
+          <Typography variant="h6" className={classes.createrName}>
+            {props.createrName}
+          </Typography>
+        </Link>
+
+        <div className={classes.evaluation}>
+          <Typography variant="body2" className={classes.assessment}>
+            評価
+            <input id="star1" type="radio" name="star" value="5" />
+            <label for="star1">★</label>
+            <input id="star2" type="radio" name="star" value="4" />
+            <label for="star2">★</label>
+            <input id="star3" type="radio" name="star" value="3" />
+            <label for="star3">★</label>
+            <input id="star4" type="radio" name="star" value="2" />
+            <label for="star4">★</label>
+            <input id="star5" type="radio" name="star" value="1" />
+            <label for="star5">★</label>
+          </Typography>
+        </div>
+      </div>
 
       <Link
         as={`/lesson_info/${props.lessonId}`}
@@ -80,22 +116,6 @@ export default function Lesson(props) {
       >
         <CardHeader className={classes.cardHeader} title={props.lessonName} />
       </Link>
-
-      <div className={classes.evaluation}>
-        <Typography variant="body2" className={classes.assessment}>
-          評価
-          <input id="star1" type="radio" name="star" value="5" />
-          <label for="star1">★</label>
-          <input id="star2" type="radio" name="star" value="4" />
-          <label for="star2">★</label>
-          <input id="star3" type="radio" name="star" value="3" />
-          <label for="star3">★</label>
-          <input id="star4" type="radio" name="star" value="2" />
-          <label for="star4">★</label>
-          <input id="star5" type="radio" name="star" value="1" />
-          <label for="star5">★</label>
-        </Typography>
-      </div>
       <br />
 
       <div className={classes.tags}>
