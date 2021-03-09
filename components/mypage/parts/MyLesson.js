@@ -12,9 +12,15 @@ const myLessonList = makeStyles({
   addBtn: {
     textAlign: "center"
   },
+  lessonName: {
+    width:"80%"
+  },
   messageBtn: {
     backgroundColor: "#DDD",
-    color: "black"
+    color: "black",
+    marginLeft: "10px",
+    width: "15%",
+    height: "40px"
   }
 })
 
@@ -27,12 +33,12 @@ export default function Lesson(props) {
         <ListItemText
           style={{ fontSize: "30px" }}
           primary={`${props.lessonName}　in ${props.lessonPlace}`}
+          className={classes.lessonName}
         />
         <Link href={`/lesson_edit/${props.lessonId}`}>
           <Button
-            size="large"
             className={classes.messageBtn}
-            // onClick={props.onClick}
+            onClick={props.onClick}
           >
             レッスン編集
           </Button>

@@ -50,23 +50,15 @@ export default function MyProfileDetail(props) {
       <Title title={"My Page"} />
       <div className={classes.myProfile}>
         <Card className={classes.card}>
-          <Img
-            className={classes.img}
-            src={props.imageUrl}
-            size="70"
-            classeName={classes.img}
-          />
-          <CardHeader
-            action={
-              <Link href="/profile_edit">
-                <Button variant="outlined" size="large" className={classes.btn}>
-                  プロフィール変更
-                </Button>
-              </Link>
-            }
-            title={props.name}
-            className={classes.cardHeader}
-          />
+          <Img className={classes.img} src={props.imageUrl} size="70" />
+          <Typography variant="h5" className={classes.name}>
+            {props.name}
+          </Typography>
+          <Link href="/profile_edit">
+            <Button variant="outlined" size="large" className={classes.btn}>
+              プロフィール変更
+            </Button>
+          </Link>
 
           <CardContent>
             <Typography variant="h5" className={classes.title}>
