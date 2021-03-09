@@ -16,8 +16,6 @@ const LessonList = () => {
     const db = firebase.firestore()
     const lessonItems = []
 
-    
-
     await db
       .collection("lessons")
       .orderBy("createdAt", "desc")
@@ -25,33 +23,32 @@ const LessonList = () => {
       .then((querySnapshot) => {
         // 受け取ったオブジェクトの配列に対して、forEachで繰り返し処理でレッスンコンポーネントに値を渡し、それをlessonitemsにpushする
         querySnapshot.forEach((doc) => {
-          db 
-          .collection("users")
-          .doc(doc.data().createrId)
-          .get()
-          .then((userDoc) => {
-          lessonItems.push(
-            <Lesson
-              createrName={userDoc.data().profile.name}
-              lessonId={doc.id}
-              createrImageUrl={doc.data().createrImageUrl}
-              createrId={doc.data().createrId}
-              lessonName={doc.data().lessonName}
-              lessonPlace={doc.data().lessonPlace}
-              lessonTime={doc.data().lessonTime}
-              lessonDescription={doc.data().lessonDescription}
-              lessonPrice={doc.data().lessonPrice}
-              tagLabel1={"女性大歓迎"}
-              tagLabel2={"初心者お断り"}
-              tagLabel3={"レンタル付き"}
-            />
-          )
+          db.collection("users")
+            .doc(doc.data().createrId)
+            .get()
+            .then((userDoc) => {
+              lessonItems.push(
+                <Lesson
+                  createrName={userDoc.data().profile.name}
+                  lessonId={doc.id}
+                  createrImageUrl={doc.data().createrImageUrl}
+                  createrId={doc.data().createrId}
+                  lessonName={doc.data().lessonName}
+                  lessonPlace={doc.data().lessonPlace}
+                  lessonTime={doc.data().lessonTime}
+                  lessonDescription={doc.data().lessonDescription}
+                  lessonPrice={doc.data().lessonPrice}
+                  tagLabel1={"女性大歓迎"}
+                  tagLabel2={"初心者お断り"}
+                  tagLabel3={"レンタル付き"}
+                />
+              )
+            })
         })
       })
-      })
-    
-        //最後にlessonitemsをステートにいれる
-        setItems(lessonItems)
+
+    //最後にlessonitemsをステートにいれる
+    setItems(lessonItems)
   }
 
   useEffect(() => {
@@ -69,10 +66,8 @@ const LessonList = () => {
         tagLabel2="初心者お断り"
         tagLabel3="レンタル付き"
       />
-      <div style={{display:"inline-block" ,width:"75%" }}>
-      {items}
-      </div>
-      </>
+      <div style={{ display: "inline-block", width: "75%" }}>{items}</div>
+    </>
   )
 }
 

@@ -65,14 +65,14 @@ export default function CreaterDetail(props) {
         </Link>
 
         <Link href={`/profile_show/${props.userId}`}>
-          <Typography variant="h9" className={classes.name}>
+          <Typography variant="body1" className={classes.name}>
             {props.name}
           </Typography>
         </Link>
       </div>
 
       <div className={classes.evaluation}>
-        <Typography variant="body2" className={classes.assessment}>
+        <Typography variant="body1" className={classes.assessment}>
           評価 :
           <input id="star1" type="radio" name="star" value="5" />
           <label for="star1">★</label>
@@ -88,10 +88,10 @@ export default function CreaterDetail(props) {
       </div>
 
       <div className={classes.introduction}>
-        <Typography variant="h9" className={classes.introductTitle}>
+        <Typography variant="body1" className={classes.introductTitle}>
           自己紹介
         </Typography>
-        <Typography variant="h9" className={classes.introductDescription}>
+        <Typography variant="body2" className={classes.introductDescription}>
           {props.introduction}
         </Typography>
       </div>

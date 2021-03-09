@@ -8,7 +8,7 @@ import getProfileImageUrl from "../commonParts/getProfileImageUrl"
 
 let createrId = ""
 let createrName = ""
-let createrIntroduction= ""
+let createrIntroduction = ""
 let createrImageUrl = ""
 let lessonData = ""
 let userData = ""
@@ -56,7 +56,14 @@ function CreaterInfo(props) {
     getCreaterData()
   }, [])
 
-  return <CreaterDetail imageUrl={createrImageUrl} name={createrName} userId={createrId} introduction={createrIntroduction}/>
+  return (
+    <CreaterDetail
+      imageUrl={createrImageUrl}
+      name={createrName}
+      userId={createrId}
+      introduction={createrIntroduction}
+    />
+  )
 }
 
 CreaterInfo = connect((state) => state)(CreaterInfo)
