@@ -1,8 +1,5 @@
-import React, { useState, useEffect } from "react"
-import firebase from "firebase"
-import { useRouter } from "next/router"
+import React from "react"
 import { connect } from "react-redux"
-import Lib from "../../Lib/address_lib"
 import SearchCardDetail from "./parts/SearchCardDetail"
 
 function SearchCard(props) {

@@ -88,7 +88,7 @@ export default function Lesson(props) {
         </Link>
 
         <Link href={`/profile_show/${props.createrId}`}>
-          <Typography variant="h8" className={classes.createrName}>
+          <Typography variant="h6" className={classes.createrName}>
             {props.createrName}
           </Typography>
         </Link>

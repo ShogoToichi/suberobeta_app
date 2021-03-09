@@ -66,14 +66,14 @@ export default function LessonDetail(props) {
         </Typography>
 
         <Typography
-          variant="h7"
+          variant="h6"
           display="block"
           className={classes.descriptionTop}
         >
           学べる内容
         </Typography>
         <Typography
-          variant="h8"
+          variant="body1"
           display="block"
           className={classes.description}
         >

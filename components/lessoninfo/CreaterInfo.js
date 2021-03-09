@@ -8,6 +8,7 @@ import getProfileImageUrl from "../commonParts/getProfileImageUrl"
 
 let createrId = ""
 let createrName = ""
+let createrIntroduction= ""
 let createrImageUrl = ""
 let lessonData = ""
 let userData = ""
@@ -21,14 +22,14 @@ function CreaterInfo(props) {
   const db = firebase.firestore()
   const router = useRouter()
 
-  //lessondata及びlessoncreaterのprofileを取得
+  //lessonData及びlessoncreaterのprofileを取得
   const getCreaterData = async () => {
     //router.query.lessonidでページのurlの末尾を取得
     await db
       .collection("lessons")
       .doc(router.query.lessonid)
       .get()
-      //取得したデータをlessondataにしまってから、それを変数に突っ込む
+      //取得したデータをlessonDataにしまってから、それを変数に突っ込む
       .then((doc) => {
         lessonData = doc.data()
         createrId = lessonData.createrId
@@ -43,6 +44,7 @@ function CreaterInfo(props) {
       .then(async (doc) => {
         userData = doc.data()
         createrName = userData.profile.name
+        createrIntroduction = userData.profile.introduction
         createrImageUrl = await getProfileImageUrl(userData.imageName)
       })
 
@@ -54,7 +56,7 @@ function CreaterInfo(props) {
     getCreaterData()
   }, [])
 
-  return <CreaterDetail imageUrl={createrImageUrl} name={createrName} userId={createrId}/>
+  return <CreaterDetail imageUrl={createrImageUrl} name={createrName} userId={createrId} introduction={createrIntroduction}/>
 }
 
 CreaterInfo = connect((state) => state)(CreaterInfo)
