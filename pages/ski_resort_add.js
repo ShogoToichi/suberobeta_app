@@ -1,6 +1,5 @@
 import Layout from "../components/common/Layout"
-import SearchTest from "../components/searchTest/SearchTest"
-import AddData from "../components/searchTest/AddData"
+import AddData from "../components/skiResortAdd/SkiResortAdd"
 
 const IndexPage = () => (
   <Layout header="トップページ" title="Top Page.">
@@ -8,29 +7,15 @@ const IndexPage = () => (
       <div
         style={{
           textAlign: "center",
-          width: "600px",
+          width: "580px",
           display: "inline-block",
-          position: "relative"
+          marginBottom: "100px"
         }}
       >
-        <div
-          style={{
-            position: "absolute",
-            top: "0px",
-            width: "600px",
-            zIndex: "8",
-            textAlign: "center"
-          }}
-        >
-          <SearchTest />
-        </div>
-        <div style={{ position: "absolute", top: "180px", zIndex: "1" }}>
-          <AddData />
-        </div>
+        <AddData />
       </div>
     </div>
   </Layout>
 )
 
 export default IndexPage
-

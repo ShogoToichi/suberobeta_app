@@ -21,7 +21,21 @@ const searchcarddetail = makeStyles((theme) => ({
     width: "25%",
     display: "inline-block",
     verticalAlign: "top",
-    backgroundColor: "#EEE"
+    backgroundColor: "#EEE",
+    position: "relative",
+    height: "360px"
+  },
+  textSearchContainer: {
+    position: "absolute",
+    top: "0px",
+    left: "15px",
+    zIndex: "2"
+  },
+  otherSearchContainer: {
+    position: "absolute",
+    top: "110px",
+    left: "15px",
+    zIndex: "1"
   },
   title: {
     display: "block",
@@ -63,68 +77,96 @@ export default function SearchCardDetail(props) {
 
   return (
     <Card className={classes.card}>
-      <Typography variant="body1" className={classes.title}>
-        条件で絞り込む
-      </Typography>
-      <Paper elevation={8} className={classes.searchPaper}>
-        <InputBase
-          className={classes.InputBase}
-          placeholder="例)　〇〇スキー場"
-          inputProps={{ "aria-label": "search google maps" }}
-        />
-        <IconButton
-          type="submit"
-          aria-label="search"
-          className={classes.searchbtn}
-        >
-          <SearchIcon />
-        </IconButton>
-      </Paper>
-
-      <Typography variant="body1" className={classes.title}>
-        カテゴリ
-      </Typography>
-      <div className={classes.categorys}>
-        <Accordion variant="outlined">
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography>カテゴリ一覧</Typography>
-          </AccordionSummary>
-          <AccordionDetails className={classes.category}>
-            <Typography>カービング</Typography>
-          </AccordionDetails>
-          <AccordionDetails className={classes.category}>
-            <Typography>グランドトリック</Typography>
-          </AccordionDetails>
-          <AccordionDetails className={classes.category}>
-            <Typography>パーク</Typography>
-          </AccordionDetails>
-          <AccordionDetails className={classes.category}>
-            <Typography>バックカントリー</Typography>
-          </AccordionDetails>
-        </Accordion>
+      <div className={classes.textSearchContainer}>
+        <Typography variant="h8" className={classes.title}>
+          条件で絞り込む
+        </Typography>
+        <Paper elevation={8} className={classes.searchPaper}>
+          <InputBase
+            className={classes.InputBase}
+            placeholder="例)　〇〇スキー場"
+            inputProps={{ "aria-label": "search google maps" }}
+            onChange={props.onChange}
+            onFocus={props.onFocus}
+            onBlur={props.onBlur}
+          />
+          <IconButton
+            type="submit"
+            aria-label="search"
+            className={classes.searchbtn}
+          >
+            <SearchIcon />
+          </IconButton>
+        </Paper>
+        {props.focus ? (
+          props.searching ? (
+            <div
+              style={{
+                textAlign: "center",
+                width: "280px",
+                margin: "0 auto",
+                boxShadow: "2px 10px 10px 0 #BBB",
+                borderRadius: "5px",
+                border: "solid 1pt #FFF",
+                backgroundColor: "white"
+              }}
+            >
+              {props.items}
+            </div>
+          ) : (
+            <>{props.items}</>
+          )
+        ) : (
+          <></>
+        )}
       </div>
 
-      <Typography variant="body1" className={classes.title}>
-        タグ
-      </Typography>
-      <Chip
-        icon={<Icon path={mdiTagOutline} size="20px" />}
-        label={props.tagLabel1}
-        clickable
-        className={classes.tag}
-      />
-      <Chip
-        icon={<Icon path={mdiTagOutline} size="20px" />}
-        label={props.tagLabel2}
-        clickable
-        className={classes.tag}
-      />
-      <Chip
-        icon={<Icon path={mdiTagOutline} size="20px" />}
-        label={props.tagLabel3}
-        clickable
-        className={classes.tag}
-      />
+      <div className={classes.otherSearchContainer}>
+        <Typography variant="h8" className={classes.title}>
+          カテゴリ
+        </Typography>
+        <div className={classes.categorys}>
+          <Accordion variant="ouutlined">
+            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+              <Typography>カテゴリ一覧</Typography>
+            </AccordionSummary>
+            <AccordionDetails className={classes.category}>
+              <Typography>カービング</Typography>
+            </AccordionDetails>
+            <AccordionDetails className={classes.category}>
+              <Typography>グランドトリック</Typography>
+            </AccordionDetails>
+            <AccordionDetails className={classes.category}>
+              <Typography>パーク</Typography>
+            </AccordionDetails>
+            <AccordionDetails className={classes.category}>
+              <Typography>バックカントリー</Typography>
+            </AccordionDetails>
+          </Accordion>
+        </div>
+
+        <Typography variant="h8" className={classes.title}>
+          タグ
+        </Typography>
+        <Chip
+          icon={<Icon path={mdiTagOutline} size="20px" />}
+          label={props.tagLabel1}
+          clickable
+          className={classes.tag}
+        />
+        <Chip
+          icon={<Icon path={mdiTagOutline} size="20px" />}
+          label={props.tagLabel2}
+          clickable
+          className={classes.tag}
+        />
+        <Chip
+          icon={<Icon path={mdiTagOutline} size="20px" />}
+          label={props.tagLabel3}
+          clickable
+          className={classes.tag}
+        />
+      </div>
     </Card>
   )
 }
