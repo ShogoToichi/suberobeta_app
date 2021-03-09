@@ -21,6 +21,11 @@ const myProfile = makeStyles((theme) => ({
     display: "inline-block",
     verticalAlign: "top"
   },
+  name: {
+    display: "inline-block",
+    varticalAlign: "top",
+    margin: "40px 0px 0px 40px"
+  },
   cardHeader: {
     display: "inline-block",
     verticalAlign: "top",
