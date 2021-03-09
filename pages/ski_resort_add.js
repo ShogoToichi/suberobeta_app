@@ -9,14 +9,13 @@ const IndexPage = () => (
           textAlign: "center",
           width: "580px",
           display: "inline-block",
-          marginBottom:"100px",
+          marginBottom: "100px"
         }}
       >
-          <AddData />
+        <AddData />
       </div>
     </div>
   </Layout>
 )
 
 export default IndexPage
-

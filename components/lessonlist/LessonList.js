@@ -4,7 +4,6 @@ import Lesson from "./parts/Lesson"
 import Title from "../commonParts/Title"
 import SearchCard from "./SearchCard"
 
-
 const LessonList = () => {
   //ステートの設定
   const [items, setItems] = useState("no item")
@@ -56,10 +55,8 @@ const LessonList = () => {
         tagLabel2="初心者お断り"
         tagLabel3="レンタル付き"
       />
-      <div style={{display:"inline-block" ,width:"75%" }}>
-      {items}
-      </div>
-      </>
+      <div style={{ display: "inline-block", width: "75%" }}>{items}</div>
+    </>
   )
 }
 

@@ -29,13 +29,13 @@ const searchcarddetail = makeStyles((theme) => ({
     position: "absolute",
     top: "0px",
     left: "15px",
-    zIndex:"2",
+    zIndex: "2"
   },
   otherSearchContainer: {
     position: "absolute",
     top: "110px",
     left: "15px",
-    zIndex:"1",
+    zIndex: "1"
   },
   title: {
     display: "block",

@@ -10,7 +10,6 @@ import { PersistGate } from "redux-persist/integration/react" // persist用
 import store, { persistor } from "../redux/configureStore" // persist用
 import style from "../static/Style"
 
-
 class _App extends App {
   render() {
     // ↓ ここどういうことか分かってない，勝手にProviderでreduxStoreじゃなくてconfigureStoreのstore使ってるけどいいのかなんなのかわかってない
@@ -24,7 +23,6 @@ class _App extends App {
           </PersistGate>
         </Provider>
       </Color.Provider>
-
     )
   }
 }
