@@ -10,13 +10,18 @@ export default function MessageLink(props) {
     lessonItem: {
       margin: "30px 30px 30px 30px"
     },
+    messageName: {
+      fontSize: "30px"
+    },
     addBtn: {
       textAlign: "center"
     },
     messageBtn: {
       backgroundColor: "#DDD",
       color: "black",
-      marginLeft: "10px"
+      marginLeft: "10px",
+      width: "15%",
+      height: "40px"
     },
     unReadText: {
       color: "red"
@@ -28,8 +33,8 @@ export default function MessageLink(props) {
   return (
     <ListItem divider={true} className={classes.lessonItem}>
       <ListItemText
-        style={{ fontSize: "30px" }}
         primary={`${props.lessonName}　　${props.username}さんとのメッセージ`}
+        className={classes.messageName}
       />
       {props.readMessage ? (
         <span></span>
@@ -37,11 +42,7 @@ export default function MessageLink(props) {
         <span className={classes.unReadText}> 未読のメッセージがあります</span>
       )}
       <Link href={`/message/${props.lessonId}/${props.buyerId}`}>
-        <Button
-          size="large"
-          className={classes.messageBtn}
-          onClick={props.onClick}
-        >
+        <Button className={classes.messageBtn} onClick={props.onClick}>
           取引メッセージ
         </Button>
       </Link>
