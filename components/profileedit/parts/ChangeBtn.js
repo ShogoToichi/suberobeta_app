@@ -5,6 +5,7 @@ import { makeStyles } from "@material-ui/styles"
 import Button from "@material-ui/core/Button"
 import ButtonGroup from "@material-ui/core/ButtonGroup"
 import { Color } from "../../../static/colors"
+import Grid from "@material-ui/core/Grid"
 
 const profileEdit = makeStyles((props) => ({
   buttonGroup: {
@@ -14,16 +15,21 @@ const profileEdit = makeStyles((props) => ({
   button: {
     width: "200px",
     backgroundColor: useContext(Color).colors.Green,
-    color: "white",
-    margin: "0px 20px"
+    color: "white"
   }
 }))
 
 export default function ChangeBtn(props) {
   const classes = profileEdit()
   return (
-    <div className={classes.buttonGroup}>
-      <ButtonGroup disableElevation variant="outlined">
+    <Grid
+      container
+      container
+      spacing={3}
+      justify="center"
+      className={classes.buttonGroup}
+    >
+      <Grid item xs={10} sm={5} lg={3}>
         <Link href="/mypage">
           <Button
             className={classes.button}
@@ -33,12 +39,14 @@ export default function ChangeBtn(props) {
             変更
           </Button>
         </Link>
+      </Grid>
+      <Grid item item xs={10} sm={5} lg={3}>
         <Link href="/mypage">
           <Button className={classes.button} variant="contained">
             キャンセル
           </Button>
         </Link>
-      </ButtonGroup>
-    </div>
+      </Grid>
+    </Grid>
   )
 }

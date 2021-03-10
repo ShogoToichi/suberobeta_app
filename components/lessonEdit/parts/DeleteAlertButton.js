@@ -11,7 +11,7 @@ import { Color } from "../../../static/colors"
 
 const inputForm = makeStyles((theme) => ({
   btnArea: {
-    textAlign: "right"
+    float: "right"
   },
   deleteBtn: {
     backgroundColor: useContext(Color).colors.grayBtn,

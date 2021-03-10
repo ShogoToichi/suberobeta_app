@@ -1,26 +1,22 @@
 import React from "react"
 import Link from "next/link"
-import ListItem from "@material-ui/core/ListItem"
-import ListItemText from "@material-ui/core/ListItemText"
 import Button from "@material-ui/core/Button"
 import { makeStyles } from "@material-ui/styles"
+import Grid from "@material-ui/core/Grid"
+import { Typography } from "@material-ui/core"
 
 const myLessonList = makeStyles({
-  lessonItem: {
-    margin: "30px 30px 30px 30px"
+  lessons: {
+    margin: "30px 0px",
+    borderBottom: "solid 1px #BBB"
   },
   addBtn: {
     textAlign: "center"
   },
-  lessonName: {
-    width:"80%"
-  },
   messageBtn: {
     backgroundColor: "#DDD",
     color: "black",
-    marginLeft: "10px",
-    width: "15%",
-    height: "40px"
+    width: "120px"
   }
 })
 
@@ -28,22 +24,26 @@ export default function Lesson(props) {
   const classes = myLessonList()
 
   return (
-    <>
-      <ListItem divider={true} className={classes.lessonItem}>
-        <ListItemText
-          style={{ fontSize: "30px" }}
-          primary={`${props.lessonName}　in ${props.lessonPlace}`}
-          className={classes.lessonName}
-        />
+    <Grid
+      container
+      derection="row"
+      justify="flex-end"
+      wrap="wrap"
+      spacing={3}
+      className={classes.lessons}
+    >
+      <Grid item xs={12} sm={12} lg={9}>
+        <Typography variant="body1" className={classes.lessonName}>
+          {props.lessonName}　in {props.lessonPlace}
+        </Typography>
+      </Grid>
+      <Grid item xs={5} sm={3} lg={2}>
         <Link href={`/lesson_edit/${props.lessonId}`}>
-          <Button
-            className={classes.messageBtn}
-            onClick={props.onClick}
-          >
+          <Button className={classes.messageBtn} onClick={props.onClick}>
             レッスン編集
           </Button>
         </Link>
-      </ListItem>
-    </>
+      </Grid>
+    </Grid>
   )
 }

@@ -18,12 +18,9 @@ import { mdiTagOutline } from "@mdi/js"
 
 const searchcarddetail = makeStyles((theme) => ({
   card: {
-    width: "25%",
-    display: "inline-block",
-    verticalAlign: "top",
     backgroundColor: "#EEE",
     position: "relative",
-    height: "360px"
+    height: "400px"
   },
   textSearchContainer: {
     position: "absolute",
@@ -78,7 +75,7 @@ export default function SearchCardDetail(props) {
   return (
     <Card className={classes.card}>
       <div className={classes.textSearchContainer}>
-        <Typography variant="h8" className={classes.title}>
+        <Typography variant="body1" className={classes.title}>
           条件で絞り込む
         </Typography>
         <Paper elevation={8} className={classes.searchPaper}>
@@ -122,11 +119,11 @@ export default function SearchCardDetail(props) {
       </div>
 
       <div className={classes.otherSearchContainer}>
-        <Typography variant="h8" className={classes.title}>
+        <Typography variant="body1" className={classes.title}>
           カテゴリ
         </Typography>
         <div className={classes.categorys}>
-          <Accordion variant="ouutlined">
+          <Accordion variant="outlined">
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
               <Typography>カテゴリ一覧</Typography>
             </AccordionSummary>
@@ -145,7 +142,7 @@ export default function SearchCardDetail(props) {
           </Accordion>
         </div>
 
-        <Typography variant="h8" className={classes.title}>
+        <Typography variant="body1" className={classes.title}>
           タグ
         </Typography>
         <Chip

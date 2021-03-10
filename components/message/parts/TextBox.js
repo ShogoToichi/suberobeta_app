@@ -7,7 +7,7 @@ export default function TextBox(props) {
   const useStyles = makeStyles((theme) => ({
     root: {
       margin: theme.spacing(1),
-      width: "500px"
+      width: "80%"
     }
   }))
 

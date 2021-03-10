@@ -9,9 +9,7 @@ import { Color } from "../../../static/colors"
 
 const inputForm = makeStyles((theme) => ({
   inputForm: {
-    marginTop: "50px",
-    width: "80%",
-    margin: "0 auto"
+    marginTop: "50px"
   },
   contents: {
     marginTop: "20px"
@@ -44,6 +42,7 @@ export default function InputForm(props) {
           defaultValue={props.lessonName}
           id="standard-textarea"
           label="レッスン名"
+          multiline
           fullWidth
           onChange={props.onChangeLessonName}
           className={classes.contents}
@@ -53,6 +52,7 @@ export default function InputForm(props) {
           defaultValue={props.lessonTime}
           id="standard-textarea"
           label="日時"
+          multiline
           fullWidth
           onChange={props.onChangeLessonTime}
           className={classes.contents}
@@ -62,6 +62,7 @@ export default function InputForm(props) {
           defaultValue={props.lessonPlace}
           id="standard-textarea"
           label="場所"
+          multiline
           fullWidth
           onChange={props.onChangeLessonPlace}
           className={classes.contents}
@@ -71,6 +72,7 @@ export default function InputForm(props) {
           defaultValue={props.lessonPrice}
           id="standard-textarea"
           label="料金"
+          multiline
           fullWidth
           onChange={props.onChangeLessonPrice}
           className={classes.contents}
