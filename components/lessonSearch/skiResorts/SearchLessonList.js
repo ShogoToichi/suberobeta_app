@@ -55,12 +55,8 @@ function SearchLessonList(props) {
   useEffect(() => {
     getFireData()
   }, [])
-  const conso = () => {
-    console.log(items)
-  }
   return (
     <div>
-      <button onClick={conso}>conso</button>
       <Title title={`${skiResortName}のレッスン一覧`}></Title>
       {items}
     </div>
