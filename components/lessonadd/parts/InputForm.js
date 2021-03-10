@@ -10,8 +10,6 @@ import { Color } from "../../../static/colors"
 const inputForm = makeStyles((theme) => ({
   inputForm: {
     marginTop: "50px",
-    width: "80%",
-    margin: "0 auto"
   },
   contents: {
     marginTop: "20px"
@@ -40,6 +38,7 @@ export default function InputForm(props) {
       </Typography>
       <TextField
         label="レッスン名"
+        multiline
         fullWidth
         onChange={props.onChangeLessonName}
         className={classes.contents}
@@ -47,6 +46,7 @@ export default function InputForm(props) {
       <TextField
         label="日時"
         placeholder="〇月〇日午前〇時～〇月〇日午前〇時"
+        multiline
         fullWidth
         onChange={props.onChangeLessonTime}
         className={classes.contents}
@@ -54,13 +54,15 @@ export default function InputForm(props) {
       <TextField
         label="場所"
         placeholder="〇〇スキー場"
+        multiline
         fullWidth
         onChange={props.onChangeLessonPlace}
         className={classes.contents}
       />
       <TextField
         label="料金"
-        placeholder="￥〇〇〇〇円"
+        placeholder="￥〇〇〇〇"
+        multiline
         fullWidth
         onChange={props.onChangeLessonPrice}
         className={classes.contents}

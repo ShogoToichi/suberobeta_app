@@ -6,6 +6,7 @@ import Lib from "../../Lib/address_lib"
 import Title from "../commonParts/Title"
 import InputForm from "./parts/InputForm"
 import getProfileImageUrl from "../commonParts/getProfileImageUrl"
+import Grid from "@material-ui/core/Grid"
 
 let imageUrl = ""
 
@@ -68,22 +69,24 @@ function LessonAdd(props) {
   }, [])
 
   return (
-    <div>
+    <Grid container spacing={2} deraction="row" justify="center">
       <Title
         title={"新規レッスンの追加"}
         subtitle={
           "自分の能力を生かして、ウィンタースポーツの輪を広げましょう。"
         }
       />
-      <InputForm
-        onChangeLessonName={doChangeLessonName}
-        onChangeLessonTime={doChangeLessonTime}
-        onChangeLessonPlace={doChangeLessonPlace}
-        onChangeLessonPrice={doChangeLessonPrice}
-        onChangeLessonDescription={doChangeLessonDescription}
-        doSubmit={doSubmit}
-      />
-    </div>
+      <Grid item xs={10} sm={8} lg={7}>
+        <InputForm
+          onChangeLessonName={doChangeLessonName}
+          onChangeLessonTime={doChangeLessonTime}
+          onChangeLessonPlace={doChangeLessonPlace}
+          onChangeLessonPrice={doChangeLessonPrice}
+          onChangeLessonDescription={doChangeLessonDescription}
+          doSubmit={doSubmit}
+        />
+      </Grid>
+    </Grid>
   )
 }
 
