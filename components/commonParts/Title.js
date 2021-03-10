@@ -24,7 +24,7 @@ export default function Title(props) {
   const classes = title()
   return (
     <Grid container justify="center" className={classes.titleArea}>
-      <Grid items xs={10}>
+      <Grid item xs={10}>
         <Typography className={classes.title} variant="h4">
           {props.title}
         </Typography>

@@ -10,6 +10,7 @@ import Title from "../commonParts/Title"
 import EditBtn from "./parts/EditBtn"
 import CreatorInfo from "./CreaterInfo"
 import getProfileImageUrl from "../commonParts/getProfileImageUrl"
+import Grid from "@material-ui/core/Grid"
 
 let createrId = ""
 let createrName = ""
@@ -96,13 +97,15 @@ function LessonInfo(props) {
   }, [])
 
   return (
-    <div>
+    <Grid container spacing={1} deraction="row" justify="center">
       {/* クリエーターIDとじぶんのIDが一致していたらレッスン編集ボタンを表示 */}
 
       <Title title={lessonName} />
 
-      <div style={{position: "relative"}}>
+      <Grid item xs={8} sm={4} lg={2}>
         <CreatorInfo />
+      </Grid>
+      <Grid item xs={10} sm={10} lg={7}>
         <LessonDetail
           createrImageUrl={createrImageUrl}
           createrName={createrName}
@@ -111,20 +114,20 @@ function LessonInfo(props) {
           lessonTime={lessonTime}
           lessonDescription={lessonDescription}
           userId={createrId}
-          />
-          <span style={{position: "absolute", right: "80px", top: "100px"}}>
-            {email == createrId ? (
-              <EditBtn lessonId={router.query.lessonid} />
-            ) : (
-              <BuyBtn
-                lessonId={router.query.lessonid}
-                buyerId={email}
-                onClick={doBuy}
-              />
-            )}
-          </span>
-      </div>
-    </div>
+        />
+        {/* <span style={{ position: "absolute", right: "80px", top: "100px" }}>
+          {email == createrId ? (
+            <EditBtn lessonId={router.query.lessonid} />
+          ) : (
+            <BuyBtn
+              lessonId={router.query.lessonid}
+              buyerId={email}
+              onClick={doBuy}
+            />
+          )}
+        </span> */}
+      </Grid>
+    </Grid>
   )
 }
 

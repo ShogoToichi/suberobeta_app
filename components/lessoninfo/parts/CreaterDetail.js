@@ -8,10 +8,10 @@ import { Color } from "../../../static/colors"
 
 const createrdetail = makeStyles((theme) => ({
   createrdetail: {
-    width: "20%",
-    display: "inline-block",
-    verticalAlign: "top",
-    marginRight: "20px",
+    // width: "20%",
+    // display: "inline-block",
+    // verticalAlign: "top",
+    // marginRight: "20px",
     textAlign: "center"
   },
   img: {
