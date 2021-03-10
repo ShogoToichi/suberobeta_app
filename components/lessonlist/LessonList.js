@@ -3,6 +3,7 @@ import firebase from "firebase"
 import Lesson from "./parts/Lesson"
 import Title from "../commonParts/Title"
 import SearchCard from "./SearchCard"
+import Grid from "@material-ui/core/Grid"
 
 let createrId = ""
 let userData = ""
@@ -56,18 +57,22 @@ const LessonList = () => {
   }, [])
 
   return (
-    <>
-      <Title
-        title={"レッスン一覧"}
-        subTitle={"時間や場所、レベルなど自分に合ったレッスンを見つけよう"}
-      />
-      <SearchCard
-        tagLabel1="女性大歓迎"
-        tagLabel2="初心者お断り"
-        tagLabel3="レンタル付き"
-      />
-      <div style={{ display: "inline-block", width: "75%" }}>{items}</div>
-    </>
+    <Grid container spacing={1} deraction="row" justify="center">
+        <Title
+          title={"レッスン一覧"}
+          subTitle={"時間や場所、レベルなど自分に合ったレッスンを見つけよう"}
+        />
+      <Grid item xs={8} sm={4} lg={2}>
+        <SearchCard
+          tagLabel1="女性大歓迎"
+          tagLabel2="初心者お断り"
+          tagLabel3="レンタル付き"
+        />
+      </Grid>
+      <Grid item xs={10} sm={10} lg={7}>
+        {items}
+      </Grid>
+    </Grid>
   )
 }
 

@@ -1,6 +1,7 @@
 import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import Typography from "@material-ui/core/Typography"
+import Grid from "@material-ui/core/Grid"
 
 const title = makeStyles({
   titleArea: {
@@ -22,13 +23,15 @@ const title = makeStyles({
 export default function Title(props) {
   const classes = title()
   return (
-    <div className={classes.titleArea}>
-      <Typography className={classes.title} variant="h4">
-        {props.title}
-      </Typography>
-      <Typography className={classes.subTitle} variant="h6">
-        {props.subTitle}
-      </Typography>
-    </div>
+    <Grid container justify="center" className={classes.titleArea}>
+      <Grid items xs={10}>
+        <Typography className={classes.title} variant="h4">
+          {props.title}
+        </Typography>
+        <Typography className={classes.subTitle} variant="h6">
+          {props.subTitle}
+        </Typography>
+      </Grid>
+    </Grid>
   )
 }

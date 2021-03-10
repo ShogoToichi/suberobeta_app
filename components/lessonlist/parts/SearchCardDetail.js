@@ -18,12 +18,9 @@ import { mdiTagOutline } from "@mdi/js"
 
 const searchcarddetail = makeStyles((theme) => ({
   card: {
-    width: "25%",
-    display: "inline-block",
-    verticalAlign: "top",
     backgroundColor: "#EEE",
     position: "relative",
-    height: "360px"
+    height: "400px"
   },
   textSearchContainer: {
     position: "absolute",
