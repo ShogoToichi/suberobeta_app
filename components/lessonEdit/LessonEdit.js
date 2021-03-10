@@ -1,7 +1,7 @@
 //ちょっとごり押し気味なコード
 //知識がついたり、余裕ができたら修正しよう
 
-import React, { useEffect, useState, useCallback } from "react"
+import React, { useEffect, useState } from "react"
 import firebase from "firebase"
 import "firebase/storage"
 import { connect } from "react-redux"
@@ -11,7 +11,7 @@ import InputForm from "./parts/InputForm"
 import { useRouter } from "next/router"
 import SubmitButton from "./parts/SubmitButton"
 import DeleteAlertButton from "./parts/DeleteAlertButton"
-import { SystemUpdateAlt } from "@material-ui/icons"
+import Grid from "@material-ui/core/Grid"
 
 function LessonEdit(props) {
   //使用するステートの設定、テキストフィールドの値を見るためのやつ
@@ -102,17 +102,23 @@ function LessonEdit(props) {
   }, [])
 
   return (
-    <div>
+    <Grid container spacing={2} deraction="row" justify="center">
       <Title
         title={"レッスンの編集"}
         subtitle={
           "自分の能力を生かして、ウィンタースポーツの輪を広げましょう。"
         }
       />
-      <DeleteAlertButton onClick={deleteLesson} />
-      {inputForm}
-      <SubmitButton onClick={doSubmit}>submit</SubmitButton>
-    </div>
+      <Grid item xs={12} sm={8} lg={8}>
+        <DeleteAlertButton onClick={deleteLesson} />
+      </Grid>
+      <Grid item xs={10} sm={9} lg={7}>
+        {inputForm}
+      </Grid>
+      <Grid item xs={4} sm={5} lg={6}>
+        <SubmitButton onClick={doSubmit}>submit</SubmitButton>
+      </Grid>
+    </Grid>
   )
 }
 
