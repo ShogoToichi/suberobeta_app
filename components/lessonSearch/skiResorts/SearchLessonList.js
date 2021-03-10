@@ -31,7 +31,7 @@ function SearchLessonList(props) {
     //レッスンデータを取得
     await db
       .collection("lessons")
-      .where("skiResort", "==", skiResortName)
+      .where("lessonPlace", "==", skiResortName)
       .orderBy("createdAt", "desc")
       .get()
       .then(function (querySnapshot) {
@@ -55,7 +55,6 @@ function SearchLessonList(props) {
   useEffect(() => {
     getFireData()
   }, [])
-
   return (
     <div>
       <Title title={`${skiResortName}のレッスン一覧`}></Title>

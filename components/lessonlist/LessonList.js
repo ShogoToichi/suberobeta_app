@@ -7,6 +7,7 @@ import Grid from "@material-ui/core/Grid"
 
 let createrId = ""
 let userData = ""
+const lessonItems = []
 
 const LessonList = () => {
   //ステートの設定
@@ -15,7 +16,6 @@ const LessonList = () => {
   //lessonitemsは値を渡された<Lesson/>が要素の配列ををいったん保管する
   const getFireData = async () => {
     const db = firebase.firestore()
-    const lessonItems = []
 
     await db
       .collection("lessons")
@@ -24,13 +24,9 @@ const LessonList = () => {
       .then((querySnapshot) => {
         // 受け取ったオブジェクトの配列に対して、forEachで繰り返し処理でレッスンコンポーネントに値を渡し、それをlessonitemsにpushする
         querySnapshot.forEach((doc) => {
-          db.collection("users")
-            .doc(doc.data().createrId)
-            .get()
-            .then((userDoc) => {
               lessonItems.push(
                 <Lesson
-                  createrName={userDoc.data().profile.name}
+                  createrName={doc.data().createrName}
                   lessonId={doc.id}
                   createrImageUrl={doc.data().createrImageUrl}
                   createrId={doc.data().createrId}
@@ -43,19 +39,15 @@ const LessonList = () => {
                   tagLabel2={"初心者お断り"}
                   tagLabel3={"レンタル付き"}
                 />
-              )
+                )
+              })
             })
-        })
-      })
-
-    //最後にlessonitemsをステートにいれる
-    setItems(lessonItems)
+            setItems(lessonItems)
   }
 
   useEffect(() => {
     getFireData()
   }, [])
-
   return (
     <Grid container spacing={2} deraction="row" justify="center">
         <Title
