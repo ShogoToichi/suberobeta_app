@@ -5,21 +5,22 @@ import Button from "@material-ui/core/Button"
 export default function AddButton(props) {
   const useStyles = makeStyles((theme) => ({
     btn: {
-      width: "80px",
-      marginLeft: "210px"
+      width: "30%",
+      marginLeft: "35%"
     }
   }))
 
   const classes = useStyles()
 
   return (
-    <Button
-      variant="outlined"
-      className={classes.btn}
-      onClick={props.onClick}
-      disabled={props.disabled}
-    >
-      送信
-    </Button>
+    <div className={classes.btn}>
+      <Button
+        variant="outlined"
+        onClick={props.onClick}
+        disabled={props.disabled}
+      >
+        送信
+      </Button>
+    </div>
   )
 }

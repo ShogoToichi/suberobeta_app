@@ -11,6 +11,7 @@ import MessageAdd from "./MessageAdd"
 import Chat from "./parts/Chat"
 import Title from "../commonParts/Title"
 import getProfileImageUrl from "../commonParts/getProfileImageUrl"
+import Grid from "@material-ui/core/Grid"
 
 let createrId = ""
 let lessonName = ""
@@ -130,11 +131,15 @@ function Message(props) {
   })
 
   return (
-    <div>
+    <Grid container spacing={1} derection="row" justify="center">
       <Title title={lessonName} />
-      {messages}
-      <MessageAdd createrId={createrId} />
-    </div>
+      <Grid item xs={10} sm={8} lg={7}>
+        {messages}
+      </Grid>
+      <Grid item xs={10} sm={8} lg={7}>
+        <MessageAdd createrId={createrId} />
+      </Grid>
+    </Grid>
   )
 }
 

@@ -22,7 +22,7 @@ const title = makeStyles({
 export default function Title(props) {
   const classes = title()
   return (
-    <Grid container justify="flex-end" className={classes.titleArea}>
+    <Grid container justify="center" className={classes.titleArea}>
       <Grid item xs={10}>
         <Typography className={classes.title} variant="h4">
           {props.title}
