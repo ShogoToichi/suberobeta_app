@@ -62,14 +62,14 @@ const LessonList = () => {
           title={"レッスン一覧"}
           subTitle={"時間や場所、レベルなど自分に合ったレッスンを見つけよう"}
         />
-      <Grid item xs={8} sm={4} lg={2}>
+      <Grid item xs={8} sm={5} lg={3}>
         <SearchCard
           tagLabel1="女性大歓迎"
           tagLabel2="初心者お断り"
           tagLabel3="レンタル付き"
         />
       </Grid>
-      <Grid item xs={10} sm={10} lg={7}>
+      <Grid item xs={12} sm={10} lg={7}>
         {items}
       </Grid>
     </Grid>
