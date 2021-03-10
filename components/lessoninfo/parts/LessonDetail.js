@@ -10,6 +10,8 @@ import {
   mdiCurrencyUsd
 } from "@mdi/js"
 import Grid from "@material-ui/core/Grid"
+import BuyBtn from "./BuyBtn"
+import EditBtn from "./EditBtn"
 
 const plofile = makeStyles((theme) => ({
   cardContent: {
@@ -61,6 +63,20 @@ export default function LessonDetail(props) {
         >
           学べる内容
         </Typography>
+
+        {/* remで調整 */}
+        <span style={{ position: "absolute", top: "100px", right: "10px" }}>
+          {props.buyerId == props.createrId ? (
+            <EditBtn lessonId={props.lessonId} />
+          ) : (
+            <BuyBtn
+              lessonId={props.lessonId}
+              buyerId={props.buyerId}
+              onClick={props.onClick}
+            />
+          )}
+        </span>
+
         <Typography
           variant="body1"
           display="block"

@@ -10,7 +10,6 @@ import { Color } from "../../../static/colors"
 const myLessonList = makeStyles((theme) => ({
   list: {
     marginTop: "40px",
-    width: "80%"
   },
   box: {
     color: "white",
@@ -18,7 +17,7 @@ const myLessonList = makeStyles((theme) => ({
     backgroundColor: useContext(Color).colors.Green
   },
   addBtn: {
-    textAlign: "center"
+    textAlign: "center",
   },
   btn: {
     backgroundColor: useContext(Color).colors.Green,

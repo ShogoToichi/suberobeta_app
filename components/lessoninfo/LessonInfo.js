@@ -105,7 +105,7 @@ function LessonInfo(props) {
       <Grid item xs={8} sm={4} lg={2}>
         <CreatorInfo />
       </Grid>
-      <Grid item xs={10} sm={10} lg={7}>
+      <Grid item xs={10} sm={10} lg={7} style={{position:"relative"}}>
         <LessonDetail
           createrImageUrl={createrImageUrl}
           createrName={createrName}
@@ -114,18 +114,11 @@ function LessonInfo(props) {
           lessonTime={lessonTime}
           lessonDescription={lessonDescription}
           userId={createrId}
+          lessonId={router.query.lessonid}
+          buyerId={email}
+          createrId={createrId}
+          onClick={doBuy}
         />
-        {/* <span style={{ position: "absolute", right: "80px", top: "100px" }}>
-          {email == createrId ? (
-            <EditBtn lessonId={router.query.lessonid} />
-          ) : (
-            <BuyBtn
-              lessonId={router.query.lessonid}
-              buyerId={email}
-              onClick={doBuy}
-            />
-          )}
-        </span> */}
       </Grid>
     </Grid>
   )

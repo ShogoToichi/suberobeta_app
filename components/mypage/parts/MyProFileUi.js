@@ -11,9 +11,6 @@ import { Color } from "../../../static/colors"
 import Img from "../../commonParts/Img"
 
 const myProfile = makeStyles((theme) => ({
-  myprof: {
-    width: "80%"
-  },
   card: {
     marginTop: "20px"
   },
