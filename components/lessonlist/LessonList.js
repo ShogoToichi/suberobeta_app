@@ -57,7 +57,7 @@ const LessonList = () => {
   }, [])
 
   return (
-    <Grid container spacing={1} deraction="row" justify="center">
+    <Grid container spacing={2} deraction="row" justify="center">
         <Title
           title={"レッスン一覧"}
           subTitle={"時間や場所、レベルなど自分に合ったレッスンを見つけよう"}

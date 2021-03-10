@@ -6,7 +6,7 @@ import Grid from "@material-ui/core/Grid"
 const title = makeStyles({
   titleArea: {
     display: "inline-block",
-    width: "80%"
+    width: "90%"
   },
   title: {
     fontWeight: "bold",
@@ -22,7 +22,7 @@ const title = makeStyles({
 export default function Title(props) {
   const classes = title()
   return (
-    <Grid container justify="center" className={classes.titleArea}>
+    <Grid container justify="flex-end" className={classes.titleArea}>
       <Grid item xs={10}>
         <Typography className={classes.title} variant="h4">
           {props.title}
