@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography"
 import TextField from "@material-ui/core/TextField"
 import Button from "@material-ui/core/Button"
 import { Color } from "../../../static/colors"
+import PlaceSelecter from "./placeSelecter"
 
 const inputForm = makeStyles((theme) => ({
   inputForm: {
@@ -51,13 +52,7 @@ export default function InputForm(props) {
         onChange={props.onChangeLessonTime}
         className={classes.contents}
       />
-      <TextField
-        label="場所"
-        placeholder="〇〇スキー場"
-        fullWidth
-        onChange={props.onChangeLessonPlace}
-        className={classes.contents}
-      />
+      <PlaceSelecter setLessonPlace={props.setLessonPlace} />
       <TextField
         label="料金"
         placeholder="￥〇〇〇〇円"
