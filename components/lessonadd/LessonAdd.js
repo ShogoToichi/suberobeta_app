@@ -6,6 +6,7 @@ import Lib from "../../Lib/address_lib"
 import Title from "../commonParts/Title"
 import InputForm from "./parts/InputForm"
 import getProfileImageUrl from "../commonParts/getProfileImageUrl"
+import PlaceSelecter from "./parts/PlaceSelecter"
 
 let imageUrl = ""
 
@@ -21,9 +22,9 @@ function LessonAdd(props) {
   const doChangeLessonName = (e) => {
     setLessonName(e.target.value)
   }
-  const doChangeLessonPlace = (e) => {
-    setLessonPlace(e.target.value)
-  }
+  // const doChangeLessonPlace = (e) => {
+  //   setLessonPlace(e.target.value)
+  // }
   const doChangeLessonTime = (e) => {
     setLessonTime(e.target.value)
   }
@@ -78,7 +79,7 @@ function LessonAdd(props) {
       <InputForm
         onChangeLessonName={doChangeLessonName}
         onChangeLessonTime={doChangeLessonTime}
-        onChangeLessonPlace={doChangeLessonPlace}
+        setLessonPlace={setLessonPlace}
         onChangeLessonPrice={doChangeLessonPrice}
         onChangeLessonDescription={doChangeLessonDescription}
         doSubmit={doSubmit}

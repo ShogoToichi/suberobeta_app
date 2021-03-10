@@ -24,7 +24,7 @@ const useStyles = makeStyles({
     textDecoration: "none",
     position: "relative",
     display: "block",
-    clear: "right"
+    clear: "both"
   },
   left: {
     float: "left!important",
