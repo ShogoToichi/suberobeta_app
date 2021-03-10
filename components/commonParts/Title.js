@@ -6,12 +6,11 @@ import Grid from "@material-ui/core/Grid"
 const title = makeStyles({
   titleArea: {
     display: "inline-block",
-    width: "90%"
+    width: "80%"
   },
   title: {
     fontWeight: "bold",
-    marginTop: "40px",
-    marginBottom: "20px"
+    margin: "40px 0px 20px 20px",
   },
   subTitle: {
     marginLeft: "50px",

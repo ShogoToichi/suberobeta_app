@@ -8,6 +8,7 @@ import Lib from "../../Lib/address_lib"
 import Title from "../commonParts/Title"
 import ProfileEditUi from "./parts/ProfileEditUi"
 import ChangeBtn from "./parts/ChangeBtn"
+import Grid from "@material-ui/core/Grid"
 
 function ProfileEdit(props) {
   //使用するステートの設定,テキストフィールドの値のやつ
@@ -70,11 +71,15 @@ function ProfileEdit(props) {
   }, [])
 
   return (
-    <>
+    <Grid container spacing={1} deraction="row" justify="center">
       <Title title={"マイプロフィール編集"} />
-      {inputForm}
-      <ChangeBtn onClick={doSubmit} />
-    </>
+      <Grid item xs={9} sm={8} lg={7}>
+        {inputForm}
+      </Grid>
+      <Grid item xs={9} sm={8} lg={7}>
+        <ChangeBtn onClick={doSubmit} />
+      </Grid>
+    </Grid>
   )
 }
 
