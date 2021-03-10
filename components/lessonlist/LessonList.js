@@ -6,6 +6,7 @@ import SearchCard from "./SearchCard"
 
 let createrId = ""
 let userData = ""
+const lessonItems = []
 
 const LessonList = () => {
   //ステートの設定
@@ -14,7 +15,6 @@ const LessonList = () => {
   //lessonitemsは値を渡された<Lesson/>が要素の配列ををいったん保管する
   const getFireData = async () => {
     const db = firebase.firestore()
-    const lessonItems = []
 
     await db
       .collection("lessons")
@@ -23,13 +23,9 @@ const LessonList = () => {
       .then((querySnapshot) => {
         // 受け取ったオブジェクトの配列に対して、forEachで繰り返し処理でレッスンコンポーネントに値を渡し、それをlessonitemsにpushする
         querySnapshot.forEach((doc) => {
-          db.collection("users")
-            .doc(doc.data().createrId)
-            .get()
-            .then((userDoc) => {
               lessonItems.push(
                 <Lesson
-                  createrName={userDoc.data().profile.name}
+                  createrName={doc.data().createrName}
                   lessonId={doc.id}
                   createrImageUrl={doc.data().createrImageUrl}
                   createrId={doc.data().createrId}
@@ -42,31 +38,25 @@ const LessonList = () => {
                   tagLabel2={"初心者お断り"}
                   tagLabel3={"レンタル付き"}
                 />
-              )
+                )
+              })
             })
-        })
-      })
-
-    //最後にlessonitemsをステートにいれる
-    setItems(lessonItems)
+            setItems(lessonItems)
   }
 
   useEffect(() => {
     getFireData()
   }, [])
-
   return (
     <>
       <Title
         title={"レッスン一覧"}
         subTitle={"時間や場所、レベルなど自分に合ったレッスンを見つけよう"}
       />
-      <SearchCard
-        tagLabel1="女性大歓迎"
-        tagLabel2="初心者お断り"
-        tagLabel3="レンタル付き"
-      />
+        <div style={{width:"100%"}}>
+      <SearchCard/>
       <div style={{ display: "inline-block", width: "75%" }}>{items}</div>
+    </div>
     </>
   )
 }

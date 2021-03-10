@@ -8,7 +8,6 @@ export default (
   text-decoration:none;
   font-size:20px;
   background-color:white;
-  // z-index:9;
 }
 .search:hover{
   background-color:#DDD;
