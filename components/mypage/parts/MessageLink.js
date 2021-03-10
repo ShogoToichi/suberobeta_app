@@ -54,7 +54,7 @@ export default function MessageLink(props) {
           )}
         </Typography>
       </Grid>
-      <Grid item xs={4} sm={3} lg={2}>
+      <Grid item xs={6} sm={3} lg={2}>
         <Link href={`/message/${props.lessonId}/${props.buyerId}`}>
           <Button className={classes.messageBtn} onClick={props.onClick}>
             取引メッセージ
