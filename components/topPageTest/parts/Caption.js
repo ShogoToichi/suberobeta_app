@@ -10,20 +10,25 @@ const topTitle = makeStyles((theme) => ({
   title: {
     width: "100%",
     paddingTop: "2rem",
-    marginBottom: "2rem"
+    marginBottom: "2rem",
+    position:"absolute",
+    top:"15%",
+    left:"25%"
     // paddingBottom: "800px",
     // backgroundImage: "url(../../../static/Snowboarding.jpg)",
     // marginBottom: "-720px"
   },
   cap: {
+    textAlign:"right",
     marginLeft: "0px",
-    color: useContext(Color).colors.header,
-    fontSize: "1.5rem"
+    color: useContext(Color).colors.caption,
+    fontSize: "2.2rem"
   },
   mainCap: {
-    color: useContext(Color).colors.header,
+    textAlign:"right",
+    color: useContext(Color).colors.caption,
     fontWeight: "bold",
-    fontSize: "7rem"
+    fontSize: "15rem"
   },
   // img: {
   //   right: "200px",
@@ -31,12 +36,20 @@ const topTitle = makeStyles((theme) => ({
   //   width: "300px"
   // },
   titleContents: {
-    backgroundColor: "rgba(255, 255, 255, 0.6)",
+    // backgroundColor: "rgba(255, 255, 255, 0.6)",
+    textAlign:"right",
     borderRadius: "1rem"
   },
   LinkBtn: {
-    color: useContext(Color).colors.header,
-    marginBottom: "3%"
+    color: useContext(Color).colors.caption,
+    marginBottom: "3%",
+    width:"18rem",
+    height:"4rem",
+    fontSize:"1.4rem",
+    fontWeight:"bold",
+    marginRight:"220px",
+    textAlign:"right",
+    float:"right",
   }
 }))
 

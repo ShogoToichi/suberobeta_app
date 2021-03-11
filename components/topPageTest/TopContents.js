@@ -10,21 +10,27 @@ import Card from "@material-ui/core/Card"
 
 const style = makeStyles((theme) => ({
   contents: {
-    backgroundColor: "rgba(255, 255, 255, 0.75)",
+    backgroundColor: "rgba(230, 256, 230, )",
     width: "98%",
     margin: "0 auto"
   },
   body: {
+    width:"100%",
+    height:"0",
+    paddingTop:"32.8%",
     backgroundColor: "#4C87C9",
-    backgroundImage: "url(../../../static/Snowboarding.jpg)"
+    background: "url(../../../static/toppage.jpg) center center /cover no-repeat",
+    position:"relative",
   }
 }))
 
 const TopPage = () => {
   const classes = style()
   return (
+    <div>
     <div className={classes.body}>
       <Caption />
+    </div>
       <Card className={classes.contents}>
         <Description />
         <Content1 />

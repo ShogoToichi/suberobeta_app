@@ -13,7 +13,8 @@ const topTitle = makeStyles((theme) => ({
     textWeight: "bold",
     textAlign: "center",
     marginBottom: "50px",
-    marginTop: "20px"
+    marginTop: "70px",
+    fontSize:"2.2rem"
     // "@media (max-width: 600px)": {
     //   fontSize: "4rem"
     //   // color: "blue"
@@ -57,6 +58,7 @@ export default function Description(props) {
             content1={
               "ジャンル、レベル、場所、時間など目的に合ったレッスンを受けることができます。"
             }
+            src="../../../static/topcard1.jpg"
             content2={"現地集合・現地解散で気軽にレッスンを受けてみましょう。"}
             herf={"/lesson_list"}
             btnName={"レッスン一覧"}
@@ -66,6 +68,7 @@ export default function Description(props) {
         <Grid item xs={12} sm={3}>
           <DescriptionData
             title={"自分の身に着けた技術を共有"}
+            src="../../../static/topcard2.jpg"
             content1={
               "磨いてきた技術・理論を周りに共有してスキー・スノーボードの輪を広めよう。"
             }
@@ -79,6 +82,7 @@ export default function Description(props) {
         <Grid item xs={12} sm={3}>
           <DescriptionData
             title={"リーズナブル"}
+            src="../../../static/topcard3.jpg"
             content1={
               "スノースクールなどの企業ではなく、個人同士で納得した金額でレッスンを契約するため比較的リーズナブルに教えてもらうことができます。"
             }

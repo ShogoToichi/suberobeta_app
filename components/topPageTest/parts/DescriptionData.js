@@ -22,11 +22,16 @@ const topTitle = makeStyles((theme) => ({
     whiteSpace: "pre-wrap"
   },
   card: {
-    width: "100%",
+    width: "86%",
+    borderRadius:"10px",
+    boxShadow:"3px 6px 10px 2px #999 ",
+    height:"600px",
     "@media (max-width: 800px)": {}
   },
   cardHeader: {
-    fontWeight: "bold"
+    fontWeight: "bold",
+    width:"100%",
+    display: "block",
     // fontSize: "2rem",
     // color: "red"
   },
@@ -36,13 +41,24 @@ const topTitle = makeStyles((theme) => ({
   },
   LinkBtn: {
     // backgroundColor: useContext(Color).colors.bgGreen,
-    backgroundColor: useContext(Color).colors.header,
-    width: "15rem"
+    backgroundColor: "#396",
+    color:"white",
+    width: "15rem",
+    boxShadow:"1px 1px 2px 1px #DDD"
     // marginBottom: "1rem"
   },
   test1: {
     height: "16rem"
     // backgroundColor: "red"
+  },
+  card_img:{
+    height:"90px",
+    textAlign:"center",
+    display:"block",
+  },
+  img_item:{
+    width:"100%",
+    textAlign:"center",
   }
 }))
 
@@ -66,6 +82,9 @@ export default function DescriotionData(props) {
             subheaderTypographyProps={{ align: "center" }}
             className={classes.cardHeader}
           />
+        </Grid>
+        <Grid item className={classes.img_item}>
+          <img src={props.src} className={classes.card_img}></img>
         </Grid>
         <Grid item>
           <CardContent className={classes.cardContent}>
