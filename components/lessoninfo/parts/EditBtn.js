@@ -1,4 +1,4 @@
-import React, {useContext} from "react"
+import React, { useContext } from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import Button from "@material-ui/core/Button"
 import Link from "next/link"
@@ -8,13 +8,13 @@ const plofile = makeStyles((theme) => ({
   btnArea: {
     display: "inline-block",
     float: "right",
-    marginRight: "100px",
-    marginTop: "15px"
+    marginRight: "6rem",
+    marginTop: "1rem"
   },
   editBtn: {
     fontWeight: "bold",
-    fontSize: "20px",
-    marginBottom: "15px",
+    fontSize: "1.2rem",
+    marginBottom: "1rem",
     backgroundColor: useContext(Color).colors.bgGreen
   }
 }))

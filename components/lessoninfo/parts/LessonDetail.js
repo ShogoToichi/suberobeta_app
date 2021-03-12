@@ -18,14 +18,14 @@ const plofile = makeStyles((theme) => ({
     width: "100%"
   },
   info: {
-    marginTop: "20px"
+    marginTop: "2rem"
   },
   descriptionTop: {
-    margin: "20px 10px",
+    margin: "2rem 1rem",
     fontWeight: "bold"
   },
   description: {
-    marginTop: "30px",
+    marginTop: "2rem",
     width: "90%"
   }
 }))
@@ -38,19 +38,19 @@ export default function LessonDetail(props) {
         <Grid container spacing={1} deraction="row" justify="space-around">
           <Grid item xs={10} sm={10} lg={3}>
             <Typography className={classes.info}>
-              <Icon path={mdiCalendarClock} size="30px" />
+              <Icon path={mdiCalendarClock} size="2rem" />
               &emsp;{props.lessonTime}
             </Typography>
           </Grid>
           <Grid item xs={10} sm={10} lg={3}>
             <Typography className={classes.info}>
-              <Icon path={mdiMapMarkerRadiusOutline} size="30px" />
+              <Icon path={mdiMapMarkerRadiusOutline} size="2rem" />
               &emsp;{props.lessonPlace}
             </Typography>
           </Grid>
           <Grid item xs={10} sm={10} lg={3}>
             <Typography className={classes.info}>
-              <Icon path={mdiCurrencyUsd} size="30px" />
+              <Icon path={mdiCurrencyUsd} size="2rem" />
               &emsp;{props.lessonPrice} 円
             </Typography>
           </Grid>
@@ -64,8 +64,7 @@ export default function LessonDetail(props) {
           学べる内容
         </Typography>
 
-        {/* remで調整 */}
-        <span style={{ position: "absolute", top: "100px", right: "10px" }}>
+        <span style={{ position: "absolute", top: "6rem", right: "0.1rem" }}>
           {props.buyerId == props.createrId ? (
             <EditBtn lessonId={props.lessonId} />
           ) : (
