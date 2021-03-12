@@ -27,8 +27,8 @@ export default function Chat(props) {
   return (
     <Grid
       container
-      deraction="row"
-      justify="flexstart"
+      direction="row"
+      justify="flex-start"
       alignItems="flex-start"
       className={classes.chat}
     >

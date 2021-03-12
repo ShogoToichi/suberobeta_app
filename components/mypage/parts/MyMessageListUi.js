@@ -9,7 +9,7 @@ import { Color } from "../../../static/colors"
 
 const myLessonList = makeStyles((theme) => ({
   list: {
-    marginTop: "40px",
+    marginTop: "40px"
   },
   box: {
     color: "white",
@@ -17,7 +17,7 @@ const myLessonList = makeStyles((theme) => ({
     backgroundColor: useContext(Color).colors.Green
   },
   addBtn: {
-    textAlign: "center",
+    textAlign: "center"
   },
   btn: {
     backgroundColor: useContext(Color).colors.Green,
@@ -31,7 +31,7 @@ export default function MyLessonListUi(props) {
     <div className={classes.list}>
       <div>
         <Box p={1} className={classes.box}>
-          <Typography variant="h8">　メッセージ一覧</Typography>
+          <Typography variant="subtitle1">　メッセージ一覧</Typography>
         </Box>
       </div>
       {props.items}

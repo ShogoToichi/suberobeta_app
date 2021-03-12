@@ -24,7 +24,7 @@ const Content1 = () => {
         className={classes.container}
       >
         <Grid item>
-          <Typography variant="title">
+          <Typography variant="subtitle1">
             プログラミング、デザイン、起業についての相談など、さまざまなジャンルのメンターがそろっています。
           </Typography>
         </Grid>
