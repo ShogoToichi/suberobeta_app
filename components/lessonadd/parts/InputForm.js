@@ -29,12 +29,12 @@ export default function InputForm(props) {
       spacing={2}
       className={classes.inputForm}
     >
-      <Grid item>
+      <Grid item xs={12}>
         <Typography className={classes.inputTitle} variant="h6">
           レッスンに関する情報を入力してください。
         </Typography>
       </Grid>
-      <Grid item>
+      <Grid item xs={12}>
         <TextField
           label="レッスン名"
           multiline
@@ -42,7 +42,7 @@ export default function InputForm(props) {
           onChange={props.onChangeLessonName}
         />
       </Grid>
-      <Grid item>
+      <Grid item xs={12}>
         <TextField
           label="日時"
           placeholder="〇月〇日午前〇時～〇月〇日午前〇時"
@@ -50,7 +50,7 @@ export default function InputForm(props) {
           onChange={props.onChangeLessonTime}
         />
       </Grid>
-      <Grid item>
+      <Grid item xs={12}>
         <TextField
           label="場所"
           placeholder="〇〇スキー場"
@@ -58,16 +58,17 @@ export default function InputForm(props) {
           onChange={props.onChangeLessonPlace}
         />
       </Grid>
-      <Grid item>
+      <Grid item xs={12}>
         <TextField
           label="料金"
           placeholder="￥〇〇〇〇"
           fullWidth
+          type="number"
           onChange={props.onChangeLessonPrice}
         />
       </Grid>
 
-      <Grid item>
+      <Grid item xs={12}>
         <TextField
           label="レッスン内容"
           multiline
@@ -78,15 +79,18 @@ export default function InputForm(props) {
         />
       </Grid>
 
-      <Grid item>
-        <Button
-          className={classes.addBtn}
-          variant="outlined"
-          size="large"
-          onClick={props.doSubmit}
-        >
-          追 加
-        </Button>
+      <Grid item xs={12}>
+        <Grid container justify="center">
+          <Button
+            className={classes.addBtn}
+            variant="outlined"
+            size="large"
+            disabled={false}
+            onClick={props.doSubmit}
+          >
+            追 加
+          </Button>
+        </Grid>
       </Grid>
     </Grid>
   )
