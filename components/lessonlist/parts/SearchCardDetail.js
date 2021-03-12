@@ -18,31 +18,30 @@ import { mdiTagOutline } from "@mdi/js"
 
 const searchcarddetail = makeStyles((theme) => ({
   card: {
-    backgroundColor: "#EEE",
-    position: "relative",
-    height: "400px"
+    // position: "relative",
+    // height: "400px"
   },
   textSearchContainer: {
-    position: "absolute",
-    top: "0px",
-    left: "15px",
-    zIndex: "2"
+    // position: "absolute",
+    // top: "0px",
+    // left: "15px",
+    // zIndex: "2"
   },
   otherSearchContainer: {
-    position: "absolute",
-    top: "110px",
-    left: "15px",
-    zIndex: "1"
+    // position: "absolute",
+    // top: "110px",
+    // left: "15px",
+    // zIndex: "1"
   },
   title: {
     display: "block",
     fontWeight: "bold",
-    margin: "20px 10px 0px 10px"
+    margin: "1rem 1rem 1rem 1rem"
   },
   searchPaper: {
     width: "80%",
-    margin: "10px 20px",
-    padding: "0px 10px"
+    margin: "1rem 2rem",
+    padding: "0rem 1rem"
   },
   InputBase: {
     width: "80%"
@@ -50,21 +49,23 @@ const searchcarddetail = makeStyles((theme) => ({
   searchbtn: {
     width: "20%"
   },
+  categorySummary: {
+    height: "0.8rem",
+  },
   categorys: {
     width: "80%",
-    margin: "10px 30px"
+    margin: "1rem 2rem"
   },
   category: {
-    height: "20px",
-    padding: "2px",
-    margin: "0px 10px",
+    height: "1rem",
+    padding: "0.5rem",
     cursor: "pointer",
     "&:hover": {
-      backgroundColor: "#0FF"
+      backgroundColor: "rgba(230, 256, 230, 0.75)"
     }
   },
   tag: {
-    margin: "5px 10px",
+    margin: "0.5rem 0.8rem",
     color: useContext(Color).colors.Green
   }
 }))
@@ -124,7 +125,10 @@ export default function SearchCardDetail(props) {
         </Typography>
         <div className={classes.categorys}>
           <Accordion variant="outlined">
-            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              className={classes.categorySummary}
+            >
               <Typography>カテゴリ一覧</Typography>
             </AccordionSummary>
             <AccordionDetails className={classes.category}>
