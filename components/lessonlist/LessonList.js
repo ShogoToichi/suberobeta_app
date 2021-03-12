@@ -24,25 +24,25 @@ const LessonList = () => {
       .then((querySnapshot) => {
         // 受け取ったオブジェクトの配列に対して、forEachで繰り返し処理でレッスンコンポーネントに値を渡し、それをlessonitemsにpushする
         querySnapshot.forEach((doc) => {
-              lessonItems.push(
-                <Lesson
-                  createrName={doc.data().createrName}
-                  lessonId={doc.id}
-                  createrImageUrl={doc.data().createrImageUrl}
-                  createrId={doc.data().createrId}
-                  lessonName={doc.data().lessonName}
-                  lessonPlace={doc.data().lessonPlace}
-                  lessonTime={doc.data().lessonTime}
-                  lessonDescription={doc.data().lessonDescription}
-                  lessonPrice={doc.data().lessonPrice}
-                  tagLabel1={"女性大歓迎"}
-                  tagLabel2={"初心者お断り"}
-                  tagLabel3={"レンタル付き"}
-                />
-                )
-              })
-            })
-            setItems(lessonItems)
+          lessonItems.push(
+            <Lesson
+              createrName={doc.data().createrName}
+              lessonId={doc.id}
+              createrImageUrl={doc.data().createrImageUrl}
+              createrId={doc.data().createrId}
+              lessonName={doc.data().lessonName}
+              lessonPlace={doc.data().lessonPlace}
+              lessonTime={doc.data().lessonTime.split("T").join(" ")}
+              lessonDescription={doc.data().lessonDescription}
+              lessonPrice={doc.data().lessonPrice}
+              tagLabel1={"女性大歓迎"}
+              tagLabel2={"初心者お断り"}
+              tagLabel3={"レンタル付き"}
+            />
+          )
+        })
+      })
+    setItems(lessonItems)
   }
 
   useEffect(() => {
@@ -50,10 +50,10 @@ const LessonList = () => {
   }, [])
   return (
     <Grid container spacing={2} deraction="row" justify="center">
-        <Title
-          title={"レッスン一覧"}
-          subTitle={"時間や場所、レベルなど自分に合ったレッスンを見つけよう"}
-        />
+      <Title
+        title={"レッスン一覧"}
+        subTitle={"時間や場所、レベルなど自分に合ったレッスンを見つけよう"}
+      />
       <Grid item xs={8} sm={5} lg={3}>
         <SearchCard
           tagLabel1="女性大歓迎"

@@ -31,7 +31,7 @@ export default function ProfileEdit(props) {
   return (
     <Grid container spacing={2} justify="space-around">
       <Grid item xs={12} sm={10} lg={3} className={classes.name}>
-        <Typography variant="h8">ユーザ名</Typography>
+        <Typography variant="h6">ユーザ名</Typography>
         <TextField
           label="ユーザ名"
           maxWidth
@@ -42,7 +42,7 @@ export default function ProfileEdit(props) {
       </Grid>
       <Grid item item xs={12} sm={10} lg={8}>
         <Grid item className={classes.uploadText}>
-          <Typography variant="h8">プロフィール画像のアップロード</Typography>
+          <Typography variant="h6">プロフィール画像のアップロード</Typography>
         </Grid>
 
         <Grid item className={classes.upload}>
