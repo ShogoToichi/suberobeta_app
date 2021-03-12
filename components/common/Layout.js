@@ -27,6 +27,7 @@ class Layout extends Component {
             rel="stylesheet"
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
           />
+          <link rel="stylesheet" href="style.css" />
         </Head>
 
         <HeaderUi />
