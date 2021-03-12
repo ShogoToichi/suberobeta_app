@@ -23,19 +23,19 @@ import Grid from "@material-ui/core/Grid"
 const lessonList = makeStyles((theme) => ({
   lesson: {
     width: "95%",
-    margin: "10px 0px 10px 20px"
+    margin: "1rem 0rem 1rem 2rem"
   },
   img: {
     cursor: "pointer"
   },
   createrName: {
-    marginLeft: "20px",
+    marginLeft: "2rem",
     textAlign: "left",
     cursor: "pointer"
   },
   evaluation: {
     flexDirection: "row-reverse",
-    marginLeft: "30px",
+    marginLeft: "3rem",
     "& input": {
       display: "none"
     },
@@ -48,21 +48,21 @@ const lessonList = makeStyles((theme) => ({
     color: useContext(Color).colors.Green,
     fontWeight: "bold",
     cursor: "pointer",
-    marginLeft: "70px"
+    marginLeft: "7rem"
   },
   tags: {
-    marginLeft: "70px",
-    marginBottom: "20px"
+    marginLeft: "7rem",
+    marginBottom: "1rem"
   },
   tag: {
-    margin: "0px 5px",
+    margin: "0rem 0.5rem",
     color: useContext(Color).colors.Green
   },
   contents: {
     width: "100%"
   },
   info: {
-    margin: "5px 10px 5px 10px"
+    margin: "0.5rem 1rem 0.5rem 1rem"
   }
 }))
 
@@ -112,13 +112,13 @@ export default function Lesson(props) {
       <CardContent className={classes.contents}>
         <div className={classes.tags}>
           <Chip
-            icon={<Icon path={mdiTagOutline} size="20px" />}
+            icon={<Icon path={mdiTagOutline} size="1.5rem" />}
             label={props.tagLabel2}
             clickable
             className={classes.tag}
           />
           <Chip
-            icon={<Icon path={mdiTagOutline} size="20px" />}
+            icon={<Icon path={mdiTagOutline} size="1.5rem" />}
             label={props.tagLabel3}
             clickable
             className={classes.tag}
@@ -128,19 +128,19 @@ export default function Lesson(props) {
         <Grid container spacing={1} deraction="row" justify="space-around">
           <Grid item xs={10} sm={10} lg={3}>
             <Typography variant="body2" className={classes.info}>
-              <Icon path={mdiCalendarClock} size="20px" />
+              <Icon path={mdiCalendarClock} size="1.5rem" />
               &emsp;{props.lessonTime}
             </Typography>
           </Grid>
           <Grid item xs={10} sm={10} lg={3}>
             <Typography align="left" variant="body2" className={classes.info}>
-              <Icon path={mdiMapMarkerRadiusOutline} size="20px" />
+              <Icon path={mdiMapMarkerRadiusOutline} size="1.5rem" />
               &emsp;{props.lessonPlace}
             </Typography>
           </Grid>
           <Grid item xs={10} sm={10} lg={3}>
             <Typography variant="body2" className={classes.info}>
-              <Icon path={mdiCurrencyUsd} size="20px" />
+              <Icon path={mdiCurrencyUsd} size="1.5rem" />
               &emsp;{props.lessonPrice}円
             </Typography>
           </Grid>
