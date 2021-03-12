@@ -1,7 +1,7 @@
 //メッセージ送信フォーム
 //message/[lessonId]でインポート
 
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { connect } from "react-redux"
 import firebase from "firebase"
 import { useRouter } from "next/router"
@@ -38,8 +38,8 @@ function MessageAdd(props) {
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          console.log(router.query.lessonid)
-          console.log(router.query.buyerid)
+          // console.log(router.query.lessonid)
+          // console.log(router.query.buyerid)
           docid = doc.id
           db.collection("messages")
             .doc(docid) //先に取得したIDを使ってサブコレクションを参照
@@ -67,6 +67,8 @@ function MessageAdd(props) {
       },
       { merge: true }
     )
+  }
+  const validate = () => {
     //userFilterのTorFを、マテリアルUIのdisabled属性に用いて、
     //作成者、購入者以外にフォームを表示しなくする
     if (email == props.createrId || email == buyerEmail) {
@@ -75,6 +77,10 @@ function MessageAdd(props) {
       setUserfilter(true)
     }
   }
+  useEffect(() => {
+    validate()
+    console.log(userFilter)
+  }, [userFilter])
 
   return (
     <>

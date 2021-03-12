@@ -38,7 +38,7 @@ const ImageCards = () => {
   // }
   for (let i = 0; i < 5; i++) {
     Cards.push(
-      <Link href="/">
+      <Link href="/" key={i.toString()}>
         <Grid item xs={12} sm={4} md={2}>
           <ImageCard
             lessonImageUrl={
@@ -49,7 +49,7 @@ const ImageCards = () => {
             createrImageUrl={
               "https://firebasestorage.googleapis.com/v0/b/subero-prototype.appspot.com/o/profileImages%2F202137142992788780452-kabekin_0001-Mjzm-1920x1080-MM-100.jpg?alt=media&token=638bd743-9fa1-4634-a715-01282e6974e4"
             }
-            createrName={"izuru"}
+            createrName={"subero-kun"}
             lessonValue={"10,000 円"}
           />
         </Grid>

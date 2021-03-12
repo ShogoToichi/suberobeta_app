@@ -88,6 +88,7 @@ function Message(props) {
                 userName={createrName}
                 imageUrl={createrImage}
                 text={doc.data().text}
+                key={doc.id.toString()}
               />
             )
           } else {
@@ -96,6 +97,7 @@ function Message(props) {
                 userName={buyerName}
                 imageUrl={buyerImage}
                 text={doc.data().text}
+                key={doc.id.toString()}
               />
             )
           }

@@ -6,7 +6,6 @@ import { Color } from "../../../static/colors"
 import DescriptionData from "./DescriptionData"
 import MediaQuery from "react-responsive"
 
-
 const topTitle = makeStyles((theme) => ({
   mainTitle: {
     color: useContext(Color).colors.header,
@@ -14,7 +13,7 @@ const topTitle = makeStyles((theme) => ({
     textAlign: "center",
     marginBottom: "50px",
     marginTop: "70px",
-    fontSize:"2.2rem"
+    fontSize: "2.2rem"
     // "@media (max-width: 600px)": {
     //   fontSize: "4rem"
     //   // color: "blue"
@@ -52,7 +51,7 @@ export default function Description(props) {
         spacing={1}
         // className={classes.descriptions}
       >
-        <Grid item xs={10} sm={7} lg={3}  className={classes.content}>
+        <Grid item xs={10} sm={7} lg={3} className={classes.content}>
           <DescriptionData
             title={"自分に合ったレッスン"}
             content1={
@@ -62,6 +61,7 @@ export default function Description(props) {
             content2={"現地集合・現地解散で気軽にレッスンを受けてみましょう。"}
             herf={"/lesson_list"}
             btnName={"レッスン一覧"}
+            key={"1"}
           />
         </Grid>
 
@@ -77,6 +77,7 @@ export default function Description(props) {
             }
             herf={"/lesson_add"}
             btnName={"レッスンを作る"}
+            key={"2"}
           />
         </Grid>
         <Grid item xs={10} sm={7} lg={3}>
@@ -86,9 +87,12 @@ export default function Description(props) {
             content1={
               "スノースクールなどの企業ではなく、個人同士で納得した金額でレッスンを契約します。"
             }
-            content2={"そのため、比較的リーズナブルに教えてもらうことができます。"}
+            content2={
+              "そのため、比較的リーズナブルに教えてもらうことができます。"
+            }
             herf={"/lesson_list"}
             btnName={"レッスンを探す"}
+            key={"3"}
           />
         </Grid>
       </Grid>

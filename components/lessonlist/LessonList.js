@@ -35,6 +35,7 @@ const LessonList = () => {
               tagLabel1={"女性大歓迎"}
               tagLabel2={"初心者お断り"}
               tagLabel3={"レンタル付き"}
+              key={doc.id.toString()}
             />
           )
         })

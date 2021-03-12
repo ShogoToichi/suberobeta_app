@@ -33,6 +33,7 @@ function MyLessonList(props) {
                 lessonId={doc.id}
                 lessonName={doc.data().lessonName}
                 lessonPlace={doc.data().lessonPlace}
+                key={doc.id.toString()}
               />
             )
           })
