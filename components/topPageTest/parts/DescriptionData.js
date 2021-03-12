@@ -22,16 +22,16 @@ const topTitle = makeStyles((theme) => ({
     whiteSpace: "pre-wrap"
   },
   card: {
-    width: "86%",
-    borderRadius:"10px",
-    boxShadow:"3px 6px 10px 2px #999 ",
-    height:"600px",
+    // width: "86%",
+    borderRadius: "10px",
+    boxShadow: "3px 6px 10px 2px #999 ",
+    // height: "600px",
     "@media (max-width: 800px)": {}
   },
   cardHeader: {
     fontWeight: "bold",
-    width:"100%",
-    display: "block",
+    width: "100%",
+    display: "block"
     // fontSize: "2rem",
     // color: "red"
   },
@@ -42,23 +42,23 @@ const topTitle = makeStyles((theme) => ({
   LinkBtn: {
     // backgroundColor: useContext(Color).colors.bgGreen,
     backgroundColor: "#396",
-    color:"white",
+    color: "white",
     width: "15rem",
-    boxShadow:"1px 1px 2px 1px #DDD"
+    boxShadow: "1px 1px 2px 1px #DDD"
     // marginBottom: "1rem"
   },
   test1: {
-    height: "16rem"
+    // height: "16rem"
     // backgroundColor: "red"
   },
-  card_img:{
-    height:"90px",
-    textAlign:"center",
-    display:"block",
+  card_img: {
+    height: "90px"
+    // textAlign: "center",
+    // display: "block"
   },
-  img_item:{
-    width:"100%",
-    textAlign:"center",
+  img_item: {
+    // width: "100%"
+    // textAlign:"center",
   }
 }))
 
