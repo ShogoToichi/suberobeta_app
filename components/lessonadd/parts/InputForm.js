@@ -12,16 +12,7 @@ import InputLabel from "@material-ui/core/InputLabel"
 import FormControl from "@material-ui/core/FormControl"
 import Input from "@material-ui/core/Input"
 import InputAdornment from "@material-ui/core/InputAdornment"
-
-// Todo: 情報の入れ方
-const testPlace = [
-  { place: "かたしな高原スキー場" },
-  { place: "一本杉スキー場" },
-  { place: "オグナほたかスキー場" },
-  { place: "谷川岳天神平スキー場" },
-  { place: "苗場スキー場" },
-  { place: "奥利根スノーパーク" }
-]
+import skiResortList from "../../commonParts/skiResortList"
 
 const inputForm = makeStyles((theme) => ({
   inputForm: {
@@ -83,8 +74,8 @@ export default function InputForm(props) {
       <Grid item xs={12}>
         <Autocomplete
           id="combo-box-demo"
-          options={testPlace}
-          getOptionLabel={(option) => option.place}
+          options={skiResortList}
+          getOptionLabel={(option) => option.name}
           onChange={props.onChangeLessonPlace}
           renderInput={(params) => (
             <TextField

@@ -1,3 +1,5 @@
+// 使ってないファイル
+
 import React, { useState, useEffect } from "react"
 import { useRouter } from "next/router"
 import firebase from "firebase"
@@ -23,7 +25,7 @@ function SearchLessonList(props) {
       .doc(router.query.skiresortid)
       .get()
       .then((doc) => {
-        skiResortName = doc.data().name
+        // skiResortName = doc.data().name
         prefecture = doc.data().prefecture
         area = doc.data().area
       })
