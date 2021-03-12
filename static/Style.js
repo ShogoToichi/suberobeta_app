@@ -2,7 +2,19 @@ import css from "styled-jsx/css"
 
 export default (
   <style>{`
-.search{
+  /* スマホにおける画面表示 */
+  @media(max-width:600px){
+    html {
+      font-size:62.5%;
+    }
+  }
+  /*タブレットにおける画面表示*/
+  @media (min-width:601px) and (max-width:1280px){
+    html {
+      font-size:90%;
+    }
+  }
+.search {
   display:block;
   color:#444;
   text-decoration:none;
@@ -41,7 +53,7 @@ export default (
   }
   body{
     margin: 0;
-    // background-color: #4C87C9;
+    background-color: rgba(230, 256, 230, 0.75);
     font-family: "Noto Sans";
     white-space: pre-wrap; // 改行反映用css
   }

@@ -40,7 +40,7 @@ const ImageCardsList = () => {
             初心者向けレッスン
           </Grid>
           <Grid item>
-            <Link href="/lesson_list">>もっと見る</Link>
+            <Link href="/lesson_list">もっと見る</Link>
           </Grid>
         </Grid>
       </Grid>

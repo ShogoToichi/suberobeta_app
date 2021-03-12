@@ -7,7 +7,8 @@ export const colors = {
   Green: "#4A8",
   grayBtn: "#E7E7E7",
   borderLine: "#DDD",
-  bgGreen: "#CBFFD3"
+  bgGreen: "#CBFFD3",
+  caption: "#062"
 }
 
 export const Color = createContext(colors)

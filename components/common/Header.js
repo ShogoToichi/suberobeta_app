@@ -24,11 +24,11 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1
   },
   img: {
-    height: "40px"
+    height: "75px"
   },
   mobile: {
-     backgroundColor: useContext(Color).colors.header,
-     color: useContext(Color).colors.header,
+    backgroundColor: useContext(Color).colors.header,
+    color: useContext(Color).colors.header,
   },
 
 }))
@@ -41,7 +41,7 @@ function Header(props) {
     <AppBar position="static" className={classes.bar}>
       <Toolbar>
         <Button size="small" color="inherit" onClick={() => router.push("/")}>
-          <img className={classes.img} src="/static/subero_icon.png" />
+          <img className={classes.img} src="/static/header_logo.png" />
         </Button>
         <h1 className={classes.blank}> </h1>
 
