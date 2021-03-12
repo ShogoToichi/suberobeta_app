@@ -46,7 +46,7 @@ function LessonInfo(props) {
         createrId = lessonData.createrId
         lessonName = lessonData.lessonName
         lessonPlace = lessonData.lessonPlace
-        lessonTime = lessonData.lessonTime
+        lessonTime = lessonData.lessonTime.split("T").join(" ")
         lessonPrice = lessonData.lessonPrice
         lessonDescription = lessonData.lessonDescription
       })
@@ -105,7 +105,7 @@ function LessonInfo(props) {
       <Grid item xs={8} sm={4} lg={2}>
         <CreatorInfo />
       </Grid>
-      <Grid item xs={10} sm={10} lg={7} style={{position:"relative"}}>
+      <Grid item xs={10} sm={10} lg={7} style={{ position: "relative" }}>
         <LessonDetail
           createrImageUrl={createrImageUrl}
           createrName={createrName}

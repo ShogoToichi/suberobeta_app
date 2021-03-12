@@ -24,9 +24,9 @@ function LessonAdd(props) {
   const doChangeLessonName = (e) => {
     setLessonName(e.target.value)
   }
-  // const doChangeLessonPlace = (e) => {
-  //   setLessonPlace(e.target.value)
-  // }
+  const doChangeLessonPlace = (e) => {
+    setLessonPlace(e.target.textContent)
+  }
   const doChangeLessonTime = (e) => {
     setLessonTime(e.target.value)
   }
@@ -67,7 +67,7 @@ function LessonAdd(props) {
       alertText.push("レッスン内容を入力してください")
     }
 
-    if (alertText === []) {
+    if (alertText.length === 0) {
       return true
     } else {
       alert(alertText.join("\n"))
@@ -118,7 +118,7 @@ function LessonAdd(props) {
         <InputForm
           onChangeLessonName={doChangeLessonName}
           onChangeLessonTime={doChangeLessonTime}
-          // onChangeLessonPlace={doChangeLessonPlace}
+          onChangeLessonPlace={doChangeLessonPlace}
           onChangeLessonPrice={doChangeLessonPrice}
           onChangeLessonDescription={doChangeLessonDescription}
           doSubmit={doSubmit}

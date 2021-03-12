@@ -68,7 +68,6 @@ export default function InputForm(props) {
         />
       </Grid>
       <Grid item xs={12}>
-        {/* <form className={classes.container} noValidate> */}
         <TextField
           id="datetime-local"
           label="日時"
@@ -80,22 +79,19 @@ export default function InputForm(props) {
           }}
           onChange={props.onChangeLessonTime}
         />
-        {/* </form> */}
       </Grid>
       <Grid item xs={12}>
         <Autocomplete
           id="combo-box-demo"
           options={testPlace}
           getOptionLabel={(option) => option.place}
-          // style={{ width: 300 }}
+          onChange={props.onChangeLessonPlace}
           renderInput={(params) => (
-            // <TextField {...params} label="Combo box" variant="outlined" />
             <TextField
               {...params}
               label="場所"
               placeholder="〇〇スキー場"
               fullWidth
-              onChange={props.onChangeLessonPlace}
             />
           )}
         />
