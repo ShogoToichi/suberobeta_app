@@ -96,7 +96,7 @@ function GetImage(props) {
     event.preventDefault()
     if (image === "") {
       console.log("ファイルが選択されていません")
-    } else if (image.size > 5 * 10 ** 5) {
+    } else if (image.size > 5 * 10 ** 6) {
       // ファイルサイズが5MB以上の時ははじく
       alert("ファイルサイズは5MB以下にしてください")
     } else {

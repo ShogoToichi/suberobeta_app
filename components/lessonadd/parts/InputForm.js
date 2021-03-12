@@ -1,6 +1,5 @@
 import React, { useContext } from "react"
 import "firebase/storage"
-import Link from "next/link"
 import { makeStyles } from "@material-ui/styles"
 import Typography from "@material-ui/core/Typography"
 import TextField from "@material-ui/core/TextField"
@@ -10,7 +9,7 @@ import PlaceSelecter from "./placeSelecter"
 
 const inputForm = makeStyles((theme) => ({
   inputForm: {
-    marginTop: "50px",
+    marginTop: "50px"
   },
   contents: {
     marginTop: "20px"
@@ -34,7 +33,7 @@ export default function InputForm(props) {
   const classes = inputForm()
   return (
     <div className={classes.inputForm}>
-      <Typography className={classes.inputTitle} variant="h8">
+      <Typography className={classes.inputTitle} variant="h6">
         レッスンに関する情報を入力してください。
       </Typography>
       <TextField
@@ -47,7 +46,6 @@ export default function InputForm(props) {
       <TextField
         label="日時"
         placeholder="〇月〇日午前〇時～〇月〇日午前〇時"
-        multiline
         fullWidth
         onChange={props.onChangeLessonTime}
         className={classes.contents}
@@ -55,7 +53,6 @@ export default function InputForm(props) {
       <TextField
         label="場所"
         placeholder="〇〇スキー場"
-        multiline
         fullWidth
         onChange={props.onChangeLessonPlace}
         className={classes.contents}
@@ -63,7 +60,6 @@ export default function InputForm(props) {
       <TextField
         label="料金"
         placeholder="￥〇〇〇〇"
-        multiline
         fullWidth
         onChange={props.onChangeLessonPrice}
         className={classes.contents}
@@ -81,16 +77,14 @@ export default function InputForm(props) {
         />
       </div>
       <div className={classes.btnArea}>
-        <Link href="/mypage">
-          <Button
-            className={classes.addBtn}
-            variant="outlined"
-            size="large"
-            onClick={props.doSubmit}
-          >
-            追 加
-          </Button>
-        </Link>
+        <Button
+          className={classes.addBtn}
+          variant="outlined"
+          size="large"
+          onClick={props.doSubmit}
+        >
+          追 加
+        </Button>
       </div>
     </div>
   )

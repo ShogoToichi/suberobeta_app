@@ -7,6 +7,7 @@ import Title from "../commonParts/Title"
 import InputForm from "./parts/InputForm"
 import getProfileImageUrl from "../commonParts/getProfileImageUrl"
 import Grid from "@material-ui/core/Grid"
+import { useRouter } from "next/router"
 
 let imageUrl = ""
 
@@ -17,6 +18,7 @@ function LessonAdd(props) {
   const [lessonTime, setLessonTime] = useState("")
   const [lessonPrice, setLessonPrice] = useState("")
   const [lessonDescription, setLessonDescription] = useState("")
+  const router = useRouter()
 
   //inputに入力された処理をeで受け取ってステートに入れる関数
   const doChangeLessonName = (e) => {
@@ -62,6 +64,7 @@ function LessonAdd(props) {
       lessonTime: lessonTime,
       createdAt: firebase.firestore.FieldValue.serverTimestamp()
     })
+    await router.push("/mypage")
   }
 
   useEffect(() => {
@@ -69,7 +72,7 @@ function LessonAdd(props) {
   }, [])
 
   return (
-    <Grid container spacing={2} deraction="row" justify="center">
+    <Grid container spacing={2} direction="row" justify="center">
       <Title
         title={"新規レッスンの追加"}
         subtitle={
@@ -80,7 +83,7 @@ function LessonAdd(props) {
         <InputForm
           onChangeLessonName={doChangeLessonName}
           onChangeLessonTime={doChangeLessonTime}
-          onChangeLessonPlace={doChangeLessonPlace}
+          // onChangeLessonPlace={doChangeLessonPlace}
           onChangeLessonPrice={doChangeLessonPrice}
           onChangeLessonDescription={doChangeLessonDescription}
           doSubmit={doSubmit}
