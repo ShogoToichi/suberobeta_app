@@ -1,12 +1,27 @@
 import React, { useContext } from "react"
 import "firebase/storage"
 import { makeStyles } from "@material-ui/styles"
+import Grid from "@material-ui/core/Grid"
 import Typography from "@material-ui/core/Typography"
 import TextField from "@material-ui/core/TextField"
 import Button from "@material-ui/core/Button"
+import Autocomplete from "@material-ui/lab/Autocomplete"
 import { Color } from "../../../static/colors"
 import PlaceSelecter from "./placeSelecter"
-import Grid from "@material-ui/core/Grid"
+import InputLabel from "@material-ui/core/InputLabel"
+import FormControl from "@material-ui/core/FormControl"
+import Input from "@material-ui/core/Input"
+import InputAdornment from "@material-ui/core/InputAdornment"
+
+// Todo: 情報の入れ方
+const testPlace = [
+  { place: "かたしな高原スキー場" },
+  { place: "一本杉スキー場" },
+  { place: "オグナほたかスキー場" },
+  { place: "谷川岳天神平スキー場" },
+  { place: "苗場スキー場" },
+  { place: "奥利根スノーパーク" }
+]
 
 const inputForm = makeStyles((theme) => ({
   inputForm: {
@@ -20,6 +35,15 @@ const inputForm = makeStyles((theme) => ({
 
 export default function InputForm(props) {
   const classes = inputForm()
+
+  const lessonNameErrorMessage = () => {
+    if (props.lessonNameValidation) {
+      return ""
+    } else {
+      return "32文字以内で入力してください"
+    }
+  }
+
   return (
     <Grid
       container
@@ -31,41 +55,61 @@ export default function InputForm(props) {
     >
       <Grid item xs={12}>
         <Typography className={classes.inputTitle} variant="h6">
-          レッスンに関する情報を入力してください。
+          レッスンに関する情報を入力してください
         </Typography>
       </Grid>
       <Grid item xs={12}>
         <TextField
           label="レッスン名"
-          multiline
           fullWidth
           onChange={props.onChangeLessonName}
+          error={!props.lessonNameValidation}
+          helperText={lessonNameErrorMessage()}
         />
       </Grid>
       <Grid item xs={12}>
+        {/* <form className={classes.container} noValidate> */}
         <TextField
+          id="datetime-local"
           label="日時"
-          placeholder="〇月〇日午前〇時～〇月〇日午前〇時"
-          fullWidth
+          type="datetime-local"
+          defaultValue="2021-03-14T10:30" // todo: 初期値を今日に設定
+          className={classes.textField}
+          InputLabelProps={{
+            shrink: true
+          }}
           onChange={props.onChangeLessonTime}
         />
+        {/* </form> */}
       </Grid>
       <Grid item xs={12}>
-        <TextField
-          label="場所"
-          placeholder="〇〇スキー場"
-          fullWidth
-          onChange={props.onChangeLessonPlace}
+        <Autocomplete
+          id="combo-box-demo"
+          options={testPlace}
+          getOptionLabel={(option) => option.place}
+          // style={{ width: 300 }}
+          renderInput={(params) => (
+            // <TextField {...params} label="Combo box" variant="outlined" />
+            <TextField
+              {...params}
+              label="場所"
+              placeholder="〇〇スキー場"
+              fullWidth
+              onChange={props.onChangeLessonPlace}
+            />
+          )}
         />
       </Grid>
       <Grid item xs={12}>
-        <TextField
-          label="料金"
-          placeholder="￥〇〇〇〇"
-          fullWidth
-          type="number"
-          onChange={props.onChangeLessonPrice}
-        />
+        <FormControl fullWidth>
+          <InputLabel htmlFor="standard-adornment-amount">料金</InputLabel>
+          <Input
+            id="standard-adornment-amount"
+            type="number"
+            onChange={props.onChangeLessonPrice}
+            startAdornment={<InputAdornment position="start">¥</InputAdornment>}
+          />
+        </FormControl>
       </Grid>
 
       <Grid item xs={12}>

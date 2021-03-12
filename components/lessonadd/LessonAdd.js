@@ -75,6 +75,14 @@ function LessonAdd(props) {
     }
   }
 
+  const lessonNameValidate = () => {
+    if (lessonName.length > 32) {
+      return false
+    } else {
+      return true
+    }
+  }
+
   //追加ボタンを押したらfirebaseにステートの情報を書き込む処理
   //addで追加しているから、ドキュメントidはユニークなidが自動で当てられる
   //Reduxからユーザーのemail(id)をencode( .→* )にして定数に代入
@@ -114,6 +122,7 @@ function LessonAdd(props) {
           onChangeLessonPrice={doChangeLessonPrice}
           onChangeLessonDescription={doChangeLessonDescription}
           doSubmit={doSubmit}
+          lessonNameValidation={lessonNameValidate()}
         />
       </Grid>
     </Grid>
