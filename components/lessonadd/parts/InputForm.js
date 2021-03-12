@@ -6,66 +6,68 @@ import TextField from "@material-ui/core/TextField"
 import Button from "@material-ui/core/Button"
 import { Color } from "../../../static/colors"
 import PlaceSelecter from "./placeSelecter"
+import Grid from "@material-ui/core/Grid"
 
 const inputForm = makeStyles((theme) => ({
   inputForm: {
-    marginTop: "50px"
-  },
-  contents: {
-    marginTop: "20px"
-  },
-  detailInfo: {
-    marginTop: "20px",
-    margin: "0 auto"
-  },
-  btnArea: {
-    textAlign: "center"
+    marginTop: "2rem"
   },
   addBtn: {
     backgroundColor: useContext(Color).colors.bgGreen,
-    marginTop: "10px",
-    margin: "0 auto",
-    width: "200px"
+    width: "15rem"
   }
 }))
 
 export default function InputForm(props) {
   const classes = inputForm()
   return (
-    <div className={classes.inputForm}>
-      <Typography className={classes.inputTitle} variant="h6">
-        レッスンに関する情報を入力してください。
-      </Typography>
-      <TextField
-        label="レッスン名"
-        multiline
-        fullWidth
-        onChange={props.onChangeLessonName}
-        className={classes.contents}
-      />
-      <TextField
-        label="日時"
-        placeholder="〇月〇日午前〇時～〇月〇日午前〇時"
-        fullWidth
-        onChange={props.onChangeLessonTime}
-        className={classes.contents}
-      />
-      <TextField
-        label="場所"
-        placeholder="〇〇スキー場"
-        fullWidth
-        onChange={props.onChangeLessonPlace}
-        className={classes.contents}
-      />
-      <TextField
-        label="料金"
-        placeholder="￥〇〇〇〇"
-        fullWidth
-        onChange={props.onChangeLessonPrice}
-        className={classes.contents}
-      />
+    <Grid
+      container
+      direction="column"
+      justify="flex-start"
+      alignItems="stretch"
+      spacing={2}
+      className={classes.inputForm}
+    >
+      <Grid item>
+        <Typography className={classes.inputTitle} variant="h6">
+          レッスンに関する情報を入力してください。
+        </Typography>
+      </Grid>
+      <Grid item>
+        <TextField
+          label="レッスン名"
+          multiline
+          fullWidth
+          onChange={props.onChangeLessonName}
+        />
+      </Grid>
+      <Grid item>
+        <TextField
+          label="日時"
+          placeholder="〇月〇日午前〇時～〇月〇日午前〇時"
+          fullWidth
+          onChange={props.onChangeLessonTime}
+        />
+      </Grid>
+      <Grid item>
+        <TextField
+          label="場所"
+          placeholder="〇〇スキー場"
+          fullWidth
+          onChange={props.onChangeLessonPlace}
+        />
+      </Grid>
+      <Grid item>
+        <TextField
+          label="料金"
+          placeholder="￥〇〇〇〇"
+          fullWidth
+          onChange={props.onChangeLessonPrice}
+        />
+      </Grid>
 
-      <div className={classes.detailInfo}>
+      <Grid item>
         <TextField
           label="レッスン内容"
           multiline
@@ -73,10 +75,10 @@ export default function InputForm(props) {
           variant="outlined"
           fullWidth
           onChange={props.onChangeLessonDescription}
-          className={classes.contents}
         />
-      </div>
-      <div className={classes.btnArea}>
+      </Grid>
+
+      <Grid item>
         <Button
           className={classes.addBtn}
           variant="outlined"
@@ -85,7 +87,7 @@ export default function InputForm(props) {
         >
           追 加
         </Button>
-      </div>
-    </div>
+      </Grid>
+    </Grid>
   )
 }
