@@ -22,13 +22,16 @@ const topTitle = makeStyles((theme) => ({
     // textAlign: "right",
     marginLeft: "0px",
     color: useContext(Color).colors.caption,
-    fontSize: "2.2rem"
+    fontSize: "2.2rem",
+    // 枠線
+    // textShadow: "1px 1px 0 #FFF, -1px 1px 0 #FFF,1px -1px 0 #FFF,-1px -1px 0 #FFF"
   },
   mainCap: {
     // textAlign: "right",
     color: useContext(Color).colors.caption,
     fontWeight: "bold",
-    fontSize: "10rem"
+    fontSize: "10rem",
+    
   },
   // img: {
   //   right: "200px",
@@ -38,7 +41,8 @@ const topTitle = makeStyles((theme) => ({
   titleContents: {
     // backgroundColor: "rgba(255, 255, 255, 0.6)",
     textAlign: "right",
-    borderRadius: "1rem"
+    borderRadius: "1rem",
+    marginRight: "200px"
   },
   LinkBtn: {
     color: useContext(Color).colors.caption,

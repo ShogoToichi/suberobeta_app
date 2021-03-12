@@ -13,7 +13,7 @@ import Grid from "@material-ui/core/Grid"
 const style = makeStyles((theme) => ({
   contents: {
     backgroundColor: "rgba(230, 256, 230, 0.75)",
-    width: "98%",
+    width: "100%",
     margin: "0 auto"
   },
   body: {

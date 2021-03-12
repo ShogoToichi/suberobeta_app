@@ -52,7 +52,7 @@ export default function Description(props) {
         spacing={1}
         // className={classes.descriptions}
       >
-        <Grid item xs={12} sm={3} className={classes.content}>
+        <Grid item xs={10} sm={7} lg={3}  className={classes.content}>
           <DescriptionData
             title={"自分に合ったレッスン"}
             content1={
@@ -65,7 +65,7 @@ export default function Description(props) {
           />
         </Grid>
 
-        <Grid item xs={12} sm={3}>
+        <Grid item xs={10} sm={7} lg={3}>
           <DescriptionData
             title={"自分の身に着けた技術を共有"}
             src="../../../static/topcard2.jpg"
@@ -79,14 +79,14 @@ export default function Description(props) {
             btnName={"レッスンを作る"}
           />
         </Grid>
-        <Grid item xs={12} sm={3}>
+        <Grid item xs={10} sm={7} lg={3}>
           <DescriptionData
             title={"リーズナブル"}
             src="../../../static/topcard3.jpg"
             content1={
-              "スノースクールなどの企業ではなく、個人同士で納得した金額でレッスンを契約するため比較的リーズナブルに教えてもらうことができます。"
+              "スノースクールなどの企業ではなく、個人同士で納得した金額でレッスンを契約します。"
             }
-            content2={""}
+            content2={"そのため、比較的リーズナブルに教えてもらうことができます。"}
             herf={"/lesson_list"}
             btnName={"レッスンを探す"}
           />
