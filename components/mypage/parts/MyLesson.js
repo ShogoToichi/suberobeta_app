@@ -7,7 +7,7 @@ import { Typography } from "@material-ui/core"
 
 const myLessonList = makeStyles({
   lessons: {
-    margin: "30px 0px",
+    margin: "1rem 0rem",
     borderBottom: "solid 1px #BBB"
   },
   addBtn: {

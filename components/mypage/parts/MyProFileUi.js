@@ -12,7 +12,7 @@ import Img from "../../commonParts/Img"
 
 const myProfile = makeStyles((theme) => ({
   card: {
-    marginTop: "20px"
+    marginTop: "1rem"
   },
   img: {
     display: "inline-block",
@@ -21,7 +21,7 @@ const myProfile = makeStyles((theme) => ({
   name: {
     display: "inline-block",
     varticalAlign: "top",
-    margin: "40px 0px 0px 40px"
+    margin: "3rem 0rem 0rem 0.5rem"
   },
   cardHeader: {
     display: "inline-block",
@@ -35,12 +35,12 @@ const myProfile = makeStyles((theme) => ({
   },
   title: {
     fontWeight: "bold",
-    margin: "5px",
+    margin: "0.5rem",
     borderBottom: "solid 1px #BBB",
-    paddingBottom: "7px"
+    paddingBottom: "0.8rem"
   },
   description: {
-    margin: "30px",
+    margin: "1rem",
     whiteSpace: "pre-wrap" // 改行反映用css
   }
 }))
