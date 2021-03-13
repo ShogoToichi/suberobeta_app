@@ -22,9 +22,9 @@ function LessonAdd(props) {
   const doChangeLessonName = (e) => {
     setLessonName(e.target.value)
   }
-  // const doChangeLessonPlace = (e) => {
-  //   setLessonPlace(e.target.value)
-  // }
+  const doChangeLessonPlace = (e) => {
+    setLessonPlace(e.target.value)
+  }
   const doChangeLessonTime = (e) => {
     setLessonTime(e.target.value)
   }

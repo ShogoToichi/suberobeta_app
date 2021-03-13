@@ -10,13 +10,13 @@ import PlaceSelecter from "./placeSelecter"
 
 const inputForm = makeStyles((theme) => ({
   inputForm: {
-    marginTop: "50px",
+    marginTop: "3rem",
   },
   contents: {
-    marginTop: "20px"
+    marginTop: "1rem"
   },
   detailInfo: {
-    marginTop: "20px",
+    marginTop: "1rem",
     margin: "0 auto"
   },
   btnArea: {
@@ -24,9 +24,9 @@ const inputForm = makeStyles((theme) => ({
   },
   addBtn: {
     backgroundColor: useContext(Color).colors.bgGreen,
-    marginTop: "10px",
+    marginTop: "0.6rem",
     margin: "0 auto",
-    width: "200px"
+    width: "10rem"
   }
 }))
 
