@@ -59,6 +59,12 @@ function LessonInfo(props) {
         createrImageUrl = await getProfileImageUrl(userData.imageName)
       })
 
+    //関数の最後で強制的にレンダリング
+    setUpdata(update ? false : true)
+  }
+
+  //firebaseのmessagesに必要な情報を書き込む
+  const doBuy = async () => {
     //購入したときに購入者の名前もfirebaseに書き込みたいから取得する
     await db
       .collection("users")
@@ -68,12 +74,6 @@ function LessonInfo(props) {
         buyerName = doc.data().profile.name
       })
 
-    //関数の最後で強制的にレンダリング
-    setUpdata(update ? false : true)
-  }
-
-  //firebaseのmessagesに必要な情報を書き込む
-  const doBuy = async () => {
     await db.collection("messages").add({
       lessonId: lessonId,
       buyerId: email,
@@ -114,6 +114,7 @@ function LessonInfo(props) {
           lessonId={lessonId}
           buyerId={email}
           createrId={createrId}
+          isLogin={props.login}
           onClick={doBuy}
         />
       </Grid>
