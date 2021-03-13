@@ -166,7 +166,7 @@ export default function SearchCardDetail(props) {
         </Grid>
 
       <div className={classes.otherSearchContainer}>
-        <Typography variant="body1" className={classes.title}>
+        {/* <Typography variant="body1" className={classes.title}>
           カテゴリ
         </Typography>
         <div className={classes.categorys}>
@@ -190,7 +190,7 @@ export default function SearchCardDetail(props) {
               <Typography>バックカントリー</Typography>
             </AccordionDetails>
           </Accordion>
-        </div>
+        </div> */}
 
         <Typography variant="body1" className={classes.title}>
           タグ

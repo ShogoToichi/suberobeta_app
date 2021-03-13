@@ -16,18 +16,12 @@ const style = makeStyles((theme) => ({
     width: "100%",
     margin: "0 auto"
   },
-  body: {
-    // width: "100%",
-    // width: "100px",
-    // height: "0",
-    // paddingTop: "32.8%",
-    backgroundColor: "#4C87C9",
-    backgroundImage: "url(../../../static/toppage.jpg)",
-    backgroundSize: "cover"
-    // background:
-    // "url(../../../static/toppage.jpg) center center /cover no-repeat"
-    // position: "relative"
-  }
+  // body: {
+  //   backgroundColor: "#4C87C9",
+  //   backgroundImage: "url(../../../static/toppage.jpg)",
+  //   backgroundSize: "100%"
+    
+  // }
 }))
 
 const TopPage = () => {
