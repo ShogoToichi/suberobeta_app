@@ -11,20 +11,23 @@ import Grid from "@material-ui/core/Grid"
 
 const myProfile = makeStyles((theme) => ({
   card: {
-    marginTop: "20px"
+    marginTop: "1rem"
   },
   btn: {
     backgroundColor: useContext(Color).colors.Green,
     color: "white"
   },
+  name: {
+    margin: "0rem 1.5rem"
+  },
   title: {
     fontWeight: "bold",
-    margin: "5px",
+    margin: "0.3rem",
     borderBottom: "solid 1px #BBB",
-    paddingBottom: "7px"
+    paddingBottom: "0.5rem"
   },
   description: {
-    margin: "30px",
+    margin: "2rem",
     whiteSpace: "pre-wrap" // 改行反映用css
   }
 }))
@@ -40,7 +43,9 @@ export default function MyProfileDetail(props) {
             <Img size={80} src={props.imageUrl} className={classes.img} />
           </Grid>
           <Grid item>
-            <Typography variant="h5">{props.name}</Typography>
+            <Typography variant="h5" className={classes.name}>
+              {props.name}
+            </Typography>
           </Grid>
           <Grid item xs={10}>
             <CardContent>

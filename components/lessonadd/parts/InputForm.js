@@ -16,6 +16,23 @@ import skiResortList from "../../commonParts/skiResortList"
 
 const inputForm = makeStyles((theme) => ({
   inputForm: {
+    marginTop: "3rem",
+  },
+  contents: {
+    marginTop: "1rem"
+  },
+  detailInfo: {
+    marginTop: "1rem",
+    margin: "0 auto"
+  },
+  btnArea: {
+    textAlign: "center"
+  },
+  addBtn: {
+    backgroundColor: useContext(Color).colors.bgGreen,
+    marginTop: "0.6rem",
+    margin: "0 auto",
+    width: "10rem",
     marginTop: "2rem"
   },
   addBtn: {

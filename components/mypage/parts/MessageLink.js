@@ -9,7 +9,7 @@ import { typography } from "@material-ui/system"
 export default function MessageLink(props) {
   const myLessonList = makeStyles({
     lessons: {
-      margin: "30px 0px",
+      margin: "1rem 0rem",
       borderBottom: "solid 1px #BBB"
     },
     addBtn: {
@@ -18,10 +18,10 @@ export default function MessageLink(props) {
     messageBtn: {
       backgroundColor: "#DDD",
       color: "black",
-      width: "150px"
+      width: "120px"
     },
     unReadText: {
-      marginLeft: "20px",
+      marginLeft: "1rem",
       color: "red"
     }
   })

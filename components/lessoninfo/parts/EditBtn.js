@@ -6,8 +6,16 @@ import { Color } from "../../../static/colors"
 import Typography from "@material-ui/core/Typography"
 
 const plofile = makeStyles((theme) => ({
+  btnArea: {
+    display: "inline-block",
+    float: "right",
+    marginRight: "6rem",
+    marginTop: "1rem"
+  },
   editBtn: {
     fontWeight: "bold",
+    fontSize: "1.2rem",
+    marginBottom: "1rem",
     backgroundColor: useContext(Color).colors.bgGreen
   }
 }))

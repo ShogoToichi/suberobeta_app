@@ -9,11 +9,11 @@ import Grid from "@material-ui/core/Grid"
 
 const profileEdit = makeStyles((props) => ({
   buttonGroup: {
-    marginTop: "40px",
+    marginTop: "2rem",
     textAlign: "center"
   },
   button: {
-    width: "200px",
+    width: "12rem",
     backgroundColor: useContext(Color).colors.Green,
     color: "white"
   }

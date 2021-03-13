@@ -8,10 +8,6 @@ import { Color } from "../../../static/colors"
 
 const createrdetail = makeStyles((theme) => ({
   createrdetail: {
-    // width: "20%",
-    // display: "inline-block",
-    // verticalAlign: "top",
-    // marginRight: "20px",
     textAlign: "center"
   },
   img: {
@@ -20,7 +16,7 @@ const createrdetail = makeStyles((theme) => ({
   },
   name: {
     display: "block",
-    margin: "20px 0px",
+    margin: "1rem 0rem",
     color: useContext(Color).colors.Green,
     cursor: "pointer"
   },
@@ -35,10 +31,10 @@ const createrdetail = makeStyles((theme) => ({
       position: "relative",
       color: "#ffcc00"
     },
-    margin: "0px 0px 20px 20px"
+    margin: "0rem 0rem 0.5rem 2rem"
   },
   introduction: {
-    margin: "10px"
+    margin: "1rem"
   },
   introductTitle: {
     display: "block",

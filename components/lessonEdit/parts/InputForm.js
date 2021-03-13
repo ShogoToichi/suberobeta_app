@@ -9,24 +9,15 @@ import { Color } from "../../../static/colors"
 
 const inputForm = makeStyles((theme) => ({
   inputForm: {
-    marginTop: "50px"
+    marginTop: "3rem"
   },
   contents: {
-    marginTop: "20px"
+    marginTop: "1.2rem"
   },
   detailInfo: {
-    marginTop: "20px",
+    marginTop: "1.2rem",
     margin: "0 auto"
   },
-  btnArea: {
-    textAlign: "center"
-  },
-  addBtn: {
-    backgroundColor: useContext(Color).colors.bgGreen,
-    marginTop: "10px",
-    margin: "0 auto",
-    width: "200px"
-  }
 }))
 
 export default function InputForm(props) {
@@ -34,7 +25,7 @@ export default function InputForm(props) {
   return (
     <div className={classes.inputForm}>
       <div>
-        <Typography className={classes.inputTitle} variant="h8">
+        <Typography className={classes.inputTitle} variant="body1">
           レッスンに関する情報を入力してください。
         </Typography>
         <TextField
