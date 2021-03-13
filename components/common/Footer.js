@@ -7,6 +7,7 @@ import classNames from "classnames"
 // material-ui core components
 import { List, ListItem } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
+import Grid from "@material-ui/core/Grid"
 
 // @material-ui/icons
 
@@ -18,9 +19,9 @@ const useStyles = makeStyles({
     color: "inherit",
     padding: "0.9375rem",
     fontWeight: "500",
-    fontSize: "12px",
+    fontSize: "1rem",
     textTransform: "uppercase",
-    borderRadius: "3px",
+    borderRadius: "0.2rem",
     textDecoration: "none",
     position: "relative",
     display: "block",
@@ -31,7 +32,7 @@ const useStyles = makeStyles({
     display: "block"
   },
   right: {
-    padding: "15px 0",
+    padding: "1rem 0",
     margin: "0",
     float: "right!important"
   },
@@ -60,14 +61,13 @@ const useStyles = makeStyles({
   },
   inlineBlock: {
     display: "inline-block",
-    padding: "0px",
     width: "auto"
   },
   icon: {
-    width: "18px",
-    height: "18px",
+    width: "1rem",
+    height: "1rem",
     position: "relative",
-    top: "3px"
+    top: "0.2rem"
   }
 })
 
@@ -84,8 +84,8 @@ export default function Footer(props) {
   })
   return (
     <footer className={footerClasses}>
-      <div className={classes.container}>
-        <div className={classes.left}>
+      <Grid container className={classes.container}>
+        <Grid item xs={12}className={classes.left}>
           <List className={classes.list}>
             <ListItem className={classes.inlineBlock}>
               <a
@@ -115,15 +115,15 @@ export default function Footer(props) {
               </a>
             </ListItem>
           </List>
-        </div>
-        <div className={classes.right}>
+        </Grid>
+        <Grid item xs={12} className={classes.right}>
           &copy; {1900 + new Date().getYear()} , made by{" "}
           <a href="http://localhost:3000/" className={aClasses} target="_blank">
             Subero Co. Ltd.
           </a>{" "}
           for all snowboarder.
-        </div>
-      </div>
+        </Grid>
+      </Grid>
     </footer>
   )
 }
