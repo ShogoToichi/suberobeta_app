@@ -5,12 +5,12 @@
 import React, { useEffect, useState } from "react"
 import firebase from "firebase"
 import { useRouter } from "next/router"
-import Lib from "../../Lib/address_lib"
 import { connect } from "react-redux"
 import MessageAdd from "./MessageAdd"
 import Chat from "./parts/Chat"
 import Title from "../commonParts/Title"
 import getProfileImageUrl from "../commonParts/getProfileImageUrl"
+import Grid from "@material-ui/core/Grid"
 
 let createrId = ""
 let lessonName = ""
@@ -28,7 +28,7 @@ function Message(props) {
   const messageItems = []
 
   const router = useRouter()
-  const email = Lib.encodeEmail(props.email)
+  const email = props.email
   const buyerId = router.query.buyerid
   const db = firebase.firestore()
 
@@ -87,6 +87,7 @@ function Message(props) {
                 userName={createrName}
                 imageUrl={createrImage}
                 text={doc.data().text}
+                key={doc.id.toString()}
               />
             )
           } else {
@@ -95,6 +96,7 @@ function Message(props) {
                 userName={buyerName}
                 imageUrl={buyerImage}
                 text={doc.data().text}
+                key={doc.id.toString()}
               />
             )
           }
@@ -126,15 +128,22 @@ function Message(props) {
   }
 
   useEffect(() => {
+    if (!props.login) {
+      return router.push("/")
+    }
     getMessageData()
   })
 
   return (
-    <div>
+    <Grid container spacing={1} derection="row" justify="center">
       <Title title={lessonName} />
-      {messages}
-      <MessageAdd createrId={createrId} />
-    </div>
+      <Grid item xs={10} sm={8} lg={7}>
+        {messages}
+      </Grid>
+      <Grid item xs={10} sm={8} lg={7}>
+        <MessageAdd createrId={createrId} />
+      </Grid>
+    </Grid>
   )
 }
 

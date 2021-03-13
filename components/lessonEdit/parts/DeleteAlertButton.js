@@ -11,13 +11,13 @@ import { Color } from "../../../static/colors"
 
 const inputForm = makeStyles((theme) => ({
   btnArea: {
-    textAlign: "right"
+    float: "right"
   },
   deleteBtn: {
     backgroundColor: useContext(Color).colors.grayBtn,
-    marginRight: "120px",
+    marginRight: "8rem",
     margin: "0 auto",
-    width: "80px"
+    width: "5rem"
   }
 }))
 
@@ -37,7 +37,7 @@ export default function AlertDialog(props) {
     <div className={classes.btnArea}>
       <Button
         variant="outlined"
-        color="black"
+        color="default"
         onClick={handleClickOpen}
         className={classes.deleteBtn}
       >

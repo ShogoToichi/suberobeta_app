@@ -3,7 +3,6 @@ import firebase from "firebase"
 import "firebase/storage"
 import MessageLink from "./parts/MessageLink"
 import { connect } from "react-redux"
-import Lib from "../../Lib/address_lib"
 import MyMessageListUi from "./parts/MyMessageListUi"
 
 let myMessages = "no item"
@@ -16,7 +15,7 @@ function MyMessageList(props) {
     const db = firebase.firestore()
     const myMessageItems = []
     const buyMessageItems = []
-    const email = Lib.encodeEmail(props.email)
+    const email = props.email
     //自分が作成したレッスンで現在進行中のものを取得
     if (props.login) {
       await db
@@ -53,6 +52,7 @@ function MyMessageList(props) {
                 lessonName={doc.data().lessonName}
                 username={doc.data().createrName}
                 readMessage={doc.data().buyerReadMessage} //既読判別用の値、自分が購入者のレッスンはreadMessageにbuyerReadMessageを渡す
+                key={doc.id.toString()}
               />
             )
           })

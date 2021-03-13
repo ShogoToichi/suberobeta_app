@@ -9,60 +9,53 @@ import {
   mdiMapMarkerRadiusOutline,
   mdiCurrencyUsd
 } from "@mdi/js"
+import Grid from "@material-ui/core/Grid"
+import BuyBtn from "./BuyBtn"
+import EditBtn from "./EditBtn"
 
 const plofile = makeStyles((theme) => ({
-  lessonInfo: {
-    display: "inline-block",
-    width: "70%",
-    padding: "0px 0px 40px 40px"
-  },
-  cardHeader: {
-    display: "inline-block",
-    verticalAlign: "top",
-    fontWeight: "bold",
-    marginLeft: "30px",
-    marginTop: "30px",
-    cursor: "pointer"
-  },
   cardContent: {
     width: "100%"
   },
   info: {
-    textAlign: "center",
-    marginTop: "20px",
-    margin: "0px 10px",
-    display: "inline-block",
-    width: "30%"
+    marginTop: "2rem"
   },
   descriptionTop: {
-    marginTop: "40px",
+    margin: "2rem 1rem",
     fontWeight: "bold"
   },
   description: {
-    marginTop: "30px",
+    marginTop: "2rem",
     width: "90%"
   }
 }))
 
 export default function LessonDetail(props) {
   const classes = plofile()
+
   return (
     <Card className={classes.lessonInfo}>
       <CardContent className={classes.cardContent}>
-        <Typography className={classes.info}>
-          <Icon path={mdiCalendarClock} size="30px" />
-          &emsp;{props.lessonTime}
-        </Typography>
-
-        <Typography className={classes.info}>
-          <Icon path={mdiMapMarkerRadiusOutline} size="30px" />
-          &emsp;{props.lessonPlace}
-        </Typography>
-
-        <Typography className={classes.info}>
-          <Icon path={mdiCurrencyUsd} size="30px" />
-          &emsp;{props.lessonPrice} 円
-        </Typography>
+        <Grid container spacing={1} deraction="row" justify="space-around">
+          <Grid item xs={10} sm={10} lg={3}>
+            <Typography className={classes.info}>
+              <Icon path={mdiCalendarClock} size="2rem" />
+              &emsp;{props.lessonTime}
+            </Typography>
+          </Grid>
+          <Grid item xs={10} sm={10} lg={3}>
+            <Typography className={classes.info}>
+              <Icon path={mdiMapMarkerRadiusOutline} size="2rem" />
+              &emsp;{props.lessonPlace}
+            </Typography>
+          </Grid>
+          <Grid item xs={10} sm={10} lg={3}>
+            <Typography className={classes.info}>
+              <Icon path={mdiCurrencyUsd} size="2rem" />
+              &emsp;{props.lessonPrice} 円
+            </Typography>
+          </Grid>
+        </Grid>
 
         <Typography
           variant="h6"
@@ -71,6 +64,19 @@ export default function LessonDetail(props) {
         >
           学べる内容
         </Typography>
+
+        <span style={{ position: "absolute", top: "6rem", right: "0.1rem" }}>
+          {props.isLogin ? (
+            props.buyerId == props.createrId ? (
+              <EditBtn lessonId={props.lessonId} />
+            ) : (
+              <BuyBtn onClick={props.onClick} />
+            )
+          ) : (
+            <></>
+          )}
+        </span>
+
         <Typography
           variant="body1"
           display="block"

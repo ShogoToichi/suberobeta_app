@@ -92,21 +92,26 @@ function GetImage(props) {
         previousImageName = doc.data().imageName
       })
     console.log(previousImageName)
+
     event.preventDefault()
     if (image === "") {
       console.log("ファイルが選択されていません")
+    } else if (image.size > 5 * 10 ** 6) {
+      // ファイルサイズが5MB以上の時ははじく
+      alert("ファイルサイズは5MB以下にしてください")
+    } else {
+      updatedImageName = namingImage(image.name)
+      // アップロード処理
+      const uploadTask = storage
+        .ref(`/profileImages/${updatedImageName}`)
+        .put(image)
+      uploadTask.on(
+        firebase.storage.TaskEvent.STATE_CHANGED,
+        next,
+        error,
+        complete
+      )
     }
-    updatedImageName = namingImage(image.name)
-    // アップロード処理
-    const uploadTask = storage
-      .ref(`/profileImages/${updatedImageName}`)
-      .put(image)
-    uploadTask.on(
-      firebase.storage.TaskEvent.STATE_CHANGED,
-      next,
-      error,
-      complete
-    )
   }
   const next = (snapshot) => {
     // 進行中のsnapshotを得る
@@ -141,15 +146,14 @@ function GetImage(props) {
   }, [update])
 
   return (
-    <div className="App">
-      <GetImageUi
-        onSubmit={onSubmit}
-        handleImage={handleImage}
-        upload={upload}
-        currentImageUrl={currentImageUrl}
-        imageUrl={imageUrl}
-      />
-    </div>
+    <GetImageUi
+      onSubmit={onSubmit}
+      handleImage={handleImage}
+      upload={upload}
+      currentImageUrl={currentImageUrl}
+      imageUrl={imageUrl}
+      className="App"
+    />
   )
 }
 

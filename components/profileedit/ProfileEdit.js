@@ -8,6 +8,8 @@ import Lib from "../../Lib/address_lib"
 import Title from "../commonParts/Title"
 import ProfileEditUi from "./parts/ProfileEditUi"
 import ChangeBtn from "./parts/ChangeBtn"
+import Grid from "@material-ui/core/Grid"
+import { useRouter } from "next/router"
 
 function ProfileEdit(props) {
   //使用するステートの設定,テキストフィールドの値のやつ
@@ -16,6 +18,7 @@ function ProfileEdit(props) {
 
   //初期値を入れたインプットフォームコンポーネントを入れるステート
   const [inputForm, setInputForm] = useState("")
+  const router = useRouter()
 
   const db = firebase.firestore()
   const email = Lib.encodeEmail(props.email)
@@ -66,15 +69,22 @@ function ProfileEdit(props) {
   }
 
   useEffect(() => {
+    if (!props.login) {
+      return router.push("/")
+    }
     getCurrentData()
   }, [])
 
   return (
-    <>
+    <Grid container spacing={1} direction="row" justify="center">
       <Title title={"マイプロフィール編集"} />
-      {inputForm}
-      <ChangeBtn onClick={doSubmit} />
-    </>
+      <Grid item xs={9} sm={8} lg={7}>
+        {inputForm}
+      </Grid>
+      <Grid item xs={9} sm={8} lg={7}>
+        <ChangeBtn onClick={doSubmit} />
+      </Grid>
+    </Grid>
   )
 }
 

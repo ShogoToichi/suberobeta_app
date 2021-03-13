@@ -38,6 +38,7 @@ const doRegister = async (db, email, name) => {
 function Account(props) {
   const router = useRouter()
   const dispatch = useDispatch()
+  const db = firebase.firestore()
 
   //ログイン処理
   const login = () => {
@@ -49,23 +50,29 @@ function Account(props) {
       .signInWithPopup(provider)
       //ログイン処理完了後resultで値を受け取りReduxへ
       .then(async (result) => {
-        dispatch({
-          type: "UPDATE_USER",
-          value: {
-            login: true,
-            userName: result.user.displayName,
-            email: result.user.email,
-            imageName: ""
-          }
-        })
         // 初回ログインかどうかの判断
-        const db = firebase.firestore()
         const email = Lib.encodeEmail(result.user.email)
 
         if (await isFirstLogin(db, email)) {
-          // 初回ログインの場合trueとなる
-          // データベースに初期値を入力する
+          // 初回ログインの場合データベースに初期値を入力する
           doRegister(db, email, result.user.displayName)
+        } else {
+          // 2回目以降のログインの場合データベースの中身をもってくる
+          await db
+            .collection("users")
+            .doc(email)
+            .get()
+            .then((doc) => {
+              dispatch({
+                type: "UPDATE_USER",
+                value: {
+                  login: true,
+                  userName: doc.data().profile.name,
+                  email: email,
+                  imageName: doc.data().imageName
+                }
+              })
+            })
         }
       })
     //ログイン時の処理をpropsで受け取れるようにする

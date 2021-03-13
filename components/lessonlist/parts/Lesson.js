@@ -7,7 +7,7 @@ import Link from "next/link"
 import Typography from "@material-ui/core/Typography"
 import Card from "@material-ui/core/Card"
 import CardContent from "@material-ui/core/CardContent"
-import { CardHeader } from "@material-ui/core"
+import { CardHeader, Grow } from "@material-ui/core"
 import Img from "../../commonParts/Img"
 import { Color } from "../../../static/colors"
 import Icon from "@mdi/react"
@@ -18,30 +18,24 @@ import {
   mdiTagOutline
 } from "@mdi/js"
 import Chip from "@material-ui/core/Chip"
+import Grid from "@material-ui/core/Grid"
 
 const lessonList = makeStyles((theme) => ({
   lesson: {
-    display: "inline-block",
     width: "95%",
-    margin: "10px 0px 10px 20px"
+    margin: "1rem 0rem 1rem 2rem"
   },
   img: {
-    display: "inline-block",
-    verticalAlign: "top",
     cursor: "pointer"
   },
   createrName: {
-    display: "inline-block",
-    fontSize: "15px",
-    margin: "40px 20px 0px 20px",
+    marginLeft: "2rem",
+    textAlign: "left",
     cursor: "pointer"
   },
   evaluation: {
-    display: "inline-box",
-    verticalAlign: "top",
     flexDirection: "row-reverse",
-    float: "right",
-    margin: "40px 100px 0px 0px",
+    marginLeft: "3rem",
     "& input": {
       display: "none"
     },
@@ -51,28 +45,24 @@ const lessonList = makeStyles((theme) => ({
     }
   },
   cardHeader: {
-    display: "inline-block",
-    verticalAlign: "top",
     color: useContext(Color).colors.Green,
     fontWeight: "bold",
     cursor: "pointer",
-    margin: "0px 0px 0px 70px"
+    marginLeft: "7rem"
   },
   tags: {
-    marginLeft: "70px"
+    marginLeft: "7rem",
+    marginBottom: "1rem"
   },
   tag: {
-    margin: "0px 5px",
+    margin: "0rem 0.5rem",
     color: useContext(Color).colors.Green
   },
   contents: {
-    marginLeft: "50px",
     width: "100%"
   },
   info: {
-    margin: "5px 10px 5px 10px",
-    display: "inline-block",
-    width: "30%"
+    margin: "0.5rem 1rem 0.5rem 1rem"
   }
 }))
 
@@ -80,72 +70,81 @@ export default function Lesson(props) {
   const classes = lessonList()
   return (
     <Card className={classes.lesson}>
-      <div>
+      <Grid container spacing={1} deraction="row" alignItems="center">
         <Link href={`/profile_show/${props.createrId}`}>
-          <div className={classes.img}>
+          <Grid item className={classes.img}>
             <Img src={props.createrImageUrl} size="50" />
-          </div>
+          </Grid>
         </Link>
+        <Grid item>
+          <Link href={`/profile_show/${props.createrId}`}>
+            <Typography variant="h6" className={classes.createrName}>
+              {props.createrName}
+            </Typography>
+          </Link>
+        </Grid>
+      <Grid item  className={classes.evaluation}>
+        <Typography variant="body2" className={classes.assessment}>
+          評価
+          <input id="star1" type="radio" name="star" value="5" />
+          <label for="star1">★</label>
+          <input id="star2" type="radio" name="star" value="4" />
+          <label for="star2">★</label>
+          <input id="star3" type="radio" name="star" value="3" />
+          <label for="star3">★</label>
+          <input id="star4" type="radio" name="star" value="2" />
+          <label for="star4">★</label>
+          <input id="star5" type="radio" name="star" value="1" />
+          <label for="star5">★</label>
+        </Typography>
+      </Grid>
+      </Grid>
 
-        <Link href={`/profile_show/${props.createrId}`}>
-          <Typography variant="h6" className={classes.createrName}>
-            {props.createrName}
-          </Typography>
+      <div>
+        <Link
+          as={`/lesson_info/${props.lessonId}`}
+          href="/lesson_info/[lessonId]"
+        >
+          <Typography variant="h5" className={classes.cardHeader}>{props.lessonName}</Typography>
         </Link>
-
-        <div className={classes.evaluation}>
-          <Typography variant="body2" className={classes.assessment}>
-            評価
-            <input id="star1" type="radio" name="star" value="5" />
-            <label for="star1">★</label>
-            <input id="star2" type="radio" name="star" value="4" />
-            <label for="star2">★</label>
-            <input id="star3" type="radio" name="star" value="3" />
-            <label for="star3">★</label>
-            <input id="star4" type="radio" name="star" value="2" />
-            <label for="star4">★</label>
-            <input id="star5" type="radio" name="star" value="1" />
-            <label for="star5">★</label>
-          </Typography>
-        </div>
-      </div>
-
-      <Link
-        as={`/lesson_info/${props.lessonId}`}
-        href="/lesson_info/[lessonId]"
-      >
-        <CardHeader className={classes.cardHeader} title={props.lessonName} />
-      </Link>
-      <br />
-
-      <div className={classes.tags}>
-        <Chip
-          icon={<Icon path={mdiTagOutline} size="20px" />}
-          label={props.tagLabel2}
-          clickable
-          className={classes.tag}
-        />
-        <Chip
-          icon={<Icon path={mdiTagOutline} size="20px" />}
-          label={props.tagLabel3}
-          clickable
-          className={classes.tag}
-        />
       </div>
 
       <CardContent className={classes.contents}>
-        <Typography variant="body2" className={classes.info}>
-          <Icon path={mdiCalendarClock} size="20px" />
-          &emsp;{props.lessonTime}
-        </Typography>
-        <Typography align="left" variant="body2" className={classes.info}>
-          <Icon path={mdiMapMarkerRadiusOutline} size="20px" />
-          &emsp;{props.lessonPlace}
-        </Typography>
-        <Typography variant="body2" className={classes.info}>
-          <Icon path={mdiCurrencyUsd} size="20px" />
-          &emsp;{props.lessonPrice}円
-        </Typography>
+        <div className={classes.tags}>
+          <Chip
+            icon={<Icon path={mdiTagOutline} size="1.5rem" />}
+            label={props.tagLabel2}
+            clickable
+            className={classes.tag}
+          />
+          <Chip
+            icon={<Icon path={mdiTagOutline} size="1.5rem" />}
+            label={props.tagLabel3}
+            clickable
+            className={classes.tag}
+          />
+        </div>
+
+        <Grid container spacing={1} deraction="row" justify="space-around">
+          <Grid item xs={10} sm={10} lg={3}>
+            <Typography variant="body2" className={classes.info}>
+              <Icon path={mdiCalendarClock} size="1.5rem" />
+              &emsp;{props.lessonTime}
+            </Typography>
+          </Grid>
+          <Grid item xs={10} sm={10} lg={3}>
+            <Typography align="left" variant="body2" className={classes.info}>
+              <Icon path={mdiMapMarkerRadiusOutline} size="1.5rem" />
+              &emsp;{props.lessonPlace}
+            </Typography>
+          </Grid>
+          <Grid item xs={10} sm={10} lg={3}>
+            <Typography variant="body2" className={classes.info}>
+              <Icon path={mdiCurrencyUsd} size="1.5rem" />
+              &emsp;{props.lessonPrice}円
+            </Typography>
+          </Grid>
+        </Grid>
       </CardContent>
     </Card>
   )

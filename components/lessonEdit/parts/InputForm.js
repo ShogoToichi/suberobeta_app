@@ -9,26 +9,15 @@ import { Color } from "../../../static/colors"
 
 const inputForm = makeStyles((theme) => ({
   inputForm: {
-    marginTop: "50px",
-    width: "80%",
-    margin: "0 auto"
+    marginTop: "3rem"
   },
   contents: {
-    marginTop: "20px"
+    marginTop: "1.2rem"
   },
   detailInfo: {
-    marginTop: "20px",
+    marginTop: "1.2rem",
     margin: "0 auto"
   },
-  btnArea: {
-    textAlign: "center"
-  },
-  addBtn: {
-    backgroundColor: useContext(Color).colors.bgGreen,
-    marginTop: "10px",
-    margin: "0 auto",
-    width: "200px"
-  }
 }))
 
 export default function InputForm(props) {
@@ -36,7 +25,7 @@ export default function InputForm(props) {
   return (
     <div className={classes.inputForm}>
       <div>
-        <Typography className={classes.inputTitle} variant="h8">
+        <Typography className={classes.inputTitle} variant="body1">
           レッスンに関する情報を入力してください。
         </Typography>
         <TextField
@@ -44,6 +33,7 @@ export default function InputForm(props) {
           defaultValue={props.lessonName}
           id="standard-textarea"
           label="レッスン名"
+          multiline
           fullWidth
           onChange={props.onChangeLessonName}
           className={classes.contents}
@@ -53,6 +43,7 @@ export default function InputForm(props) {
           defaultValue={props.lessonTime}
           id="standard-textarea"
           label="日時"
+          multiline
           fullWidth
           onChange={props.onChangeLessonTime}
           className={classes.contents}
@@ -62,6 +53,7 @@ export default function InputForm(props) {
           defaultValue={props.lessonPlace}
           id="standard-textarea"
           label="場所"
+          multiline
           fullWidth
           onChange={props.onChangeLessonPlace}
           className={classes.contents}
@@ -71,6 +63,7 @@ export default function InputForm(props) {
           defaultValue={props.lessonPrice}
           id="standard-textarea"
           label="料金"
+          multiline
           fullWidth
           onChange={props.onChangeLessonPrice}
           className={classes.contents}

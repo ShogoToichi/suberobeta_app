@@ -5,8 +5,6 @@ import Grid from "@material-ui/core/Grid"
 import { Color } from "../../../static/colors"
 import DescriptionData from "./DescriptionData"
 import MediaQuery from "react-responsive"
-import Card from "@material-ui/core/Card"
-import { Container } from "next/app"
 
 const topTitle = makeStyles((theme) => ({
   mainTitle: {
@@ -14,7 +12,8 @@ const topTitle = makeStyles((theme) => ({
     textWeight: "bold",
     textAlign: "center",
     marginBottom: "50px",
-    marginTop: "20px"
+    marginTop: "70px",
+    fontSize: "2.2rem"
     // "@media (max-width: 600px)": {
     //   fontSize: "4rem"
     //   // color: "blue"
@@ -52,21 +51,24 @@ export default function Description(props) {
         spacing={1}
         // className={classes.descriptions}
       >
-        <Grid item xs={12} sm={3} className={classes.content}>
+        <Grid item xs={10} sm={7} lg={3} className={classes.content}>
           <DescriptionData
             title={"自分に合ったレッスン"}
             content1={
               "ジャンル、レベル、場所、時間など目的に合ったレッスンを受けることができます。"
             }
+            src="../../../static/topcard1.jpg"
             content2={"現地集合・現地解散で気軽にレッスンを受けてみましょう。"}
             herf={"/lesson_list"}
             btnName={"レッスン一覧"}
+            key={"1"}
           />
         </Grid>
 
-        <Grid item xs={12} sm={3}>
+        <Grid item xs={10} sm={7} lg={3}>
           <DescriptionData
             title={"自分の身に着けた技術を共有"}
+            src="../../../static/topcard2.jpg"
             content1={
               "磨いてきた技術・理論を周りに共有してスキー・スノーボードの輪を広めよう。"
             }
@@ -75,17 +77,22 @@ export default function Description(props) {
             }
             herf={"/lesson_add"}
             btnName={"レッスンを作る"}
+            key={"2"}
           />
         </Grid>
-        <Grid item xs={12} sm={3}>
+        <Grid item xs={10} sm={7} lg={3}>
           <DescriptionData
             title={"リーズナブル"}
+            src="../../../static/topcard3.jpg"
             content1={
-              "スノースクールなどの企業ではなく、個人同士で納得した金額でレッスンを契約するため比較的リーズナブルに教えてもらうことができます。"
+              "スノースクールなどの企業ではなく、個人同士で納得した金額でレッスンを契約します。"
             }
-            content2={""}
+            content2={
+              "そのため、比較的リーズナブルに教えてもらうことができます。"
+            }
             herf={"/lesson_list"}
             btnName={"レッスンを探す"}
+            key={"3"}
           />
         </Grid>
       </Grid>

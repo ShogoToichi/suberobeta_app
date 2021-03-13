@@ -11,7 +11,7 @@ const getImage = makeStyles((theme) => ({
     color: "white"
   },
   img: {
-    margin: "20px 0px 0px 20px"
+    margin: "1rem 0rem 0rem 1rem"
   }
 }))
 

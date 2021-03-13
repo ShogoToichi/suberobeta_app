@@ -1,53 +1,52 @@
 import React from "react"
+import { makeStyles } from "@material-ui/core/styles"
 import Img from "../../commonParts/Img"
+import Grid from "@material-ui/core/Grid"
+import { Typography } from "@material-ui/core"
 
-export default function Chat(props) {
-  const userImg = {
-    display: "inline-block",
-    position: "absolute",
-    top: "50px",
-    left: "10px"
-  }
-
-  const userName = {
-    display: "inline-block",
-    width: "200px",
-    padding: "0px 0px 5px 5px",
-    margin: "20px 0px 2px 60px",
-    fontSize: "22px"
-  }
-  const style = {
+const chat = makeStyles((theme) => ({
+  chat: {
+    margin: "10px 0px"
+  },
+  content: {
     // border:"solid 1px #DDD",
     backgroundColor: "#E0E0E0",
     borderRadius: "7px",
-    height: "40px",
+    height: "30px",
     verticalAlign: "middle",
     padding: "10px 20px 0px 20px",
-    fontSize: "20px",
     display: "inline-block",
     marginBottom: "10px",
-    marginLeft: "68px"
+    marginLeft: "20px"
   }
-  const ImgDiv = {
-    display: "inline-block",
-    width: "30px",
-    position: "absolute",
-    top: "14px",
-    left: "10px"
-  }
-  const chatDiv = {
-    position: "relative"
-  }
+}))
+
+export default function Chat(props) {
+  const classes = chat()
 
   return (
-    <div style={chatDiv}>
-      <div style={ImgDiv}>
-        <Img src={props.imageUrl} size="45" />
-      </div>
-      <p style={userName}>{props.userName}</p>
-      <br></br>
-      <div style={style}>{props.text}</div>
-      <br />
-    </div>
+    <Grid
+      container
+      direction="row"
+      justify="flex-start"
+      alignItems="flex-start"
+      className={classes.chat}
+    >
+      <Grid className={classes.img}>
+        <Img src={props.imageUrl} size="60" />
+      </Grid>
+      <Grid item xs container direction="column" spacing={2}>
+        <Grid item>
+          <Typography variant="body1" className={classes.userName}>
+            {props.userName}
+          </Typography>
+        </Grid>
+        <Grid item>
+          <Typography variant="body1" className={classes.content}>
+            {props.text}
+          </Typography>
+        </Grid>
+      </Grid>
+    </Grid>
   )
 }

@@ -2,14 +2,11 @@ import React, { useState, useEffect } from "react"
 import firebase from "firebase"
 import { useRouter } from "next/router"
 import { connect } from "react-redux"
-import Lib from "../../Lib/address_lib"
-import BuyBtn from "./parts/BuyBtn"
 import LessonDetail from "./parts/LessonDetail"
-import creatorInfo from "./CreaterInfo"
 import Title from "../commonParts/Title"
-import EditBtn from "./parts/EditBtn"
 import CreatorInfo from "./CreaterInfo"
 import getProfileImageUrl from "../commonParts/getProfileImageUrl"
+import Grid from "@material-ui/core/Grid"
 
 let createrId = ""
 let createrName = ""
@@ -22,22 +19,22 @@ let lessonDescription = ""
 let lessonTime = ""
 let lessonData = ""
 let userData = ""
+let lessonId
 
 function LessonInfo(props) {
-  const email = Lib.encodeEmail(props.email)
-
   //強制レンダリング用ステート
   const [update, setUpdata] = useState(false)
-
-  const db = firebase.firestore()
   const router = useRouter()
+  const db = firebase.firestore()
+  const email = props.email
 
   //lessondata及びlessoncreaterのprofileを取得
   const getLessonData = async () => {
     //router.query.lessonidでページのurlの末尾を取得
+    lessonId = router.query.lessonid
     await db
       .collection("lessons")
-      .doc(router.query.lessonid)
+      .doc(lessonId)
       .get()
       //取得したデータをlessondataにしまってから、それを変数に突っ込む
       .then((doc) => {
@@ -45,7 +42,7 @@ function LessonInfo(props) {
         createrId = lessonData.createrId
         lessonName = lessonData.lessonName
         lessonPlace = lessonData.lessonPlace
-        lessonTime = lessonData.lessonTime
+        lessonTime = lessonData.lessonTime.split("T").join(" ")
         lessonPrice = lessonData.lessonPrice
         lessonDescription = lessonData.lessonDescription
       })
@@ -62,6 +59,12 @@ function LessonInfo(props) {
         createrImageUrl = await getProfileImageUrl(userData.imageName)
       })
 
+    //関数の最後で強制的にレンダリング
+    setUpdata(update ? false : true)
+  }
+
+  //firebaseのmessagesに必要な情報を書き込む
+  const doBuy = async () => {
     //購入したときに購入者の名前もfirebaseに書き込みたいから取得する
     await db
       .collection("users")
@@ -71,14 +74,8 @@ function LessonInfo(props) {
         buyerName = doc.data().profile.name
       })
 
-    //関数の最後で強制的にレンダリング
-    setUpdata(update ? false : true)
-  }
-
-  //firebaseのmessagesに必要な情報を書き込む
-  const doBuy = async () => {
     await db.collection("messages").add({
-      lessonId: router.query.lessonid,
+      lessonId: lessonId,
       buyerId: email,
       buyerName: buyerName,
       createrId: createrId,
@@ -89,6 +86,7 @@ function LessonInfo(props) {
       buyerReadMessage: true,
       trading: true //取引中かどうかの真偽値、メッセージ検索で使用中
     })
+    router.push(`/message/${lessonId}/${email}`)
   }
 
   useEffect(() => {
@@ -96,13 +94,15 @@ function LessonInfo(props) {
   }, [])
 
   return (
-    <div>
+    <Grid container spacing={1} direction="row" justify="center">
       {/* クリエーターIDとじぶんのIDが一致していたらレッスン編集ボタンを表示 */}
 
       <Title title={lessonName} />
 
-      <div style={{position: "relative"}}>
+      <Grid item xs={10} sm={10} md={2} lg={2}>
         <CreatorInfo />
+      </Grid>
+      <Grid item xs={10} sm={10} md={7} lg={7}>
         <LessonDetail
           createrImageUrl={createrImageUrl}
           createrName={createrName}
@@ -111,20 +111,14 @@ function LessonInfo(props) {
           lessonTime={lessonTime}
           lessonDescription={lessonDescription}
           userId={createrId}
-          />
-          <span style={{position: "absolute", right: "80px", top: "100px"}}>
-            {email == createrId ? (
-              <EditBtn lessonId={router.query.lessonid} />
-            ) : (
-              <BuyBtn
-                lessonId={router.query.lessonid}
-                buyerId={email}
-                onClick={doBuy}
-              />
-            )}
-          </span>
-      </div>
-    </div>
+          lessonId={lessonId}
+          buyerId={email}
+          createrId={createrId}
+          isLogin={props.login}
+          onClick={doBuy}
+        />
+      </Grid>
+    </Grid>
   )
 }
 
