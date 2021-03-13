@@ -66,14 +66,14 @@ export default function LessonDetail(props) {
 
         {/* remで調整 */}
         <span style={{ position: "absolute", top: "100px", right: "10px" }}>
-          {props.buyerId == props.createrId ? (
-            <EditBtn lessonId={props.lessonId} />
+          {props.login ? (
+            props.buyerId == props.createrId ? (
+              <EditBtn lessonId={props.lessonId} />
+            ) : (
+              <BuyBtn onClick={props.onClick} />
+            )
           ) : (
-            <BuyBtn
-              lessonId={props.lessonId}
-              buyerId={props.buyerId}
-              onClick={props.onClick}
-            />
+            <></>
           )}
         </span>
 

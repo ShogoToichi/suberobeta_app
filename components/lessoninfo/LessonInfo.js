@@ -19,6 +19,7 @@ let lessonDescription = ""
 let lessonTime = ""
 let lessonData = ""
 let userData = ""
+let lessonId
 
 function LessonInfo(props) {
   //強制レンダリング用ステート
@@ -30,9 +31,10 @@ function LessonInfo(props) {
   //lessondata及びlessoncreaterのprofileを取得
   const getLessonData = async () => {
     //router.query.lessonidでページのurlの末尾を取得
+    lessonId = router.query.lessonid
     await db
       .collection("lessons")
-      .doc(router.query.lessonid)
+      .doc(lessonId)
       .get()
       //取得したデータをlessondataにしまってから、それを変数に突っ込む
       .then((doc) => {
@@ -73,7 +75,7 @@ function LessonInfo(props) {
   //firebaseのmessagesに必要な情報を書き込む
   const doBuy = async () => {
     await db.collection("messages").add({
-      lessonId: router.query.lessonid,
+      lessonId: lessonId,
       buyerId: email,
       buyerName: buyerName,
       createrId: createrId,
@@ -84,6 +86,7 @@ function LessonInfo(props) {
       buyerReadMessage: true,
       trading: true //取引中かどうかの真偽値、メッセージ検索で使用中
     })
+    router.push(`/message/${lessonId}/${email}`)
   }
 
   useEffect(() => {
@@ -108,7 +111,7 @@ function LessonInfo(props) {
           lessonTime={lessonTime}
           lessonDescription={lessonDescription}
           userId={createrId}
-          lessonId={router.query.lessonid}
+          lessonId={lessonId}
           buyerId={email}
           createrId={createrId}
           onClick={doBuy}

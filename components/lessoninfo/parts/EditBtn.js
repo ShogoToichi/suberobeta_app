@@ -8,7 +8,6 @@ import Typography from "@material-ui/core/Typography"
 const plofile = makeStyles((theme) => ({
   editBtn: {
     fontWeight: "bold",
-    marginBottom: "15px",
     backgroundColor: useContext(Color).colors.bgGreen
   }
 }))
