@@ -71,7 +71,7 @@ function ProfileEdit(props) {
   }, [])
 
   return (
-    <Grid container spacing={1} deraction="row" justify="center">
+    <Grid container spacing={1} direction="row" justify="center">
       <Title title={"マイプロフィール編集"} />
       <Grid item xs={9} sm={8} lg={7}>
         {inputForm}

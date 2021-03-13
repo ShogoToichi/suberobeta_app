@@ -35,11 +35,9 @@ const TopPage = () => {
   return (
     <div>
       <Grid container direction="column" justify="flex-start">
-        {/* <div className={classes.body}> */}
         <Grid item className={classes.body}>
           <Caption />
         </Grid>
-        {/* </div> */}
         <Grid item>
           <Card className={classes.contents}>
             <Description />

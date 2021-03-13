@@ -17,7 +17,7 @@ export default function AddButton(props) {
       <Button
         variant="outlined"
         onClick={props.onClick}
-        disabled={props.disabled}
+        // disabled={props.disabled}
       >
         送信
       </Button>

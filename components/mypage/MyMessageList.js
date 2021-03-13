@@ -53,6 +53,7 @@ function MyMessageList(props) {
                 lessonName={doc.data().lessonName}
                 username={doc.data().createrName}
                 readMessage={doc.data().buyerReadMessage} //既読判別用の値、自分が購入者のレッスンはreadMessageにbuyerReadMessageを渡す
+                key={doc.id.toString()}
               />
             )
           })
