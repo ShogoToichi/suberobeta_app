@@ -9,7 +9,7 @@ import { fireReducer } from "./store"
 const persistConfig = {
   key: "root", // Storageに保存されるキー名を指定する，とりあえず例のままのroot
   storage, // 保存先としてlocalStorageがここで設定される
-  whitelist: ["login", "username", "email", "imageurl"] // Storageに保存するstateを指定
+  whitelist: ["login", "userName", "email", "imageName"] // Storageに保存するstateを指定
   // blacklist: ['visibilityFilter']  // 保存しない設定?
 }
 

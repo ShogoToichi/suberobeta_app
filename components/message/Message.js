@@ -5,7 +5,6 @@
 import React, { useEffect, useState } from "react"
 import firebase from "firebase"
 import { useRouter } from "next/router"
-import Lib from "../../Lib/address_lib"
 import { connect } from "react-redux"
 import MessageAdd from "./MessageAdd"
 import Chat from "./parts/Chat"
@@ -29,7 +28,7 @@ function Message(props) {
   const messageItems = []
 
   const router = useRouter()
-  const email = Lib.encodeEmail(props.email)
+  const email = props.email
   const buyerId = router.query.buyerid
   const db = firebase.firestore()
 
@@ -129,6 +128,9 @@ function Message(props) {
   }
 
   useEffect(() => {
+    if (!props.login) {
+      return router.push("/")
+    }
     getMessageData()
   })
 

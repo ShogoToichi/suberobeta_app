@@ -106,6 +106,9 @@ function LessonAdd(props) {
   }
 
   useEffect(() => {
+    if (!props.login) {
+      return router.push("/")
+    }
     getCreaterImage()
   }, [])
 
