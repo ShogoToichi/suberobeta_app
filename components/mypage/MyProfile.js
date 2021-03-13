@@ -17,7 +17,6 @@ function MyProfile(props) {
   const getFireData = async () => {
     const db = firebase.firestore()
     // emailにReduxからユーザーのemailを取得
-    console.log(props.login, "どうかな？")
     const email = props.email
     // emailでfirebaseを参照
     await db

@@ -43,7 +43,6 @@ const searchcarddetail = makeStyles((theme) => ({
     // zIndex: "1"
   },
   title: {
-
     display: "block",
     fontWeight: "bold",
     margin: "1rem 1rem 1rem 1rem"
@@ -67,17 +66,15 @@ const searchcarddetail = makeStyles((theme) => ({
     // width: "20%"
   },
   categorySummary: {
-    height: "0.8rem",
+    // height: "0.8rem"
   },
   categorys: {
-
-    width: "80%",
-    margin: "1rem 2rem"
+    // width: "80%"
+    // margin: "1rem 2rem"
   },
   category: {
-    height: "1rem",
-    padding: "0.5rem",
-
+    // height: "1rem",
+    // padding: "0.5rem"
     // width: "80%",
     // margin: "10px 30px"
   },
@@ -85,10 +82,10 @@ const searchcarddetail = makeStyles((theme) => ({
     // height: "20px",
     // padding: "2px",
     // margin: "0px 10px",
-    cursor: "pointer",
-    "&:hover": {
-      backgroundColor: "rgba(230, 256, 230, 0.75)"
-    }
+    // cursor: "pointer",
+    // "&:hover": {
+    // backgroundColor: "rgba(230, 256, 230, 0.75)"
+    // }
   },
   tag: {
     margin: "0.5rem 0.8rem",
@@ -137,83 +134,44 @@ export default function SearchCardDetail(props) {
           </Grid>
         </Grid>
         <Grid item>
-          <Grid container direction="column">
+          <Grid
+            container
+            direction="column"
+            className={classes.otherSearchContainer}
+          >
             <Grid item>
-              <Typography
-                variant="body1"
-                className={classes.title}
-                className={classes.otherSearchContainer}
-              >
+              <Typography variant="body1" className={classes.title}>
                 カテゴリから探す
               </Typography>
             </Grid>
-            <Grid item>
+            <Grid item className={classes.categorys}>
               <FormControl className={classes.formControl}>
-                <InputLabel></InputLabel>
+                <InputLabel>
+                  <Typography>カテゴリ一覧</Typography>
+                </InputLabel>
                 <Select
-                // Todo: 検索未実装
-                // value={"age"}
-                // onChange={handleChange}
+                  // Todo: 検索未実装
+                  // value={"age"}
+                  // onChange={handleChange}
+                  className={classes.categorySummary}
                 >
-                  <MenuItem>カービング</MenuItem>
-                  <MenuItem>グランドトリック</MenuItem>
-                  <MenuItem>パーク</MenuItem>
-                  <MenuItem>バックカントリー</MenuItem>
+                  <MenuItem className={classes.category}>
+                    <Typography>カービング</Typography>
+                  </MenuItem>
+                  <MenuItem className={classes.category}>
+                    <Typography>グランドトリック</Typography>
+                  </MenuItem>
+                  <MenuItem className={classes.category}>
+                    <Typography>パーク</Typography>
+                  </MenuItem>
+                  <MenuItem className={classes.category}>
+                    <Typography>バックカントリー</Typography>
+                  </MenuItem>
                 </Select>
               </FormControl>
             </Grid>
           </Grid>
         </Grid>
-
-      <div className={classes.otherSearchContainer}>
-        <Typography variant="body1" className={classes.title}>
-          カテゴリ
-        </Typography>
-        <div className={classes.categorys}>
-          <Accordion variant="outlined">
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              className={classes.categorySummary}
-            >
-              <Typography>カテゴリ一覧</Typography>
-            </AccordionSummary>
-            <AccordionDetails className={classes.category}>
-              <Typography>カービング</Typography>
-            </AccordionDetails>
-            <AccordionDetails className={classes.category}>
-              <Typography>グランドトリック</Typography>
-            </AccordionDetails>
-            <AccordionDetails className={classes.category}>
-              <Typography>パーク</Typography>
-            </AccordionDetails>
-            <AccordionDetails className={classes.category}>
-              <Typography>バックカントリー</Typography>
-            </AccordionDetails>
-          </Accordion>
-        </div>
-
-        <Typography variant="body1" className={classes.title}>
-          タグ
-        </Typography>
-        <Chip
-          icon={<Icon path={mdiTagOutline} size="20px" />}
-          label={props.tagLabel1}
-          clickable
-          className={classes.tag}
-        />
-        <Chip
-          icon={<Icon path={mdiTagOutline} size="20px" />}
-          label={props.tagLabel2}
-          clickable
-          className={classes.tag}
-        />
-        <Chip
-          icon={<Icon path={mdiTagOutline} size="20px" />}
-          label={props.tagLabel3}
-          clickable
-          className={classes.tag}
-        />
-      </div>
         <Grid item>
           <Typography variant="body1" className={classes.title}>
             タグ
