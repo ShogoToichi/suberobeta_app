@@ -23,7 +23,7 @@ import Grid from "@material-ui/core/Grid"
 const lessonList = makeStyles((theme) => ({
   lesson: {
     width: "95%",
-    margin: "1rem 0rem 1rem 2rem"
+    margin: "0rem 0rem 1rem 0rem"
   },
   img: {
     cursor: "pointer"
@@ -52,7 +52,7 @@ const lessonList = makeStyles((theme) => ({
   },
   tags: {
     marginLeft: "7rem",
-    marginBottom: "1rem"
+    marginBottom: "0.5rem"
   },
   tag: {
     margin: "0rem 0.5rem",
@@ -62,7 +62,7 @@ const lessonList = makeStyles((theme) => ({
     width: "100%"
   },
   info: {
-    margin: "0.5rem 1rem 0.5rem 1rem"
+    margin: "0.1rem 1rem 0.1rem 1rem"
   }
 }))
 

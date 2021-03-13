@@ -4,6 +4,9 @@ import Lesson from "./parts/Lesson"
 import Title from "../commonParts/Title"
 import SearchCard from "./SearchCard"
 import Grid from "@material-ui/core/Grid"
+import Typography from "@material-ui/core/Typography"
+import { Hidden } from "@material-ui/core"
+
 
 const LessonList = () => {
   //ステートの設定
@@ -48,18 +51,27 @@ const LessonList = () => {
   }, [])
 
   return (
-    <Grid container spacing={2} deraction="row" justify="center">
+    <>
       <Title
         title={"レッスン一覧"}
         subTitle={"時間や場所、レベルなど自分に合ったレッスンを見つけよう"}
       />
-      <Grid item xs={11} sm={9} lg={3}>
-        <SearchCard searchingSkiResortName="" />
+      <Grid container spacing={2} deraction="row" justify="center">
+        <Grid item xs={11} sm={10} lg={3}>
+          <SearchCard searchingSkiResortName="" />
+        </Grid>
+        <Hidden lgUp>
+          <Grid item xs={8}>
+            <Typography variant="h5" style={{ marginTop: "2rem", fontWeight: "bold" }}>
+              新着のレッスン
+            </Typography>
+          </Grid>
+        </Hidden>
+        <Grid item xs={11} sm={10} lg={7}>
+          {items}
+        </Grid>
       </Grid>
-      <Grid item xs={12} sm={10} lg={7}>
-        {items}
-      </Grid>
-    </Grid>
+    </>
   )
 }
 
