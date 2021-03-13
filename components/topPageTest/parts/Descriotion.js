@@ -14,14 +14,6 @@ const topTitle = makeStyles((theme) => ({
     marginBottom: "50px",
     marginTop: "70px",
     fontSize: "2.2rem"
-    // "@media (max-width: 600px)": {
-    //   fontSize: "4rem"
-    //   // color: "blue"
-    // },
-    // "@media (min-width: 601px)": {
-    //   fontSize: "2rem"
-    //   // color: "red"
-    // }
   },
   descriptions: {
     margin: theme.spacing(1)
@@ -58,7 +50,7 @@ export default function Description(props) {
               "ジャンル、レベル、場所、時間など目的に合ったレッスンを受けることができます。"
             }
             src="../../../static/topcard1.jpg"
-            content2={"現地集合・現地解散で気軽にレッスンを受けてみましょう。"}
+            content2={"現地集合・現地解散で気軽にスキー・スノーボードレッスンを受けてみましょう。"}
             herf={"/lesson_list"}
             btnName={"レッスン一覧"}
             key={"1"}

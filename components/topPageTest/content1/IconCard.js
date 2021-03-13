@@ -1,41 +1,52 @@
-import React from "react"
+import React, { useContext } from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import Card from "@material-ui/core/Card"
-import CardActions from "@material-ui/core/CardActions"
 import CardContent from "@material-ui/core/CardContent"
-import CardHeader from "@material-ui/core/CardHeader"
+import { Typography } from "@material-ui/core"
+import { Color } from "../../../static/colors"
+import Img from "../../commonParts/Img"
 
 const Styles = makeStyles((theme) => ({
   card: {
-    width: "20rem"
+    width: "30rem"
   },
-  cardContent: {
-    // backgroundColor: "red"
+  cardtitle: {
+    fontWeight: "bold",
+    marginTop: "1rem",
+    "& span": {
+      color: useContext(Color).colors.header
+    }
   },
-  cardNumber: {
-    fontSize: "2rem"
-  }
+  cardDescription: {}
 }))
 
-// TODO: iconの設定なり
 
 const IconCard = (props) => {
   const classes = Styles()
   return (
     <Card className={classes.card}>
-      <CardHeader
-        title={props.title}
-        titleTypographyProps={{ align: "center" }}
-      />
-      <CardContent className={classes.cardContent}>
-        <Grid container direction="row" justify="center" alignItems="flex-end">
-          <Grid item className={classes.cardNumber}>
-            {props.number}
-          </Grid>
-          <Grid item>{props.unit}</Grid>
+      <Grid container direction="row">
+        <Grid item xs={4} lg={3}>
+          <Img src={props.src} size={80} className={classes.cardImg} />
         </Grid>
-      </CardContent>
+        <Grid item xs={8} lg={8}>
+          <Grid container direction="colum" alignItems="flex-end">
+            <Grid item>
+              <Typography variant="body1" className={classes.cardTitle}>
+                <span>{props.stepNumber}.</span> {props.title}
+              </Typography>
+            </Grid>
+            <Grid item>
+              <CardContent className={classes.cardContent}>
+                <Typography variant="body2" className={classes.cardDescription}>
+                  {props.description}
+                </Typography>
+              </CardContent>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
     </Card>
   )
 }
