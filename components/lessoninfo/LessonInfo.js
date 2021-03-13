@@ -2,12 +2,8 @@ import React, { useState, useEffect } from "react"
 import firebase from "firebase"
 import { useRouter } from "next/router"
 import { connect } from "react-redux"
-import Lib from "../../Lib/address_lib"
-import BuyBtn from "./parts/BuyBtn"
 import LessonDetail from "./parts/LessonDetail"
-import creatorInfo from "./CreaterInfo"
 import Title from "../commonParts/Title"
-import EditBtn from "./parts/EditBtn"
 import CreatorInfo from "./CreaterInfo"
 import getProfileImageUrl from "../commonParts/getProfileImageUrl"
 import Grid from "@material-ui/core/Grid"
@@ -25,13 +21,11 @@ let lessonData = ""
 let userData = ""
 
 function LessonInfo(props) {
-  const email = Lib.encodeEmail(props.email)
-
   //強制レンダリング用ステート
   const [update, setUpdata] = useState(false)
-
-  const db = firebase.firestore()
   const router = useRouter()
+  const db = firebase.firestore()
+  const email = props.email
 
   //lessondata及びlessoncreaterのprofileを取得
   const getLessonData = async () => {
@@ -97,15 +91,15 @@ function LessonInfo(props) {
   }, [])
 
   return (
-    <Grid container spacing={1} deraction="row" justify="center">
+    <Grid container spacing={1} direction="row" justify="center">
       {/* クリエーターIDとじぶんのIDが一致していたらレッスン編集ボタンを表示 */}
 
       <Title title={lessonName} />
 
-      <Grid item xs={8} sm={4} lg={2}>
+      <Grid item xs={10} sm={10} md={2} lg={2}>
         <CreatorInfo />
       </Grid>
-      <Grid item xs={10} sm={10} lg={7} style={{ position: "relative" }}>
+      <Grid item xs={10} sm={10} md={7} lg={7}>
         <LessonDetail
           createrImageUrl={createrImageUrl}
           createrName={createrName}

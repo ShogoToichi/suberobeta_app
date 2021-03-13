@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react"
 import firebase from "firebase"
 import "firebase/storage"
 import { connect } from "react-redux"
-import Lib from "../../Lib/address_lib"
 import MyProfileUi from "./parts/MyProfileUi"
 import getProfileImageUrl from "../commonParts/getProfileImageUrl"
 
@@ -16,7 +15,7 @@ function MyProfile(props) {
   const getFireData = async () => {
     const db = firebase.firestore()
     // emailにReduxからユーザーのemailを取得
-    const email = Lib.encodeEmail(props.email)
+    const email = props.email
     // emailでfirebaseを参照
     await db
       .collection("users")
