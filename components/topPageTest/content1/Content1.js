@@ -12,11 +12,7 @@ const styles = makeStyles((theme) => ({
     marginBottom: "0.5rem",
     textAlign: "center",
     marginTop: "6rem",
-    fontSize: "2.2rem",
-    "& span": {
-      color: "black",
-      fontWeight: "bold"
-    }
+    fontSize: "2.2rem"
   },
   subTitle: {
     fontSize: "1.2rem",
@@ -33,9 +29,7 @@ const Content1 = () => {
     <>
       <Grid container direction="row" justify="center" alignItems="center">
         <Grid item xs={12}>
-          <Typography className={classes.mainTitle}>
-            <span>subero</span>ご利用の流れ
-          </Typography>
+          <Typography className={classes.mainTitle}>ご利用の流れ</Typography>
         </Grid>
         <Grid item xs={10}>
           <Typography className={classes.subTitle}>

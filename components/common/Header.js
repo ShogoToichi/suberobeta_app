@@ -109,6 +109,7 @@ function Header(props) {
                 レッスン一覧
               </Button>
             </MenuItem>
+            
             <MenuItem onClick={handleClose}>
               {props.login ? (
                 <>
