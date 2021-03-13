@@ -4,10 +4,9 @@ import Box from "@material-ui/core/Box"
 import Typography from "@material-ui/core/Typography"
 import { Color } from "../../../static/colors"
 
-
 const myLessonList = makeStyles((theme) => ({
   list: {
-    marginTop: "40px",
+    marginTop: "2rem"
   },
   box: {
     color: "white",
