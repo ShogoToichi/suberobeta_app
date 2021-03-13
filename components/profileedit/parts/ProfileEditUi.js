@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React from "react"
 import GetImage from "../GetImage"
 import { makeStyles } from "@material-ui/styles"
 import Typography from "@material-ui/core/Typography"
@@ -7,21 +7,21 @@ import Grid from "@material-ui/core/Grid"
 
 const profileEdit = makeStyles((props) => ({
   name: {
-    marginTop: "40px",
-    marginLeft: "20px"
+    marginTop: "2rem",
+    marginLeft: "1rem"
   },
   TextField: {
-    margin: "20px"
+    margin: "1rem"
   },
   uploadText: {
-    marginTop: "40px",
-    marginLeft: "20px"
+    marginTop: "2rem",
+    marginLeft: "1rem"
   },
   upload: {
-    marginLeft: "80px"
+    marginLeft: "6rem"
   },
   plofile: {
-    marginTop: "40px",
+    marginTop: "2rem",
     width: "80%"
   }
 }))

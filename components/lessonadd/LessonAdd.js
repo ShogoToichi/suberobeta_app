@@ -25,6 +25,9 @@ function LessonAdd(props) {
     setLessonName(e.target.value)
   }
   const doChangeLessonPlace = (e) => {
+
+    setLessonPlace(e.target.value)
+
     setLessonPlace(e.target.textContent)
   }
   const doChangeLessonTime = (e) => {

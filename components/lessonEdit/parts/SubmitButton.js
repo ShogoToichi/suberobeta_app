@@ -10,9 +10,9 @@ const inputForm = makeStyles((theme) => ({
   },
   addBtn: {
     backgroundColor: useContext(Color).colors.bgGreen,
-    marginTop: "10px",
+    marginTop: "0.6rem",
     margin: "0 auto",
-    width: "200px"
+    width: "10rem"
   }
 }))
 

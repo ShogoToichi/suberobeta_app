@@ -18,6 +18,8 @@ import Select from "@material-ui/core/Select"
 
 const searchcarddetail = makeStyles((theme) => ({
   card: {
+    // position: "relative",
+    // height: "400px"
     backgroundColor: "#EEE",
     // position: "relative",
     height: "20rem"
@@ -41,6 +43,18 @@ const searchcarddetail = makeStyles((theme) => ({
     // zIndex: "1"
   },
   title: {
+
+    display: "block",
+    fontWeight: "bold",
+    margin: "1rem 1rem 1rem 1rem"
+  },
+  searchPaper: {
+    width: "80%",
+    margin: "1rem 2rem",
+    padding: "0rem 1rem"
+  },
+  InputBase: {
+    width: "80%",
     fontWeight: "bold"
     // margin: "1.2rem 0.6px 0 0.6rem"
   },
@@ -52,7 +66,18 @@ const searchcarddetail = makeStyles((theme) => ({
   searchbtn: {
     // width: "20%"
   },
+  categorySummary: {
+    height: "0.8rem",
+  },
   categorys: {
+
+    width: "80%",
+    margin: "1rem 2rem"
+  },
+  category: {
+    height: "1rem",
+    padding: "0.5rem",
+
     // width: "80%",
     // margin: "10px 30px"
   },
@@ -62,10 +87,11 @@ const searchcarddetail = makeStyles((theme) => ({
     // margin: "0px 10px",
     cursor: "pointer",
     "&:hover": {
-      backgroundColor: "#0FF"
+      backgroundColor: "rgba(230, 256, 230, 0.75)"
     }
   },
   tag: {
+    margin: "0.5rem 0.8rem",
     // margin: "5px 10px",
     color: useContext(Color).colors.Green
   }
@@ -139,6 +165,55 @@ export default function SearchCardDetail(props) {
           </Grid>
         </Grid>
 
+      <div className={classes.otherSearchContainer}>
+        <Typography variant="body1" className={classes.title}>
+          カテゴリ
+        </Typography>
+        <div className={classes.categorys}>
+          <Accordion variant="outlined">
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              className={classes.categorySummary}
+            >
+              <Typography>カテゴリ一覧</Typography>
+            </AccordionSummary>
+            <AccordionDetails className={classes.category}>
+              <Typography>カービング</Typography>
+            </AccordionDetails>
+            <AccordionDetails className={classes.category}>
+              <Typography>グランドトリック</Typography>
+            </AccordionDetails>
+            <AccordionDetails className={classes.category}>
+              <Typography>パーク</Typography>
+            </AccordionDetails>
+            <AccordionDetails className={classes.category}>
+              <Typography>バックカントリー</Typography>
+            </AccordionDetails>
+          </Accordion>
+        </div>
+
+        <Typography variant="body1" className={classes.title}>
+          タグ
+        </Typography>
+        <Chip
+          icon={<Icon path={mdiTagOutline} size="20px" />}
+          label={props.tagLabel1}
+          clickable
+          className={classes.tag}
+        />
+        <Chip
+          icon={<Icon path={mdiTagOutline} size="20px" />}
+          label={props.tagLabel2}
+          clickable
+          className={classes.tag}
+        />
+        <Chip
+          icon={<Icon path={mdiTagOutline} size="20px" />}
+          label={props.tagLabel3}
+          clickable
+          className={classes.tag}
+        />
+      </div>
         <Grid item>
           <Typography variant="body1" className={classes.title}>
             タグ

@@ -7,7 +7,7 @@ import { Color } from "../../../static/colors"
 
 const myBuyLessonList = makeStyles((theme) => ({
   list: {
-    marginTop: "40px",
+    marginTop: "1rem",
     width: "80%"
   },
   box: {

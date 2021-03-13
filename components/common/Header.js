@@ -18,13 +18,15 @@ import MenuIcon from "@material-ui/icons/Menu"
 
 const useStyles = makeStyles((theme) => ({
   bar: {
-    backgroundColor: useContext(Color).colors.header
+    backgroundColor: useContext(Color).colors.header,
+    height: "5rem"
+
   },
   blank: {
     flexGrow: 1
   },
   img: {
-    height: "75px"
+    height: "4rem"
   },
   mobile: {
     backgroundColor: useContext(Color).colors.header,
@@ -74,7 +76,7 @@ function Header(props) {
         </Hidden>
 
         {/* モバイル画面以下の画面のみで表示*/}
-        <Hidden mdUp>
+        {/* <Hidden mdUp>
           <Accordion>
             <AccordionSummary expandIcon={<MenuIcon />} className={classes.mobile}></AccordionSummary>
             <AccordionDetails className={classes.category}>
@@ -105,7 +107,7 @@ function Header(props) {
               )}
             </AccordionDetails>
           </Accordion>
-        </Hidden>
+        </Hidden> */}
       </Toolbar>
     </AppBar>
   )
