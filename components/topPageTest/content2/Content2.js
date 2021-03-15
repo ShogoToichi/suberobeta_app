@@ -1,32 +1,24 @@
-import React from "react"
+import React, { useContext} from "react"
 import Grid from "@material-ui/core/Grid"
 import { makeStyles } from "@material-ui/core/styles"
 import ImageCardsList from "./ImageCardsList"
 import { Typography } from "@material-ui/core"
 import Container from "@material-ui/core/Container"
+import { Color } from "../../../static/colors"
 
 const styles = makeStyles((theme) => ({
-  container: {
-    backgroundColor: "#E0EBF5",
-    padding: "50px 0 50px 0"
+  mainTitle: {
+    color: useContext(Color).colors.header,
+    fontWeight: "bold",
+    marginBottom: "0.5rem",
+    marginTop: "6rem",
+    fontSize: "2.2rem"
   },
-  text1: {
-    fontSize: "1.5rem",
-    textAlign: "left",
-    // backgroundColor: "red",
-    width: "100%",
-    fontWeight: "bold"
-  }
-  // test1: {
-  // backgroundColor: "green",
-  // width: "100%"
-  // }
 }))
 
 const Content2 = () => {
   const classes = styles()
   return (
-    <Container maxWidth="lg">
       <Grid
         container
         direction="column"
@@ -34,14 +26,14 @@ const Content2 = () => {
         alignItems="center"
         spacing={2}
       >
-        <Grid item xs={12} className={classes.text1}>
-          人気のレッスン
+        <Grid item xs={10}>
+          <Typography className={classes.mainTitle}>人気のレッスン</Typography>
         </Grid>
-        <Grid item>
+
+        <Grid item xs={12}>
           <ImageCardsList />
         </Grid>
       </Grid>
-    </Container>
   )
 }
 

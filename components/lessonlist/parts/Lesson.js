@@ -19,11 +19,13 @@ import {
 } from "@mdi/js"
 import Chip from "@material-ui/core/Chip"
 import Grid from "@material-ui/core/Grid"
+import Rating from "@material-ui/lab/Rating"
+import Box from "@material-ui/core/Box"
 
 const lessonList = makeStyles((theme) => ({
   lesson: {
     width: "95%",
-    margin: "1rem 0rem 1rem 2rem"
+    margin: "0rem 0rem 1rem 0rem"
   },
   img: {
     cursor: "pointer"
@@ -52,7 +54,7 @@ const lessonList = makeStyles((theme) => ({
   },
   tags: {
     marginLeft: "7rem",
-    marginBottom: "1rem"
+    marginBottom: "0.5rem"
   },
   tag: {
     margin: "0rem 0.5rem",
@@ -62,12 +64,13 @@ const lessonList = makeStyles((theme) => ({
     width: "100%"
   },
   info: {
-    margin: "0.5rem 1rem 0.5rem 1rem"
+    margin: "0.1rem 1rem 0.1rem 1rem"
   }
 }))
 
 export default function Lesson(props) {
   const classes = lessonList()
+  // const [value, setValue] = React.useState(5)
   return (
     <Card className={classes.lesson}>
       <Grid container spacing={1} deraction="row" alignItems="center">
@@ -83,7 +86,9 @@ export default function Lesson(props) {
             </Typography>
           </Link>
         </Grid>
-      <Grid item  className={classes.evaluation}>
+
+        <Grid item className={classes.evaluation}>
+          {/* htmlのみを用いて書いた評価  */}
         <Typography variant="body2" className={classes.assessment}>
           評価
           <input id="star1" type="radio" name="star" value="5" />
@@ -97,7 +102,18 @@ export default function Lesson(props) {
           <input id="star5" type="radio" name="star" value="1" />
           <label for="star5">★</label>
         </Typography>
-      </Grid>
+
+          {/* material-uiのRatingを用いて書いた評価 */}
+          {/* <Typography component="legend">
+            評価:
+            <Rating
+              value={value}
+              onChange={(event, newValue) => {
+                setValue(newValue)
+              }}
+            />
+          </Typography> */}
+        </Grid>
       </Grid>
 
       <div>
@@ -105,7 +121,9 @@ export default function Lesson(props) {
           as={`/lesson_info/${props.lessonId}`}
           href="/lesson_info/[lessonId]"
         >
-          <Typography variant="h5" className={classes.cardHeader}>{props.lessonName}</Typography>
+          <Typography variant="h5" className={classes.cardHeader}>
+            {props.lessonName}
+          </Typography>
         </Link>
       </div>
 

@@ -1,23 +1,30 @@
-import React from "react"
+import React, {useContext} from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import Typography from "@material-ui/core/Typography"
 import Grid from "@material-ui/core/Grid"
+import { Color } from "../../static/colors"
+import { fontFamily } from "@material-ui/system"
 
-const title = makeStyles({
+const title = makeStyles((theme) => ({
   titleArea: {
-    // display: "inline-block",
-    width: "90%"
+    width: "90%",
+    borderBottom: "double 0.3rem #DDD",
+    marginBottom: "1rem",
+    marginLeft: "4rem",
+    fontFamily: "arial",
+    color: useContext(Color).colors.caption,
+    [theme.breakpoints.down("md")]: {
+      marginLeft: "1rem"
+    }
   },
   title: {
     fontWeight: "bold",
     margin: "2rem 0 1rem 2rem"
   },
   subTitle: {
-    marginLeft: "3rem",
-    marginBottom: "1rem",
-    borderBottom: "solid 0.3rem #DDD"
+    marginLeft: "3rem"
   }
-})
+}))
 
 export default function Title(props) {
   const classes = title()

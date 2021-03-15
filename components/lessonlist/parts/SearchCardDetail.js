@@ -18,11 +18,7 @@ import Select from "@material-ui/core/Select"
 
 const searchcarddetail = makeStyles((theme) => ({
   card: {
-    // position: "relative",
-    // height: "400px"
-    backgroundColor: "#EEE",
-    // position: "relative",
-    height: "20rem"
+    padding: "0.5rem"
   },
   container: {
     height: "100%"
@@ -30,66 +26,18 @@ const searchcarddetail = makeStyles((theme) => ({
   formControl: {
     width: "100%"
   },
-  textSearchContainer: {
-    // position: "absolute",
-    // top: "0px",
-    // left: "15px",
-    // zIndex: "2"
-  },
-  otherSearchContainer: {
-    // position: "absolute",
-    // top: "110px",
-    // left: "15px",
-    // zIndex: "1"
-  },
   title: {
     display: "block",
     fontWeight: "bold",
-    margin: "1rem 1rem 1rem 1rem"
+    margin: "1rem"
   },
   searchPaper: {
     width: "80%",
     margin: "1rem 2rem",
     padding: "0rem 1rem"
   },
-  InputBase: {
-    width: "80%",
-    fontWeight: "bold"
-    // margin: "1.2rem 0.6px 0 0.6rem"
-  },
-  searchPaper: {
-    // width: "150%",
-    // margin: "10px 20px",
-    // padding: "0px 10px"
-  },
-  searchbtn: {
-    // width: "20%"
-  },
-  categorySummary: {
-    // height: "0.8rem"
-  },
-  categorys: {
-    // width: "80%"
-    // margin: "1rem 2rem"
-  },
-  category: {
-    // height: "1rem",
-    // padding: "0.5rem"
-    // width: "80%",
-    // margin: "10px 30px"
-  },
-  category: {
-    // height: "20px",
-    // padding: "2px",
-    // margin: "0px 10px",
-    // cursor: "pointer",
-    // "&:hover": {
-    // backgroundColor: "rgba(230, 256, 230, 0.75)"
-    // }
-  },
   tag: {
     margin: "0.5rem 0.8rem",
-    // margin: "5px 10px",
     color: useContext(Color).colors.Green
   }
 }))
@@ -101,78 +49,57 @@ export default function SearchCardDetail(props) {
     <Card className={classes.card}>
       <Grid
         container
-        direction="column"
+        direction="row"
         justify="space-around"
         className={classes.container}
       >
-        <Grid item>
-          <Grid container direction="column">
-            <Grid item>
-              <Typography variant="body1" className={classes.title}>
-                条件で絞り込む
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Paper elevation={8} className={classes.searchPaper}>
-                <Autocomplete
-                  id="combo-box-demo"
-                  fullWidth
-                  onChange={props.onChange}
-                  options={skiResortList}
-                  // defaultValue={props.searchingSkiResortName}  // Todo: 初期値の設定
-                  getOptionLabel={(option) => option.name}
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      label=""
-                      placeholder="例)　〇〇スキー場"
-                    />
-                  )}
+        <Grid item xs={10}>
+          <Typography variant="body1" className={classes.title}>
+            条件で絞り込む
+          </Typography>
+        </Grid>
+        <Grid item xs={10}>
+          <Paper elevation={8} className={classes.searchPaper}>
+            <Autocomplete
+              id="combo-box-demo"
+              fullWidth
+              onChange={props.onChange}
+              options={skiResortList}
+              // defaultValue={props.searchingSkiResortName}  // Todo: 初期値の設定
+              getOptionLabel={(option) => option.name}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label=""
+                  placeholder="例)　〇〇スキー場"
                 />
-              </Paper>
-            </Grid>
-          </Grid>
+              )}
+            />
+          </Paper>
         </Grid>
-        <Grid item>
-          <Grid
-            container
-            direction="column"
-            className={classes.otherSearchContainer}
-          >
-            <Grid item>
-              <Typography variant="body1" className={classes.title}>
-                カテゴリから探す
-              </Typography>
-            </Grid>
-            <Grid item className={classes.categorys}>
-              <FormControl className={classes.formControl}>
-                <InputLabel>
-                  <Typography>カテゴリ一覧</Typography>
-                </InputLabel>
-                <Select
-                  // Todo: 検索未実装
-                  // value={"age"}
-                  // onChange={handleChange}
-                  className={classes.categorySummary}
-                >
-                  <MenuItem className={classes.category}>
-                    <Typography>カービング</Typography>
-                  </MenuItem>
-                  <MenuItem className={classes.category}>
-                    <Typography>グランドトリック</Typography>
-                  </MenuItem>
-                  <MenuItem className={classes.category}>
-                    <Typography>パーク</Typography>
-                  </MenuItem>
-                  <MenuItem className={classes.category}>
-                    <Typography>バックカントリー</Typography>
-                  </MenuItem>
-                </Select>
-              </FormControl>
-            </Grid>
-          </Grid>
+
+        <Grid item xs={10}>
+          <Typography variant="body1" className={classes.title}>
+            カテゴリから探す
+          </Typography>
         </Grid>
-        <Grid item>
+        <Grid item xs={10}>
+          <FormControl className={classes.formControl}>
+            <InputLabel></InputLabel>
+            <Select
+            // Todo: 検索未実装
+            // value={"age"}
+            // onChange={handleChange}
+            >
+              <MenuItem>カービング</MenuItem>
+              <MenuItem>グランドトリック</MenuItem>
+              <MenuItem>パーク</MenuItem>
+              <MenuItem>バックカントリー</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+
+        <Grid item xs={10}>
           <Typography variant="body1" className={classes.title}>
             タグ
           </Typography>

@@ -4,7 +4,6 @@ import firebase from "firebase"
 import Lesson from "./parts/Lesson"
 import Title from "../commonParts/Title"
 import SearchCard from "./SearchCard"
-import Grid from "@material-ui/core/Grid"
 
 const SearchedLessonList = () => {
   //ステートの設定
@@ -51,15 +50,11 @@ const SearchedLessonList = () => {
   }, [])
 
   return (
-    <Grid container spacing={2} deraction="row" justify="center">
+    <>
       <Title title={`${skiResortName}のレッスン一覧`}></Title>
-      <Grid item xs={11} sm={9} lg={3}>
         <SearchCard searchingSkiResortName={skiResortName} />
-      </Grid>
-      <Grid item xs={12} sm={10} lg={7}>
         {items}
-      </Grid>
-    </Grid>
+    </>
   )
 }
 

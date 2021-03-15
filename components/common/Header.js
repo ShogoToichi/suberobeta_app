@@ -11,16 +11,18 @@ import Account from "./Account"
 import { connect } from "react-redux"
 import { Color } from "../../static/colors"
 import Hidden from "@material-ui/core/Hidden"
-import Accordion from "@material-ui/core/Accordion"
-import AccordionSummary from "@material-ui/core/AccordionSummary"
-import AccordionDetails from "@material-ui/core/AccordionDetails"
-import MenuIcon from "@material-ui/icons/Menu"
+import Menu from "@material-ui/core/Menu"
+import MenuItem from "@material-ui/core/MenuItem"
+import Icon from "@mdi/react"
+import { mdiMenu } from "@mdi/js"
 
 const useStyles = makeStyles((theme) => ({
   bar: {
     backgroundColor: useContext(Color).colors.header,
-    height: "5rem"
-
+    height: "5rem",
+    // [theme.breakpoints.down("sm")]: {
+    //   width: "110vw"
+    // }
   },
   blank: {
     flexGrow: 1
@@ -30,14 +32,22 @@ const useStyles = makeStyles((theme) => ({
   },
   mobile: {
     backgroundColor: useContext(Color).colors.header,
-    color: useContext(Color).colors.header,
-  },
-
+    color: useContext(Color).colors.header
+  }
 }))
 
 function Header(props) {
   const classes = useStyles()
   const router = useRouter()
+  const [anchorEl, setAnchorEl] = React.useState(null)
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget)
+  }
+
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
 
   return (
     <AppBar position="static" className={classes.bar}>
@@ -76,10 +86,22 @@ function Header(props) {
         </Hidden>
 
         {/* モバイル画面以下の画面のみで表示*/}
-        {/* <Hidden mdUp>
-          <Accordion>
-            <AccordionSummary expandIcon={<MenuIcon />} className={classes.mobile}></AccordionSummary>
-            <AccordionDetails className={classes.category}>
+        <Hidden mdUp>
+          <Button
+            aria-controls="simple-menu"
+            aria-haspopup="true"
+            onClick={handleClick}
+          >
+            <Icon path={mdiMenu} size={2} />
+          </Button>
+          <Menu
+            id="simple-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+          >
+            <MenuItem onClick={handleClose}>
               <Button
                 variant="text"
                 size="large"
@@ -88,8 +110,9 @@ function Header(props) {
               >
                 レッスン一覧
               </Button>
-            </AccordionDetails>
-            <AccordionDetails className={classes.category}>
+            </MenuItem>
+
+            <MenuItem onClick={handleClose}>
               {props.login ? (
                 <>
                   <Button
@@ -105,9 +128,9 @@ function Header(props) {
               ) : (
                 <Account text="ログイン" />
               )}
-            </AccordionDetails>
-          </Accordion>
-        </Hidden> */}
+            </MenuItem>
+          </Menu>
+        </Hidden>
       </Toolbar>
     </AppBar>
   )
