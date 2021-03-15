@@ -25,9 +25,9 @@ export const fireappp = fireapp
 // ステートの初期値
 const initial = {
   login: false,
-  username: "(click here!)",
+  userName: "(click here!)",
   email: "",
-  imageurl: ""
+  imageName: ""
 }
 
 export const fireReducer = (state = initial, action) => {

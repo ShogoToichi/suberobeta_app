@@ -32,6 +32,7 @@ const plofile = makeStyles((theme) => ({
 
 export default function LessonDetail(props) {
   const classes = plofile()
+
   return (
     <Card className={classes.lessonInfo}>
       <CardContent className={classes.cardContent}>
@@ -65,14 +66,14 @@ export default function LessonDetail(props) {
         </Typography>
 
         <span style={{ position: "absolute", top: "6rem", right: "0.1rem" }}>
-          {props.buyerId == props.createrId ? (
-            <EditBtn lessonId={props.lessonId} />
+          {props.isLogin ? (
+            props.buyerId == props.createrId ? (
+              <EditBtn lessonId={props.lessonId} />
+            ) : (
+              <BuyBtn onClick={props.onClick} />
+            )
           ) : (
-            <BuyBtn
-              lessonId={props.lessonId}
-              buyerId={props.buyerId}
-              onClick={props.onClick}
-            />
+            <></>
           )}
         </span>
 
