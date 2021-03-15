@@ -16,12 +16,6 @@ const style = makeStyles((theme) => ({
     width: "100%",
     margin: "0 auto"
   },
-  // body: {
-  //   backgroundColor: "#4C87C9",
-  //   backgroundImage: "url(../../../static/toppage.jpg)",
-  //   backgroundSize: "100%"
-    
-  // }
 }))
 
 const TopPage = () => {

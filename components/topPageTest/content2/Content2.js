@@ -7,15 +7,10 @@ import Container from "@material-ui/core/Container"
 import { Color } from "../../../static/colors"
 
 const styles = makeStyles((theme) => ({
-  container: {
-    backgroundColor: "#E0EBF5",
-    padding: "50px 0 50px 0"
-  },
   mainTitle: {
     color: useContext(Color).colors.header,
-    textWeight: "bold",
+    fontWeight: "bold",
     marginBottom: "0.5rem",
-    textAlign: "center",
     marginTop: "6rem",
     fontSize: "2.2rem"
   },
@@ -24,7 +19,6 @@ const styles = makeStyles((theme) => ({
 const Content2 = () => {
   const classes = styles()
   return (
-    <Container maxWidth="lg">
       <Grid
         container
         direction="column"
@@ -32,14 +26,14 @@ const Content2 = () => {
         alignItems="center"
         spacing={2}
       >
-        <Grid item xs={12} >
+        <Grid item xs={10}>
           <Typography className={classes.mainTitle}>人気のレッスン</Typography>
         </Grid>
-        <Grid item>
+
+        <Grid item xs={12}>
           <ImageCardsList />
         </Grid>
       </Grid>
-    </Container>
   )
 }
 

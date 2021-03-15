@@ -15,7 +15,7 @@ const IconCards = () => {
         spacing={3}
         className={classes.container}
       >
-        <Grid item>
+        <Grid item className={classes.cardContent}>
           <IconCard
             src={"../../../static/searchProfile.png"}
             stepNumber={"01"}
@@ -25,7 +25,7 @@ const IconCards = () => {
             }
           />
         </Grid>
-        <Grid item>
+        <Grid item className={classes.cardContent}>
           <IconCard
             src={"../../../static/chat.png"}
             stepNumber={"02"}
@@ -43,7 +43,7 @@ const IconCards = () => {
         spacing={3}
         className={classes.container}
       >
-        <Grid item>
+        <Grid item className={classes.cardContent}>
           <IconCard
             src={"../../../static/paymentCard.png"}
             stepNumber={"03"}
@@ -53,7 +53,7 @@ const IconCards = () => {
             }
           />
         </Grid>
-        <Grid item>
+        <Grid item className={classes.cardContent}>
           <IconCard
             src={"../../../static/snowboardIcon.jpg"}
             stepNumber={"04"}

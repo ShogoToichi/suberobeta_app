@@ -8,23 +8,24 @@ import Hidden from "@material-ui/core/Hidden"
 
 const topTitle = makeStyles((theme) => ({
   bgImg: {
-    backgroundColor: "#4C87C9",
     backgroundImage: "url(../../../../static/toppage.jpg)",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    height: "43rem"
+    height: "43rem",
+    [theme.breakpoints.down("md")]: {
+      backgroundsize: "100%",
+      height: "23rem"
+    }
   },
   cap: {
-    textAlign: "right",
     color: useContext(Color).colors.bgGreen,
-    fontSize: "2rem",
 
     "& span": {
-      color: "red"
+      fontSize: "1.2em",
+      background: "linear-gradient(transparent 60%, #CBFFD3 90%)"
     },
     [theme.breakpoints.down("md")]: {
       color: useContext(Color).colors.caption,
-      fontSize: "1.5rem",
       fontWeight: "bold"
     }
   },
@@ -34,11 +35,10 @@ const topTitle = makeStyles((theme) => ({
     fontSize: "10rem",
     [theme.breakpoints.down("md")]: {
       color: useContext(Color).colors.caption,
-      fontSize: "8rem"
+      fontSize: "6rem"
     }
   },
   titleContents: {
-    borderRadius: "1rem",
     marginTop: "4rem",
     marginRight: "12rem",
     [theme.breakpoints.down("lg")]: {
@@ -46,16 +46,20 @@ const topTitle = makeStyles((theme) => ({
     },
     [theme.breakpoints.down("md")]: {
       marginLeft: "1rem",
-      marginTop: "22rem"
+      marginTop: "13rem"
     }
   },
   LinkBtn: {
     color: useContext(Color).colors.caption,
-    marginBottom: "3%",
     width: "18rem",
     height: "4rem",
     fontSize: "1.4rem",
-    fontWeight: "bold"
+    fontWeight: "bold",
+    [theme.breakpoints.down("md")]: {
+      width: "16rem",
+      height: "3rem",
+      fontsize: "1.2rem"
+    }
   }
 }))
 
@@ -74,7 +78,7 @@ export default function Caption(props) {
           className={classes.bgImg}
         >
           <Grid item xs={12} className={classes.titleContents}>
-            <Typography align="right" className={classes.cap}>
+            <Typography variant="h4" align="right" className={classes.cap}>
               好きな時間に好きな場所で
               <br />
               スキー・スノーボードレッスン
@@ -106,23 +110,14 @@ export default function Caption(props) {
           className={classes.bgImg}
         >
           <Grid item xs={12} className={classes.titleContents}>
-            <Typography align="right" className={classes.cap}>
+            <Typography variant="h6" align="left" className={classes.cap}>
               好きな<span>時間</span>に好きな<span>場所</span>で
               <br />
               スキー・スノーボードレッスン
             </Typography>
 
-            <Typography align="right" className={classes.mainCap}>
+            <Typography variant="h1" align="left" className={classes.mainCap}>
               subero
-            </Typography>
-            <Typography align="center">
-              <Button
-                variant="outlined"
-                size="large"
-                className={classes.LinkBtn}
-              >
-                今すぐはじめる
-              </Button>
             </Typography>
           </Grid>
         </Grid>

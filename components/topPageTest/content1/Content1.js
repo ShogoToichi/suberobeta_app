@@ -8,7 +8,7 @@ import { Typography } from "@material-ui/core"
 const styles = makeStyles((theme) => ({
   mainTitle: {
     color: useContext(Color).colors.header,
-    textWeight: "bold",
+    fontWeight: "bold",
     marginBottom: "0.5rem",
     textAlign: "center",
     marginTop: "6rem",

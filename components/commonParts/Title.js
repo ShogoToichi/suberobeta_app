@@ -1,7 +1,8 @@
-import React from "react"
+import React, {useContext} from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import Typography from "@material-ui/core/Typography"
 import Grid from "@material-ui/core/Grid"
+import { Color } from "../../static/colors"
 import { fontFamily } from "@material-ui/system"
 
 const title = makeStyles((theme) => ({
@@ -11,6 +12,7 @@ const title = makeStyles((theme) => ({
     marginBottom: "1rem",
     marginLeft: "4rem",
     fontFamily: "arial",
+    color: useContext(Color).colors.caption,
     [theme.breakpoints.down("md")]: {
       marginLeft: "1rem"
     }

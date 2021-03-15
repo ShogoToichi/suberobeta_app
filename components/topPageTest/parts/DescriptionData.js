@@ -16,12 +16,14 @@ const topTitle = makeStyles((theme) => ({
   card: {
     borderRadius: "10px",
     boxShadow: "3px 6px 10px 2px #999 ",
-    "@media (max-width: 800px)": {}
+    animation: "$fadeIn 2s ease 0.3s 1 normal"
   },
   cardHeader: {
-    fontWeight: "bold",
     width: "100%",
-    display: "block"
+    display: "block",
+    "& title": {
+      fontWeight: "bold"
+    }
   },
   LinkBtn: {
     backgroundColor: "#396",
@@ -30,8 +32,17 @@ const topTitle = makeStyles((theme) => ({
     boxShadow: "1px 1px 2px 1px #DDD"
   },
   card_img: {
-    height: "90px"
+    height: "100px"
   },
+
+  "@keyframes fadeIn": {
+    from: {
+      opacity: 0
+    },
+    to: {
+      opacity: 1
+    }
+  }
 }))
 
 export default function DescriotionData(props) {
@@ -56,7 +67,7 @@ export default function DescriotionData(props) {
           />
         </Grid>
         <Grid item className={classes.img_item}>
-          <img src={props.src} className={classes.card_img}></img>
+          <img src={props.src} className={classes.card_img} />
         </Grid>
         <Grid item>
           <CardContent className={classes.cardContent}>

@@ -62,7 +62,7 @@ const LessonList = () => {
         </Grid>
         <Hidden lgUp>
           <Grid item xs={8}>
-            <Typography variant="h5" style={{ marginTop: "2rem", fontWeight: "bold" }}>
+            <Typography variant="h5" style={{ marginTop: "2rem", fontWeight: "bold", color: "#062"}}>
               新着のレッスン
             </Typography>
           </Grid>

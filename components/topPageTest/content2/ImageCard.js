@@ -2,76 +2,82 @@ import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import Card from "@material-ui/core/Card"
-import CardContent from "@material-ui/core/CardContent"
-import CardHeader from "@material-ui/core/CardHeader"
 import Img from "../../commonParts/Img"
+import Link from "next/link"
+import { Typography } from "@material-ui/core"
+import Icon from "@mdi/react"
+import {
+  mdiCalendarClock,
+  mdiMapMarkerRadiusOutline,
+  mdiCurrencyUsd
+} from "@mdi/js"
 
 const Styles = makeStyles((theme) => ({
   card: {
-    width: "12rem"
-    // width: "150%"
+    width: "17rem",
+    height: "19.5rem",
+    padding: "0.5rem",
+    margin: "0.5rem",
+    tableLayout: "fixed",
+    cursor: "pointer"
   },
-  lessonImage: {
-    backgroundColor: "rgba(0,0,0,0.1)",
-    width: "12rem"
+  lessonName: {
+    textAlign: "center",
+    fontWeight: "bold"
   },
-  cardCreator: {
-    width: "100%"
+  img: {
+    textAlign: "center",
+    marginBottom: "0.5rem"
   },
-  cardNumber: {
-    fontSize: "1.5rem"
-  },
-  test1: {
-    // backgroundColor: "yellow",
-    margin: "0 0.5rem 0 0.7rem"
-  },
-  test2: {
-    // backgroundColor: "blue"
-  },
-  test3: {
-    // backgroundColor: "red"
-  },
-  test4: {
+
+  info: {
     width: "100%",
-    textAlign: "Right",
-    fontSize: "0.9rem"
+    textAlign: "left",
+    fontWeight: "bold",
+    marginLeft: "0.8rem"
   }
 }))
 
 const ImageCard = (props) => {
   const classes = Styles()
   return (
-    <Card className={classes.card}>
-      <Grid container direction="column" justify="center" alignItems="center">
-        <Grid item className={classes.lessonImage}>
-          <Img src={props.lessonImageUrl} size="100" />
-        </Grid>
-        <Grid item>
-          <CardHeader
-            title={props.lessonName}
-            titleTypographyProps={{ align: "center" }}
-          />
-        </Grid>
-        <Grid item className={classes.cardCreator}>
-          <Grid
-            container
-            direction="row"
-            justify="flex-start"
-            alignItems="center"
-            className={classes.test3}
-          >
-            <Grid item className={classes.test1}>
-              <Img src={props.createrImageUrl} size="30" />
-            </Grid>
-            <Grid item className={classes.test2}>
-              {props.createrName}
-            </Grid>
+    <Card className={classes.card} key={props.key}>
+      <Link href={`/profile_show/${props.createrId}`}>
+        <Grid
+          container
+          direction="column"
+          spacing={1}
+          justify="center"
+          alignItems="stretch"
+        >
+          <Grid item xs={11}>
+            <Typography varinat="body1" className={classes.lessonName}>
+              {props.lessonName}
+            </Typography>
+          </Grid>
+          <Grid item className={classes.img}>
+            <Img src={props.createrImageUrl} size="100" />
+          </Grid>
+          <Grid item xs={10}>
+            <Typography variant="body2" className={classes.info}>
+              <Icon path={mdiCalendarClock} size="1.5rem" />
+              &emsp;{props.lessonTime}
+            </Typography>
+          </Grid>
+          <Grid item xs={10}>
+            <Typography align="left" variant="body2" className={classes.info}>
+              <Icon path={mdiMapMarkerRadiusOutline} size="1.2rem" />
+              &emsp;{props.lessonPlace}
+            </Typography>
+          </Grid>
+          <Grid item xs={10}>
+            <Typography variant="body2" className={classes.info}>
+              <Icon path={mdiCurrencyUsd} size="1.5rem" />
+              &emsp;{props.lessonPrice}円
+            </Typography>
           </Grid>
         </Grid>
-        <Grid item className={classes.test4}>
-          {props.lessonValue}
-        </Grid>
-      </Grid>
+      </Link>
     </Card>
   )
 }

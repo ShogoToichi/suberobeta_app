@@ -4,20 +4,16 @@ import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import { Color } from "../../../static/colors"
 import DescriptionData from "./DescriptionData"
-import MediaQuery from "react-responsive"
 
 const topTitle = makeStyles((theme) => ({
   mainTitle: {
     color: useContext(Color).colors.header,
-    textWeight: "bold",
+    fontWeight: "900",
     textAlign: "center",
-    marginBottom: "50px",
+    marginBottom: "3rem",
     marginTop: "70px",
     fontSize: "2.2rem"
   },
-  descriptions: {
-    margin: theme.spacing(1)
-  }
 }))
 
 export default function Description(props) {
@@ -25,32 +21,26 @@ export default function Description(props) {
 
   return (
     <>
-      <MediaQuery query="(max-width: 600px)">
-        <Typography variant="h6" className={classes.mainTitle}>
-          「教えたい人」と「学びたい人」のレッスンプラットフォーム
-        </Typography>
-      </MediaQuery>
-      <MediaQuery query="(min-width: 601px)">
-        <Typography variant="h5" className={classes.mainTitle}>
-          「教えたい人」と「学びたい人」のレッスンプラットフォーム
-        </Typography>
-      </MediaQuery>
+      <Typography variant="h6" className={classes.mainTitle}>
+        「教えたい人」と「学びたい人」のレッスンプラットフォーム
+      </Typography>
       <Grid
         container
         direction="row"
         justify="center"
         alignItems="center"
         spacing={1}
-        // className={classes.descriptions}
       >
-        <Grid item xs={10} sm={7} lg={3} className={classes.content}>
+        <Grid item xs={10} sm={7} lg={3} >
           <DescriptionData
             title={"自分に合ったレッスン"}
             content1={
               "ジャンル、レベル、場所、時間など目的に合ったレッスンを受けることができます。"
             }
             src="../../../static/topcard1.jpg"
-            content2={"現地集合・現地解散で気軽にスキー・スノーボードレッスンを受けてみましょう。"}
+            content2={
+              "現地集合・現地解散で気軽にスキー・スノーボードレッスンを受けてみましょう。"
+            }
             herf={"/lesson_list"}
             btnName={"レッスン一覧"}
             key={"1"}

@@ -13,14 +13,16 @@ import { Color } from "../../static/colors"
 import Hidden from "@material-ui/core/Hidden"
 import Menu from "@material-ui/core/Menu"
 import MenuItem from "@material-ui/core/MenuItem"
-import Icon from '@mdi/react'
-import { mdiMenu } from '@mdi/js'
-
+import Icon from "@mdi/react"
+import { mdiMenu } from "@mdi/js"
 
 const useStyles = makeStyles((theme) => ({
   bar: {
     backgroundColor: useContext(Color).colors.header,
-    height: "5rem"
+    height: "5rem",
+    // [theme.breakpoints.down("sm")]: {
+    //   width: "110vw"
+    // }
   },
   blank: {
     flexGrow: 1
@@ -109,7 +111,7 @@ function Header(props) {
                 レッスン一覧
               </Button>
             </MenuItem>
-            
+
             <MenuItem onClick={handleClose}>
               {props.login ? (
                 <>

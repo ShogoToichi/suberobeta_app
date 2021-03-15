@@ -11,14 +11,13 @@ const Styles = makeStyles((theme) => ({
   card: {
     width: "30rem"
   },
-  cardtitle: {
+  cardTitle: {
     fontWeight: "bold",
     marginTop: "1rem",
     "& span": {
-      color: useContext(Color).colors.header
+      color: useContext(Color).colors.Green
     }
-  },
-  cardDescription: {}
+  }
 }))
 
 
