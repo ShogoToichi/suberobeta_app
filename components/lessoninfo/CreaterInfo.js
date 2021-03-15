@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react"
 import firebase from "firebase"
 import { useRouter } from "next/router"
 import { connect } from "react-redux"
-import Lib from "../../Lib/address_lib"
 import CreaterDetail from "./parts/CreaterDetail"
 import getProfileImageUrl from "../commonParts/getProfileImageUrl"
 
@@ -14,13 +13,10 @@ let lessonData = ""
 let userData = ""
 
 function CreaterInfo(props) {
-  const email = Lib.encodeEmail(props.email)
-
   //強制レンダリング用ステート
   const [update, setUpdata] = useState(false)
-
-  const db = firebase.firestore()
   const router = useRouter()
+  const db = firebase.firestore()
 
   //lessonData及びlessoncreaterのprofileを取得
   const getCreaterData = async () => {

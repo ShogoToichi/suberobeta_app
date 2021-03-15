@@ -98,6 +98,9 @@ function LessonEdit(props) {
   }
 
   useEffect(() => {
+    if (!props.login) {
+      return router.push("/")
+    }
     getCurrentData()
   }, [])
 

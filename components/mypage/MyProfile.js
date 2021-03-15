@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react"
 import firebase from "firebase"
 import "firebase/storage"
 import { connect } from "react-redux"
-import Lib from "../../Lib/address_lib"
 import MyProfileUi from "./parts/MyProfileUi"
 import getProfileImageUrl from "../commonParts/getProfileImageUrl"
+import { useRouter } from "next/router"
 
 let name = "no data"
 let introduction = "no data"
@@ -12,11 +12,12 @@ let imageUrl = null
 
 function MyProfile(props) {
   const [update, setUpdate] = useState(false)
+  const router = useRouter()
 
   const getFireData = async () => {
     const db = firebase.firestore()
     // emailにReduxからユーザーのemailを取得
-    const email = Lib.encodeEmail(props.email)
+    const email = props.email
     // emailでfirebaseを参照
     await db
       .collection("users")
@@ -32,6 +33,9 @@ function MyProfile(props) {
     setUpdate(update ? false : true)
   }
   useEffect(() => {
+    if (!props.login) {
+      return router.push("/")
+    }
     getFireData()
   }, [])
 

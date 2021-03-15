@@ -25,8 +25,6 @@
 
 # Autocomplete
 
-## Combo box
-
 ```js
 // example of combo box
 import TextField from "@material-ui/core/TextField"
@@ -52,69 +50,89 @@ const top100Films = [
 
 # Date / Time picker
 
+使えなかった．
+
+# Rating
+
 ```js
-// sample of picker
-import "date-fns"
+import Rating from "@material-ui/lab/Rating"
+return(
+  <Rating
+          name="simple-controlled"
+          value={value}
+          onChange={(event, newValue) => {
+            setValue(newValue);
+          }}
+        />
+  <Rating name="read-only" value={value} readOnly />
+)
+```
+
+# Menu
+
+```js
 import React from "react"
-import Grid from "@material-ui/core/Grid"
-import DateFnsUtils from "@date-io/date-fns"
-import {
-  MuiPickersUtilsProvider,
-  KeyboardTimePicker,
-  KeyboardDatePicker
-} from "@material-ui/pickers"
+import Button from "@material-ui/core/Button"
+import Menu from "@material-ui/core/Menu"
+import MenuItem from "@material-ui/core/MenuItem"
 
-export default function MaterialUIPickers() {
-  // The first commit of Material-UI
-  const [selectedDate, setSelectedDate] = React.useState(
-    new Date("2014-08-18T21:11:54")
-  )
+export default function SimpleMenu() {
+  const [anchorEl, setAnchorEl] = React.useState(null)
 
-  const handleDateChange = (date) => {
-    setSelectedDate(date)
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget)
+  }
+
+  const handleClose = () => {
+    setAnchorEl(null)
   }
 
   return (
-    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-      <Grid container justify="space-around">
-        <KeyboardDatePicker
-          disableToolbar
-          variant="inline"
-          format="MM/dd/yyyy"
-          margin="normal"
-          id="date-picker-inline"
-          label="Date picker inline"
-          value={selectedDate}
-          onChange={handleDateChange}
-          KeyboardButtonProps={{
-            "aria-label": "change date"
-          }}
-        />
-        <KeyboardDatePicker
-          margin="normal"
-          id="date-picker-dialog"
-          label="Date picker dialog"
-          format="MM/dd/yyyy"
-          value={selectedDate}
-          onChange={handleDateChange}
-          KeyboardButtonProps={{
-            "aria-label": "change date"
-          }}
-        />
-        <KeyboardTimePicker
-          margin="normal"
-          id="time-picker"
-          label="Time picker"
-          value={selectedDate}
-          onChange={handleDateChange}
-          KeyboardButtonProps={{
-            "aria-label": "change time"
-          }}
-        />
-      </Grid>
-    </MuiPickersUtilsProvider>
+    <>
+      <Button
+        aria-controls="simple-menu"
+        aria-haspopup="true"
+        onClick={handleClick}
+      >
+        Open Menu
+      </Button>
+      <Menu
+        id="simple-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+      >
+        <MenuItem onClick={handleClose}>Profile</MenuItem>
+        <MenuItem onClick={handleClose}>My account</MenuItem>
+        <MenuItem onClick={handleClose}>Logout</MenuItem>
+      </Menu>
+    </>
   )
 }
+```
+
+# Sellect
+
+```js
+import InputLabel from "@material-ui/core/InputLabel"
+import MenuItem from "@material-ui/core/MenuItem"
+import FormControl from "@material-ui/core/FormControl"
+import Select from "@material-ui/core/Select"
+
+;<FormControl className={classes.formControl}>
+  <InputLabel id="demo-simple-select-label">Age</InputLabel>
+  <Select
+    labelId="demo-simple-select-label"
+    id="demo-simple-select"
+    value={age}
+    onChange={handleChange}
+  >
+    <MenuItem value={10}>Ten</MenuItem>
+    <MenuItem value={20}>Twenty</MenuItem>
+    <MenuItem value={30}>Thirty</MenuItem>
+  </Select>
+</FormControl>
 ```
 
 ## 参考
@@ -122,5 +140,7 @@ export default function MaterialUIPickers() {
 - Typography https://material-ui.com/api/typography/l
 - Grid https://material-ui.com/components/grid/#limitations
 - Text Field https://material-ui.com/components/text-fields/
-- Autocomplete(combo box) https://material-ui.com/components/autocomplete/
-- Date/Time picker https://material-ui.com/components/pickers/#date-time-pickers
+- Autocomplete https://material-ui.com/components/autocomplete/
+- Rating https://material-ui.com/components/rating/
+- Menu https://material-ui.com/components/menus/
+- Sellect https://material-ui.com/components/selects/
