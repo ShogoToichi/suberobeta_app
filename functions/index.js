@@ -1,19 +1,29 @@
-//algoriaにデータを保存する関数をcloudfunctionsに置くやつ
-// const functions = require("firebase-functions");
-// const admin = require("firebase-admin");
-// admin.initializeApp(functions.config().firebase);
-// const algoliasearch = require("algoliasearch");
-// const ALGOLIA_ID = functions.config().algolia.app_id;
-// const ALGOLIA_ADMIN_KEY = functions.config().algolia.api_key;
-// // const ALGOLIA_SEARCH_KEY = functions.config().algolia.search_key;
-// const ALGOLIA_INDEX_NAME = "suberobeta";
-// const client = algoliasearch(ALGOLIA_ID, ALGOLIA_ADMIN_KEY);
+const functions = require("firebase-functions");
+const admin = require("firebase-admin");
+admin.initializeApp(functions.config().firebase);
+var express = require('express');
+var router = express.Router();
+const stripeApiKey = functions.config().stripe.testkey;
+const stripe = require("stripe")(stripeApiKey);
 
 
-// exports.onProductCreated = functions.firestore
-//     .document("lessons/{id}").onCreate((snap, context) => {
-//       const data = snap.data();
-//       data.objectID = context.params.id;
-//       const index = client.initIndex(ALGOLIA_INDEX_NAME);
-//       return index.saveObject(data);
-//     });
+
+exports.onCreatedAccount = functions.firestore
+    .document("users/{id}")
+    .onCreate(async(snap, context)=>{
+      const accountData = {
+        type : "express",
+        country : "JP",
+        email : context.params.id,
+        capabilities:{
+          card_payments:{requested:true},
+          transfers : {requested:true}
+        }
+      }
+      const accountJsonData = JSON.stringify(accountData);
+      const account = await stripe.accounts.create(accountJsonData);
+      const createdData = JSON.parse(account);
+      await admin.firestore().collection("users").doc(context.params.id).set({
+        stripeId: createdData.id,
+      },{merge : true});
+    });
